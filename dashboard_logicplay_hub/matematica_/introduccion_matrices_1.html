@@ -2,90 +2,230 @@
 <html lang="es">
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600;800;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
-    <title>Introducción - LogiPlay</title>
+    <title>LogiPlay - Nivel 2: El Club de las Matrices</title>
+    <style>
+        body { font-family: 'Lexend', sans-serif; background-color: #f0f4f8; }
+        
+        .matrix-input {
+            width: 70px;
+            height: 70px;
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: 900;
+            border-radius: 1.5rem;
+            border: 3px solid #e2e8f0;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .matrix-input:focus {
+            border-color: #6366f1;
+            transform: scale(1.1) rotate(3deg);
+            box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.4);
+            outline: none;
+        }
+
+        .identity-gradient {
+            background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .stagger-1 { animation: slideIn 0.5s ease forwards; }
+        .stagger-2 { animation: slideIn 0.5s 0.2s ease forwards; opacity: 0; }
+
+        .achievement-card {
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+        .achievement-card:hover { transform: translateY(-10px); }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+        .animate-shake { animation: shake 0.3s ease-in-out; }
+    </style>
 </head>
-<body class="bg-slate-50 min-h-screen p-6 font-['Lexend'] text-slate-800">
-    <div class="max-w-4xl mx-auto">
-        <div class="bg-white p-10 rounded-3xl shadow-xl border border-indigo-100 mb-8">
-            <div class="flex justify-between items-start mb-8">
-                <div>
-                    <span class="text-indigo-600 font-bold uppercase tracking-widest text-sm">Módulo Matemáticas</span>
-                    <h1 class="text-5xl font-black text-slate-900 mb-4">El Mundo de las Matrices</h1>
-                </div>
-                <a href="../f_sica_pr_ctica_intera.../code.html" class="flex items-center gap-2 bg-orange-100 text-orange-700 px-5 py-3 rounded-2xl font-bold hover:bg-orange-200 transition-all shadow-sm">
-                    <span class="material-symbols-outlined">rocket_launch</span> Módulo Física
-                </a>
+<body class="pb-20">
+
+    <nav class="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-slate-200 px-6 py-4">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <button onclick="window.history.back()" class="p-2 hover:bg-slate-100 rounded-xl transition-all">
+                    <span class="material-symbols-outlined text-slate-400">arrow_back</span>
+                </button>
+                <span class="font-black text-xl tracking-tighter uppercase">Nivel <span class="text-indigo-600 text-2xl">02</span></span>
             </div>
             
-            <div class="grid md:grid-cols-2 gap-10 mb-10">
-                <div class="space-y-4">
-                    <h2 class="text-2xl font-bold text-indigo-900">¿Qué es una matriz?</h2>
-                    <p class="text-slate-600 leading-relaxed text-justify">
-                        Imagina una tabla de datos organizada. Una matriz es un conjunto de números dispuestos en **filas** (horizontales) y **columnas** (verticales). En los videojuegos, se usan para posicionar personajes en un espacio 3D.
+            <div class="flex items-center gap-6">
+                <div class="hidden md:block text-right">
+                    <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Rango de Jugador</p>
+                    <p class="font-bold text-indigo-600 uppercase text-xs">Aprendiz de Fusión</p>
+                </div>
+                <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-indigo-400 to-indigo-600 p-[3px] shadow-lg">
+                    <div class="w-full h-full bg-white rounded-full flex items-center justify-center font-black text-indigo-600">2</div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-5xl mx-auto px-6 mt-12">
+        
+        <header class="mb-16 stagger-1 text-center md:text-left">
+            <h2 class="text-5xl font-black text-slate-900 mb-6 leading-tight">Las <span class="italic underline decoration-indigo-500">Tribus</span> de Matrices</h2>
+            <p class="text-slate-500 text-lg max-w-3xl leading-relaxed">
+                No todas las matrices son iguales. Algunas tienen formas perfectas, otras son puro vacío y hay una que es la <b>reina del show</b>. ¡Conócelas antes de empezar a jugar!
+            </p>
+        </header>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24 stagger-2">
+            <div class="achievement-card bg-white p-8 rounded-[2.5rem] shadow-xl shadow-slate-200/60 border border-slate-100 group">
+                <div class="w-14 h-14 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-indigo-600 group-hover:text-white transition-all">
+                    <span class="material-symbols-outlined text-3xl">grid_view</span>
+                </div>
+                <h4 class="text-xl font-black text-slate-800 mb-3 uppercase tracking-tighter">La Cuadrada</h4>
+                <p class="text-sm text-slate-500 leading-relaxed italic">
+                    Es la más equilibrada: tiene la misma cantidad de pisos que de puertas. Es un espejo perfecto donde las filas son igual a las columnas.
+                </p>
+            </div>
+
+            <div class="achievement-card bg-slate-900 p-8 rounded-[2.5rem] shadow-2xl border border-slate-800 relative overflow-hidden group">
+                <div class="absolute -right-4 -top-4 w-24 h-24 identity-gradient opacity-20 blur-3xl group-hover:opacity-40 transition-opacity"></div>
+                <div class="w-14 h-14 bg-indigo-500 text-white rounded-2xl flex items-center justify-center mb-6">
+                    <span class="material-symbols-outlined font-black text-3xl">star</span>
+                </div>
+                <h4 class="text-xl font-black text-white mb-3 uppercase tracking-tighter italic">La Identidad</h4>
+                <p class="text-sm text-indigo-200 leading-relaxed">
+                    ¡La Matrix Pro! Es como el número 1. Tiene una línea diagonal de 1s y todo lo demás es cero. Multiplicar por ella deja todo igual.
+                </p>
+            </div>
+
+            <div class="achievement-card bg-white p-8 rounded-[2.5rem] shadow-xl shadow-slate-200/60 border border-slate-100 group">
+                <div class="w-14 h-14 bg-slate-100 text-slate-400 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-90 transition-transform">
+                    <span class="material-symbols-outlined text-3xl">block</span>
+                </div>
+                <h4 class="text-xl font-black text-slate-800 mb-3 uppercase tracking-tighter">La Vacía (Nula)</h4>
+                <p class="text-sm text-slate-500 leading-relaxed italic">
+                    Aquí no hay nada que ver. Todos sus espacios son un gran CERO. Es como una caja de inventario antes de empezar a jugar.
+                </p>
+            </div>
+        </div>
+
+        <section id="sum-lab" class="bg-white rounded-[4rem] p-10 md:p-16 shadow-2xl shadow-indigo-100 mb-20 relative border border-indigo-50">
+            <div class="flex flex-col lg:flex-row gap-12 items-center">
+                <div class="lg:w-2/5">
+                    <div class="bg-indigo-600 text-white inline-block px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-[0.2em] mb-4">Laboratorio de Alquimia</div>
+                    <h3 class="text-4xl font-black text-slate-900 mb-6 leading-none tracking-tighter italic">Fusión de Datos 🧪</h3>
+                    <p class="text-slate-500 mb-8 leading-relaxed">
+                        Para sumar matrices, deben ser <b>hermanas gemelas</b> (mismo tamaño). Es fácil: sumas el primer número de una con el primer número de la otra. ¡Puesto por puesto!
                     </p>
-                    <div class="p-4 bg-indigo-50 rounded-2xl border-l-4 border-indigo-500 text-indigo-900 text-sm">
-                        <b>Regla de Oro:</b> La dimensión se define como <i>Filas (m) x Columnas (n)</i>.
+                </div>
+
+                <div class="lg:w-3/5 w-full bg-slate-50 p-8 md:p-12 rounded-[3.5rem] border-2 border-slate-100 relative overflow-hidden">
+                    <div class="flex flex-wrap items-center justify-center gap-6">
+                        <div class="text-center">
+                            <span class="text-[10px] font-black text-indigo-400 uppercase tracking-widest mb-2 block">Pack Alpha</span>
+                            <div class="grid grid-cols-2 gap-3 bg-white p-4 rounded-[2rem] shadow-sm border border-slate-200">
+                                <div class="w-12 h-12 flex items-center justify-center font-black text-slate-800 bg-indigo-50 rounded-xl">3</div>
+                                <div class="w-12 h-12 flex items-center justify-center font-black text-slate-800 bg-indigo-50 rounded-xl">1</div>
+                                <div class="w-12 h-12 flex items-center justify-center font-black text-slate-800 bg-indigo-50 rounded-xl">0</div>
+                                <div class="w-12 h-12 flex items-center justify-center font-black text-slate-800 bg-indigo-50 rounded-xl">5</div>
+                            </div>
+                        </div>
+
+                        <span class="text-4xl font-black text-slate-300 animate-pulse">+</span>
+
+                        <div class="text-center">
+                            <span class="text-[10px] font-black text-emerald-400 uppercase tracking-widest mb-2 block">Pack Beta</span>
+                            <div class="grid grid-cols-2 gap-3 bg-white p-4 rounded-[2rem] shadow-sm border border-slate-200">
+                                <div class="w-12 h-12 flex items-center justify-center font-black text-slate-800 bg-emerald-50 rounded-xl">2</div>
+                                <div class="w-12 h-12 flex items-center justify-center font-black text-slate-800 bg-emerald-50 rounded-xl">4</div>
+                                <div class="w-12 h-12 flex items-center justify-center font-black text-slate-800 bg-emerald-50 rounded-xl">9</div>
+                                <div class="w-12 h-12 flex items-center justify-center font-black text-slate-800 bg-emerald-50 rounded-xl">1</div>
+                            </div>
+                        </div>
+
+                        <span class="text-4xl font-black text-slate-300">=</span>
+
+                        <div class="text-center">
+                            <span class="text-[10px] font-black text-indigo-600 uppercase tracking-widest mb-2 block animate-bounce">Fusión Omega</span>
+                            <div class="grid grid-cols-2 gap-3 bg-indigo-600/5 p-4 rounded-[2rem] border-2 border-indigo-100 shadow-inner">
+                                <input id="res1" type="number" placeholder="?" class="matrix-input">
+                                <input id="res2" type="number" placeholder="?" class="matrix-input">
+                                <input id="res3" type="number" placeholder="?" class="matrix-input">
+                                <input id="res4" type="number" placeholder="?" class="matrix-input">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-12 flex flex-col items-center">
+                        <button onclick="checkAlquimia()" class="bg-indigo-600 text-white px-12 py-5 rounded-[2rem] font-black text-xl shadow-2xl shadow-indigo-300 hover:bg-indigo-700 hover:scale-105 active:scale-95 transition-all">
+                            CONJURAR RESULTADO ✨
+                        </button>
+                        <div id="status-msg" class="mt-6 text-center h-8 font-black uppercase italic tracking-tighter"></div>
                     </div>
                 </div>
-                <div class="bg-slate-900 rounded-3xl p-8 flex flex-col items-center justify-center text-white shadow-2xl border-4 border-indigo-400/20">
-                    <span class="text-slate-500 text-xs mb-4 uppercase font-bold tracking-widest">Estructura Básica</span>
-                    <div class="font-mono text-3xl text-emerald-400 tracking-widest">
-                        [ a<sub>11</sub> &nbsp; a<sub>12</sub> ]<br>
-                        [ a<sub>21</sub> &nbsp; a<sub>22</sub> ]
+            </div>
+        </section>
+
+        <section class="mt-24">
+            <div class="bg-slate-900 rounded-[4rem] p-12 text-center shadow-2xl relative overflow-hidden border-4 border-indigo-500/30">
+                <div class="relative z-10">
+                    <h3 class="text-4xl font-black text-white mb-4 tracking-tighter italic">¿LISTO PARA EL SIGUIENTE PASO?</h3>
+                    <p class="text-slate-400 max-w-2xl mx-auto mb-10 text-lg leading-relaxed">
+                        Has dominado la suma. Ahora descubre las reglas maestras que rigen el universo de las matrices.
+                    </p>
+
+                    <div class="flex flex-col items-center gap-4">
+                        <a id="btn-final" 
+                           href="../matematica_1/propiedades1.html" 
+                           class="opacity-20 pointer-events-none group bg-white text-slate-900 px-16 py-7 rounded-[2.5rem] font-black text-2xl flex items-center gap-4 transition-all duration-500 shadow-2xl">
+                            VER PROPIEDADES
+                            <span class="material-symbols-outlined text-3xl group-hover:translate-x-3 transition-transform">bolt</span>
+                        </a>
+                        
+                        <p id="lock-msg" class="text-indigo-400 font-black text-[10px] uppercase tracking-[0.4em] animate-pulse">
+                            ⚠️ Completa la suma de arriba para avanzar
+                        </p>
                     </div>
                 </div>
             </div>
-
-            
-
-            <div class="bg-slate-50 p-8 rounded-3xl border-2 border-slate-100 mb-10">
-                <h3 class="font-black text-slate-900 text-2xl mb-4 italic">Ejemplo de Identificación</h3>
-                <p class="mb-6 text-slate-600 text-lg">Analicemos la matriz <b>B</b>:</p>
-                <div class="text-center font-mono text-3xl bg-white p-6 rounded-2xl shadow-inner inline-block w-full mb-6 border border-slate-200 text-indigo-600">
-                    B = [ 10 &nbsp; 20 &nbsp; 30 ]
-                </div>
-                <div class="grid grid-cols-2 gap-4 text-sm">
-                    <div class="bg-white p-3 rounded-xl border border-slate-200"><b>Filas:</b> 1 (Horizontal)</div>
-                    <div class="bg-white p-3 rounded-xl border border-slate-200"><b>Columnas:</b> 3 (Verticales)</div>
-                </div>
-                <p class="mt-4 text-center font-bold text-indigo-900 bg-indigo-100 py-2 rounded-lg">Dimensión Total: 1x3</p>
-            </div>
-
-            <div class="bg-indigo-600 p-8 rounded-3xl text-white shadow-lg shadow-indigo-200">
-                <h3 class="text-xl font-bold mb-4 flex items-center gap-2 text-emerald-300">
-                    <span class="material-symbols-outlined">quiz</span> Desafío de Entrada
-                </h3>
-                <p class="mb-6 opacity-90 text-lg">¿Cuál es la dimensión de una matriz que tiene 3 filas y 2 columnas?</p>
-                <div class="grid grid-cols-2 gap-4">
-                    <button onclick="checkIntro('3x2')" class="p-4 bg-white/10 hover:bg-emerald-500 rounded-xl font-bold border border-white/20 transition-all hover:scale-105">3 x 2</button>
-                    <button onclick="checkIntro('2x3')" class="p-4 bg-white/10 hover:bg-rose-500 rounded-xl font-bold border border-white/20 transition-all hover:scale-105">2 x 3</button>
-                </div>
-                <p id="fbIntro" class="mt-6 text-center font-black text-xl"></p>
-            </div>
-        </div>
-
-        <div class="flex justify-between items-center px-4">
-            <a href="../f_sica_pr_ctica_intera.../code.html" class="flex items-center gap-2 font-bold text-slate-400 hover:text-orange-600 transition-all">
-                <span class="material-symbols-outlined">arrow_back</span> Volver a Física
-            </a>
-            <a href="introduccion2.html" class="bg-indigo-600 text-white px-12 py-5 rounded-2xl font-black flex items-center gap-3 shadow-xl hover:scale-110 transition-all shadow-indigo-200">
-                CONTINUAR: PARTE 2 <span class="material-symbols-outlined">arrow_forward</span>
-            </a>
-        </div>
-    </div>
+        </section>
+        
+    </main>
 
     <script>
-        function checkIntro(val) {
-            const f = document.getElementById('fbIntro');
-            if(val === '3x2') {
-                f.innerHTML = "✨ ¡Correcto! Filas (3) x Columnas (2).";
-                f.className = "mt-6 text-center text-emerald-300 font-black animate-bounce";
+        function checkAlquimia() {
+            const solutions = [5, 5, 9, 6];
+            const inputs = ['res1', 'res2', 'res3', 'res4'];
+            const userAnswers = inputs.map(id => document.getElementById(id).value);
+            const status = document.getElementById('status-msg');
+            const btnFinal = document.getElementById('btn-final');
+            const lockMsg = document.getElementById('lock-msg');
+            
+            const isAllCorrect = userAnswers.every((val, index) => parseInt(val) === solutions[index]);
+
+            if (isAllCorrect) {
+                status.innerText = "⭐ ¡FUSIÓN EXITOSA!";
+                status.className = "mt-6 text-center text-emerald-400 font-black uppercase italic tracking-tighter";
+                
+                btnFinal.classList.remove('opacity-20', 'pointer-events-none');
+                btnFinal.classList.add('bg-emerald-500', 'text-white');
+                
+                // RUTA DE NAVEGACIÓN ENTRE CARPETAS
+                btnFinal.href = "../matematica_1/propiedades1.html"; 
+                
+                lockMsg.innerText = "¡PROPIEDADES DESBLOQUEADAS!";
+                lockMsg.className = "text-emerald-400 font-black text-[10px] uppercase tracking-[0.4em]";
             } else {
-                f.innerHTML = "❌ ¡Casi! El orden siempre es Fila primero.";
-                f.className = "mt-6 text-center text-rose-300 font-black";
+                status.innerText = "❌ REVISA LOS DATOS";
+                status.className = "mt-6 text-center text-rose-500 font-black uppercase italic tracking-tighter";
             }
         }
     </script>
