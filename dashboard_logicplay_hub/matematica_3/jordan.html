@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    <title>Gauss-Jordan - Explicación</title>
+</head>
+<body class="bg-slate-50 min-h-screen p-6 font-['Lexend'] text-slate-800">
+    <div class="max-w-4xl mx-auto">
+        <div class="bg-white p-10 rounded-3xl shadow-xl border border-indigo-100 mb-8">
+            <span class="text-indigo-600 font-bold uppercase tracking-widest text-sm">Sistemas de Ecuaciones</span>
+            <h1 class="text-4xl font-black text-slate-900 mb-6">Método de Gauss-Jordan</h1>
+            
+            <div class="bg-amber-50 p-6 rounded-2xl border-l-4 border-amber-400 mb-8">
+                <p class="text-amber-900 font-medium">
+                    <b>El objetivo:</b> Transformar una matriz aumentada hasta que la parte izquierda sea una **Matriz Identidad**. Los valores resultantes a la derecha serán las soluciones de tus incógnitas.
+                </p>
+            </div>
+
+            <div class="mb-10">
+                <h3 class="text-2xl font-black mb-6">Ejemplo Resuelto por Mí: Sistema 2x2</h3>
+                <p class="mb-4">Ecuaciones: <b>x + 2y = 8</b> y <b>0x + y = 3</b></p>
+                <div class="grid md:grid-cols-3 gap-4 items-center text-center">
+                    <div class="p-4 bg-slate-100 rounded-xl font-mono"> [ 1 &nbsp; 2 | 8 ]<br>[ 0 &nbsp; 1 | 3 ] </div>
+                    <div class="text-indigo-600 font-bold flex flex-col items-center">
+                        <span class="text-xs">F1 = F1 - 2*F2</span>
+                        <span class="material-symbols-outlined">trending_flat</span>
+                    </div>
+                    <div class="p-4 bg-indigo-900 text-white rounded-xl font-mono"> [ 1 &nbsp; 0 | 2 ]<br>[ 0 &nbsp; 1 | 3 ] </div>
+                </div>
+                <p class="mt-6 p-4 bg-emerald-50 text-emerald-800 rounded-xl font-bold text-center">
+                    Solución final: x = 2, y = 3
+                </p>
+            </div>
+
+            
+
+            <div class="bg-slate-900 p-8 rounded-3xl text-white">
+                <h3 class="text-indigo-400 font-bold text-xl mb-6">Desafío: Operación de Filas</h3>
+                <p class="mb-6">Si tenemos la fila <b>F1 = [ 2 &nbsp; 4 &nbsp; 10 ]</b> y queremos que el primer número sea <b>1</b>, ¿por qué número debemos dividir toda la fila?</p>
+                <div class="grid grid-cols-3 gap-4">
+                    <button onclick="checkJ(1)" class="p-4 bg-slate-800 rounded-xl hover:bg-rose-600 font-bold transition-colors">Dividir por 4</button>
+                    <button onclick="checkJ(2)" class="p-4 bg-slate-800 rounded-xl hover:bg-emerald-600 font-bold transition-colors">Dividir por 2</button>
+                    <button onclick="checkJ(1)" class="p-4 bg-slate-800 rounded-xl hover:bg-rose-600 font-bold transition-colors">Dividir por 10</button>
+                </div>
+                <p id="fbJ" class="mt-6 text-center font-bold"></p>
+            </div>
+        </div>
+
+        <div class="flex justify-between items-center px-4">
+            <a href="../matematica_1/sarrus2.html" class="flex items-center gap-2 font-bold text-slate-400 hover:text-indigo-600 transition-colors">
+                <span class="material-symbols-outlined">arrow_back</span> Sarrus 2
+            </a>
+            <a href="jordan2.html" class="bg-indigo-600 text-white px-10 py-4 rounded-2xl font-bold flex items-center gap-2 shadow-lg hover:scale-105 transition-all">
+                Siguiente: Jordan 2 <span class="material-symbols-outlined">arrow_forward</span>
+            </a>
+        </div>
+    </div>
+    <script>
+        function checkJ(n) {
+            const f = document.getElementById('fbJ');
+            if(n===2) { 
+                f.innerText = "⭐ ¡Correcto! 2 / 2 = 1. Así se crea el 'Pivote'."; 
+                f.className="text-emerald-400 mt-6 text-center font-bold"; 
+            }
+            else { 
+                f.innerText = "❌ Incorrecto. Para que un 2 se vuelva 1, debes dividirlo por sí mismo."; 
+                f.className="text-rose-400 mt-6 text-center font-bold"; 
+            }
+        }
+    </script>
+</body>
+</html>

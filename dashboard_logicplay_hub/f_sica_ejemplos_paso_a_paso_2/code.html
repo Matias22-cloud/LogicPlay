@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    rel="stylesheet" />
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#2c0fbd",
+            "background-light": "#f6f6f8",
+            "background-dark": "#131022",
+          },
+          fontFamily: {
+            "display": ["Lexend"]
+          },
+          borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+        },
+      },
+    }
+  </script>
+  <title>Física Conceptos Claros - Concepto de Movimiento Parabólico</title>
+</head>
+
+<body
+  class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 transition-colors duration-300">
+  <div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+    <div class="layout-container flex h-full grow flex-col">
+      <header
+        class="flex items-center justify-between whitespace-nowrap border-b border-solid border-primary/10 px-6 py-3 lg:px-40 bg-white dark:bg-background-dark/50 backdrop-blur-md sticky top-0 z-50">
+        <div class="flex items-center gap-4 text-primary">
+          <div class="size-8 flex items-center justify-center bg-primary/10 rounded-lg">
+            <span class="material-symbols-outlined text-primary">rocket_launch</span>
+          </div>
+          <h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight tracking-[-0.015em]">Física
+            Conceptos Claros</h2>
+        </div>
+        <div class="flex items-center gap-4">
+          <a href="../dashboard_logicplay_clasificaci_n_anonimizada/code.html"
+            class="px-4 py-2 text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-primary transition-colors">
+            Dashboard
+          </a>
+          <button
+            class="px-4 py-2 text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-primary transition-colors">
+            Biblioteca
+          </button>
+          <button
+            class="flex items-center justify-center rounded-lg h-10 w-10 bg-primary/10 text-primary hover:bg-primary hover:text-white transition-all">
+            <span class="material-symbols-outlined">person</span>
+          </button>
+        </div>
+      </header>
+      <main class="flex flex-1 justify-center py-8">
+        <div class="layout-content-container flex flex-col max-w-[960px] flex-1 px-4 lg:px-0">
+          <div class="flex flex-wrap justify-between items-end gap-3 mb-6">
+            <div class="flex flex-col gap-1">
+              <span class="text-primary font-bold text-sm uppercase tracking-wider">Cinemática</span>
+              <h1 class="text-slate-900 dark:text-slate-100 tracking-tight text-4xl font-extrabold leading-tight">
+                Movimiento Parabólico</h1>
+            </div>
+          </div>
+          <div
+            class="flex flex-col gap-3 p-6 bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-primary/5 mb-8">
+            <div class="flex gap-6 justify-between items-center">
+              <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-primary">auto_stories</span>
+                <p class="text-slate-700 dark:text-slate-300 text-base font-medium leading-normal">4 de 6 lecciones
+                  completadas</p>
+              </div>
+              <p class="text-primary text-sm font-bold leading-normal">65%</p>
+            </div>
+            <div class="rounded-full bg-primary/10 h-3 overflow-hidden">
+              <div class="h-full rounded-full bg-primary" style="width: 65%;"></div>
+            </div>
+          </div>
+          <div class="mb-8">
+            <div class="flex border-b border-primary/10 px-0 justify-between">
+              <a class="flex flex-col items-center justify-center border-b-[3px] border-b-primary text-primary pb-4 pt-4 flex-1 font-bold bg-primary/5"
+                href="#">
+                <div class="flex items-center gap-2">
+                  <span class="text-sm">1. Concepto</span>
+                </div>
+              </a>
+              <a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-slate-500 dark:text-slate-400 hover:text-primary pb-4 pt-4 flex-1 font-medium transition-all"
+                href="../f_sica_ejemplos_paso_a_paso_1/code.html">
+                <div class="flex items-center gap-2">
+                  <span class="text-sm">2. Ejemplos</span>
+                </div>
+              </a>
+              <a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-slate-500 dark:text-slate-400 hover:text-primary pb-4 pt-4 flex-1 font-medium transition-all"
+                href="../f_sica_pr_ctica_interactiva/code.html">
+                <div class="flex items-center gap-2">
+                  <span class="text-sm">3. Práctica</span>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="space-y-8">
+            <section class="bg-white dark:bg-slate-900 rounded-xl p-8 border border-primary/10 shadow-sm">
+              <div class="flex items-center gap-3 mb-8">
+                <div
+                  class="bg-primary text-white w-10 h-10 rounded-lg flex items-center justify-center font-bold text-xl">
+                  <span class="material-symbols-outlined">visibility</span>
+                </div>
+                <h2 class="text-slate-900 dark:text-slate-100 text-2xl font-bold tracking-tight">Análisis Visual del
+                  Trayecto</h2>
+              </div>
+              <div
+                class="relative w-full aspect-[16/9] bg-slate-50 dark:bg-slate-950 rounded-xl border border-dashed border-primary/20 flex items-center justify-center overflow-hidden mb-8">
+                <svg class="w-full h-full p-8" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M 50 350 L 750 350" fill="none" stroke="currentColor" stroke-opacity="0.1" stroke-width="2">
+                  </path>
+                  <path d="M 50 50 L 50 350" fill="none" stroke="currentColor" stroke-opacity="0.1" stroke-width="2">
+                  </path>
+                  <path d="M 50 350 Q 400 50 750 350" fill="none" opacity="0.6" stroke="#2c0fbd" stroke-dasharray="8 4"
+                    stroke-width="3"></path>
+                  <g transform="translate(100, 290)">
+                    <circle cx="0" cy="0" fill="#2c0fbd" r="6"></circle>
+                    <line marker-end="url(#arrowred)" stroke="#ef4444" stroke-width="3" x1="0" x2="60" y1="0" y2="-60">
+                    </line>
+                    <line marker-end="url(#arrowgreen)" stroke="#22c55e" stroke-width="3" x1="0" x2="60" y1="0" y2="0">
+                    </line>
+                    <line marker-end="url(#arrowblue)" stroke="#3b82f6" stroke-width="3" x1="0" x2="0" y1="0" y2="-60">
+                    </line>
+                    <text class="text-[12px] font-bold fill-red-500" x="65" y="-65">V₀</text>
+                    <text class="text-[12px] font-bold fill-green-500" x="65" y="5">vₓ</text>
+                    <text class="text-[12px] font-bold fill-blue-500" x="-5" y="-70">vᵧ</text>
+                  </g>
+                  <g transform="translate(400, 150)">
+                    <circle cx="0" cy="0" fill="#2c0fbd" r="6"></circle>
+                    <line marker-end="url(#arrowgreen)" stroke="#22c55e" stroke-width="3" x1="0" x2="60" y1="0" y2="0">
+                    </line>
+                    <text class="text-[12px] font-bold fill-green-500" x="65" y="5">vₓ</text>
+                    <text class="text-[10px] italic fill-slate-500 dark:fill-slate-400" x="-35" y="-15">vᵧ = 0</text>
+                  </g>
+                  <g transform="translate(650, 250)">
+                    <circle cx="0" cy="0" fill="#2c0fbd" r="6"></circle>
+                    <line marker-end="url(#arrowred)" stroke="#ef4444" stroke-width="3" x1="0" x2="60" y1="0" y2="40">
+                    </line>
+                    <line marker-end="url(#arrowgreen)" stroke="#22c55e" stroke-width="3" x1="0" x2="60" y1="0" y2="0">
+                    </line>
+                    <line marker-end="url(#arrowblue)" stroke="#3b82f6" stroke-width="3" x1="0" x2="0" y1="0" y2="40">
+                    </line>
+                    <text class="text-[12px] font-bold fill-red-500" x="65" y="45">v</text>
+                    <text class="text-[12px] font-bold fill-green-500" x="65" y="5">vₓ</text>
+                    <text class="text-[12px] font-bold fill-blue-500" x="-5" y="55">vᵧ</text>
+                  </g>
+                  <defs>
+                    <marker id="arrowred" markerHeight="10" markerUnits="strokeWidth" markerWidth="10"
+                      orientation="auto" refX="9" refY="3">
+                      <path d="M0,0 L0,6 L9,3 z" fill="#ef4444"></path>
+                    </marker>
+                    <marker id="arrowgreen" markerHeight="10" markerUnits="strokeWidth" markerWidth="10"
+                      orientation="auto" refX="9" refY="3">
+                      <path d="M0,0 L0,6 L9,3 z" fill="#22c55e"></path>
+                    </marker>
+                    <marker id="arrowblue" markerHeight="10" markerUnits="strokeWidth" markerWidth="10"
+                      orientation="auto" refX="9" refY="3">
+                      <path d="M0,0 L0,6 L9,3 z" fill="#3b82f6"></path>
+                    </marker>
+                  </defs>
+                </svg>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div
+                  class="p-6 bg-background-light dark:bg-background-dark rounded-xl border border-primary/10 hover:border-primary/30 transition-all">
+                  <div class="flex items-center gap-3 mb-4">
+                    <div class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-bold">A
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 dark:text-white">Naturaleza del Movimiento</h3>
+                  </div>
+                  <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+                    El movimiento parabólico es una <strong>combinación de dos movimientos independientes</strong>: un
+                    movimiento horizontal uniforme (MRU) con velocidad constante y un movimiento vertical uniformemente
+                    acelerado (MRUA).
+                  </p>
+                </div>
+                <div
+                  class="p-6 bg-background-light dark:bg-background-dark rounded-xl border border-primary/10 hover:border-primary/30 transition-all">
+                  <div class="flex items-center gap-3 mb-4">
+                    <div class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-bold">B
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 dark:text-white">Influencia de la Gravedad</h3>
+                  </div>
+                  <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+                    El cuerpo experimenta una <strong>aceleración constante</strong> debida a la gravedad (<span
+                      class="italic text-primary">g</span>), que solo afecta a la componente vertical de la velocidad,
+                    mientras que la componente horizontal permanece inalterada.
+                  </p>
+                </div>
+              </div>
+            </section>
+            <section class="bg-primary/5 rounded-xl p-8 border border-primary/20">
+              <div class="flex items-start gap-4">
+                <span class="material-symbols-outlined text-primary text-3xl">info</span>
+                <div>
+                  <h3 class="text-primary font-bold text-lg mb-2">Resumen Conceptual</h3>
+                  <p class="text-slate-700 dark:text-slate-300 leading-relaxed">
+                    Se denomina movimiento parabólico al desplazamiento realizado por cualquier objeto cuya trayectoria
+                    describe una parábola, el cual corresponde con la trayectoria ideal de un proyectil que se mueve en
+                    un medio que no ofrece resistencia al avance y que está sujeto a un campo gravitatorio uniforme.
+                  </p>
+                </div>
+              </div>
+            </section>
+          </div>
+          <div
+            class="mt-12 mb-20 flex justify-between items-center bg-white dark:bg-slate-900 p-6 rounded-xl border border-primary/10">
+            <button class="flex items-center gap-2 text-slate-400 cursor-not-allowed font-bold" disabled="">
+              <span class="material-symbols-outlined">arrow_back</span>
+              Inicio
+            </button>
+            <a href="../f_sica_ejemplos_paso_a_paso_1/code.html"
+              class="flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-lg font-bold hover:bg-primary/90 transition-all shadow-lg shadow-primary/20">
+              Siguiente: Ejemplos
+              <span class="material-symbols-outlined">arrow_forward</span>
+            </a>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+</body>
+
+</html>

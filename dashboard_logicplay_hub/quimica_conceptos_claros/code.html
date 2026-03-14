@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    rel="stylesheet" />
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#2c0fbd",
+            "background-light": "#f6f6f8",
+            "background-dark": "#131022",
+          },
+          fontFamily: {
+            "display": ["Lexend"]
+          },
+          borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+        },
+      },
+    }
+  </script>
+  <title>Química Conceptos Claros - Balanceo Método de Tanteo</title>
+</head>
+
+<body
+  class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 transition-colors duration-300">
+  <div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+    <div class="layout-container flex h-full grow flex-col">
+      <header
+        class="flex items-center justify-between whitespace-nowrap border-b border-solid border-primary/10 px-6 py-3 lg:px-40 bg-white dark:bg-background-dark/50 backdrop-blur-md sticky top-0 z-50">
+        <div class="flex items-center gap-4 text-primary">
+          <div class="size-8 flex items-center justify-center bg-primary/10 rounded-lg">
+            <span class="material-symbols-outlined text-primary">rocket_launch</span>
+          </div>
+          <h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight tracking-[-0.015em]">Química
+            Conceptos Claros</h2>
+        </div>
+        <div class="flex items-center gap-4">
+          <a href="../dashboard_logicplay_clasificaci_n_anonimizada/code.html"
+            class="px-4 py-2 text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-primary transition-colors">
+            Dashboard
+          </a>
+          <button
+            class="px-4 py-2 text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-primary transition-colors">
+            Biblioteca
+          </button>
+          <button
+            class="flex items-center justify-center rounded-lg h-10 w-10 bg-primary/10 text-primary hover:bg-primary hover:text-white transition-all">
+            <span class="material-symbols-outlined">person</span>
+          </button>
+        </div>
+      </header>
+      <main class="flex flex-1 justify-center py-8">
+        <div class="layout-content-container flex flex-col max-w-[960px] flex-1 px-4 lg:px-0">
+          <div class="flex flex-wrap justify-between items-end gap-3 mb-6">
+            <div class="flex flex-col gap-1">
+              <span class="text-primary font-bold text-sm uppercase tracking-wider">Estequiometría</span>
+              <h1 class="text-slate-900 dark:text-slate-100 tracking-tight text-4xl font-extrabold leading-tight">
+                Balanceo Método de Tanteo</h1>
+            </div>
+          </div>
+          <div
+            class="flex flex-col gap-3 p-6 bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-primary/5 mb-8">
+            <div class="flex gap-6 justify-between items-center">
+              <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-primary">auto_stories</span>
+                <p class="text-slate-700 dark:text-slate-300 text-base font-medium leading-normal">4 de 6 lecciones
+                  completadas</p>
+              </div>
+              <p class="text-primary text-sm font-bold leading-normal">65%</p>
+            </div>
+            <div class="rounded-full bg-primary/10 h-3 overflow-hidden">
+              <div class="h-full rounded-full bg-primary" style="width: 65%;"></div>
+            </div>
+          </div>
+          <div class="mb-8">
+            <div class="flex border-b border-primary/10 px-0 justify-between">
+              <a class="flex flex-col items-center justify-center border-b-[3px] border-b-primary text-primary pb-4 pt-4 flex-1 font-bold bg-primary/5"
+                href="#">
+                <div class="flex items-center gap-2">
+                  <span class="text-sm">1. Concepto</span>
+                </div>
+              </a>
+              <a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-slate-500 dark:text-slate-400 hover:text-primary pb-4 pt-4 flex-1 font-medium transition-all"
+                href="../quimica_ejemplos_paso_a_paso/code.html">
+                <div class="flex items-center gap-2">
+                  <span class="text-sm">2. Ejemplos</span>
+                </div>
+              </a>
+              <a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-slate-500 dark:text-slate-400 hover:text-primary pb-4 pt-4 flex-1 font-medium transition-all"
+                href="../quimica_laboratorio/code.html">
+                <div class="flex items-center gap-2">
+                  <span class="text-sm">3. Laboratorio</span>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="space-y-8">
+            <section class="bg-white dark:bg-slate-900 rounded-xl p-8 border border-primary/10 shadow-sm">
+              <div class="flex items-center gap-3 mb-8">
+                <div
+                  class="bg-primary text-white w-10 h-10 rounded-lg flex items-center justify-center font-bold text-xl">
+                  <span class="material-symbols-outlined">visibility</span>
+                </div>
+                <h2 class="text-slate-900 dark:text-slate-100 text-2xl font-bold tracking-tight">Análisis Visual de la
+                  Reacción</h2>
+              </div>
+              <div
+                class="relative w-full aspect-[16/9] bg-slate-50 dark:bg-slate-950 rounded-xl border border-dashed border-primary/20 flex flex-col items-center justify-center overflow-hidden mb-8 p-8 max-h-96">
+                <div
+                  class="flex items-center gap-4 text-5xl md:text-7xl font-bold text-slate-800 dark:text-slate-200 tracking-widest font-mono">
+                  <div class="flex flex-col items-center gap-2">
+                    <div><span class="text-primary">2</span><span class="text-slate-600 dark:text-slate-400">H<sub
+                          class="text-3xl">2</sub></span></div>
+                    <span class="text-sm font-bold text-slate-400">4 átomos H</span>
+                  </div>
+                  <span class="text-slate-400 mx-2">+</span>
+                  <div class="flex flex-col items-center gap-2">
+                    <div><span class="text-slate-600 dark:text-slate-400">O<sub class="text-3xl">2</sub></span></div>
+                    <span class="text-sm font-bold text-slate-400">2 átomos O</span>
+                  </div>
+                  <span class="text-primary mx-4">→</span>
+                  <div class="flex flex-col items-center gap-2">
+                    <div><span class="text-primary">2</span><span class="text-slate-600 dark:text-slate-400">H<sub
+                          class="text-3xl">2</sub>O</span></div>
+                    <span class="text-sm font-bold text-primary">4 átomos H, 2 átomos O</span>
+                  </div>
+                </div>
+                <div
+                  class="mt-8 text-lg font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-100 dark:bg-emerald-900/30 px-6 py-2 rounded-full border border-emerald-500/20">
+                  ¡Ecuación Balanceada!
+                </div>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div
+                  class="p-6 bg-background-light dark:bg-background-dark rounded-xl border border-primary/10 hover:border-primary/30 transition-all">
+                  <div class="flex items-center gap-3 mb-4">
+                    <div class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-bold">A
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 dark:text-white">Ley de Conservación de la Masa</h3>
+                  </div>
+                  <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+                    La masa no se crea ni se destruye, solo se transforma. Por lo tanto, en una ecuación química, el
+                    <strong>número de átomos</strong> de cada elemento debe ser igual en los reactivos y en los
+                    productos.
+                  </p>
+                </div>
+                <div
+                  class="p-6 bg-background-light dark:bg-background-dark rounded-xl border border-primary/10 hover:border-primary/30 transition-all">
+                  <div class="flex items-center gap-3 mb-4">
+                    <div class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-bold">B
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 dark:text-white">Método de Tanteo</h3>
+                  </div>
+                  <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+                    Consiste en probar y ajustar <strong>coeficientes estequiométricos</strong> al azar hasta lograr que
+                    la cantidad de átomos de cada elemento sea idéntica en ambos lados de la ecuación química.
+                  </p>
+                </div>
+              </div>
+            </section>
+            <section class="bg-primary/5 rounded-xl p-8 border border-primary/20">
+              <div class="flex items-start gap-4">
+                <span class="material-symbols-outlined text-primary text-3xl">info</span>
+                <div>
+                  <h3 class="text-primary font-bold text-lg mb-2">Resumen Conceptual</h3>
+                  <p class="text-slate-700 dark:text-slate-300 leading-relaxed">
+                    El balanceo de ecuaciones por el método de tanteo o simple inspección es el procedimiento más
+                    sencillo. Se recomienda comenzar ajustando los metales, luego los no metales, seguidos del
+                    hidrógeno, y finalmente el oxígeno.
+                  </p>
+                </div>
+              </div>
+            </section>
+          </div>
+          <div
+            class="mt-12 mb-20 flex justify-between items-center bg-white dark:bg-slate-900 p-6 rounded-xl border border-primary/10">
+            <button class="flex items-center gap-2 text-slate-400 cursor-not-allowed font-bold" disabled="">
+              <span class="material-symbols-outlined">arrow_back</span>
+              Inicio
+            </button>
+            <a href="../quimica_ejemplos_paso_a_paso/code.html"
+              class="flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-lg font-bold hover:bg-primary/90 transition-all shadow-lg shadow-primary/20">
+              Siguiente: Ejemplos
+              <span class="material-symbols-outlined">arrow_forward</span>
+            </a>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+</body>
+
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    <title>Introducción 2 - LogiPlay</title>
+</head>
+<body class="bg-slate-50 min-h-screen p-6 font-['Lexend'] text-slate-800">
+    <div class="max-w-4xl mx-auto">
+        <div class="bg-white p-10 rounded-3xl shadow-xl border border-indigo-100 mb-8">
+            <span class="text-indigo-600 font-bold uppercase tracking-widest text-sm">Módulo 01 - Parte 2</span>
+            <h1 class="text-4xl font-black text-slate-900 mb-6">Tipos de Matrices Especiales</h1>
+            
+            <p class="mb-8 text-slate-600">Antes de calcular determinantes, debemos conocer a las protagonistas del álgebra:</p>
+
+            <div class="grid md:grid-cols-2 gap-4 mb-10">
+                <div class="p-6 bg-emerald-50 rounded-2xl border-2 border-emerald-100">
+                    <h3 class="font-bold text-emerald-800 flex items-center gap-2 mb-2">
+                        <span class="material-symbols-outlined">grid_view</span> Matriz Cuadrada
+                    </h3>
+                    <p class="text-sm">Tiene el mismo número de filas y columnas (Ej: 3x3). Es la única donde funciona Sarrus.</p>
+                </div>
+                <div class="p-6 bg-blue-50 rounded-2xl border-2 border-blue-100">
+                    <h3 class="font-bold text-blue-800 flex items-center gap-2 mb-2">
+                        <span class="material-symbols-outlined">filter_tilt_shift</span> Matriz Identidad
+                    </h3>
+                    <p class="text-sm">Es el "1" de las matrices. Tiene 1s en la diagonal y 0s en todo lo demás.</p>
+                </div>
+            </div>
+
+            <div class="bg-slate-900 p-8 rounded-3xl text-white">
+                <h3 class="text-xl font-bold mb-6 text-emerald-400">Desafío: Suma de Matrices</h3>
+                <p class="mb-4">Para sumar matrices, sumas el número que está en la misma posición. Calcula:</p>
+                <div class="flex items-center justify-center gap-4 font-mono text-2xl mb-8">
+                    <span>[ 1 2 ] + [ 0 1 ] =</span>
+                    <div class="grid grid-cols-2 gap-2">
+                        <input id="s1" type="number" class="w-12 h-12 rounded text-slate-900 text-center font-bold">
+                        <input id="s2" type="number" class="w-12 h-12 rounded text-slate-900 text-center font-bold">
+                    </div>
+                </div>
+                <button onclick="checkSum()" class="w-full bg-indigo-600 py-3 rounded-xl font-bold hover:bg-indigo-500 transition-all">Verificar Suma</button>
+                <p id="fbSum" class="mt-4 text-center font-bold"></p>
+            </div>
+        </div>
+
+        <div class="flex justify-between">
+            <a href="introduccion.html" class="flex items-center gap-2 font-bold text-slate-400"><span class="material-symbols-outlined">arrow_back</span> Introducción 1</a>
+            <a href="../matematica_1/sarrus.html" class="bg-indigo-600 text-white px-10 py-4 rounded-2xl font-bold flex items-center gap-2 shadow-lg hover:scale-105 transition-all">Siguiente: Sarrus <span class="material-symbols-outlined">arrow_forward</span></a>
+        </div>
+    </div>
+    <script>
+        function checkSum() {
+            const v1 = document.getElementById('s1').value;
+            const v2 = document.getElementById('s2').value;
+            const f = document.getElementById('fbSum');
+            if(v1 == 1 && v2 == 3) { f.innerText = "✅ ¡Perfecto! Dominas la posición de los elementos."; f.className="mt-4 text-center text-emerald-400"; }
+            else { f.innerText = "❌ Intenta sumar (1+0) y (2+1)."; f.className="text-rose-400 mt-4 text-center"; }
+        }
+    </script>
+</body>
+</html>

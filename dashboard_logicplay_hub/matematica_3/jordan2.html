@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    <title>Jordan 2 - Aplicación</title>
+</head>
+<body class="bg-slate-50 min-h-screen p-6 font-['Lexend'] text-slate-800">
+    <div class="max-w-4xl mx-auto">
+        <div class="bg-white p-10 rounded-3xl shadow-xl border border-indigo-100 mb-8 text-center">
+            <h1 class="text-4xl font-black text-slate-900 mb-6 italic">"El Arte de Reducir"</h1>
+            <p class="text-slate-600 mb-10">En Gauss-Jordan, tienes 3 superpoderes (Operaciones de Fila):</p>
+            
+            <div class="grid md:grid-cols-3 gap-6 mb-12">
+                <div class="p-6 bg-slate-50 rounded-2xl border-t-4 border-indigo-500 shadow-sm">
+                    <span class="material-symbols-outlined text-indigo-500 mb-2">swap_vert</span>
+                    <p class="font-bold text-xs uppercase mb-2">Poder 1</p>
+                    <p class="text-sm">Intercambiar dos filas de lugar.</p>
+                </div>
+                <div class="p-6 bg-slate-50 rounded-2xl border-t-4 border-indigo-500 shadow-sm">
+                    <span class="material-symbols-outlined text-indigo-500 mb-2">percent</span>
+                    <p class="font-bold text-xs uppercase mb-2">Poder 2</p>
+                    <p class="text-sm">Multiplicar una fila por un número.</p>
+                </div>
+                <div class="p-6 bg-slate-50 rounded-2xl border-t-4 border-indigo-500 shadow-sm">
+                    <span class="material-symbols-outlined text-indigo-500 mb-2">add_box</span>
+                    <p class="font-bold text-xs uppercase mb-2">Poder 3</p>
+                    <p class="text-sm">Sumar una fila a otra.</p>
+                </div>
+            </div>
+
+            <div class="bg-indigo-50 p-10 rounded-3xl border-2 border-indigo-100">
+                <h3 class="font-black text-indigo-900 text-2xl mb-6">Simulador de Fila</h3>
+                <p class="mb-4">Si F1 = [ 1 &nbsp; 2 ] y F2 = [ 0 &nbsp; 1 ], ¿cuál es el resultado de hacer <br><b>F1 - 2*F2</b>?</p>
+                <div class="flex justify-center gap-4 text-2xl font-mono mb-8">
+                    <span>[ 1 </span>
+                    <input id="jAn" type="number" class="w-16 h-12 rounded border-2 border-indigo-300 text-center text-indigo-900 font-bold">
+                    <span>]</span>
+                </div>
+                <button onclick="checkJ2()" class="bg-[#2c0fbd] text-white px-12 py-4 rounded-2xl font-black shadow-lg">APLICAR OPERACIÓN</button>
+                <p id="fbJ2" class="mt-6 font-bold"></p>
+            </div>
+        </div>
+
+        <div class="flex justify-between items-center">
+            <a href="jordan.html" class="font-bold text-slate-400">← Jordan 1</a>
+            <a href="../quimica_conceptos_claros/code.html" class="bg-[#2c0fbd] text-white px-10 py-5 rounded-2xl font-black flex items-center gap-3 shadow-xl hover:scale-110 transition-all shadow-blue-200">
+                A QUÍMICA <span class="material-symbols-outlined">science</span>
+            </a>
+        </div>
+    </div>
+    <script>
+        function checkJ2() {
+            const v = document.getElementById('jAn').value;
+            const f = document.getElementById('fbJ2');
+            if(v == 0) { f.innerText = "⭐ ¡GENIO! Has eliminado el número de arriba. ¡Matriz reducida!"; f.className="text-emerald-600 font-bold mt-6"; }
+            else { f.innerText = "❌ Casi. Recuerda: 2 - (2*1) = 0"; f.className="text-rose-600 font-bold mt-6"; }
+        }
+    </script>
+</body>
+</html>

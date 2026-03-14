@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    <title>Introducción - LogiPlay</title>
+</head>
+<body class="bg-slate-50 min-h-screen p-6 font-['Lexend'] text-slate-800">
+    <div class="max-w-4xl mx-auto">
+        <div class="bg-white p-10 rounded-3xl shadow-xl border border-indigo-100 mb-8">
+            <div class="flex justify-between items-start mb-8">
+                <div>
+                    <span class="text-indigo-600 font-bold uppercase tracking-widest text-sm">Módulo Matemáticas</span>
+                    <h1 class="text-5xl font-black text-slate-900 mb-4">El Mundo de las Matrices</h1>
+                </div>
+                <a href="../f_sica_pr_ctica_intera.../code.html" class="flex items-center gap-2 bg-orange-100 text-orange-700 px-5 py-3 rounded-2xl font-bold hover:bg-orange-200 transition-all shadow-sm">
+                    <span class="material-symbols-outlined">rocket_launch</span> Módulo Física
+                </a>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-10 mb-10">
+                <div class="space-y-4">
+                    <h2 class="text-2xl font-bold text-indigo-900">¿Qué es una matriz?</h2>
+                    <p class="text-slate-600 leading-relaxed text-justify">
+                        Imagina una tabla de datos organizada. Una matriz es un conjunto de números dispuestos en **filas** (horizontales) y **columnas** (verticales). En los videojuegos, se usan para posicionar personajes en un espacio 3D.
+                    </p>
+                    <div class="p-4 bg-indigo-50 rounded-2xl border-l-4 border-indigo-500 text-indigo-900 text-sm">
+                        <b>Regla de Oro:</b> La dimensión se define como <i>Filas (m) x Columnas (n)</i>.
+                    </div>
+                </div>
+                <div class="bg-slate-900 rounded-3xl p-8 flex flex-col items-center justify-center text-white shadow-2xl border-4 border-indigo-400/20">
+                    <span class="text-slate-500 text-xs mb-4 uppercase font-bold tracking-widest">Estructura Básica</span>
+                    <div class="font-mono text-3xl text-emerald-400 tracking-widest">
+                        [ a<sub>11</sub> &nbsp; a<sub>12</sub> ]<br>
+                        [ a<sub>21</sub> &nbsp; a<sub>22</sub> ]
+                    </div>
+                </div>
+            </div>
+
+            
+
+            <div class="bg-slate-50 p-8 rounded-3xl border-2 border-slate-100 mb-10">
+                <h3 class="font-black text-slate-900 text-2xl mb-4 italic">Ejemplo de Identificación</h3>
+                <p class="mb-6 text-slate-600 text-lg">Analicemos la matriz <b>B</b>:</p>
+                <div class="text-center font-mono text-3xl bg-white p-6 rounded-2xl shadow-inner inline-block w-full mb-6 border border-slate-200 text-indigo-600">
+                    B = [ 10 &nbsp; 20 &nbsp; 30 ]
+                </div>
+                <div class="grid grid-cols-2 gap-4 text-sm">
+                    <div class="bg-white p-3 rounded-xl border border-slate-200"><b>Filas:</b> 1 (Horizontal)</div>
+                    <div class="bg-white p-3 rounded-xl border border-slate-200"><b>Columnas:</b> 3 (Verticales)</div>
+                </div>
+                <p class="mt-4 text-center font-bold text-indigo-900 bg-indigo-100 py-2 rounded-lg">Dimensión Total: 1x3</p>
+            </div>
+
+            <div class="bg-indigo-600 p-8 rounded-3xl text-white shadow-lg shadow-indigo-200">
+                <h3 class="text-xl font-bold mb-4 flex items-center gap-2 text-emerald-300">
+                    <span class="material-symbols-outlined">quiz</span> Desafío de Entrada
+                </h3>
+                <p class="mb-6 opacity-90 text-lg">¿Cuál es la dimensión de una matriz que tiene 3 filas y 2 columnas?</p>
+                <div class="grid grid-cols-2 gap-4">
+                    <button onclick="checkIntro('3x2')" class="p-4 bg-white/10 hover:bg-emerald-500 rounded-xl font-bold border border-white/20 transition-all hover:scale-105">3 x 2</button>
+                    <button onclick="checkIntro('2x3')" class="p-4 bg-white/10 hover:bg-rose-500 rounded-xl font-bold border border-white/20 transition-all hover:scale-105">2 x 3</button>
+                </div>
+                <p id="fbIntro" class="mt-6 text-center font-black text-xl"></p>
+            </div>
+        </div>
+
+        <div class="flex justify-between items-center px-4">
+            <a href="../f_sica_pr_ctica_intera.../code.html" class="flex items-center gap-2 font-bold text-slate-400 hover:text-orange-600 transition-all">
+                <span class="material-symbols-outlined">arrow_back</span> Volver a Física
+            </a>
+            <a href="introduccion2.html" class="bg-indigo-600 text-white px-12 py-5 rounded-2xl font-black flex items-center gap-3 shadow-xl hover:scale-110 transition-all shadow-indigo-200">
+                CONTINUAR: PARTE 2 <span class="material-symbols-outlined">arrow_forward</span>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        function checkIntro(val) {
+            const f = document.getElementById('fbIntro');
+            if(val === '3x2') {
+                f.innerHTML = "✨ ¡Correcto! Filas (3) x Columnas (2).";
+                f.className = "mt-6 text-center text-emerald-300 font-black animate-bounce";
+            } else {
+                f.innerHTML = "❌ ¡Casi! El orden siempre es Fila primero.";
+                f.className = "mt-6 text-center text-rose-300 font-black";
+            }
+        }
+    </script>
+</body>
+</html>

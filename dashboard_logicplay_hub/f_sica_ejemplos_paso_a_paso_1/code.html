@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&amp;display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    rel="stylesheet" />
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#2c0fbd",
+            "background-light": "#f6f6f8",
+            "background-dark": "#131022",
+          },
+          fontFamily: {
+            "sans": ["Lexend", "sans-serif"],
+            "display": ["Lexend", "sans-serif"]
+          },
+          borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+        },
+      },
+    }
+  </script>
+  <style type="text/tailwindcss">
+    :root {
+            --primary-color: #2c0fbd;
+        }
+        body {
+            font-family: 'Lexend', sans-serif;
+        }
+    </style>
+  <title>Física: Ejemplos Paso a Paso (Texto Actualizado)</title>
+</head>
+
+<body
+  class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 transition-colors duration-300">
+  <div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+    <div class="layout-container flex h-full grow flex-col">
+      <header
+        class="flex items-center justify-between whitespace-nowrap border-b border-solid border-primary/10 px-6 py-3 lg:px-40 bg-white dark:bg-background-dark/50 backdrop-blur-md sticky top-0 z-50">
+        <div class="flex items-center gap-4 text-primary">
+          <div class="size-8 flex items-center justify-center bg-primary/10 rounded-lg">
+            <span class="material-symbols-outlined text-primary">rocket_launch</span>
+          </div>
+          <h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight tracking-[-0.015em]">Física
+            Ejemplos Paso a Paso</h2>
+        </div>
+        <div class="flex items-center gap-6">
+          <nav class="flex items-center gap-4">
+            <button
+              class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary font-medium transition-colors text-sm">Dashboard</button>
+            <button
+              class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary font-medium transition-colors text-sm">Biblioteca</button>
+          </nav>
+          <button
+            class="flex items-center justify-center rounded-lg h-10 w-10 bg-primary/10 text-primary hover:bg-primary hover:text-white transition-all">
+            <span class="material-symbols-outlined">person</span>
+          </button>
+        </div>
+      </header>
+      <main class="flex flex-1 justify-center py-8">
+        <div class="layout-content-container flex flex-col max-w-[960px] flex-1 px-4 lg:px-0">
+          <div class="flex flex-wrap justify-between items-end gap-3 mb-6">
+            <div class="flex flex-col gap-1">
+              <span class="text-primary font-bold text-sm uppercase tracking-wider">Cinemática</span>
+              <h1 class="text-slate-900 dark:text-slate-100 tracking-tight text-4xl font-extrabold leading-tight">
+                Movimiento Parabólico</h1>
+            </div>
+          </div>
+          <div
+            class="flex flex-col gap-3 p-6 bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-primary/5 mb-8">
+            <div class="flex gap-6 justify-between items-center">
+              <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-primary">auto_stories</span>
+                <p class="text-slate-700 dark:text-slate-300 text-base font-medium leading-normal">4 de 6 lecciones
+                  completadas</p>
+              </div>
+              <p class="text-primary text-sm font-bold leading-normal">65%</p>
+            </div>
+            <div class="rounded-full bg-primary/10 h-3 overflow-hidden">
+              <div class="h-full rounded-full bg-primary" style="width: 65%;"></div>
+            </div>
+          </div>
+          <div class="mb-8">
+            <div class="flex border-b border-primary/10 px-0 justify-between">
+              <a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-slate-500 dark:text-slate-400 hover:text-primary pb-4 pt-4 flex-1 font-medium transition-all"
+                href="../f_sica_ejemplos_paso_a_paso_2/code.html">
+                <div class="flex items-center gap-2">
+                  <span class="text-sm">1. Concepto</span>
+                </div>
+              </a>
+              <a class="flex flex-col items-center justify-center border-b-[3px] border-b-primary text-primary pb-4 pt-4 flex-1 font-bold bg-primary/5"
+                href="#">
+                <div class="flex items-center gap-2">
+                  <span class="text-sm">2. Ejemplos</span>
+                </div>
+              </a>
+              <a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-slate-500 dark:text-slate-400 hover:text-primary pb-4 pt-4 flex-1 font-medium transition-all"
+                href="../f_sica_pr_ctica_interactiva/code.html">
+                <div class="flex items-center gap-2">
+                  <span class="text-sm">3. Práctica</span>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="space-y-12">
+            <section class="bg-white dark:bg-slate-900 rounded-xl p-8 border border-primary/10 shadow-sm">
+              <div class="flex items-center gap-3 mb-6">
+                <div
+                  class="bg-primary text-white w-10 h-10 rounded-lg flex items-center justify-center font-bold text-xl">
+                  1</div>
+                <h2 class="text-slate-900 dark:text-slate-100 text-2xl font-bold tracking-tight">Lanzamiento de
+                  proyectil horizontal</h2>
+              </div>
+              <div class="mb-8">
+                <h3 class="text-primary font-bold text-sm uppercase mb-2 flex items-center gap-2">
+                  <span class="material-symbols-outlined text-sm">help</span> Enunciado
+                </h3>
+                <p class="text-slate-700 dark:text-slate-300 leading-relaxed text-lg">
+                  Un avión de rescate vuela horizontalmente a una altura de 125 metros con una velocidad constante de 40
+                  m/s. Se deja caer un paquete de suministros. ¿A qué distancia horizontal del punto de lanzamiento
+                  caerá el paquete? (Considere g = 9.8 m/s²)
+                </p>
+              </div>
+              <div class="space-y-6">
+                <h3 class="text-primary font-bold text-sm uppercase mb-2 flex items-center gap-2">
+                  <span class="material-symbols-outlined text-sm">calculate</span> Procedimiento Algebraico
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <div class="space-y-4">
+                    <div class="p-4 bg-background-light dark:bg-background-dark rounded-lg">
+                      <p class="font-bold text-primary mb-2">1. Análisis Vertical (Y)</p>
+                      <p class="text-sm text-slate-600 dark:text-slate-400 mb-2">Calculamos el tiempo de caída (t)
+                        usando:</p>
+                      <code
+                        class="block font-mono bg-white dark:bg-slate-800 p-2 rounded text-center border border-primary/10">
+                                                y = v<sub>0y</sub>t + ½gt²
+                                            </code>
+                      <p class="text-sm mt-3 italic text-slate-500">Como el lanzamiento es horizontal, v<sub>0y</sub> =
+                        0</p>
+                      <code class="block font-mono mt-2 bg-white dark:bg-slate-800 p-3 rounded">
+                                                125 = 0 + ½(9.8)t² <br/>
+                                                125 = 4.9t² <br/>
+                                                t² = 125 / 4.9 <br/>
+                                                t² ≈ 25.51 <br/>
+<span class="text-primary font-bold">t ≈ 5.05 s</span>
+</code>
+                    </div>
+                  </div>
+                  <div class="space-y-4">
+                    <div class="p-4 bg-background-light dark:bg-background-dark rounded-lg">
+                      <p class="font-bold text-primary mb-2">2. Análisis Horizontal (X)</p>
+                      <p class="text-sm text-slate-600 dark:text-slate-400 mb-2">Calculamos el alcance (R) usando el
+                        tiempo obtenido:</p>
+                      <code
+                        class="block font-mono bg-white dark:bg-slate-800 p-2 rounded text-center border border-primary/10">
+                                                x = v<sub>x</sub>t
+                                            </code>
+                      <p class="text-sm mt-3 italic text-slate-500">La velocidad horizontal es constante:</p>
+                      <code class="block font-mono mt-2 bg-white dark:bg-slate-800 p-3 rounded">
+                                                x = (40 m/s) * (5.05 s) <br/>
+<span class="text-primary font-bold">x = 202 metros</span>
+</code>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="mt-8 p-6 bg-primary/5 rounded-xl border-l-4 border-primary">
+                <div class="flex items-center gap-2 mb-1">
+                  <span class="material-symbols-outlined text-primary">task_alt</span>
+                  <p class="text-primary font-bold">Solución Final</p>
+                </div>
+                <p class="text-slate-900 dark:text-slate-100 font-bold text-xl">El paquete caerá a una distancia
+                  horizontal de 202 metros.</p>
+              </div>
+            </section>
+            <section class="bg-white dark:bg-slate-900 rounded-xl p-8 border border-primary/10 shadow-sm">
+              <div class="flex items-center gap-3 mb-6">
+                <div
+                  class="bg-primary text-white w-10 h-10 rounded-lg flex items-center justify-center font-bold text-xl">
+                  2</div>
+                <h2 class="text-slate-900 dark:text-slate-100 text-2xl font-bold tracking-tight">Lanzamiento con ángulo
+                </h2>
+              </div>
+              <div class="mb-8">
+                <h3 class="text-primary font-bold text-sm uppercase mb-2 flex items-center gap-2">
+                  <span class="material-symbols-outlined text-sm">help</span> Enunciado
+                </h3>
+                <p class="text-slate-700 dark:text-slate-300 leading-relaxed text-lg">
+                  Un futbolista patea un balón con una velocidad inicial de 20 m/s y un ángulo de 30° respecto a la
+                  horizontal. Calcule la altura máxima que alcanza el balón. (Considere g = 10 m/s²)
+                </p>
+              </div>
+              <div class="space-y-6">
+                <h3 class="text-primary font-bold text-sm uppercase mb-2 flex items-center gap-2">
+                  <span class="material-symbols-outlined text-sm">calculate</span> Procedimiento Algebraico
+                </h3>
+                <div class="grid grid-cols-1 gap-6">
+                  <div class="p-6 bg-background-light dark:bg-background-dark rounded-lg">
+                    <p class="font-bold text-primary mb-4 text-center">Descomposición Vectorial y Altura Máxima</p>
+                    <div class="space-y-6">
+                      <div>
+                        <p class="text-sm text-slate-600 dark:text-slate-400 mb-2">1. Primero descomponemos la velocidad
+                          inicial en su componente vertical (v<sub>0y</sub>):</p>
+                        <code class="block font-mono bg-white dark:bg-slate-800 p-3 rounded border border-primary/10">
+                                                    v<sub>0y</sub> = v<sub>0</sub> * sen(θ) <br/>
+                                                    v<sub>0y</sub> = 20 * sen(30°) <br/>
+                                                    v<sub>0y</sub> = 20 * 0.5 = <span class="text-primary font-bold">10 m/s</span>
+</code>
+                      </div>
+                      <div>
+                        <p class="text-sm text-slate-600 dark:text-slate-400 mb-2">2. En la altura máxima, la velocidad
+                          vertical final (v<sub>fy</sub>) es igual a 0. Usamos la fórmula:</p>
+                        <code class="block font-mono bg-white dark:bg-slate-800 p-3 rounded border border-primary/10">
+                                                    v<sub>fy</sub>² = v<sub>0y</sub>² - 2gh <br/>
+                                                    0² = (10)² - 2(10)h <br/>
+                                                    0 = 100 - 20h
+                                                </code>
+                      </div>
+                      <div>
+                        <p class="text-sm text-slate-600 dark:text-slate-400 mb-2">3. Despejamos la altura (h):</p>
+                        <code class="block font-mono bg-white dark:bg-slate-800 p-3 rounded border border-primary/10">
+                                                    20h = 100 <br/>
+                                                    h = 100 / 20 <br/>
+<span class="text-primary font-bold">h = 5 metros</span>
+</code>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="mt-8 p-6 bg-primary/5 rounded-xl border-l-4 border-primary">
+                <div class="flex items-center gap-2 mb-1">
+                  <span class="material-symbols-outlined text-primary">task_alt</span>
+                  <p class="text-primary font-bold">Solución Final</p>
+                </div>
+                <p class="text-slate-900 dark:text-slate-100 font-bold text-xl">La altura máxima alcanzada por el balón
+                  es de 5 metros.</p>
+              </div>
+            </section>
+          </div>
+          <div
+            class="mt-12 mb-20 flex justify-between items-center bg-white dark:bg-slate-900 p-6 rounded-xl border border-primary/10">
+            <a href="../f_sica_ejemplos_paso_a_paso_2/code.html"
+              class="flex items-center gap-2 text-slate-600 dark:text-slate-400 hover:text-primary transition-colors font-bold">
+              <span class="material-symbols-outlined">arrow_back</span>
+              Anterior: Concepto
+            </a>
+            <a href="../f_sica_pr_ctica_interactiva/code.html"
+              class="flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-lg font-bold hover:bg-primary/90 transition-all shadow-lg shadow-primary/20">
+              Siguiente: Práctica
+              <span class="material-symbols-outlined">arrow_forward</span>
+            </a>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+</body>
+
+</html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2c0fbd",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#131022",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <title>LogicPlay - Química</title>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100">
+    <div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+        <header
+            class="flex items-center justify-between border-b border-primary/10 bg-white dark:bg-slate-900 px-6 md:px-10 py-3 sticky top-0 z-50">
+            <div class="flex items-center gap-8">
+                <div class="flex items-center gap-3 text-primary">
+                    <div class="size-8">
+                        <svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                            <path clip-rule="evenodd"
+                                d="M24 0.757355L47.2426 24L24 47.2426L0.757355 24L24 0.757355ZM21 35.7574V12.2426L9.24264 24L21 35.7574Z"
+                                fill="currentColor" fill-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <h2 class="text-xl font-bold tracking-tight">LogicPlay</h2>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                <button
+                    class="flex size-10 items-center justify-center rounded-lg bg-primary/5 text-slate-700 dark:text-slate-300 hover:bg-primary/10 transition-colors">
+                    <span class="material-symbols-outlined">notifications</span>
+                </button>
+                <button
+                    class="flex size-10 items-center justify-center rounded-lg bg-primary/5 text-slate-700 dark:text-slate-300 hover:bg-primary/10 transition-colors">
+                    <span class="material-symbols-outlined">account_circle</span>
+                </button>
+                <div class="size-10 rounded-full bg-primary/20 bg-cover bg-center border border-primary/10"
+                    data-alt="User profile avatar circle"
+                    style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAcFHFNDik_4AvC69-xPO5ZDC-RIUDwVMeYNU7S7xJQySsvwBa_2aqa8uhSemZu1Of5i9R26dymt8kHc-8rVmdZjv-AAwHSHFLUQwNXMaLKeVjo_kD1tKv6KKu7OlrGNzPyIWb8wBtCIWcmOcg0xzr9zHDw4dmfKo1-DS9TxX5MIWTlkFgI-vGoOmIkcyuD3qqmINdeRntlnYUGA4Ggq8VxQ5vZ9KfXNHs-hVHaTUggiVvcefdMVfl1bvOg9HuVowpRTlWN7l0OIsU");'>
+                </div>
+            </div>
+        </header>
+        <div class="flex flex-1">
+            <aside class="hidden lg:flex w-64 flex-col border-r border-primary/10 bg-white dark:bg-slate-900 p-6 gap-8">
+                <div class="flex flex-col gap-1">
+                    <h3 class="text-xs font-semibold uppercase tracking-wider text-primary/50 px-3">Menú Principal</h3>
+                    <nav class="flex flex-col gap-1 mt-3">
+                        <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-primary/5 hover:text-primary transition-all"
+                            href="../dashboard_logicplay_clasificaci_n_anonimizada/code.html">
+                            <span class="material-symbols-outlined">dashboard</span>
+                            <span class="text-sm font-medium">Dashboard</span>
+                        </a>
+                        <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-primary/5 hover:text-primary transition-all"
+                            href="../f_sica_selecci_n_de_temas/code.html">
+                            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">atm</span>
+                            <span class="text-sm font-medium">Física</span>
+                        </a>
+                        <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary text-white shadow-md shadow-primary/20"
+                            href="#">
+                            <span class="material-symbols-outlined">science</span>
+                            <span class="text-sm font-medium">Química</span>
+                        </a>
+                        <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-primary/5 hover:text-primary transition-all"
+                            href="#">
+                            <span class="material-symbols-outlined">calculate</span>
+                            <span class="text-sm font-medium">Matemáticas</span>
+                        </a>
+                    </nav>
+                </div>
+                <div class="mt-auto">
+                    <button
+                        class="w-full flex items-center justify-center gap-2 rounded-lg bg-primary px-4 py-3 text-sm font-bold text-white hover:bg-primary/90 transition-colors">
+                        <span class="material-symbols-outlined text-sm">auto_stories</span>
+                        Temas
+                    </button>
+                </div>
+            </aside>
+            <main class="flex-1 flex flex-col p-6 md:p-10 max-w-7xl mx-auto w-full">
+                <div class="mb-10">
+                    <h1 class="text-3xl font-bold text-slate-900 dark:text-slate-50 mb-2">Química</h1>
+                    <p class="text-slate-600 dark:text-slate-400 mb-8">Explora la ciencia que estudia la composición,
+                        estructura y propiedades de la materia.</p>
+                    <div class="relative w-full max-w-2xl">
+                        <span
+                            class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-primary text-2xl">search</span>
+                        <input
+                            class="h-14 w-full rounded-xl border-none bg-white dark:bg-slate-800 shadow-sm pl-14 pr-6 text-lg focus:ring-2 focus:ring-primary/40 placeholder:text-slate-400 transition-all"
+                            placeholder="Escribe aquí tu tema" type="text" />
+                    </div>
+                </div>
+                <section>
+                    <div class="flex items-center justify-between mb-6">
+                        <h2 class="text-xl font-bold text-slate-800 dark:text-slate-200">Temas Frecuentes</h2>
+                        <button class="text-sm font-semibold text-primary hover:underline">Ver todo</button>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <a href="../quimica_conceptos_claros/code.html"
+                            class="group flex flex-col bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-primary/5">
+                            <div class="relative aspect-video w-full bg-primary/10 overflow-hidden">
+                                <div class="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent"></div>
+                                <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                    data-alt="Chemical balancing illustration"
+                                    src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&amp;fit=crop&amp;q=80&amp;w=800" />
+                            </div>
+                            <div class="p-5">
+                                <h3 class="text-lg font-bold text-slate-900 dark:text-slate-100 mb-1">Balanceo Método de
+                                    Tanteo</h3>
+                                <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">Método de simple
+                                    inspección para igualar ecuaciones químicas.</p>
+                                <div class="mt-4 flex items-center gap-2">
+                                    <span
+                                        class="text-xs font-medium px-2 py-1 rounded-full bg-primary/10 text-primary">Estequiometría</span>
+                                    <span
+                                        class="text-xs font-medium px-2 py-1 rounded-full bg-emerald-100 text-emerald-700">Básico</span>
+                                </div>
+                            </div>
+                        </a>
+                        <div
+                            class="group flex flex-col bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-primary/5">
+                            <div class="relative aspect-video w-full bg-primary/10 overflow-hidden">
+                                <div class="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent"></div>
+                                <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                    data-alt="Redox reaction illustration"
+                                    src="https://images.unsplash.com/photo-1611270498711-209ff8b438db?auto=format&amp;fit=crop&amp;q=80&amp;w=800" />
+                            </div>
+                            <div class="p-5">
+                                <h3 class="text-lg font-bold text-slate-900 dark:text-slate-100 mb-1">Igualación por
+                                    Método Redox</h3>
+                                <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">Balanceo de
+                                    ecuaciones mediante transferencia de electrones.</p>
+                                <div class="mt-4 flex items-center gap-2">
+                                    <span
+                                        class="text-xs font-medium px-2 py-1 rounded-full bg-primary/10 text-primary">Estequiometría</span>
+                                    <span
+                                        class="text-xs font-medium px-2 py-1 rounded-full bg-amber-100 text-amber-700">Intermedio</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            class="group flex flex-col bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-primary/5">
+                            <div class="relative aspect-video w-full bg-primary/10 overflow-hidden">
+                                <div class="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent"></div>
+                                <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                    data-alt="Chemical reactions illustration"
+                                    src="https://images.unsplash.com/photo-1574169208507-84376144848b?auto=format&amp;fit=crop&amp;q=80&amp;w=800" />
+                            </div>
+                            <div class="p-5">
+                                <h3 class="text-lg font-bold text-slate-900 dark:text-slate-100 mb-1">Tipos de
+                                    Reacciones Químicas</h3>
+                                <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">Clasificación de
+                                    las transformaciones químicas de la materia.</p>
+                                <div class="mt-4 flex items-center gap-2">
+                                    <span
+                                        class="text-xs font-medium px-2 py-1 rounded-full bg-primary/10 text-primary">Reacciones</span>
+                                    <span
+                                        class="text-xs font-medium px-2 py-1 rounded-full bg-amber-100 text-amber-700">Intermedio</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section
+                    class="mt-12 bg-primary/5 rounded-2xl p-6 border border-primary/10 flex flex-col md:flex-row items-center gap-6">
+                    <div class="size-20 rounded-full bg-primary/20 flex items-center justify-center text-primary">
+                        <span class="material-symbols-outlined text-4xl"
+                            style="font-variation-settings: 'FILL' 1">emoji_events</span>
+                    </div>
+                    <div class="flex-1 text-center md:text-left">
+                        <h3 class="text-lg font-bold text-primary mb-1">¡Sigue avanzando en Química!</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm">Has completado el 45% de la unidad de
+                            Química General. Continúa donde lo dejaste.</p>
+                        <div class="w-full bg-primary/10 h-2 rounded-full mt-3 overflow-hidden">
+                            <div class="bg-primary h-full w-[45%] rounded-full"></div>
+                        </div>
+                    </div>
+                    <button
+                        class="bg-white dark:bg-slate-800 text-primary font-bold px-6 py-2.5 rounded-lg shadow-sm hover:shadow-md transition-all">
+                        Continuar
+                    </button>
+                </section>
+            </main>
+        </div>
+    </div>
+
+</body>
+
+</html>
