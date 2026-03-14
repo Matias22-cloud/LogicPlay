@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&amp;display=swap" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2c0fbd",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#131022",
+                    },
+                    fontFamily: {
+                        "sans": ["Lexend", "sans-serif"],
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+    <style type="text/tailwindcss">
+        :root {
+            --primary-color: #2c0fbd;
+        }
+        body {
+            font-family: 'Lexend', sans-serif;
+        }
+    </style>
+    <title>Física: Ejemplos Paso a Paso (Movimiento Rectilíneo Uniforme)</title>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 transition-colors duration-300">
+    <div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+        <div class="layout-container flex h-full grow flex-col">
+            <header
+                class="flex items-center justify-between whitespace-nowrap border-b border-solid border-primary/10 px-6 py-3 lg:px-40 bg-white dark:bg-background-dark/50 backdrop-blur-md sticky top-0 z-50">
+                <div class="flex items-center gap-4 text-primary">
+                    <div class="size-8 flex items-center justify-center bg-primary/10 rounded-lg">
+                        <span class="material-symbols-outlined text-primary">rocket_launch</span>
+                    </div>
+                    <h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight tracking-[-0.015em]">
+                        Física
+                        Ejemplos Paso a Paso</h2>
+                </div>
+                <div class="flex items-center gap-6">
+                    <nav class="flex items-center gap-4">
+                        <button
+                            class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary font-medium transition-colors text-sm">Dashboard</button>
+                        <button
+                            class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary font-medium transition-colors text-sm">Biblioteca</button>
+                    </nav>
+                    <button
+                        class="flex items-center justify-center rounded-lg h-10 w-10 bg-primary/10 text-primary hover:bg-primary hover:text-white transition-all">
+                        <span class="material-symbols-outlined">person</span>
+                    </button>
+                </div>
+            </header>
+            <main class="flex flex-1 justify-center py-8">
+                <div class="layout-content-container flex flex-col max-w-[960px] flex-1 px-4 lg:px-0">
+                    <div class="flex flex-wrap justify-between items-end gap-3 mb-6">
+                        <div class="flex flex-col gap-1">
+                            <span class="text-primary font-bold text-sm uppercase tracking-wider">Módulo 01:
+                                Cinemática</span>
+                            <h1
+                                class="text-slate-900 dark:text-slate-100 tracking-tight text-4xl font-extrabold leading-tight">
+                                Movimiento Rectilíneo Uniforme</h1>
+                        </div>
+                    </div>
+                    <div
+                        class="flex flex-col gap-3 p-6 bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-primary/5 mb-8">
+                        <div class="flex gap-6 justify-between items-center">
+                            <div class="flex items-center gap-2">
+                                <span class="material-symbols-outlined text-primary">auto_stories</span>
+                                <p class="text-slate-700 dark:text-slate-300 text-base font-medium leading-normal">5 de
+                                    6 lecciones
+                                    completadas</p>
+                            </div>
+                            <p class="text-primary text-sm font-bold leading-normal">85%</p>
+                        </div>
+                        <div class="rounded-full bg-primary/10 h-3 overflow-hidden">
+                            <div class="h-full rounded-full bg-primary" style="width: 85%;"></div>
+                        </div>
+                    </div>
+                    <div class="mb-8">
+                        <div class="flex border-b border-primary/10 px-0 justify-between">
+                            <a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-slate-500 dark:text-slate-400 hover:text-primary pb-4 pt-4 flex-1 font-medium transition-all"
+                                href="concepto.html">
+                                <div class="flex items-center gap-2">
+                                    <span class="text-sm">1. Concepto</span>
+                                </div>
+                            </a>
+                            <a class="flex flex-col items-center justify-center border-b-[3px] border-b-primary text-primary pb-4 pt-4 flex-1 font-bold bg-primary/5"
+                                href="ejemplos.html">
+                                <div class="flex items-center gap-2">
+                                    <span class="text-sm">2. Ejemplos</span>
+                                </div>
+                            </a>
+                            <a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-slate-500 dark:text-slate-400 hover:text-primary pb-4 pt-4 flex-1 font-medium transition-all"
+                                href="practica.html">
+                                <div class="flex items-center gap-2">
+                                    <span class="text-sm">3. Práctica</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="space-y-12">
+                        <section class="bg-white dark:bg-slate-900 rounded-xl p-8 border border-primary/10 shadow-sm">
+                            <div class="flex items-center gap-3 mb-6">
+                                <div
+                                    class="bg-primary text-white w-10 h-10 rounded-lg flex items-center justify-center font-bold text-xl">
+                                    1</div>
+                                <h2 class="text-slate-900 dark:text-slate-100 text-2xl font-bold tracking-tight">Cálculo
+                                    de Distancia Recorrida</h2>
+                            </div>
+                            <div class="mb-8">
+                                <h3 class="text-primary font-bold text-sm uppercase mb-2 flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-sm">help</span> Enunciado
+                                </h3>
+                                <p class="text-slate-700 dark:text-slate-300 leading-relaxed text-lg">
+                                    Un ciclista viaja en línea recta a una velocidad constante de 15 m/s. ¿Qué distancia
+                                    recorrerá después de 12 segundos?
+                                </p>
+                            </div>
+                            <div class="space-y-6">
+                                <h3 class="text-primary font-bold text-sm uppercase mb-2 flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-sm">calculate</span> Procedimiento
+                                    Algebraico
+                                </h3>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                    <div class="space-y-4">
+                                        <div class="p-4 bg-background-light dark:bg-background-dark rounded-lg h-full">
+                                            <p class="font-bold text-primary mb-2">1. Identificamos Datos</p>
+                                            <ul
+                                                class="list-disc list-inside text-sm text-slate-600 dark:text-slate-400 mb-2 space-y-1">
+                                                <li><strong class="text-slate-800 dark:text-slate-300">v</strong> = 15
+                                                    m/s</li>
+                                                <li><strong class="text-slate-800 dark:text-slate-300">t</strong> = 12 s
+                                                </li>
+                                                <li><strong class="text-slate-800 dark:text-slate-300">d</strong> = ?
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="space-y-4">
+                                        <div class="p-4 bg-background-light dark:bg-background-dark rounded-lg h-full">
+                                            <p class="font-bold text-primary mb-2">2. Aplicamos la fórmula</p>
+                                            <p class="text-sm text-slate-600 dark:text-slate-400 mb-2">Sustituimos los
+                                                valores
+                                                en la fórmula principal d = v × t :</p>
+                                            <code
+                                                class="block font-mono bg-white dark:bg-slate-800 p-2 rounded text-center border border-primary/10 text-slate-600 dark:text-slate-400">
+                                    d = (15 m/s) × (12 s)
+                                </code>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-8 p-6 bg-primary/5 rounded-xl border-l-4 border-primary">
+                                <div class="flex items-center gap-2 mb-1">
+                                    <span class="material-symbols-outlined text-primary">task_alt</span>
+                                    <p class="text-primary font-bold">Solución Final</p>
+                                </div>
+                                <p class="text-slate-900 dark:text-slate-100 font-bold text-xl">La distancia recorrida
+                                    es d = 180 m</p>
+                            </div>
+                        </section>
+
+                        <section class="bg-white dark:bg-slate-900 rounded-xl p-8 border border-primary/10 shadow-sm">
+                            <div class="flex items-center gap-3 mb-6">
+                                <div
+                                    class="bg-primary text-white w-10 h-10 rounded-lg flex items-center justify-center font-bold text-xl">
+                                    2</div>
+                                <h2 class="text-slate-900 dark:text-slate-100 text-2xl font-bold tracking-tight">Cálculo
+                                    de la Velocidad Constante</h2>
+                            </div>
+                            <div class="mb-8">
+                                <h3 class="text-primary font-bold text-sm uppercase mb-2 flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-sm">help</span> Enunciado
+                                </h3>
+                                <p class="text-slate-700 dark:text-slate-300 leading-relaxed text-lg">
+                                    Un tren de carga recorre una distancia de 2400 metros de forma constante. Si
+                                    completa este trayecto en 80 segundos, ¿cuál fue su velocidad?
+                                </p>
+                            </div>
+                            <div class="space-y-6">
+                                <h3 class="text-primary font-bold text-sm uppercase mb-2 flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-sm">calculate</span> Procedimiento
+                                    Algebraico
+                                </h3>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                    <div class="space-y-4">
+                                        <div class="p-4 bg-background-light dark:bg-background-dark rounded-lg h-full">
+                                            <p class="font-bold text-primary mb-2">1. Identificamos Datos</p>
+                                            <ul
+                                                class="list-disc list-inside text-sm text-slate-600 dark:text-slate-400 mb-2 space-y-1">
+                                                <li><strong class="text-slate-800 dark:text-slate-300">d</strong> = 2400
+                                                    m</li>
+                                                <li><strong class="text-slate-800 dark:text-slate-300">t</strong> = 80 s
+                                                </li>
+                                                <li><strong class="text-slate-800 dark:text-slate-300">v</strong> = ?
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="space-y-4">
+                                        <div class="p-4 bg-background-light dark:bg-background-dark rounded-lg h-full">
+                                            <p class="font-bold text-primary mb-2">2. Despejamos de la fórmula</p>
+                                            <p class="text-sm text-slate-600 dark:text-slate-400 mb-2">Despejamos v del
+                                                despeje d = v × t → v = d / t :</p>
+                                            <code
+                                                class="block font-mono bg-white dark:bg-slate-800 p-2 rounded text-center border border-primary/10 text-slate-600 dark:text-slate-400">
+                                    v = (2400 m) / (80 s)
+                                </code>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-8 p-6 bg-primary/5 rounded-xl border-l-4 border-primary">
+                                <div class="flex items-center gap-2 mb-1">
+                                    <span class="material-symbols-outlined text-primary">task_alt</span>
+                                    <p class="text-primary font-bold">Solución Final</p>
+                                </div>
+                                <p class="text-slate-900 dark:text-slate-100 font-bold text-xl">La velocidad del tren
+                                    fue v = 30 m/s</p>
+                            </div>
+                        </section>
+                    </div>
+                    <div
+                        class="mt-12 mb-20 flex justify-between items-center bg-white dark:bg-slate-900 p-6 rounded-xl border border-primary/10">
+                        <a href="concepto.html"
+                            class="flex items-center gap-2 text-slate-600 dark:text-slate-400 hover:text-primary transition-colors font-bold">
+                            <span class="material-symbols-outlined">arrow_back</span>
+                            Anterior: Concepto
+                        </a>
+                        <a href="practica.html"
+                            class="flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-lg font-bold hover:bg-primary/90 transition-all shadow-lg shadow-primary/20">
+                            Siguiente: Práctica
+                            <span class="material-symbols-outlined">arrow_forward</span>
+                        </a>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+</body>
+
+</html>

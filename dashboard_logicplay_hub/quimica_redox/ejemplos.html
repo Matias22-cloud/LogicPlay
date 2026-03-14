@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2c0fbd",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#131022",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+    <title>Química Conceptos Claros - Ejemplos Paso a Paso (Redox)</title>
+    <style type="text/tailwindcss">
+        .chem-eq { @apply font-mono text-xl md:text-2xl font-bold tracking-tight bg-white dark:bg-slate-900 px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-800 text-slate-800 dark:text-slate-200 text-center overflow-x-auto whitespace-nowrap; }
+      .ox-num { @apply text-xs text-rose-500 font-bold ml-0.5 align-top; }
+      .red-num { @apply text-xs text-emerald-500 font-bold ml-0.5 align-top; }
+  </style>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 transition-colors duration-300">
+    <div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+        <div class="layout-container flex h-full grow flex-col">
+            <header
+                class="flex items-center justify-between whitespace-nowrap border-b border-solid border-primary/10 px-6 py-3 lg:px-40 bg-white dark:bg-background-dark/50 backdrop-blur-md sticky top-0 z-50">
+                <div class="flex items-center gap-4 text-primary">
+                    <div class="size-8 flex items-center justify-center bg-primary/10 rounded-lg">
+                        <span class="material-symbols-outlined text-primary">rocket_launch</span>
+                    </div>
+                    <h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight tracking-[-0.015em]">
+                        Química
+                        Conceptos Claros</h2>
+                </div>
+                <div class="flex items-center gap-4">
+                    <a href="../dashboard_logicplay_clasificaci_n_anonimizada/code.html"
+                        class="px-4 py-2 text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-primary transition-colors">
+                        Dashboard
+                    </a>
+                    <button
+                        class="px-4 py-2 text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-primary transition-colors">
+                        Biblioteca
+                    </button>
+                    <button
+                        class="flex items-center justify-center rounded-lg h-10 w-10 bg-primary/10 text-primary hover:bg-primary hover:text-white transition-all">
+                        <span class="material-symbols-outlined">person</span>
+                    </button>
+                </div>
+            </header>
+            <main class="flex flex-1 justify-center py-8">
+                <div class="layout-content-container flex flex-col max-w-[960px] flex-1 px-4 lg:px-0">
+                    <div class="flex flex-wrap justify-between items-end gap-3 mb-6">
+                        <div class="flex flex-col gap-1">
+                            <span class="text-primary font-bold text-sm uppercase tracking-wider">Estequiometría</span>
+                            <h1
+                                class="text-slate-900 dark:text-slate-100 tracking-tight text-4xl font-extrabold leading-tight">
+                                Igualación por Método Redox</h1>
+                        </div>
+                    </div>
+                    <div
+                        class="flex flex-col gap-3 p-6 bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-primary/5 mb-8">
+                        <div class="flex gap-6 justify-between items-center">
+                            <div class="flex items-center gap-2">
+                                <span class="material-symbols-outlined text-primary">auto_stories</span>
+                                <p class="text-slate-700 dark:text-slate-300 text-base font-medium leading-normal">5 de
+                                    6 lecciones
+                                    completadas</p>
+                            </div>
+                            <p class="text-primary text-sm font-bold leading-normal">85%</p>
+                        </div>
+                        <div class="rounded-full bg-primary/10 h-3 overflow-hidden">
+                            <div class="h-full rounded-full bg-primary" style="width: 85%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="mb-8">
+                        <div class="flex border-b border-primary/10 px-0 justify-between">
+                            <a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-slate-500 dark:text-slate-400 hover:text-primary pb-4 pt-4 flex-1 font-medium transition-all"
+                                href="concepto.html">
+                                <div class="flex items-center gap-2">
+                                    <span class="text-sm">1. Concepto</span>
+                                </div>
+                            </a>
+                            <a class="flex flex-col items-center justify-center border-b-[3px] border-b-primary text-primary pb-4 pt-4 flex-1 font-bold bg-primary/5"
+                                href="ejemplos.html">
+                                <div class="flex items-center gap-2">
+                                    <span class="text-sm">2. Ejemplos</span>
+                                </div>
+                            </a>
+                            <a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-slate-500 dark:text-slate-400 hover:text-primary pb-4 pt-4 flex-1 font-medium transition-all"
+                                href="../quimica_laboratorio/code.html">
+                                <div class="flex items-center gap-2">
+                                    <span class="text-sm">3. Laboratorio</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="space-y-12">
+                        <!-- EJEMPLO 1 -->
+                        <section class="bg-white dark:bg-slate-900 rounded-xl p-8 border border-primary/10 shadow-sm">
+                            <div
+                                class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8 pb-6 border-b border-slate-100 dark:border-slate-800">
+                                <div class="flex items-center gap-3">
+                                    <div
+                                        class="bg-primary text-white w-10 h-10 rounded-lg flex items-center justify-center font-bold text-xl">
+                                        1
+                                    </div>
+                                    <h2 class="text-slate-900 dark:text-slate-100 text-2xl font-bold tracking-tight">
+                                        Permanganato de Potasio y Ácido Clorhídrico</h2>
+                                </div>
+                            </div>
+
+                            <div class="space-y-8">
+                                <!-- Ecuación inicial -->
+                                <div>
+                                    <h3
+                                        class="font-bold text-slate-500 text-sm uppercase mb-3 px-2 border-l-4 border-slate-300">
+                                        Ecuación Desbalanceada</h3>
+                                    <div class="chem-eq">
+                                        KMnO<sub class="text-base">4</sub> + HCl &rarr; KCl + MnCl<sub
+                                            class="text-base">2</sub> + Cl<sub class="text-base">2</sub> + H<sub
+                                            class="text-base">2</sub>O
+                                    </div>
+                                </div>
+
+                                <!-- Paso 1 -->
+                                <div
+                                    class="bg-slate-50 dark:bg-slate-950/50 p-6 rounded-xl border border-slate-100 dark:border-slate-800">
+                                    <h4 class="font-bold text-primary mb-4 flex items-center gap-2"><span
+                                            class="material-symbols-outlined">search</span> 1. Identificación de cambios
+                                        de oxidación</h4>
+                                    <p class="text-slate-600 dark:text-slate-400 text-sm mb-4">Calculamos los números de
+                                        oxidación. Identificamos qué elementos cambian (Mn y Cl):</p>
+
+                                    <div
+                                        class="chem-eq text-lg md:text-xl py-4 flex flex-wrap justify-center gap-2 items-center">
+                                        <span>KMn<span class="red-num">+7</span>O<sub class="text-sm">4</sub></span>
+                                        <span class="mx-2">+</span>
+                                        <span>HCl<span class="ox-num">-1</span></span>
+                                        <span class="mx-4 text-primary">&rarr;</span>
+                                        <span>KCl</span>
+                                        <span class="mx-2">+</span>
+                                        <span>Mn<span class="red-num">+2</span>Cl<sub class="text-sm">2</sub></span>
+                                        <span class="mx-2">+</span>
+                                        <span>Cl<span class="ox-num">0</span><sub class="text-sm">2</sub></span>
+                                        <span class="mx-2">+</span>
+                                        <span>H<sub class="text-sm">2</sub>O</span>
+                                    </div>
+
+                                    <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                        <div
+                                            class="bg-emerald-50 dark:bg-emerald-900/10 p-4 rounded-lg border border-emerald-200 dark:border-emerald-800/50">
+                                            <span
+                                                class="font-bold text-emerald-600 dark:text-emerald-400 block mb-1">Manganeso
+                                                (Mn):</span>
+                                            <span class="text-sm text-slate-700 dark:text-slate-300">Pasa de +7 a +2.
+                                                Gana 5 electrones <strong class="text-emerald-600">(SE
+                                                    REDUCE)</strong>.</span>
+                                        </div>
+                                        <div
+                                            class="bg-rose-50 dark:bg-rose-900/10 p-4 rounded-lg border border-rose-200 dark:border-rose-800/50">
+                                            <span class="font-bold text-rose-600 dark:text-rose-400 block mb-1">Cloro
+                                                (Cl):</span>
+                                            <span class="text-sm text-slate-700 dark:text-slate-300">Pasa de -1 a 0.
+                                                Pierde 1 electrón <strong class="text-rose-600">(SE
+                                                    OXIDA)</strong>.</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Paso 2 y 3 -->
+                                <div
+                                    class="bg-slate-50 dark:bg-slate-950/50 p-6 rounded-xl border border-slate-100 dark:border-slate-800">
+                                    <h4 class="font-bold text-primary mb-4 flex items-center gap-2"><span
+                                            class="material-symbols-outlined">splitscreen</span> 2. Semirreacciones y
+                                        cruce de coeficientes</h4>
+                                    <p class="text-slate-600 dark:text-slate-400 text-sm mb-4">Nota: Como el cloro forma
+                                        una molécula diatómica ($Cl_2$), primero lo ajustamos afectando también los
+                                        electrones. Luego multiplicamos en cruz para igualar la carga de $e^-$.</p>
+
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                        <div class="space-y-3">
+                                            <span
+                                                class="text-xs font-bold text-emerald-500 uppercase tracking-wider block">Reducción
+                                                (Gana e-)</span>
+                                            <div
+                                                class="font-mono bg-white dark:bg-slate-900 p-3 rounded border border-slate-200 dark:border-slate-700 text-center">
+                                                Mn<sup class="text-[0.6em]">+7</sup> + <strong
+                                                    class="text-primary text-xl">5e⁻</strong> &rarr; Mn<sup
+                                                    class="text-[0.6em]">+2</sup>
+                                            </div>
+                                            <div class="text-center font-bold text-accent">× 2</div>
+                                        </div>
+                                        <div class="space-y-3">
+                                            <span
+                                                class="text-xs font-bold text-rose-500 uppercase tracking-wider block">Oxidación
+                                                (Pierde e-)</span>
+                                            <div
+                                                class="font-mono bg-white dark:bg-slate-900 p-3 rounded border border-slate-200 dark:border-slate-700 text-center">
+                                                2Cl<sup class="text-[0.6em]">-1</sup> &rarr; Cl<sub
+                                                    class="text-xs">2</sub><sup class="text-[0.6em]">0</sup> + <strong
+                                                    class="text-primary text-xl">2e⁻</strong>
+                                            </div>
+                                            <div class="text-center font-bold text-accent">× 5</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Paso 4 -->
+                                <div
+                                    class="bg-slate-50 dark:bg-slate-950/50 p-6 rounded-xl border border-slate-100 dark:border-slate-800">
+                                    <h4 class="font-bold text-primary mb-4 flex items-center gap-2"><span
+                                            class="material-symbols-outlined">calculate</span> 3. Transferencia y
+                                        balanceo final</h4>
+                                    <p class="text-slate-600 dark:text-slate-400 text-sm mb-4">Transferimos los
+                                        coeficientes: El 2 multiplica al $KMnO_4$ y al $MnCl_2$. El 5 multiplica al
+                                        $Cl_2$. Finalmente, balanceamos por tanteo el K, el Cl restante, H y O.</p>
+
+                                    <div class="p-6 bg-primary/5 rounded-xl border border-primary/20 text-center">
+                                        <h4 class="text-primary font-bold text-sm uppercase mb-3">Resultado
+                                            Equilibrado</strong></h4>
+                                        <span
+                                            class="font-mono text-xl md:text-3xl font-extrabold text-slate-900 dark:text-white block tracking-tight">
+                                            <span class="text-primary">2</span>KMnO<sub class="text-lg">4</sub> + <span
+                                                class="text-primary">16</span>HCl &rarr; <span
+                                                class="text-primary">2</span>KCl + <span
+                                                class="text-primary">2</span>MnCl<sub class="text-lg">2</sub> + <span
+                                                class="text-primary">5</span>Cl<sub class="text-lg">2</sub> + <span
+                                                class="text-primary">8</span>H<sub class="text-lg">2</sub>O
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- EJEMPLO 2 -->
+                        <section
+                            class="bg-white dark:bg-slate-900 rounded-xl p-8 border border-primary/10 shadow-sm mt-8">
+                            <div
+                                class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8 pb-6 border-b border-slate-100 dark:border-slate-800">
+                                <div class="flex items-center gap-3">
+                                    <div
+                                        class="bg-primary text-white w-10 h-10 rounded-lg flex items-center justify-center font-bold text-xl">
+                                        2
+                                    </div>
+                                    <h2 class="text-slate-900 dark:text-slate-100 text-2xl font-bold tracking-tight">
+                                        Reacción de Cobre con Ácido Nítrico</h2>
+                                </div>
+                            </div>
+
+                            <div class="space-y-8">
+                                <!-- Ecuación inicial -->
+                                <div>
+                                    <h3
+                                        class="font-bold text-slate-500 text-sm uppercase mb-3 px-2 border-l-4 border-slate-300">
+                                        Ecuación Desbalanceada</h3>
+                                    <div class="chem-eq">
+                                        Cu + HNO<sub class="text-base">3</sub> &rarr; Cu(NO<sub
+                                            class="text-base">3</sub>)<sub class="text-base">2</sub> + NO + H<sub
+                                            class="text-base">2</sub>O
+                                    </div>
+                                </div>
+
+                                <!-- Paso 1 -->
+                                <div
+                                    class="bg-slate-50 dark:bg-slate-950/50 p-6 rounded-xl border border-slate-100 dark:border-slate-800">
+                                    <h4 class="font-bold text-primary mb-4 flex items-center gap-2"><span
+                                            class="material-symbols-outlined">search</span> 1. Identificación de cambios
+                                        de oxidación</h4>
+
+                                    <div
+                                        class="chem-eq text-lg md:text-xl py-4 flex flex-wrap justify-center gap-2 items-center">
+                                        <span>Cu<span class="ox-num">0</span></span>
+                                        <span class="mx-2">+</span>
+                                        <span>HN<span class="red-num">+5</span>O<sub class="text-sm">3</sub></span>
+                                        <span class="mx-4 text-primary">&rarr;</span>
+                                        <span>Cu<span class="ox-num">+2</span>(NO<sub class="text-sm">3</sub>)<sub
+                                                class="text-sm">2</sub></span>
+                                        <span class="mx-2">+</span>
+                                        <span>N<span class="red-num">+2</span>O</span>
+                                        <span class="mx-2">+</span>
+                                        <span>H<sub class="text-sm">2</sub>O</span>
+                                    </div>
+
+                                    <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                        <div
+                                            class="bg-rose-50 dark:bg-rose-900/10 p-4 rounded-lg border border-rose-200 dark:border-rose-800/50">
+                                            <span class="font-bold text-rose-600 dark:text-rose-400 block mb-1">Cobre
+                                                (Cu) - Oxidación:</span>
+                                            <span class="text-sm text-slate-700 dark:text-slate-300">Pasa de 0 a +2. Por
+                                                lo tanto, pierde 2 electrones.</span>
+                                        </div>
+                                        <div
+                                            class="bg-emerald-50 dark:bg-emerald-900/10 p-4 rounded-lg border border-emerald-200 dark:border-emerald-800/50">
+                                            <span
+                                                class="font-bold text-emerald-600 dark:text-emerald-400 block mb-1">Nitrógeno
+                                                (N) - Reducción:</span>
+                                            <span class="text-sm text-slate-700 dark:text-slate-300">Parte del Nitrógeno
+                                                pasa de +5 a +2. Gana 3 electrones.</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Paso 2 y 3 -->
+                                <div
+                                    class="bg-slate-50 dark:bg-slate-950/50 p-6 rounded-xl border border-slate-100 dark:border-slate-800">
+                                    <h4 class="font-bold text-primary mb-4 flex items-center gap-2"><span
+                                            class="material-symbols-outlined">splitscreen</span> 2. Semirreacciones y
+                                        cruce de coeficientes</h4>
+
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                        <div class="space-y-3">
+                                            <span
+                                                class="text-xs font-bold text-rose-500 uppercase tracking-wider block">Oxidación
+                                                (Cobre)</span>
+                                            <div
+                                                class="font-mono bg-white dark:bg-slate-900 p-3 rounded border border-slate-200 dark:border-slate-700 text-center">
+                                                Cu<sup class="text-[0.6em]">0</sup> &rarr; Cu<sup
+                                                    class="text-[0.6em]">+2</sup> + <strong
+                                                    class="text-primary text-xl">2e⁻</strong>
+                                            </div>
+                                            <div class="text-center font-bold text-accent">× 3</div>
+                                        </div>
+                                        <div class="space-y-3">
+                                            <span
+                                                class="text-xs font-bold text-emerald-500 uppercase tracking-wider block">Reducción
+                                                (Nitrógeno)</span>
+                                            <div
+                                                class="font-mono bg-white dark:bg-slate-900 p-3 rounded border border-slate-200 dark:border-slate-700 text-center">
+                                                N<sup class="text-[0.6em]">+5</sup> + <strong
+                                                    class="text-primary text-xl">3e⁻</strong> &rarr; N<sup
+                                                    class="text-[0.6em]">+2</sup>
+                                            </div>
+                                            <div class="text-center font-bold text-accent">× 2</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Paso 4 -->
+                                <div
+                                    class="bg-slate-50 dark:bg-slate-950/50 p-6 rounded-xl border border-slate-100 dark:border-slate-800">
+                                    <h4 class="font-bold text-primary mb-4 flex items-center gap-2"><span
+                                            class="material-symbols-outlined">calculate</span> 3. Resolución final</h4>
+                                    <p class="text-slate-600 dark:text-slate-400 text-sm mb-4">Transferimos los
+                                        coeficientes generados: 3 al $Cu$, 3 al $Cu(NO_3)_2$, y 2 al $NO$. Notamos que
+                                        necesitamos 8 de N en total del lado de los reactivos (6 del producto nitrato +
+                                        2 del producto óxido nítrico), así que ajustamos el $HNO_3$ a 8. Todo cuadra con
+                                        4 moléculas de agua.</p>
+
+                                    <div class="p-6 bg-primary/5 rounded-xl border border-primary/20 text-center">
+                                        <h4 class="text-primary font-bold text-sm uppercase mb-3">Resultado
+                                            Equilibrado</strong></h4>
+                                        <span
+                                            class="font-mono text-xl md:text-3xl font-extrabold text-slate-900 dark:text-white block tracking-tight">
+                                            <span class="text-primary">3</span>Cu + <span
+                                                class="text-primary">8</span>HNO<sub class="text-lg">3</sub> &rarr;
+                                            <span class="text-primary">3</span>Cu(NO<sub class="text-lg">3</sub>)<sub
+                                                class="text-lg">2</sub> + <span class="text-primary">2</span>NO + <span
+                                                class="text-primary">4</span>H<sub class="text-lg">2</sub>O
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+
+                    <div
+                        class="mt-12 mb-20 flex justify-between items-center bg-white dark:bg-slate-900 p-6 rounded-xl border border-primary/10">
+                        <a href="concepto.html"
+                            class="flex items-center gap-2 text-slate-600 dark:text-slate-400 hover:text-primary transition-colors font-bold">
+                            <span class="material-symbols-outlined">arrow_back</span>
+                            Anterior: Concepto
+                        </a>
+                        <a href="../quimica_laboratorio/code.html"
+                            class="flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-lg font-bold hover:bg-primary/90 transition-all shadow-lg shadow-primary/20">
+                            Siguiente: Laboratorio
+                            <span class="material-symbols-outlined">arrow_forward</span>
+                        </a>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+</body>
+
+</html>

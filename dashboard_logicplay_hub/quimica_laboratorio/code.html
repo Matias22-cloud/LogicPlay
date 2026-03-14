@@ -119,138 +119,137 @@
                     </div>
                 </section>
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                        <div class="lg:col-span-2 glass-panel p-8 rounded-3xl flex flex-col justify-center">
-                            <div class="flex items-center justify-between mb-8">
-                                <h4 class="text-xs font-black uppercase tracking-[0.2em] text-slate-400">Ecuación
-                                    Química</h4>
-                            </div>
-                            <div
-                                class="flex flex-wrap items-center justify-center gap-4 text-3xl font-mono text-slate-800 dark:text-slate-200">
-                                <div class="flex flex-col items-center">
-                                    <input type="number" min="1" max="9" value="1"
-                                        class="w-16 h-12 text-center text-2xl font-bold bg-white dark:bg-slate-800 border-2 border-primary/40 rounded-lg focus:ring-0 focus:border-primary text-primary transition-all mb-2" />
-                                    <span>CH₄</span>
-                                </div>
-                                <span class="text-primary font-bold">+</span>
-                                <div class="flex flex-col items-center">
-                                    <input type="number" min="1" max="9" value="1"
-                                        class="w-16 h-12 text-center text-2xl font-bold bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 rounded-lg focus:ring-0 focus:border-primary transition-all mb-2" />
-                                    <span>O₂</span>
-                                </div>
-                                <span class="text-primary font-bold mx-4">→</span>
-                                <div class="flex flex-col items-center">
-                                    <input type="number" min="1" max="9" value="1"
-                                        class="w-16 h-12 text-center text-2xl font-bold bg-white dark:bg-slate-800 border-2 border-primary/40 rounded-lg focus:ring-0 focus:border-primary text-primary transition-all mb-2" />
-                                    <span>CO₂</span>
-                                </div>
-                                <span class="text-primary font-bold">+</span>
-                                <div class="flex flex-col items-center">
-                                    <input type="number" min="1" max="9" value="1"
-                                        class="w-16 h-12 text-center text-2xl font-bold bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 rounded-lg focus:ring-0 focus:border-primary transition-all mb-2" />
-                                    <span>H₂O</span>
-                                </div>
-                            </div>
-                            <div
-                                class="mt-8 flex items-center justify-center gap-2 text-accent bg-accent/5 p-3 rounded-lg border border-accent/20">
-                                <span class="material-symbols-outlined text-xl">scale</span>
-                                <span class="text-sm font-bold uppercase tracking-wider">Ecuación No Balanceada</span>
-                            </div>
+                    <div class="lg:col-span-2 glass-panel p-8 rounded-3xl flex flex-col justify-center">
+                        <div class="flex items-center justify-between mb-8">
+                            <h4 class="text-xs font-black uppercase tracking-[0.2em] text-slate-400">Ecuación
+                                Química</h4>
                         </div>
-                        <div class="glass-panel p-6 rounded-3xl bg-primary/5 border-primary/20 flex flex-col gap-3">
-                            <div class="flex items-center gap-2 text-primary">
-                                <span class="material-symbols-outlined fill-1">lightbulb</span>
-                                <h4 class="font-bold text-sm uppercase tracking-wider">Tip de Laboratorio</h4>
-                            </div>
-                            <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed italic">
-                                "Empieza balanceando los metales (si hay), luego los no metales (como el C), seguido del
-                                hidrógeno (H) y siempre deja el oxígeno (O) para el final."
-                            </p>
-                            <div class="mt-auto pt-4 border-t border-primary/10">
-                                <button
-                                    class="text-[10px] font-black text-primary hover:underline uppercase tracking-widest">Ver
-                                    tabla de valencias →</button>
-                            </div>
-                        </div>
-                    </div>
-                    <section
-                        class="glass-panel p-8 rounded-3xl relative overflow-hidden flex flex-col items-center justify-center min-h-[300px]">
-                        <h3 class="text-xl font-bold text-slate-800 dark:text-slate-200 mb-8 w-full text-center">Balanza
-                            de Átomos</h3>
-                        <div class="flex items-end justify-center gap-8 w-full max-w-2xl px-4">
-                            <div class="flex flex-col items-center w-full">
-                                <div
-                                    class="bg-slate-100 dark:bg-slate-800 rounded-xl p-4 w-full shadow-inner border border-slate-200 dark:border-slate-700 mb-4 min-h-[120px] flex flex-col justify-end relative">
-                                    <div class="flex justify-center gap-2 flex-wrap mb-2">
-                                        <div class="size-6 rounded-full bg-slate-800 flex items-center justify-center text-white text-[10px] font-bold"
-                                            title="Carbono">C</div>
-                                        <div class="size-6 rounded-full bg-slate-300 flex items-center justify-center text-slate-800 text-[10px] font-bold"
-                                            title="Hidrógeno">H</div>
-                                        <div class="size-6 rounded-full bg-slate-300 flex items-center justify-center text-slate-800 text-[10px] font-bold"
-                                            title="Hidrógeno">H</div>
-                                        <div class="size-6 rounded-full bg-slate-300 flex items-center justify-center text-slate-800 text-[10px] font-bold"
-                                            title="Hidrógeno">H</div>
-                                        <div class="size-6 rounded-full bg-slate-300 flex items-center justify-center text-slate-800 text-[10px] font-bold"
-                                            title="Hidrógeno">H</div>
-                                        <div class="size-6 rounded-full bg-red-500 flex items-center justify-center text-white text-[10px] font-bold"
-                                            title="Oxígeno">O</div>
-                                        <div class="size-6 rounded-full bg-red-500 flex items-center justify-center text-white text-[10px] font-bold"
-                                            title="Oxígeno">O</div>
-                                    </div>
-                                    <div class="text-center text-xs font-bold text-slate-500 w-full mt-auto">REACTIVOS
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="flex flex-col items-center justify-end pb-8">
-                                <div class="w-1 h-24 bg-primary/40 rounded-full mx-auto relative mb-[-4px]">
-                                    <div
-                                        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-2 bg-primary/60 rounded-full transform rotate-[10deg] transition-transform duration-500">
-                                    </div>
-                                </div>
-                                <div
-                                    class="w-8 border-b-[16px] border-b-primary/60 border-l-[16px] border-l-transparent border-r-[16px] border-r-transparent">
-                                </div>
-                            </div>
-
-                            <div class="flex flex-col items-center w-full mt-8">
-                                <div
-                                    class="bg-slate-100 dark:bg-slate-800 rounded-xl p-4 w-full shadow-inner border border-slate-200 dark:border-slate-700 mt-4 min-h-[120px] flex flex-col justify-end relative">
-                                    <div class="flex justify-center gap-2 flex-wrap mb-2">
-                                        <div class="size-6 rounded-full bg-slate-800 flex items-center justify-center text-white text-[10px] font-bold"
-                                            title="Carbono">C</div>
-                                        <div class="size-6 rounded-full bg-red-500 flex items-center justify-center text-white text-[10px] font-bold"
-                                            title="Oxígeno">O</div>
-                                        <div class="size-6 rounded-full bg-red-500 flex items-center justify-center text-white text-[10px] font-bold"
-                                            title="Oxígeno">O</div>
-                                        <div class="size-6 rounded-full bg-slate-300 flex items-center justify-center text-slate-800 text-[10px] font-bold"
-                                            title="Hidrógeno">H</div>
-                                        <div class="size-6 rounded-full bg-slate-300 flex items-center justify-center text-slate-800 text-[10px] font-bold"
-                                            title="Hidrógeno">H</div>
-                                        <div class="size-6 rounded-full bg-red-500 flex items-center justify-center text-white text-[10px] font-bold"
-                                            title="Oxígeno">O</div>
-                                    </div>
-                                    <div class="text-center text-xs font-bold text-slate-500 w-full mt-auto">PRODUCTOS
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                </div>
-                <footer
-                    class="mt-20 py-8 border-t border-slate-200 dark:border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4">
-                    <div class="flex items-center gap-4 text-slate-400 text-sm">
-                        <span>© 2024 Química Interactiva</span>
-                        <span class="w-1 h-1 bg-slate-300 rounded-full"></span>
-                        <a class="hover:text-primary transition-colors" href="#">Guía de Uso</a>
-                    </div>
-                    <div class="flex gap-4">
                         <div
-                            class="flex items-center gap-2 px-3 py-1 bg-slate-100 dark:bg-slate-800 rounded-full text-[10px] font-bold text-slate-500">
-                            <span class="size-2 bg-green-500 rounded-full"></span> ENGINE V2.4 ONLINE
+                            class="flex flex-wrap items-center justify-center gap-4 text-3xl font-mono text-slate-800 dark:text-slate-200">
+                            <div class="flex flex-col items-center">
+                                <input type="number" min="1" max="9" value="1"
+                                    class="w-16 h-12 text-center text-2xl font-bold bg-white dark:bg-slate-800 border-2 border-primary/40 rounded-lg focus:ring-0 focus:border-primary text-primary transition-all mb-2" />
+                                <span>CH₄</span>
+                            </div>
+                            <span class="text-primary font-bold">+</span>
+                            <div class="flex flex-col items-center">
+                                <input type="number" min="1" max="9" value="1"
+                                    class="w-16 h-12 text-center text-2xl font-bold bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 rounded-lg focus:ring-0 focus:border-primary transition-all mb-2" />
+                                <span>O₂</span>
+                            </div>
+                            <span class="text-primary font-bold mx-4">→</span>
+                            <div class="flex flex-col items-center">
+                                <input type="number" min="1" max="9" value="1"
+                                    class="w-16 h-12 text-center text-2xl font-bold bg-white dark:bg-slate-800 border-2 border-primary/40 rounded-lg focus:ring-0 focus:border-primary text-primary transition-all mb-2" />
+                                <span>CO₂</span>
+                            </div>
+                            <span class="text-primary font-bold">+</span>
+                            <div class="flex flex-col items-center">
+                                <input type="number" min="1" max="9" value="1"
+                                    class="w-16 h-12 text-center text-2xl font-bold bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 rounded-lg focus:ring-0 focus:border-primary transition-all mb-2" />
+                                <span>H₂O</span>
+                            </div>
+                        </div>
+                        <div
+                            class="mt-8 flex items-center justify-center gap-2 text-accent bg-accent/5 p-3 rounded-lg border border-accent/20">
+                            <span class="material-symbols-outlined text-xl">scale</span>
+                            <span class="text-sm font-bold uppercase tracking-wider">Ecuación No Balanceada</span>
                         </div>
                     </div>
-                </footer>
+                    <div class="glass-panel p-6 rounded-3xl bg-primary/5 border-primary/20 flex flex-col gap-3">
+                        <div class="flex items-center gap-2 text-primary">
+                            <span class="material-symbols-outlined fill-1">lightbulb</span>
+                            <h4 class="font-bold text-sm uppercase tracking-wider">Tip de Laboratorio</h4>
+                        </div>
+                        <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed italic">
+                            "Empieza balanceando los metales (si hay), luego los no metales (como el C), seguido del
+                            hidrógeno (H) y siempre deja el oxígeno (O) para el final."
+                        </p>
+                        <div class="mt-auto pt-4 border-t border-primary/10">
+                            <button
+                                class="text-[10px] font-black text-primary hover:underline uppercase tracking-widest">Ver
+                                tabla de valencias →</button>
+                        </div>
+                    </div>
+                </div>
+                <section
+                    class="glass-panel p-8 rounded-3xl relative overflow-hidden flex flex-col items-center justify-center min-h-[300px]">
+                    <h3 class="text-xl font-bold text-slate-800 dark:text-slate-200 mb-8 w-full text-center">Balanza
+                        de Átomos</h3>
+                    <div class="flex items-end justify-center gap-8 w-full max-w-2xl px-4">
+                        <div class="flex flex-col items-center w-full">
+                            <div
+                                class="bg-slate-100 dark:bg-slate-800 rounded-xl p-4 w-full shadow-inner border border-slate-200 dark:border-slate-700 mb-4 min-h-[120px] flex flex-col justify-end relative">
+                                <div class="flex justify-center gap-2 flex-wrap mb-2">
+                                    <div class="size-6 rounded-full bg-slate-800 flex items-center justify-center text-white text-[10px] font-bold"
+                                        title="Carbono">C</div>
+                                    <div class="size-6 rounded-full bg-slate-300 flex items-center justify-center text-slate-800 text-[10px] font-bold"
+                                        title="Hidrógeno">H</div>
+                                    <div class="size-6 rounded-full bg-slate-300 flex items-center justify-center text-slate-800 text-[10px] font-bold"
+                                        title="Hidrógeno">H</div>
+                                    <div class="size-6 rounded-full bg-slate-300 flex items-center justify-center text-slate-800 text-[10px] font-bold"
+                                        title="Hidrógeno">H</div>
+                                    <div class="size-6 rounded-full bg-slate-300 flex items-center justify-center text-slate-800 text-[10px] font-bold"
+                                        title="Hidrógeno">H</div>
+                                    <div class="size-6 rounded-full bg-red-500 flex items-center justify-center text-white text-[10px] font-bold"
+                                        title="Oxígeno">O</div>
+                                    <div class="size-6 rounded-full bg-red-500 flex items-center justify-center text-white text-[10px] font-bold"
+                                        title="Oxígeno">O</div>
+                                </div>
+                                <div class="text-center text-xs font-bold text-slate-500 w-full mt-auto">REACTIVOS
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col items-center justify-end pb-8">
+                            <div class="w-1 h-24 bg-primary/40 rounded-full mx-auto relative mb-[-4px]">
+                                <div
+                                    class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-2 bg-primary/60 rounded-full transform rotate-[10deg] transition-transform duration-500">
+                                </div>
+                            </div>
+                            <div
+                                class="w-8 border-b-[16px] border-b-primary/60 border-l-[16px] border-l-transparent border-r-[16px] border-r-transparent">
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col items-center w-full mt-8">
+                            <div
+                                class="bg-slate-100 dark:bg-slate-800 rounded-xl p-4 w-full shadow-inner border border-slate-200 dark:border-slate-700 mt-4 min-h-[120px] flex flex-col justify-end relative">
+                                <div class="flex justify-center gap-2 flex-wrap mb-2">
+                                    <div class="size-6 rounded-full bg-slate-800 flex items-center justify-center text-white text-[10px] font-bold"
+                                        title="Carbono">C</div>
+                                    <div class="size-6 rounded-full bg-red-500 flex items-center justify-center text-white text-[10px] font-bold"
+                                        title="Oxígeno">O</div>
+                                    <div class="size-6 rounded-full bg-red-500 flex items-center justify-center text-white text-[10px] font-bold"
+                                        title="Oxígeno">O</div>
+                                    <div class="size-6 rounded-full bg-slate-300 flex items-center justify-center text-slate-800 text-[10px] font-bold"
+                                        title="Hidrógeno">H</div>
+                                    <div class="size-6 rounded-full bg-slate-300 flex items-center justify-center text-slate-800 text-[10px] font-bold"
+                                        title="Hidrógeno">H</div>
+                                    <div class="size-6 rounded-full bg-red-500 flex items-center justify-center text-white text-[10px] font-bold"
+                                        title="Oxígeno">O</div>
+                                </div>
+                                <div class="text-center text-xs font-bold text-slate-500 w-full mt-auto">PRODUCTOS
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <footer
+                class="mt-20 py-8 border-t border-slate-200 dark:border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4">
+                <div class="flex items-center gap-4 text-slate-400 text-sm">
+                    <span>© 2024 Química Interactiva</span>
+                    <span class="w-1 h-1 bg-slate-300 rounded-full"></span>
+                    <a class="hover:text-primary transition-colors" href="#">Guía de Uso</a>
+                </div>
+                <div class="flex gap-4">
+                    <div
+                        class="flex items-center gap-2 px-3 py-1 bg-slate-100 dark:bg-slate-800 rounded-full text-[10px] font-bold text-slate-500">
+                        <span class="size-2 bg-green-500 rounded-full"></span> ENGINE V2.4 ONLINE
+                    </div>
+                </div>
+            </footer>
         </main>
     </div>
 

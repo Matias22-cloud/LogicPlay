@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html class="light" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#4f46e5",
+                        "accent": "#f43f5e",
+                        "background-light": "#f8fafc",
+                        "background-dark": "#0f172a",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend"]
+                    },
+                    borderRadius: { "DEFAULT": "0.375rem", "lg": "0.75rem", "xl": "1rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+    <style type="text/tailwindcss">
+        :root {
+            --primary-color: #4f46e5;
+            --accent-color: #f43f5e;
+        }
+        .glass-panel {
+            @apply bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border border-white/20 dark:border-slate-800/50 shadow-xl;
+        }
+        .input-glow:focus-within {
+            box-shadow: 0 0 15px rgba(79, 70, 229, 0.3);
+        }.nav-tab {
+            @apply px-4 py-2 text-sm font-semibold transition-all duration-200 relative;
+        }
+        .nav-tab-active {
+            @apply text-primary border-b-2 border-primary;
+        }
+        .nav-tab-inactive {
+            @apply text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 border-b-2 border-transparent;
+        }
+
+        .ox-input {
+            @apply w-10 h-8 text-center text-xs font-bold bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 rounded focus:ring-0 focus:border-primary text-primary transition-all uppercase;
+        }
+        
+        .ox-input.correct {
+            @apply border-emerald-500 bg-emerald-50 text-emerald-600 shadow-[0_0_10px_rgba(16,185,129,0.3)];
+        }
+        
+        .coef-input {
+            @apply w-14 h-12 text-center text-xl font-bold bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 rounded-lg focus:ring-0 focus:border-primary text-primary transition-all;
+        }
+
+        .fade-out { opacity: 0; pointer-events: none; height: 0; overflow: hidden; transition: all 0.5s ease; }
+        .fade-in { opacity: 1; pointer-events: auto; height: auto; transition: all 0.5s ease; }
+    </style>
+    <title>Química: Laboratorio Redox</title>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased">
+    <div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+        <header class="sticky top-0 z-50 glass-panel border-b px-6 md:px-20 py-4">
+            <div class="flex items-center justify-between max-w-7xl mx-auto w-full">
+                <div class="flex items-center gap-4 text-primary">
+                    <div class="size-10 flex items-center justify-center bg-primary/10 rounded-xl">
+                        <span class="material-symbols-outlined text-primary text-2xl font-bold">science</span>
+                    </div>
+                    <div>
+                        <h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight">Química
+                            Laboratorio</h2>
+                    </div>
+                </div>
+                <div class="flex items-center gap-6">
+                    <nav class="hidden md:flex gap-8 items-center text-sm font-semibold text-slate-500">
+                        <a class="hover:text-primary transition-colors"
+                            href="../dashboard_logicplay_clasificaci_n_anonimizada/code.html">Dashboard</a>
+                        <a class="hover:text-primary transition-colors" href="#">Biblioteca</a>
+                    </nav>
+                    <button
+                        class="flex items-center justify-center rounded-xl h-10 w-10 bg-slate-100 dark:bg-slate-800 hover:bg-primary/10 transition-all group">
+                        <span
+                            class="material-symbols-outlined text-slate-600 dark:text-slate-400 group-hover:text-primary">person</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+        <main class="flex-1 max-w-7xl mx-auto w-full px-6 py-8">
+            <div class="mb-10">
+                <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6">
+                    <div>
+                        <span class="text-primary font-bold text-sm tracking-widest uppercase mb-2 block">Módulo 04:
+                            Estequiometría</span>
+                        <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 dark:white tracking-tight">
+                            Igualación por Método Redox</h1>
+                    </div>
+                    <div class="flex flex-col items-end gap-2">
+                        <span class="text-xs font-bold text-slate-500">COMPLETADO: 85%</span>
+                        <div class="w-48 h-2 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden shadow-inner">
+                            <div class="h-full bg-primary rounded-full shadow-[0_0_10px_rgba(79,70,229,0.5)]"
+                                style="width: 85%;"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex items-center gap-1 border-b border-slate-200 dark:border-slate-800">
+                    <a class="nav-tab nav-tab-inactive" href="concepto.html">1. Concepto</a>
+                    <a class="nav-tab nav-tab-inactive" href="ejemplos.html">2. Ejemplos</a>
+                    <a class="nav-tab nav-tab-active" href="#">3. Laboratorio</a>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 gap-8">
+                <section class="glass-panel p-8 rounded-3xl border-l-[6px] border-l-primary relative overflow-hidden">
+                    <div class="absolute top-0 right-0 p-4 opacity-5">
+                        <span class="material-symbols-outlined text-9xl">experiment</span>
+                    </div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="material-symbols-outlined text-primary fill-1">assignment</span>
+                        <h3 class="text-xl font-bold text-slate-800 dark:text-slate-200">Enunciado del Desafío</h3>
+                    </div>
+                    <div class="relative z-10">
+                        <p class="text-lg text-slate-600 dark:text-slate-400 leading-relaxed font-light">
+                            Balancea la siguiente ecuación usando el método Redox:
+                            <span class="block text-2xl font-mono font-bold text-slate-900 dark:text-white mt-2">Cu +
+                                HNO₃ → Cu(NO₃)₂ + NO + H₂O</span>
+                        </p>
+                    </div>
+                </section>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <div class="lg:col-span-2 glass-panel p-8 rounded-3xl flex flex-col justify-center relative">
+
+                        <!-- ETAPA 1 -->
+                        <div id="etapa1">
+                            <div class="flex items-center justify-between mb-8">
+                                <h4 class="text-xs font-black uppercase tracking-[0.2em] text-slate-400">Etapa 1:
+                                    Números de Oxidación</h4>
+                                <span class="bg-primary/10 text-primary text-xs font-bold px-3 py-1 rounded-full">En
+                                    Progreso</span>
+                            </div>
+
+                            <div
+                                class="flex flex-wrap items-end justify-center gap-x-6 gap-y-12 text-2xl font-mono text-slate-800 dark:text-slate-200 py-6">
+                                <!-- Cu -->
+                                <div class="flex flex-col items-center">
+                                    <input type="text" id="ox_cu1" class="ox-input mb-1" placeholder="?" maxlength="2">
+                                    <span>Cu</span>
+                                </div>
+                                <span class="text-primary font-bold pb-1">+</span>
+
+                                <!-- HNO3 -->
+                                <div class="flex items-end">
+                                    <div class="flex flex-col items-center">
+                                        <input type="text" id="ox_h1" class="ox-input mb-1" placeholder="?"
+                                            maxlength="2">
+                                        <span>H</span>
+                                    </div>
+                                    <div class="flex flex-col items-center">
+                                        <input type="text" id="ox_n1" class="ox-input mb-1" placeholder="?"
+                                            maxlength="2">
+                                        <span>N</span>
+                                    </div>
+                                    <div class="flex flex-col items-center">
+                                        <input type="text" id="ox_o1" class="ox-input mb-1" placeholder="?"
+                                            maxlength="2">
+                                        <span>O₃</span>
+                                    </div>
+                                </div>
+
+                                <span class="text-primary font-bold mx-2 pb-1">→</span>
+
+                                <!-- Cu(NO3)2 -->
+                                <div class="flex items-end">
+                                    <div class="flex flex-col items-center">
+                                        <input type="text" id="ox_cu2" class="ox-input mb-1" placeholder="?"
+                                            maxlength="2">
+                                        <span>Cu(</span>
+                                    </div>
+                                    <div class="flex flex-col items-center">
+                                        <input type="text" id="ox_n2" class="ox-input mb-1" placeholder="?"
+                                            maxlength="2">
+                                        <span>N</span>
+                                    </div>
+                                    <div class="flex flex-col items-center">
+                                        <input type="text" id="ox_o2" class="ox-input mb-1" placeholder="?"
+                                            maxlength="2">
+                                        <span>O₃)₂</span>
+                                    </div>
+                                </div>
+                                <span class="text-primary font-bold pb-1">+</span>
+
+                                <!-- NO -->
+                                <div class="flex items-end">
+                                    <div class="flex flex-col items-center">
+                                        <input type="text" id="ox_n3" class="ox-input mb-1" placeholder="?"
+                                            maxlength="2">
+                                        <span>N</span>
+                                    </div>
+                                    <div class="flex flex-col items-center">
+                                        <input type="text" id="ox_o3" class="ox-input mb-1" placeholder="?"
+                                            maxlength="2">
+                                        <span>O</span>
+                                    </div>
+                                </div>
+                                <span class="text-primary font-bold pb-1">+</span>
+
+                                <!-- H2O -->
+                                <div class="flex items-end">
+                                    <div class="flex flex-col items-center">
+                                        <input type="text" id="ox_h2" class="ox-input mb-1" placeholder="?"
+                                            maxlength="2">
+                                        <span>H₂</span>
+                                    </div>
+                                    <div class="flex flex-col items-center">
+                                        <input type="text" id="ox_o4" class="ox-input mb-1" placeholder="?"
+                                            maxlength="2">
+                                        <span>O</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="flex justify-center mt-6">
+                                <button id="btn_etapa1" onclick="verificarEtapa1()"
+                                    class="bg-slate-200 text-slate-500 transition-all font-bold py-2 px-6 rounded-lg text-sm uppercase tracking-wider">Verificar</button>
+                                <button id="btn_pasar_etapa2" onclick="pasarEtapa2()"
+                                    class="hidden bg-primary text-white shadow-lg shadow-primary/30 transition-all hover:bg-primary/90 font-bold py-2 px-6 rounded-lg text-sm uppercase mr-2 flex items-center gap-2">Continuar
+                                    a Fase 2 <span
+                                        class="material-symbols-outlined text-sm">arrow_forward</span></button>
+                            </div>
+                        </div>
+
+                        <!-- ETAPA 2 -->
+                        <div id="etapa2" class="hidden">
+                            <div class="flex items-center justify-between mb-8">
+                                <h4 class="text-xs font-black uppercase tracking-[0.2em] text-slate-400">Etapa 2:
+                                    Balanceo Final (Redox + Tanteo)</h4>
+                                <span
+                                    class="bg-primary/10 text-primary text-xs font-bold px-3 py-1 rounded-full">Validando</span>
+                            </div>
+
+                            <div class="bg-primary/5 rounded-xl border border-primary/20 p-6 relative">
+                                <span
+                                    class="absolute top-2 left-4 text-xs font-bold text-primary opacity-50 uppercase">Semirreacciones
+                                    Evaluadas</span>
+                                <div class="font-mono text-lg space-y-2 mt-4 text-center">
+                                    <div>Cu<sup class="text-xs text-rose-500 font-bold">0</sup> &rarr; Cu<sup
+                                            class="text-xs text-rose-500 font-bold">+2</sup> + 2e⁻ <span
+                                            class="text-xs ml-4 text-slate-400">(x3)</span></div>
+                                    <div>N<sup class="text-xs text-emerald-500 font-bold">+5</sup> + 3e⁻ &rarr; N<sup
+                                            class="text-xs text-emerald-500 font-bold">+2</sup> <span
+                                            class="text-xs ml-4 text-slate-400">(x2)</span></div>
+                                </div>
+                            </div>
+
+                            <div
+                                class="flex flex-wrap items-center justify-center gap-4 text-2xl font-mono text-slate-800 dark:text-slate-200 mt-8 mb-4">
+                                <!-- Ecuación Final -->
+                                <div class="flex items-center gap-2">
+                                    <input type="number" id="c1" min="1" max="15" class="coef-input">
+                                    <span>Cu</span>
+                                </div>
+                                <span class="text-primary font-bold">+</span>
+                                <div class="flex items-center gap-2">
+                                    <input type="number" id="c2" min="1" max="15" class="coef-input">
+                                    <span>HNO₃</span>
+                                </div>
+                                <span class="text-primary font-bold mx-2">→</span>
+                                <div class="flex items-center gap-2">
+                                    <input type="number" id="c3" min="1" max="15" class="coef-input">
+                                    <span>Cu(NO₃)₂</span>
+                                </div>
+                                <span class="text-primary font-bold">+</span>
+                                <div class="flex items-center gap-2">
+                                    <input type="number" id="c4" min="1" max="15" class="coef-input">
+                                    <span>NO</span>
+                                </div>
+                                <span class="text-primary font-bold">+</span>
+                                <div class="flex items-center gap-2">
+                                    <input type="number" id="c5" min="1" max="15" class="coef-input">
+                                    <span>H₂O</span>
+                                </div>
+                            </div>
+
+                            <div id="feedback_msg"
+                                class="mt-8 flex items-center justify-center gap-2 text-slate-500 bg-slate-100 dark:bg-slate-800 p-3 rounded-lg border border-slate-200 dark:border-slate-700">
+                                <span class="material-symbols-outlined text-sm">info</span>
+                                <span class="text-sm font-bold uppercase tracking-wider">Ajusta los coeficientes y
+                                    verifica...</span>
+                            </div>
+
+                            <div class="flex justify-center mt-6">
+                                <button id="btn_etapa2" onclick="verificarEtapa2()"
+                                    class="bg-primary text-white shadow-lg shadow-primary/30 transition-all hover:bg-primary/90 font-bold py-3 px-8 rounded-xl text-lg uppercase tracking-wider flex items-center gap-2">
+                                    <span class="material-symbols-outlined">science</span> Confirmar Ecuación
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="glass-panel p-6 rounded-3xl bg-primary/5 border-primary/20 flex flex-col gap-3">
+                        <div class="flex items-center gap-2 text-primary">
+                            <span class="material-symbols-outlined fill-1">lightbulb</span>
+                            <h4 class="font-bold text-sm uppercase tracking-wider">Consejo Pedagógico</h4>
+                        </div>
+                        <p id="tip_text" class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed italic">
+                            "Recuerda las reglas básicas: los elementos libres son igual a <strong
+                                class="text-primary">0</strong>. El oxígeno generalmente trabaja con <strong
+                                class="text-primary">-2</strong> y el hidrógeno con <strong
+                                class="text-primary">+1</strong>."
+                        </p>
+                        <div class="mt-auto pt-4 border-t border-primary/10">
+                            <button
+                                class="text-[10px] font-black text-primary hover:underline uppercase tracking-widest">Ver
+                                tabla de valencias →</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <footer
+                class="mt-20 py-8 border-t border-slate-200 dark:border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4">
+                <div class="flex items-center gap-4 text-slate-400 text-sm">
+                    <span>© 2024 Química Interactiva</span>
+                    <span class="w-1 h-1 bg-slate-300 rounded-full"></span>
+                    <a class="hover:text-primary transition-colors" href="#">Guía de Uso</a>
+                </div>
+                <div class="flex gap-4">
+                    <div
+                        class="flex items-center gap-2 px-3 py-1 bg-slate-100 dark:bg-slate-800 rounded-full text-[10px] font-bold text-slate-500">
+                        <span class="size-2 bg-green-500 rounded-full"></span> ENGINE V2.4 ONLINE
+                    </div>
+                </div>
+            </footer>
+        </main>
+    </div>
+
+    <script>
+        // Lógica de Etapa 1
+        const inputsE1 = ['ox_cu1', 'ox_h1', 'ox_n1', 'ox_o1', 'ox_cu2', 'ox_n2', 'ox_o2', 'ox_n3', 'ox_o3', 'ox_h2', 'ox_o4'];
+
+        // Setup listener para cambiar color del boton verificar
+        inputsE1.forEach(id => {
+            document.getElementById(id).addEventListener('input', () => {
+                document.getElementById('btn_etapa1').className = "bg-primary text-white shadow-lg shadow-primary/30 transition-all hover:bg-primary/90 font-bold py-2 px-6 rounded-lg text-sm uppercase tracking-wider";
+            });
+        });
+
+        function verificarEtapa1() {
+            // Valores Esperados
+            const expected = {
+                ox_cu1: '0',
+                ox_h1: '+1', ox_n1: '+5', ox_o1: '-2', // HNO3
+                ox_cu2: '+2', ox_n2: '+5', ox_o2: '-2', // Cu(NO3)2
+                ox_n3: '+2', ox_o3: '-2', // NO
+                ox_h2: '+1', ox_o4: '-2' // H2O
+            };
+
+            let allCorrect = true;
+
+            inputsE1.forEach(id => {
+                const el = document.getElementById(id);
+                // Normalizar input (Aceptar 1 o +1, pero preferiblemente +1)
+                let val = el.value.trim();
+                if (val === '1' && expected[id] === '+1') val = '+1';
+                if (val === '2' && expected[id] === '+2') val = '+2';
+                if (val === '5' && expected[id] === '+5') val = '+5';
+
+                if (val === expected[id]) {
+                    el.classList.add('correct');
+                    el.disabled = true;
+                } else {
+                    el.classList.remove('correct');
+                    el.value = '';
+                    allCorrect = false;
+                }
+            });
+
+            if (allCorrect) {
+                document.getElementById('btn_etapa1').classList.add('hidden');
+                document.getElementById('btn_pasar_etapa2').classList.remove('hidden');
+            }
+        }
+
+        function pasarEtapa2() {
+            document.getElementById('etapa1').classList.add('hidden');
+            document.getElementById('etapa2').classList.remove('hidden');
+            document.getElementById('tip_text').innerHTML = '"Los coeficientes principales deben asegurar que se conserve todo. Fíjate en el Nitrógeno (N): una parte se vuelve <strong class="text-primary">+2</strong> pero otra se mantiene en el nitrato <strong class="text-primary">(NO₃)</strong>."';
+        }
+
+        function verificarEtapa2() {
+            const btn = document.getElementById('btn_etapa2');
+            const fbMsg = document.getElementById('feedback_msg');
+
+            const c1 = parseInt(document.getElementById('c1').value);
+            const c2 = parseInt(document.getElementById('c2').value);
+            const c3 = parseInt(document.getElementById('c3').value);
+            const c4 = parseInt(document.getElementById('c4').value);
+            const c5 = parseInt(document.getElementById('c5').value);
+
+            // Resuelto: 3Cu + 8HNO3 -> 3Cu(NO3)2 + 2NO + 4H2O
+            if (c1 === 3 && c2 === 8 && c3 === 3 && c4 === 2 && c5 === 4) {
+                fbMsg.className = "mt-8 flex items-center justify-center gap-2 text-green-600 bg-green-50 dark:bg-green-900/20 p-4 rounded-lg border border-green-200 dark:border-green-800 transition-all shadow-md";
+                fbMsg.innerHTML = '<span class="material-symbols-outlined text-xl">check_circle</span><span class="text-sm font-bold uppercase tracking-wider">¡ÉXITO! Ecuación balanceada correctamente con el método Redox.</span>';
+
+                // Efecto confeti css o resalte
+                document.querySelectorAll('.coef-input').forEach(el => {
+                    el.style.borderColor = '#10b981';
+                    el.style.color = '#10b981';
+                    el.style.backgroundColor = '#ecfdf5';
+                    el.disabled = true;
+                });
+                btn.classList.add('hidden');
+            } else {
+                fbMsg.className = "mt-8 flex items-center justify-center gap-2 text-accent bg-accent/5 p-4 rounded-lg border border-accent/20 transition-all";
+                let msg = 'Algunos coeficientes no cuadran.';
+
+                if (c1 !== 3 || c3 !== 3) {
+                    msg = 'Revisa los coeficientes sugeridos por la semirreacción para el Cobre (multiplicados por 3).';
+                } else if (c4 !== 2) {
+                    msg = 'Revisa los coeficientes sugeridos para el Nitrógeno que se redujo a NO (multiplicado por 2).';
+                } else if (c2 !== 8) {
+                    msg = 'Debes sumar TODOS los nitrógenos de los productos (los del nitrato + el gas NO) para ajustar el HNO3.';
+                } else if (c5 !== 4) {
+                    msg = 'Ajusta por tanteo el agua para balancear los Hidrógenos.';
+                }
+
+                fbMsg.innerHTML = '<span class="material-symbols-outlined text-xl">warning</span><span class="text-sm font-bold tracking-wide">' + msg + '</span>';
+            }
+        }
+    </script>
+</body>
+
+</html>

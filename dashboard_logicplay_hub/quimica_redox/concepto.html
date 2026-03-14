@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2c0fbd",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#131022",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+    <title>Química Conceptos Claros - Igualación por Método Redox</title>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 transition-colors duration-300">
+    <div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+        <div class="layout-container flex h-full grow flex-col">
+            <header
+                class="flex items-center justify-between whitespace-nowrap border-b border-solid border-primary/10 px-6 py-3 lg:px-40 bg-white dark:bg-background-dark/50 backdrop-blur-md sticky top-0 z-50">
+                <div class="flex items-center gap-4 text-primary">
+                    <div class="size-8 flex items-center justify-center bg-primary/10 rounded-lg">
+                        <span class="material-symbols-outlined text-primary">rocket_launch</span>
+                    </div>
+                    <h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight tracking-[-0.015em]">
+                        Química
+                        Conceptos Claros</h2>
+                </div>
+                <div class="flex items-center gap-4">
+                    <a href="../dashboard_logicplay_clasificaci_n_anonimizada/code.html"
+                        class="px-4 py-2 text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-primary transition-colors">
+                        Dashboard
+                    </a>
+                    <button
+                        class="px-4 py-2 text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-primary transition-colors">
+                        Biblioteca
+                    </button>
+                    <button
+                        class="flex items-center justify-center rounded-lg h-10 w-10 bg-primary/10 text-primary hover:bg-primary hover:text-white transition-all">
+                        <span class="material-symbols-outlined">person</span>
+                    </button>
+                </div>
+            </header>
+            <main class="flex flex-1 justify-center py-8">
+                <div class="layout-content-container flex flex-col max-w-[960px] flex-1 px-4 lg:px-0">
+                    <div class="flex flex-wrap justify-between items-end gap-3 mb-6">
+                        <div class="flex flex-col gap-1">
+                            <span class="text-primary font-bold text-sm uppercase tracking-wider">Estequiometría</span>
+                            <h1
+                                class="text-slate-900 dark:text-slate-100 tracking-tight text-4xl font-extrabold leading-tight">
+                                Igualación por Método Redox</h1>
+                        </div>
+                    </div>
+                    <div
+                        class="flex flex-col gap-3 p-6 bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-primary/5 mb-8">
+                        <div class="flex gap-6 justify-between items-center">
+                            <div class="flex items-center gap-2">
+                                <span class="material-symbols-outlined text-primary">auto_stories</span>
+                                <p class="text-slate-700 dark:text-slate-300 text-base font-medium leading-normal">4 de
+                                    6 lecciones
+                                    completadas</p>
+                            </div>
+                            <p class="text-primary text-sm font-bold leading-normal">65%</p>
+                        </div>
+                        <div class="rounded-full bg-primary/10 h-3 overflow-hidden">
+                            <div class="h-full rounded-full bg-primary" style="width: 65%;"></div>
+                        </div>
+                    </div>
+                    <div class="mb-8">
+                        <div class="flex border-b border-primary/10 px-0 justify-between">
+                            <a class="flex flex-col items-center justify-center border-b-[3px] border-b-primary text-primary pb-4 pt-4 flex-1 font-bold bg-primary/5"
+                                href="concepto.html">
+                                <div class="flex items-center gap-2">
+                                    <span class="text-sm">1. Concepto</span>
+                                </div>
+                            </a>
+                            <a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-slate-500 dark:text-slate-400 hover:text-primary pb-4 pt-4 flex-1 font-medium transition-all"
+                                href="../quimica_ejemplos_paso_a_paso/code.html">
+                                <div class="flex items-center gap-2">
+                                    <span class="text-sm">2. Ejemplos</span>
+                                </div>
+                            </a>
+                            <a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-slate-500 dark:text-slate-400 hover:text-primary pb-4 pt-4 flex-1 font-medium transition-all"
+                                href="../quimica_laboratorio/code.html">
+                                <div class="flex items-center gap-2">
+                                    <span class="text-sm">3. Laboratorio</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="space-y-8">
+                        <section class="bg-white dark:bg-slate-900 rounded-xl p-8 border border-primary/10 shadow-sm">
+                            <div class="flex items-center gap-3 mb-8">
+                                <div
+                                    class="bg-primary text-white w-10 h-10 rounded-lg flex items-center justify-center font-bold text-xl">
+                                    <span class="material-symbols-outlined">visibility</span>
+                                </div>
+                                <h2 class="text-slate-900 dark:text-slate-100 text-2xl font-bold tracking-tight">
+                                    Definición de Redox</h2>
+                            </div>
+                            <div
+                                class="relative w-full aspect-[16/9] bg-slate-50 dark:bg-slate-950 rounded-xl border border-dashed border-primary/20 flex flex-col items-center justify-center overflow-hidden mb-8 p-8 max-h-96">
+                                <div class="p-6 text-center">
+                                    <p
+                                        class="text-slate-700 dark:text-slate-300 text-xl leading-relaxed italic font-medium">
+                                        "La igualación por método de redox (reducción-oxidación) es una técnica química
+                                        utilizada para balancear ecuaciones donde ocurre una <strong>transferencia de
+                                            electrones</strong> entre los reactivos."
+                                    </p>
+                                </div>
+                                <div
+                                    class="mt-2 text-lg font-bold text-primary bg-primary/10 px-6 py-2 rounded-full border border-primary/20">
+                                    Concepto Visual de Transferencia
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div
+                                    class="p-6 bg-background-light dark:bg-background-dark rounded-xl border border-primary/10 hover:border-primary/30 transition-all flex flex-col justify-center">
+                                    <div class="flex items-center gap-3 mb-4">
+                                        <div
+                                            class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-bold">
+                                            1</div>
+                                        <h3 class="text-lg font-bold text-slate-900 dark:text-white">Conservación de
+                                            Masa</h3>
+                                    </div>
+                                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">
+                                        El número de átomos de cada elemento debe ser <strong>igual en ambos
+                                            lados</strong> de la ecuación para cumplir la ley de conservación de
+                                        Lavoisier.
+                                    </p>
+                                </div>
+                                <div
+                                    class="p-6 bg-background-light dark:bg-background-dark rounded-xl border border-primary/10 hover:border-primary/30 transition-all flex flex-col justify-center">
+                                    <div class="flex items-center gap-3 mb-4">
+                                        <div
+                                            class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-bold">
+                                            2</div>
+                                        <h3 class="text-lg font-bold text-slate-900 dark:text-white">Conservación de
+                                            Carga</h3>
+                                    </div>
+                                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">
+                                        La cantidad de electrones que <strong>pierde</strong> una especie química
+                                        (mediante oxidación) debe ser exactamente igual a la cantidad que
+                                        <strong>gana</strong> otra (reducción).
+                                    </p>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="bg-white dark:bg-slate-900 rounded-xl p-8 border border-primary/10 shadow-sm">
+                            <div class="flex items-center gap-3 mb-8">
+                                <div
+                                    class="bg-rose-500 text-white w-10 h-10 rounded-lg flex items-center justify-center font-bold text-xl">
+                                    <span class="material-symbols-outlined">bolt</span>
+                                </div>
+                                <h2 class="text-slate-900 dark:text-slate-100 text-2xl font-bold tracking-tight">
+                                    Conceptos Clave</h2>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                                <div
+                                    class="p-5 border border-slate-200 dark:border-slate-800 rounded-xl bg-slate-50 dark:bg-slate-950/50">
+                                    <h4
+                                        class="font-bold text-slate-800 dark:text-slate-200 mb-2 flex items-center gap-2">
+                                        <span
+                                            class="text-rose-500 text-xl material-symbols-outlined">arrow_upward</span>
+                                        Oxidación</h4>
+                                    <p class="text-sm text-slate-600 dark:text-slate-400">Pérdida de electrones. El
+                                        número de oxidación aumenta (se hace más positivo).</p>
+                                </div>
+                                <div
+                                    class="p-5 border border-slate-200 dark:border-slate-800 rounded-xl bg-slate-50 dark:bg-slate-950/50">
+                                    <h4
+                                        class="font-bold text-slate-800 dark:text-slate-200 mb-2 flex items-center gap-2">
+                                        <span
+                                            class="text-emerald-500 text-xl material-symbols-outlined">arrow_downward</span>
+                                        Reducción</h4>
+                                    <p class="text-sm text-slate-600 dark:text-slate-400">Ganancia de electrones. El
+                                        número de oxidación disminuye (se hace más negativo).</p>
+                                </div>
+                                <div
+                                    class="p-5 border border-slate-200 dark:border-slate-800 rounded-xl bg-slate-50 dark:bg-slate-950/50">
+                                    <h4
+                                        class="font-bold text-slate-800 dark:text-slate-200 mb-2 flex items-center gap-2">
+                                        <span class="text-primary text-xl material-symbols-outlined">recycling</span>
+                                        Agente Oxidante</h4>
+                                    <p class="text-sm text-slate-600 dark:text-slate-400">Es la sustancia que provoca la
+                                        oxidación de otra y ella misma se reduce aceptando electrones.</p>
+                                </div>
+                                <div
+                                    class="p-5 border border-slate-200 dark:border-slate-800 rounded-xl bg-slate-50 dark:bg-slate-950/50">
+                                    <h4
+                                        class="font-bold text-slate-800 dark:text-slate-200 mb-2 flex items-center gap-2">
+                                        <span
+                                            class="text-amber-500 text-xl material-symbols-outlined">electric_bolt</span>
+                                        Agente Reductor</h4>
+                                    <p class="text-sm text-slate-600 dark:text-slate-400">Sustancia que reduce a otra
+                                        donando electrones, y por tanto, ella misma se oxida.</p>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="bg-primary/5 rounded-xl p-8 border border-primary/20">
+                            <div class="flex items-start gap-4">
+                                <span class="material-symbols-outlined text-primary text-3xl">gavel</span>
+                                <div class="w-full">
+                                    <h3 class="text-primary font-bold text-lg mb-4">Reglas de Asignación de Estados de
+                                        Oxidación</h3>
+                                    <ul
+                                        class="text-slate-700 dark:text-slate-300 leading-relaxed text-sm grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <li
+                                            class="flex items-start gap-2 bg-white dark:bg-slate-800 p-3 rounded-lg border border-primary/10">
+                                            <span
+                                                class="material-symbols-outlined text-primary text-sm mt-0.5">check_circle</span>
+                                            Elementos libres (sin combinarse) siempre tienen número de oxidación 0.
+                                        </li>
+                                        <li
+                                            class="flex items-start gap-2 bg-white dark:bg-slate-800 p-3 rounded-lg border border-primary/10">
+                                            <span
+                                                class="material-symbols-outlined text-primary text-sm mt-0.5">check_circle</span>
+                                            El Oxígeno (O) generalmente trabaja con -2 (excepto en peróxidos).
+                                        </li>
+                                        <li
+                                            class="flex items-start gap-2 bg-white dark:bg-slate-800 p-3 rounded-lg border border-primary/10">
+                                            <span
+                                                class="material-symbols-outlined text-primary text-sm mt-0.5">check_circle</span>
+                                            El Hidrógeno (H) generalmente trabaja con +1 (excepto hidruros metálicos).
+                                        </li>
+                                        <li
+                                            class="flex items-start gap-2 bg-white dark:bg-slate-800 p-3 rounded-lg border border-primary/10">
+                                            <span
+                                                class="material-symbols-outlined text-primary text-sm mt-0.5">check_circle</span>
+                                            La suma total de todas las cargas en un compuesto neutro debe ser
+                                            obligatoriamente 0.
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section
+                            class="bg-white dark:bg-slate-900 rounded-xl p-8 border border-primary/10 shadow-sm mt-8">
+                            <div class="flex items-center gap-3 mb-6">
+                                <div
+                                    class="bg-emerald-500 text-white w-10 h-10 rounded-lg flex items-center justify-center font-bold text-xl">
+                                    <span class="material-symbols-outlined">format_list_numbered</span>
+                                </div>
+                                <h2 class="text-slate-900 dark:text-slate-100 text-2xl font-bold tracking-tight">Pasos
+                                    del Método Redox</h2>
+                            </div>
+                            <div class="space-y-4">
+                                <div
+                                    class="flex gap-4 p-4 border border-slate-100 dark:border-slate-800 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                                    <div class="font-bold text-primary text-xl">1</div>
+                                    <div>
+                                        <h4 class="font-bold text-slate-800 dark:text-slate-200">Identificar cambios
+                                        </h4>
+                                        <p class="text-sm text-slate-600 dark:text-slate-400">Localizar qué elementos
+                                            cambiaron sus números de oxidación de reactivos a productos.</p>
+                                    </div>
+                                </div>
+                                <div
+                                    class="flex gap-4 p-4 border border-slate-100 dark:border-slate-800 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                                    <div class="font-bold text-primary text-xl">2</div>
+                                    <div>
+                                        <h4 class="font-bold text-slate-800 dark:text-slate-200">Plantear
+                                            semirreacciones</h4>
+                                        <p class="text-sm text-slate-600 dark:text-slate-400">Escribir dos reacciones
+                                            separadas (una de oxidación y otra de reducción) indicando los electrones
+                                            involucrados e intercambiados.</p>
+                                    </div>
+                                </div>
+                                <div
+                                    class="flex gap-4 p-4 border border-slate-100 dark:border-slate-800 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                                    <div class="font-bold text-primary text-xl">3</div>
+                                    <div>
+                                        <h4 class="font-bold text-slate-800 dark:text-slate-200">Igualar electrones
+                                            transferidos</h4>
+                                        <p class="text-sm text-slate-600 dark:text-slate-400">El número de electrones
+                                            perdidos obligatoriamente debe ser igual al número de electrones ganados.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div
+                                    class="flex gap-4 p-4 border border-slate-100 dark:border-slate-800 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                                    <div class="font-bold text-primary text-xl">4</div>
+                                    <div>
+                                        <h4 class="font-bold text-slate-800 dark:text-slate-200">Cruzar coeficientes
+                                        </h4>
+                                        <p class="text-sm text-slate-600 dark:text-slate-400">Multiplicar cada
+                                            semirreacción por el número total de electrones de la opuesta para poder
+                                            cancelar los electrones al sumar ambas.</p>
+                                    </div>
+                                </div>
+                                <div
+                                    class="flex gap-4 p-4 border border-slate-100 dark:border-slate-800 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                                    <div class="font-bold text-primary text-xl">5</div>
+                                    <div>
+                                        <h4 class="font-bold text-slate-800 dark:text-slate-200">Transferir los
+                                            coeficientes</h4>
+                                        <p class="text-sm text-slate-600 dark:text-slate-400">Colocar los números
+                                            obtenidos como subíndices o coeficientes principales en tu ecuación química
+                                            global.</p>
+                                    </div>
+                                </div>
+                                <div
+                                    class="flex gap-4 p-4 border border-slate-100 dark:border-slate-800 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                                    <div class="font-bold text-primary text-xl">6</div>
+                                    <div>
+                                        <h4 class="font-bold text-slate-800 dark:text-slate-200">Balanceo final por
+                                            tanteo</h4>
+                                        <p class="text-sm text-slate-600 dark:text-slate-400">Ajustar aquellos elementos
+                                            estables (como $H$ e $O$) siguiendo este orden estricto: <span
+                                                class="font-bold text-emerald-600 dark:text-emerald-400">No Metales →
+                                                Metales → Hidrógeno → Oxígeno</span>.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                    <div
+                        class="mt-12 mb-20 flex justify-between items-center bg-white dark:bg-slate-900 p-6 rounded-xl border border-primary/10">
+                        <button class="flex items-center gap-2 text-slate-400 cursor-not-allowed font-bold" disabled="">
+                            <span class="material-symbols-outlined">arrow_back</span>
+                            Inicio
+                        </button>
+                        <a href="../quimica_ejemplos_paso_a_paso/code.html"
+                            class="flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-lg font-bold hover:bg-primary/90 transition-all shadow-lg shadow-primary/20">
+                            Siguiente: Ejemplos
+                            <span class="material-symbols-outlined">arrow_forward</span>
+                        </a>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+</body>
+
+</html>
