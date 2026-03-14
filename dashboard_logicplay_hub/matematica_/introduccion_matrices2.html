@@ -2,58 +2,124 @@
 <html lang="es">
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600;800;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
-    <title>Introducción 2 - LogiPlay</title>
+    <title>LogiPlay - Introducción a Matrices</title>
+    <style>
+        :root {
+            --accent: #6366f1;
+            --slate-950: #020617;
+        }
+
+        body { 
+            font-family: 'Lexend', sans-serif; 
+            background: var(--slate-950); 
+            color: #f8fafc;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .tech-grid {
+            position: fixed;
+            inset: 0;
+            background-image: 
+                linear-gradient(to right, rgba(99, 102, 241, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(99, 102, 241, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: -1;
+        }
+
+        .matrix-display {
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            backdrop-filter: blur(12px);
+            border-radius: 2rem;
+            position: relative;
+            padding: 3rem;
+        }
+
+        .matrix-display::before, .matrix-display::after {
+            content: '';
+            position: absolute;
+            top: 15px;
+            bottom: 15px;
+            width: 15px;
+            border: 5px solid var(--accent);
+        }
+        .matrix-display::before { left: 15px; border-right: 0; border-radius: 1.5rem 0 0 1.5rem; }
+        .matrix-display::after { right: 15px; border-left: 0; border-radius: 0 1.5rem 1.5rem 0; }
+
+        .concept-card {
+            background: rgba(30, 41, 59, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 1.5rem;
+        }
+    </style>
 </head>
-<body class="bg-slate-50 min-h-screen p-6 font-['Lexend'] text-slate-800">
-    <div class="max-w-4xl mx-auto">
-        <div class="bg-white p-10 rounded-3xl shadow-xl border border-indigo-100 mb-8">
-            <span class="text-indigo-600 font-bold uppercase tracking-widest text-sm">Módulo 01 - Parte 2</span>
-            <h1 class="text-4xl font-black text-slate-900 mb-6">Tipos de Matrices Especiales</h1>
-            
-            <p class="mb-8 text-slate-600">Antes de calcular determinantes, debemos conocer a las protagonistas del álgebra:</p>
+<body class="p-8">
+    <div class="tech-grid"></div>
 
-            <div class="grid md:grid-cols-2 gap-4 mb-10">
-                <div class="p-6 bg-emerald-50 rounded-2xl border-2 border-emerald-100">
-                    <h3 class="font-bold text-emerald-800 flex items-center gap-2 mb-2">
-                        <span class="material-symbols-outlined">grid_view</span> Matriz Cuadrada
-                    </h3>
-                    <p class="text-sm">Tiene el mismo número de filas y columnas (Ej: 3x3). Es la única donde funciona Sarrus.</p>
-                </div>
-                <div class="p-6 bg-blue-50 rounded-2xl border-2 border-blue-100">
-                    <h3 class="font-bold text-blue-800 flex items-center gap-2 mb-2">
-                        <span class="material-symbols-outlined">filter_tilt_shift</span> Matriz Identidad
-                    </h3>
-                    <p class="text-sm">Es el "1" de las matrices. Tiene 1s en la diagonal y 0s en todo lo demás.</p>
-                </div>
-            </div>
+    <header class="max-w-6xl mx-auto mb-16">
+        <div class="flex items-center gap-2 text-indigo-400 mb-2">
+            <span class="material-symbols-outlined text-sm">grid_view</span>
+            <span class="text-[10px] font-black uppercase tracking-[0.4em]">Linear Algebra Core</span>
+        </div>
+        <h1 class="text-6xl font-black italic tracking-tighter">MATRICES <span class="text-indigo-500">I</span></h1>
+        <p class="text-slate-400 text-lg">Fundamentos y Estructura Esencial.</p>
+    </header>
 
-            <div class="bg-slate-900 p-8 rounded-3xl text-white">
-                <h3 class="text-xl font-bold mb-6 text-emerald-400">Desafío: Suma de Matrices</h3>
-                <p class="mb-4">Para sumar matrices, sumas el número que está en la misma posición. Calcula:</p>
-                <div class="flex items-center justify-center gap-4 font-mono text-2xl mb-8">
-                    <span>[ 1 2 ] + [ 0 1 ] =</span>
-                    <div class="grid grid-cols-2 gap-2">
-                        <input id="s1" type="number" class="w-12 h-12 rounded text-slate-900 text-center font-bold">
-                        <input id="s2" type="number" class="w-12 h-12 rounded text-slate-900 text-center font-bold">
+    <main class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+        
+        <div class="space-y-8">
+            <section>
+                <h2 class="text-3xl font-bold mb-4">¿Qué es una Matriz?</h2>
+                <p class="text-slate-400 leading-relaxed text-lg">
+                    Es un arreglo rectangular de números organizados en <span class="text-indigo-400 font-bold">Filas</span> y <span class="text-emerald-400 font-bold">Columnas</span>. Se utilizan para representar datos, resolver sistemas de ecuaciones y transformar gráficos en 3D.
+                </p>
+            </section>
+
+            <div class="grid grid-cols-1 gap-4">
+                <div class="concept-card">
+                    <div class="flex items-center gap-3 mb-2">
+                        <span class="material-symbols-outlined text-indigo-400">straighten</span>
+                        <h4 class="font-black text-xs uppercase tracking-widest">Dimensión (m x n)</h4>
                     </div>
+                    <p class="text-sm text-slate-400">El tamaño se indica siempre como <strong>Filas × Columnas</strong>.</p>
                 </div>
-                <button onclick="checkSum()" class="w-full bg-indigo-600 py-3 rounded-xl font-bold hover:bg-indigo-500 transition-all">Verificar Suma</button>
-                <p id="fbSum" class="mt-4 text-center font-bold"></p>
             </div>
         </div>
 
-        <div class="flex justify-between">
-            <a href="introduccion.html" class="flex items-center gap-2 font-bold text-slate-400"><span class="material-symbols-outlined">arrow_back</span> Introducción 1</a>
-            <a href="../matematica_1/sarrus.html" class="bg-indigo-600 text-white px-10 py-4 rounded-2xl font-bold flex items-center gap-2 shadow-lg hover:scale-105 transition-all">Siguiente: Sarrus <span class="material-symbols-outlined">arrow_forward</span></a>
+        <div class="flex flex-col items-center">
+            <div class="matrix-display mb-12">
+                <div class="grid grid-cols-3 gap-8">
+                    <div class="text-3xl font-black text-white">1</div>
+                    <div class="text-3xl font-black text-white">0</div>
+                    <div class="text-3xl font-black text-white">5</div>
+                    <div class="text-3xl font-black text-white">2</div>
+                    <div class="text-3xl font-black text-white">3</div>
+                    <div class="text-3xl font-black text-white">1</div>
+                </div>
+            </div>
+
+            <a href="introduccion_matrices2.html" class="w-full max-w-sm bg-indigo-600 hover:bg-indigo-500 text-white py-6 rounded-3xl font-black text-xl tracking-widest transition-all shadow-xl shadow-indigo-500/20 flex items-center justify-center gap-4 group">
+                SIGUIENTE NIVEL
+                <span class="material-symbols-outlined group-hover:translate-x-2 transition-transform">arrow_forward</span>
+            </a>
+
+            <p class="text-[10px] font-black uppercase tracking-[0.4em] text-slate-600 mt-6 text-center">
+                Presiona para continuar a la fase 2
+            </p>
         </div>
-    </div>
-    <script>
-        function checkSum() {
-            const v1 = document.getElementById('s1').value;
-            const v2 = document.getElementById('s2').value;
+    </main>
+
+    <footer class="max-w-6xl mx-auto mt-32 p-10 border-t border-white/5 text-center">
+        <p class="text-[9px] font-black text-slate-700 uppercase tracking-[1em]">LogiPlay Core // Introducción</p>
+    </footer>
+</body>
+</html>
             const f = document.getElementById('fbSum');
             if(v1 == 1 && v2 == 3) { f.innerText = "✅ ¡Perfecto! Dominas la posición de los elementos."; f.className="mt-4 text-center text-emerald-400"; }
             else { f.innerText = "❌ Intenta sumar (1+0) y (2+1)."; f.className="text-rose-400 mt-4 text-center"; }
