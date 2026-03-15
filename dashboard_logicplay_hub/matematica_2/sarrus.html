@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    <title>LogiPlay - Master en Sarrus</title>
+    <style>
+        body { font-family: 'Lexend', sans-serif; background: #fdfeff; }
+        
+        /* Animación de entrada para los elementos */
+        .reveal { animation: fadeInUp 0.6s ease-out forwards; opacity: 0; }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Estilo de la matriz expandida */
+        .matrix-expanded {
+            display: inline-grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            padding: 25px;
+            background: #1e293b;
+            border-radius: 2rem;
+            position: relative;
+        }
+        .row-ghost { opacity: 0.4; font-style: italic; }
+        
+        /* Líneas de diagonales (decorativas) */
+        .diagonal-up { color: #10b981; text-decoration: underline; }
+        .diagonal-down { color: #f43f5e; text-decoration: underline; }
+
+        /* Contenedor de retos */
+        .challenge-box {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .challenge-box:hover {
+            transform: scale(1.02);
+            box-shadow: 0 20px 40px -15px rgba(99, 102, 241, 0.2);
+        }
+
+        /* Scrollbar personalizada */
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #6366f1; border-radius: 5px; }
+    </style>
+</head>
+<body class="p-4 md:p-10">
+
+    <div class="fixed top-0 left-0 w-full h-2 bg-slate-100 z-50">
+        <div class="h-full bg-indigo-600 shadow-[0_0_15px_rgba(99,102,241,0.6)]" style="width: 75%"></div>
+    </div>
+
+    <div class="max-w-5xl mx-auto">
+        
+        <header class="reveal mb-12 text-center" style="animation-delay: 0.1s">
+            <div class="inline-block bg-indigo-100 text-indigo-700 px-6 py-2 rounded-full font-black text-xs uppercase tracking-[0.3em] mb-4">
+                Nivel 03: Dominio de Determinantes
+            </div>
+            <h1 class="text-6xl font-black text-slate-900 tracking-tighter mb-4">
+                La Regla de <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-emerald-500">Sarrus</span>
+            </h1>
+            <p class="text-slate-500 text-xl font-light">El "superpoder" visual para resolver matrices de 3x3 en segundos.</p>
+        </header>
+
+        <section class="reveal grid lg:grid-cols-2 gap-10 mb-16" style="animation-delay: 0.2s">
+            <div class="bg-white p-10 rounded-[3rem] shadow-xl border border-slate-100">
+                <h2 class="text-3xl font-black text-slate-800 mb-6 flex items-center gap-3">
+                    <span class="material-symbols-outlined text-indigo-600">visibility</span>
+                    ¿Cómo funciona?
+                </h2>
+                <div class="space-y-6 text-slate-600 leading-relaxed">
+                    <p>
+                        Calcular un determinante de 3x3 puede ser un caos, pero Pierre Frédéric Sarrus ideó un truco: **La Extensión de Filas**.
+                    </p>
+                    <ul class="space-y-4">
+                        <li class="flex gap-3">
+                            <span class="font-black text-indigo-600">01.</span>
+                            <span>Escribe tu matriz de 3x3 normal.</span>
+                        </li>
+                        <li class="flex gap-3">
+                            <span class="font-black text-indigo-600">02.</span>
+                            <span>Copia las <b>dos primeras filas</b> y pégalas justo debajo.</span>
+                        </li>
+                        <li class="flex gap-3">
+                            <span class="font-black text-indigo-600">03.</span>
+                            <span>Traza 3 diagonales hacia abajo (multiplica y suma).</span>
+                        </li>
+                        <li class="flex gap-3">
+                            <span class="font-black text-indigo-600">04.</span>
+                            <span>Traza 3 diagonales hacia arriba (multiplica y resta).</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="bg-slate-900 rounded-[3rem] p-12 text-white flex flex-col items-center justify-center shadow-2xl relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
+                    <div class="grid grid-cols-6 h-full w-full border border-white/20"></div>
+                </div>
+                
+                <div class="font-mono text-2xl md:text-3xl space-y-2 text-center">
+                    <div class="grid grid-cols-3 gap-8 text-emerald-400"><span>a1</span> <span>b1</span> <span>c1</span></div>
+                    <div class="grid grid-cols-3 gap-8 text-emerald-400"><span>a2</span> <span>b2</span> <span>c2</span></div>
+                    <div class="grid grid-cols-3 gap-8 text-emerald-400"><span>a3</span> <span>b3</span> <span>c3</span></div>
+                    <div class="h-[1px] bg-white/20 my-4"></div>
+                    <div class="grid grid-cols-3 gap-8 text-white/30 italic"><span>a1</span> <span>b1</span> <span>c1</span></div>
+                    <div class="grid grid-cols-3 gap-8 text-white/30 italic"><span>a2</span> <span>b2</span> <span>c2</span></div>
+                </div>
+                <p class="mt-8 text-[10px] uppercase tracking-widest font-black text-slate-500">Esquema de Repetición</p>
+            </div>
+        </section>
+
+        <section class="reveal bg-indigo-600 rounded-[4rem] p-10 md:p-16 text-white mb-16 shadow-2xl relative overflow-hidden" style="animation-delay: 0.3s">
+            <div class="absolute -right-20 -top-20 w-80 h-80 bg-white/10 rounded-full blur-3xl"></div>
+            
+            <h3 class="text-4xl font-black mb-10 italic">Resolución Paso a Paso</h3>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white/10 backdrop-blur-md p-8 rounded-[2.5rem] border border-white/20">
+                    <span class="text-4xl font-black opacity-30 block mb-4">01</span>
+                    <h4 class="font-black text-xl mb-4">Positivas (+)</h4>
+                    <p class="text-sm text-indigo-100 mb-6">Multiplicamos las diagonales que bajan de izquierda a derecha.</p>
+                    <div class="bg-slate-900/50 p-4 rounded-xl font-mono text-xs text-emerald-400">
+                        (3·2·1) + (0·0·1) + (1·2·2) = 10
+                    </div>
+                </div>
+
+                <div class="bg-white/10 backdrop-blur-md p-8 rounded-[2.5rem] border border-white/20">
+                    <span class="text-4xl font-black opacity-30 block mb-4">02</span>
+                    <h4 class="font-black text-xl mb-4">Negativas (-)</h4>
+                    <p class="text-sm text-indigo-100 mb-6">Multiplicamos las diagonales que suben de izquierda a derecha.</p>
+                    <div class="bg-slate-900/50 p-4 rounded-xl font-mono text-xs text-rose-400">
+                        (1·2·1) + (2·0·3) + (1·2·0) = 2
+                    </div>
+                </div>
+
+                <div class="bg-emerald-500 p-8 rounded-[2.5rem] shadow-xl flex flex-col justify-center text-center">
+                    <span class="material-symbols-outlined text-5xl mb-4">calculate</span>
+                    <h4 class="font-black text-2xl mb-2">Resultado</h4>
+                    <div class="text-4xl font-black">8</div>
+                    <p class="text-[10px] mt-4 uppercase font-bold opacity-80">10 (Pos) - 2 (Neg)</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="reveal mb-20" style="animation-delay: 0.4s">
+            <h3 class="text-4xl font-black text-slate-900 mb-10 text-center">Gimnasio de <span class="italic text-indigo-600">Cerebros</span></h3>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="challenge-box bg-white p-8 rounded-[3rem] border border-slate-200 shadow-lg">
+                    <div class="flex justify-between items-start mb-6">
+                        <span class="bg-emerald-100 text-emerald-600 px-4 py-1 rounded-full text-[10px] font-black italic">DIFICULTAD: FÁCIL</span>
+                        <span class="material-symbols-outlined text-slate-300">workspace_premium</span>
+                    </div>
+                    <h4 class="text-xl font-black text-slate-800 mb-4 uppercase">La Identidad 3x3</h4>
+                    <p class="text-slate-500 text-sm mb-6">Calcula el determinante de la matriz identidad. Pista: La mayoría de las diagonales tendrán ceros.</p>
+                    
+                    <div class="bg-slate-50 p-6 rounded-2xl font-mono text-xl text-center mb-6 tracking-widest border border-slate-100">
+                        | 1 &nbsp; 0 &nbsp; 0 |<br>| 0 &nbsp; 1 &nbsp; 0 |<br>| 0 &nbsp; 0 &nbsp; 1 |
+                    </div>
+                    
+                    <div class="flex gap-2">
+                        <input id="ans1" type="number" placeholder="?" class="w-full p-4 rounded-2xl border-2 border-slate-100 focus:border-indigo-500 outline-none font-bold text-center">
+                        <button onclick="check(1, 1)" class="bg-slate-900 text-white px-6 rounded-2xl font-black hover:bg-indigo-600 transition-colors">OK</button>
+                    </div>
+                    <p id="fb1" class="mt-4 text-xs font-black uppercase text-center min-h-[16px]"></p>
+                </div>
+
+                <div class="challenge-box bg-white p-8 rounded-[3rem] border border-slate-200 shadow-lg">
+                    <div class="flex justify-between items-start mb-6">
+                        <span class="bg-orange-100 text-orange-600 px-4 py-1 rounded-full text-[10px] font-black italic">DIFICULTAD: MEDIA</span>
+                        <span class="material-symbols-outlined text-slate-300">Military_tech</span>
+                    </div>
+                    <h4 class="text-xl font-black text-slate-800 mb-4 uppercase">Matriz Escalar</h4>
+                    <p class="text-slate-500 text-sm mb-6">¿Qué pasa si la diagonal tiene otros números? Calcula el determinante de esta matriz:</p>
+                    
+                    <div class="bg-slate-50 p-6 rounded-2xl font-mono text-xl text-center mb-6 tracking-widest border border-slate-100 text-indigo-600">
+                        | 2 &nbsp; 0 &nbsp; 0 |<br>| 0 &nbsp; 2 &nbsp; 0 |<br>| 0 &nbsp; 0 &nbsp; 2 |
+                    </div>
+                    
+                    <div class="flex gap-2">
+                        <input id="ans2" type="number" placeholder="?" class="w-full p-4 rounded-2xl border-2 border-slate-100 focus:border-indigo-500 outline-none font-bold text-center">
+                        <button onclick="check(2, 8)" class="bg-slate-900 text-white px-6 rounded-2xl font-black hover:bg-indigo-600 transition-colors">OK</button>
+                    </div>
+                    <p id="fb2" class="mt-4 text-xs font-black uppercase text-center min-h-[16px]"></p>
+                </div>
+            </div>
+        </section>
+
+        <footer class="reveal flex flex-col md:flex-row justify-between items-center gap-8 py-10 border-t border-slate-200" style="animation-delay: 0.5s">
+            <a href="../matematica_introduccion/introduccion2.html" class="group flex items-center gap-4 text-slate-400 hover:text-indigo-600 transition-all">
+                <div class="w-12 h-12 rounded-full border border-slate-200 flex items-center justify-center group-hover:border-indigo-600 transition-colors">
+                    <span class="material-symbols-outlined">arrow_back</span>
+                </div>
+                <div>
+                    <span class="block text-[10px] font-black uppercase tracking-widest">Anterior</span>
+                    <span class="font-bold">Introducción 2</span>
+                </div>
+            </a>
+
+            <div class="flex items-center gap-6">
+                <div class="text-right hidden md:block">
+                    <span class="block text-[10px] font-black text-slate-400 uppercase tracking-widest">Siguiente Módulo</span>
+                    <span class="font-bold text-slate-900">Propiedades Determinantes</span>
+                </div>
+                <a href="sarrus2.html" class="bg-indigo-600 text-white px-12 py-5 rounded-[2rem] font-black text-lg flex items-center gap-3 shadow-2xl shadow-indigo-200 hover:bg-indigo-700 hover:-translate-y-1 transition-all">
+                    CONTINUAR <span class="material-symbols-outlined">bolt</span>
+                </a>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        /**
+         * Función genérica para validar retos
+         * @param {number} id - ID del reto
+         * @param {number} correct - Resultado esperado
+         */
+        function check(id, correct) {
+            const input = document.getElementById('ans' + id);
+            const feedback = document.getElementById('fb' + id);
+            const val = parseInt(input.value);
+
+            if (val === correct) {
+                feedback.innerText = "✨ ¡Brillante! Respuesta correcta.";
+                feedback.className = "mt-4 text-xs font-black uppercase text-center text-emerald-500 animate-bounce";
+                input.classList.add('border-emerald-500');
+                input.classList.remove('border-rose-500');
+            } else {
+                feedback.innerText = "❌ Inténtalo de nuevo. Revisa las multiplicaciones.";
+                feedback.className = "mt-4 text-xs font-black uppercase text-center text-rose-500";
+                input.classList.add('border-rose-500');
+                
+                // Efecto de vibración
+                input.animate([
+                    { transform: 'translateX(-5px)' },
+                    { transform: 'translateX(5px)' }
+                ], { duration: 100, iterations: 3 });
+            }
+        }
+
+        // Script para detectar el scroll y animar la barra de progreso
+        window.onscroll = function() {
+            let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            let scrolled = (winScroll / height) * 100;
+            // Podrías actualizar dinámicamente un elemento si quisieras
+        };
+    </script>
+</body>
+</html>
