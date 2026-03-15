@@ -127,31 +127,31 @@
                         <div
                             class="flex flex-wrap items-center justify-center gap-4 text-3xl font-mono text-slate-800 dark:text-slate-200">
                             <div class="flex flex-col items-center">
-                                <input type="number" min="1" max="9" value="1"
-                                    class="w-16 h-12 text-center text-2xl font-bold bg-white dark:bg-slate-800 border-2 border-primary/40 rounded-lg focus:ring-0 focus:border-primary text-primary transition-all mb-2" />
+                                <input type="number" min="1" max="9" value="1" id="coef_ch4"
+                                    class="coef-input-val w-16 h-12 text-center text-2xl font-bold bg-white dark:bg-slate-800 border-2 border-primary/40 rounded-lg focus:ring-0 focus:border-primary text-primary transition-all mb-2" />
                                 <span>CH₄</span>
                             </div>
                             <span class="text-primary font-bold">+</span>
                             <div class="flex flex-col items-center">
-                                <input type="number" min="1" max="9" value="1"
-                                    class="w-16 h-12 text-center text-2xl font-bold bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 rounded-lg focus:ring-0 focus:border-primary transition-all mb-2" />
+                                <input type="number" min="1" max="9" value="1" id="coef_o2"
+                                    class="coef-input-val w-16 h-12 text-center text-2xl font-bold bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 rounded-lg focus:ring-0 focus:border-primary transition-all mb-2" />
                                 <span>O₂</span>
                             </div>
                             <span class="text-primary font-bold mx-4">→</span>
                             <div class="flex flex-col items-center">
-                                <input type="number" min="1" max="9" value="1"
-                                    class="w-16 h-12 text-center text-2xl font-bold bg-white dark:bg-slate-800 border-2 border-primary/40 rounded-lg focus:ring-0 focus:border-primary text-primary transition-all mb-2" />
+                                <input type="number" min="1" max="9" value="1" id="coef_co2"
+                                    class="coef-input-val w-16 h-12 text-center text-2xl font-bold bg-white dark:bg-slate-800 border-2 border-primary/40 rounded-lg focus:ring-0 focus:border-primary text-primary transition-all mb-2" />
                                 <span>CO₂</span>
                             </div>
                             <span class="text-primary font-bold">+</span>
                             <div class="flex flex-col items-center">
-                                <input type="number" min="1" max="9" value="1"
-                                    class="w-16 h-12 text-center text-2xl font-bold bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 rounded-lg focus:ring-0 focus:border-primary transition-all mb-2" />
+                                <input type="number" min="1" max="9" value="1" id="coef_h2o"
+                                    class="coef-input-val w-16 h-12 text-center text-2xl font-bold bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 rounded-lg focus:ring-0 focus:border-primary transition-all mb-2" />
                                 <span>H₂O</span>
                             </div>
                         </div>
-                        <div
-                            class="mt-8 flex items-center justify-center gap-2 text-accent bg-accent/5 p-3 rounded-lg border border-accent/20">
+                        <div id="balance_status"
+                            class="mt-8 flex items-center justify-center gap-2 text-accent bg-accent/5 p-3 rounded-lg border border-accent/20 transition-all">
                             <span class="material-symbols-outlined text-xl">scale</span>
                             <span class="text-sm font-bold uppercase tracking-wider">Ecuación No Balanceada</span>
                         </div>
@@ -176,62 +176,53 @@
                     class="glass-panel p-8 rounded-3xl relative overflow-hidden flex flex-col items-center justify-center min-h-[300px]">
                     <h3 class="text-xl font-bold text-slate-800 dark:text-slate-200 mb-8 w-full text-center">Balanza
                         de Átomos</h3>
-                    <div class="flex items-end justify-center gap-8 w-full max-w-2xl px-4">
-                        <div class="flex flex-col items-center w-full">
+                    <div class="flex items-end justify-center gap-6 w-full max-w-2xl px-4 min-h-[220px]">
+                        <!-- Left Pan -->
+                        <div class="flex flex-col items-center w-full justify-end relative z-10" id="reactivos_pan"
+                            style="transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); margin-bottom: 25px;">
                             <div
-                                class="bg-slate-100 dark:bg-slate-800 rounded-xl p-4 w-full shadow-inner border border-slate-200 dark:border-slate-700 mb-4 min-h-[120px] flex flex-col justify-end relative">
-                                <div class="flex justify-center gap-2 flex-wrap mb-2">
-                                    <div class="size-6 rounded-full bg-slate-800 flex items-center justify-center text-white text-[10px] font-bold"
-                                        title="Carbono">C</div>
-                                    <div class="size-6 rounded-full bg-slate-300 flex items-center justify-center text-slate-800 text-[10px] font-bold"
-                                        title="Hidrógeno">H</div>
-                                    <div class="size-6 rounded-full bg-slate-300 flex items-center justify-center text-slate-800 text-[10px] font-bold"
-                                        title="Hidrógeno">H</div>
-                                    <div class="size-6 rounded-full bg-slate-300 flex items-center justify-center text-slate-800 text-[10px] font-bold"
-                                        title="Hidrógeno">H</div>
-                                    <div class="size-6 rounded-full bg-slate-300 flex items-center justify-center text-slate-800 text-[10px] font-bold"
-                                        title="Hidrógeno">H</div>
-                                    <div class="size-6 rounded-full bg-red-500 flex items-center justify-center text-white text-[10px] font-bold"
-                                        title="Oxígeno">O</div>
-                                    <div class="size-6 rounded-full bg-red-500 flex items-center justify-center text-white text-[10px] font-bold"
-                                        title="Oxígeno">O</div>
+                                class="bg-slate-100 dark:bg-slate-800 rounded-xl p-4 w-full shadow-inner border border-slate-200 dark:border-slate-700 min-h-[120px] flex flex-col justify-end relative">
+                                <div id="reactivos_balls" class="flex justify-center gap-1.5 flex-wrap -mt-2 mb-3">
+                                    <!-- Dynamic balls -->
                                 </div>
-                                <div class="text-center text-xs font-bold text-slate-500 w-full mt-auto">REACTIVOS
-                                </div>
+                                <div class="text-center text-xs font-bold text-slate-500 w-full mt-auto">REACTIVOS</div>
+                            </div>
+                            <div class="w-1.5 h-6 bg-slate-300 dark:bg-slate-600"></div>
+                        </div>
+
+                        <!-- Center Pivot and Beam -->
+                        <div class="flex flex-col items-center justify-end relative z-20 mx-[-20px] pb-6">
+                            <!-- Pivot Pin -->
+                            <div
+                                class="absolute top-[35px] left-1/2 -translate-x-1/2 w-4 h-4 bg-primary rounded-full z-30 shadow-md">
+                            </div>
+
+                            <!-- Rotating Beam -->
+                            <div class="absolute top-[42px] left-1/2 -transform -translate-x-1/2 -translate-y-1/2 w-[340px] md:w-[420px] h-3 bg-primary/80 rounded-full origin-center shadow-sm"
+                                id="scale_beam"
+                                style="transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); transform: translate(-50%, -50%) rotate(0deg);">
+                            </div>
+
+                            <!-- Stand -->
+                            <div
+                                class="w-2.5 h-32 bg-slate-300 dark:bg-slate-600 rounded-t-lg mx-auto bg-gradient-to-b from-slate-400 to-slate-200">
+                            </div>
+                            <div
+                                class="w-16 border-b-[16px] border-b-slate-400 border-l-[16px] border-l-transparent border-r-[16px] border-r-transparent rounded-sm">
                             </div>
                         </div>
 
-                        <div class="flex flex-col items-center justify-end pb-8">
-                            <div class="w-1 h-24 bg-primary/40 rounded-full mx-auto relative mb-[-4px]">
-                                <div
-                                    class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-2 bg-primary/60 rounded-full transform rotate-[10deg] transition-transform duration-500">
-                                </div>
-                            </div>
+                        <!-- Right Pan -->
+                        <div class="flex flex-col items-center w-full justify-end relative z-10" id="productos_pan"
+                            style="transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); margin-bottom: 25px;">
                             <div
-                                class="w-8 border-b-[16px] border-b-primary/60 border-l-[16px] border-l-transparent border-r-[16px] border-r-transparent">
-                            </div>
-                        </div>
-
-                        <div class="flex flex-col items-center w-full mt-8">
-                            <div
-                                class="bg-slate-100 dark:bg-slate-800 rounded-xl p-4 w-full shadow-inner border border-slate-200 dark:border-slate-700 mt-4 min-h-[120px] flex flex-col justify-end relative">
-                                <div class="flex justify-center gap-2 flex-wrap mb-2">
-                                    <div class="size-6 rounded-full bg-slate-800 flex items-center justify-center text-white text-[10px] font-bold"
-                                        title="Carbono">C</div>
-                                    <div class="size-6 rounded-full bg-red-500 flex items-center justify-center text-white text-[10px] font-bold"
-                                        title="Oxígeno">O</div>
-                                    <div class="size-6 rounded-full bg-red-500 flex items-center justify-center text-white text-[10px] font-bold"
-                                        title="Oxígeno">O</div>
-                                    <div class="size-6 rounded-full bg-slate-300 flex items-center justify-center text-slate-800 text-[10px] font-bold"
-                                        title="Hidrógeno">H</div>
-                                    <div class="size-6 rounded-full bg-slate-300 flex items-center justify-center text-slate-800 text-[10px] font-bold"
-                                        title="Hidrógeno">H</div>
-                                    <div class="size-6 rounded-full bg-red-500 flex items-center justify-center text-white text-[10px] font-bold"
-                                        title="Oxígeno">O</div>
+                                class="bg-slate-100 dark:bg-slate-800 rounded-xl p-4 w-full shadow-inner border border-slate-200 dark:border-slate-700 min-h-[120px] flex flex-col justify-end relative">
+                                <div id="productos_balls" class="flex justify-center gap-1.5 flex-wrap -mt-2 mb-3">
+                                    <!-- Dynamic balls -->
                                 </div>
-                                <div class="text-center text-xs font-bold text-slate-500 w-full mt-auto">PRODUCTOS
-                                </div>
+                                <div class="text-center text-xs font-bold text-slate-500 w-full mt-auto">PRODUCTOS</div>
                             </div>
+                            <div class="w-1.5 h-6 bg-slate-300 dark:bg-slate-600"></div>
                         </div>
                     </div>
                 </section>
@@ -252,7 +243,87 @@
             </footer>
         </main>
     </div>
+    <script>
+        const inputs = ['coef_ch4', 'coef_o2', 'coef_co2', 'coef_h2o'];
+        inputs.forEach(id => {
+            document.getElementById(id).addEventListener('input', updateScale);
+        });
 
+        function createBall(element) {
+            let bg = 'bg-slate-300';
+            let text = 'text-slate-800';
+            if (element === 'C') { bg = 'bg-slate-800'; text = 'text-white'; }
+            if (element === 'O') { bg = 'bg-red-500'; text = 'text-white'; }
+            return `<div class="size-6 rounded-full ${bg} flex items-center justify-center ${text} text-[10px] font-bold shadow-sm" title="${element}">${element}</div>`;
+        }
+
+        function updateScale() {
+            let a = parseInt(document.getElementById('coef_ch4').value) || 0;
+            let b = parseInt(document.getElementById('coef_o2').value) || 0;
+            let c = parseInt(document.getElementById('coef_co2').value) || 0;
+            let d = parseInt(document.getElementById('coef_h2o').value) || 0;
+
+            // Atoms calculations
+            let c_L = a * 1, h_L = a * 4, o_L = b * 2;
+            let c_R = c * 1, h_R = d * 2, o_R = (c * 2) + (d * 1);
+
+            let tot_L = c_L + h_L + o_L;
+            let tot_R = c_R + h_R + o_R;
+
+            // Render atoms visual representation
+            document.getElementById('reactivos_balls').innerHTML =
+                Array(c_L).fill('C').map(createBall).join('') +
+                Array(h_L).fill('H').map(createBall).join('') +
+                Array(o_L).fill('O').map(createBall).join('');
+
+            document.getElementById('productos_balls').innerHTML =
+                Array(c_R).fill('C').map(createBall).join('') +
+                Array(o_R).fill('O').map(createBall).join('') +
+                Array(h_R).fill('H').map(createBall).join('');
+
+            // Physics calculation
+            // Amplifying difference to trigger visible tilt easily
+            let diff = tot_R - tot_L; // IF > 0, right side goes down
+            let angle = diff * 3;
+
+            // Limit tilt angle to avoid breaking the visuals
+            let maxAngle = 20;
+            if (angle > maxAngle) angle = maxAngle;
+            if (angle < -maxAngle) angle = -maxAngle;
+
+            document.getElementById('scale_beam').style.transform = `translate(-50%, -50%) rotate(${angle}deg)`;
+
+            // Pan offset via trigonometry: beam half-width ~ 160px
+            let offset = 160 * Math.sin(angle * Math.PI / 180);
+
+            document.getElementById('reactivos_pan').style.transform = `translateY(${-offset}px)`;
+            document.getElementById('productos_pan').style.transform = `translateY(${offset}px)`;
+
+            // Check if fully balanced correctly
+            let completelyBalanced = (c_L === c_R && h_L === h_R && o_L === o_R);
+            let statusDiv = document.getElementById('balance_status');
+
+            if (c_L > 0 && o_L > 0 && completelyBalanced) {
+                statusDiv.className = "mt-8 flex items-center justify-center gap-2 text-emerald-600 bg-emerald-50 p-3 rounded-lg border border-emerald-200 transition-all shadow-md";
+                statusDiv.innerHTML = '<span class="material-symbols-outlined text-xl">verified</span><span class="text-sm font-bold uppercase tracking-wider">Ecuación Perfectamente Balanceada</span>';
+
+                document.querySelectorAll('.coef-input-val').forEach(el => {
+                    el.style.borderColor = '#10b981';
+                    el.style.backgroundColor = '#ecfdf5';
+                });
+            } else {
+                statusDiv.className = "mt-8 flex items-center justify-center gap-2 text-accent bg-accent/5 p-3 rounded-lg border border-accent/20 transition-all";
+                statusDiv.innerHTML = '<span class="material-symbols-outlined text-xl">scale</span><span class="text-sm font-bold uppercase tracking-wider">Ecuación No Balanceada</span>';
+
+                document.querySelectorAll('.coef-input-val').forEach((el, index) => {
+                    el.style.borderColor = '';
+                    el.style.backgroundColor = '';
+                });
+            }
+        }
+
+        updateScale(); // init load trigger
+    </script>
 </body>
 
 </html>

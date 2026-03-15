@@ -330,74 +330,57 @@
             }
 
             // Distancia real = 100m, tiempo esperado = 5s. v correcta = 20.
-            if (vInput === 20) {
+            let isSuccess = vInput === 20;
+
+            if (isSuccess) {
                 fbMsg.className = "mt-6 flex items-center gap-2 text-green-600 bg-green-50 dark:bg-green-900/20 p-3 rounded-lg border border-green-200 dark:border-green-800 transition-all";
-                fbMsg.innerHTML = '<span class="material-symbols-outlined text-sm">check_circle</span><span class="text-xs font-bold uppercase tracking-wider">¡Éxito! Velocidad correcta. El vehículo llegó a tiempo just en el punto.</span>';
-
-                // Animación (duración siempre de 5000ms en la vida real, representando los 5s de tiempo simulado)
-                const timeToRunMs = 5000;
-
-                setTimeout(() => {
-                    car.style.transition = `left ${timeToRunMs}ms linear`;
-                    car.style.left = 'calc(100% - 6rem)'; // Posición de la meta (right-24)
-
-                    let startTime = Date.now();
-                    simulacionId = setInterval(() => {
-                        let elapsed = Date.now() - startTime;
-                        if (elapsed >= timeToRunMs) {
-                            elapsed = timeToRunMs;
-                            clearInterval(simulacionId);
-                            btnSimular.disabled = false;
-                            btnSimular.classList.remove('opacity-50', 'pointer-events-none');
-                        }
-                        let currentT = (elapsed / 1000).toFixed(1);
-                        let currentD = (vInput * (elapsed / 1000)).toFixed(1);
-                        hudT.innerHTML = currentT + '<span class="text-xs ml-1 text-slate-400">s</span>';
-                        hudD.innerHTML = currentD + '<span class="text-xs ml-1 text-slate-400">m</span>';
-                    }, 50);
-                }, 50);
-
+                fbMsg.innerHTML = '<span class="material-symbols-outlined text-sm">check_circle</span><span class="text-xs font-bold uppercase tracking-wider">¡Éxito! Velocidad correcta. El vehículo llegó a tiempo justo en el punto.</span>';
             } else {
                 fbMsg.className = "mt-6 flex items-center gap-2 text-accent bg-accent/5 p-3 rounded-lg border border-accent/20 transition-all";
                 if (vInput > 20) {
-                    fbMsg.innerHTML = '<span class="material-symbols-outlined text-sm">warning</span><span class="text-xs font-bold uppercase tracking-wider">Velocidad final muy alta (llegó en ' + (100 / vInput).toFixed(1) + 's). Revisa el cálculo de la variable Velocidad (v).</span>';
+                    fbMsg.innerHTML = '<span class="material-symbols-outlined text-sm">warning</span><span class="text-xs font-bold uppercase tracking-wider">Velocidad muy alta. El vehículo se pasó del destino. Revisa el cálculo de la variable Velocidad (v).</span>';
                 } else {
-                    fbMsg.innerHTML = '<span class="material-symbols-outlined text-sm">warning</span><span class="text-xs font-bold uppercase tracking-wider">Velocidad muy baja. Faltó distancia que recorrer. Revisa el cálculo.</span>';
+                    fbMsg.innerHTML = '<span class="material-symbols-outlined text-sm">warning</span><span class="text-xs font-bold uppercase tracking-wider">Velocidad muy baja. El vehículo se quedó corto. Revisa el cálculo.</span>';
                 }
-
-                // Animación basada en 5s fijos de la simulación
-                const timeToRunMs = 5000;
-                // Si la distancia es > 100, se saldrá de la pantalla (hasta right-0 -> 100%).
-                // La meta está en 100% - 6rem (~85%).
-                // Si calculamos ratio: 100m = meta.
-                let maxVisualPorcentajeTarget = 85;
-                let ratioVisual = maxVisualPorcentajeTarget / 100;
-
-                let distanciaRecorridaTarget = vInput * 5;
-                let porcentajeDistanciaVisual = distanciaRecorridaTarget * ratioVisual;
-
-                if (porcentajeDistanciaVisual > 110) porcentajeDistanciaVisual = 110; // Capped for UI
-
-                setTimeout(() => {
-                    car.style.transition = `left ${timeToRunMs}ms linear`;
-                    car.style.left = `calc(${porcentajeDistanciaVisual}% + 3rem)`;
-
-                    let startTime = Date.now();
-                    simulacionId = setInterval(() => {
-                        let elapsed = Date.now() - startTime;
-                        if (elapsed >= timeToRunMs) {
-                            elapsed = timeToRunMs;
-                            clearInterval(simulacionId);
-                            btnSimular.disabled = false;
-                            btnSimular.classList.remove('opacity-50', 'pointer-events-none');
-                        }
-                        let currentT = (elapsed / 1000).toFixed(1);
-                        let currentD = (vInput * (elapsed / 1000)).toFixed(1);
-                        hudT.innerHTML = currentT + '<span class="text-xs ml-1 text-slate-400">s</span>';
-                        hudD.innerHTML = currentD + '<span class="text-xs ml-1 text-slate-400">m</span>';
-                    }, 50);
-                }, 50);
             }
+
+            // Lógica física de animación:
+            // 100m representan el 85% del ancho (meta). Ratio: 0.85% = 1m.
+            let targetDistancia = vInput * 5; // metros que recorrerá en 5 seg
+            let visualPercent = targetDistancia * 0.85;
+            let animTimeMs = 5000;
+
+            if (visualPercent > 110) {
+                // Limitar visualmente pero ajustar el tiempo para mantener la velocidad visual constante
+                animTimeMs = 5000 * (110 / visualPercent);
+                visualPercent = 110;
+            }
+
+            setTimeout(() => {
+                car.style.transition = `left ${animTimeMs}ms linear`;
+                car.style.left = `calc(${visualPercent}% + 3rem)`;
+
+                let startTime = Date.now();
+                simulacionId = setInterval(() => {
+                    let elapsed = Date.now() - startTime;
+                    if (elapsed >= animTimeMs) {
+                        elapsed = animTimeMs;
+                        clearInterval(simulacionId);
+                        btnSimular.disabled = false;
+                        btnSimular.classList.remove('opacity-50', 'pointer-events-none');
+                    }
+
+                    // Ratio de 5 segundos escalado visualmente
+                    let realTime = isSuccess ? (elapsed / 1000) : (elapsed / animTimeMs * (visualPercent / (vInput * 5 * 0.85)) * 5);
+                    if (visualPercent === 110) realTime = (elapsed / animTimeMs) * (110 / (vInput * 0.85));
+
+                    let currentD = (vInput * realTime).toFixed(1);
+                    if (isSuccess && elapsed === animTimeMs) realTime = 5.0;
+
+                    hudT.innerHTML = realTime.toFixed(1) + '<span class="text-xs ml-1 text-slate-400">s</span>';
+                    hudD.innerHTML = currentD + '<span class="text-xs ml-1 text-slate-400">m</span>';
+                }, 50);
+            }, 50);
         }
 
         function resetSim() {

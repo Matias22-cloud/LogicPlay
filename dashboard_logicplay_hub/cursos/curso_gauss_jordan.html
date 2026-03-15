@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Curso Gauss-Jordan - LogicPlay</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2c0fbd",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#131022",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+    <div class="flex flex-col h-full grow">
+        <header
+            class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-6 py-4 sticky top-0 z-50">
+            <div class="flex items-center gap-4 text-primary">
+                <div class="size-8">
+                    <svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                        <path clip-rule="evenodd"
+                            d="M24 0.757355L47.2426 24L24 47.2426L0.757355 24L24 0.757355ZM21 35.7574V12.2426L9.24264 24L21 35.7574Z"
+                            fill="currentColor" fill-rule="evenodd"></path>
+                    </svg>
+                </div>
+                <h2 class="text-slate-900 dark:text-white text-xl font-extrabold leading-tight tracking-tight">LogicPlay
+                </h2>
+            </div>
+            <nav class="hidden md:flex gap-8 items-center mx-auto">
+                <a class="text-slate-500 hover:text-primary transition-colors flex items-center gap-2"
+                    href="../dashboard_logicplay_clasificaci_n_anonimizada/code.html"><span
+                        class="material-symbols-outlined text-[20px]">dashboard</span> Dashboard</a>
+                <a class="text-primary font-semibold transition-colors flex items-center gap-2" href="index.html"><span
+                        class="material-symbols-outlined text-[20px]">school</span> Cursos</a>
+            </nav>
+            <div class="flex items-center gap-4">
+                <div class="size-10 rounded-full bg-primary/20 border-2 border-primary overflow-hidden">
+                    <img alt="User" class="w-full h-full object-cover"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUfb_Q9KslIBxQYDwoIq6H1qMt1q6ogec8roP9aX1nW6a9srTIUVSJzz1MPhT7F4kKLpJNknTUH0zLjtR6xg5Td0Novi-J43sx89cdAUv7s0VlZI2C_vb7KvoAZH0FnXcZBgw4JK0SFwi2bTlhFYX1LG0xBrLcttzI7VtHMx62yOhks3rsc5Ba7cr2F52tuoxkkQJ-cSLZw6axmkd3JraNCQ-hjvC9Psul0uQgLxdX9P2sYxsQVRdQquvIEiH7XreEn7mYulpymzE" />
+                </div>
+            </div>
+        </header>
+
+        <main class="max-w-[1000px] mx-auto w-full px-6 py-12">
+            <div class="mb-4">
+                <a href="matematicas.html"
+                    class="inline-flex items-center gap-2 text-sm font-bold text-slate-500 hover:text-orange-600 transition-colors">
+                    <span class="material-symbols-outlined text-lg">arrow_back</span> Volver a Matemáticas
+                </a>
+            </div>
+
+            <div class="mb-8">
+                <div
+                    class="inline-flex items-center gap-2 px-3 py-1 bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400 rounded-full text-xs font-bold uppercase tracking-wider mb-4">
+                    <span class="material-symbols-outlined text-[14px]">functions</span> Módulo 01: Álgebra Lineal
+                </div>
+                <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white mb-4">
+                    Método de Gauss-Jordan</h1>
+                <p class="text-lg text-slate-500 dark:text-slate-400">Reduce matrices buscando el escalonamiento de una
+                    diagonal repleta de unos, eliminando los demás términos.</p>
+            </div>
+
+            <!-- Video Container -->
+            <div
+                class="w-full aspect-video bg-slate-900 rounded-2xl overflow-hidden shadow-2xl border border-slate-800 relative mb-12">
+                <iframe class="absolute top-0 left-0 w-full h-full"
+                    src="https://www.youtube.com/embed/W214PLI0quQ?si=MAiXjXaFIcf9aE2m" title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+
+            <!-- Resumen Teórico -->
+            <div class="bg-white dark:bg-slate-900 p-8 rounded-2xl border border-slate-200 dark:border-slate-800 mb-12">
+                <h2 class="text-2xl font-bold mb-6 flex items-center gap-2"><span
+                        class="material-symbols-outlined text-orange-500">description</span> Resumen Teórico</h2>
+                <div class="prose dark:prose-invert max-w-none text-slate-600 dark:text-slate-300 space-y-4">
+                    <p>El algoritmo de Gauss-Jordan es un procedimiento de operaciones elemento por fila para resolver
+                        sistemas de ecuaciones o encontrar la inversa de matrices algebraicas de orden mayor.</p>
+                    <div class="bg-slate-50 dark:bg-slate-800 p-4 rounded-xl border-l-4 border-l-orange-500 my-6">
+                        <strong class="block mb-2 text-slate-900 dark:text-white">Reglas Operativas Válidas:</strong>
+                        <ul class="list-disc pl-5 text-sm space-y-1">
+                            <li>Multiplicar cualquier fila entera de la matriz por una constante K ≠ 0.</li>
+                            <li>Toda la fila de la matriz se puede cambiar orden de lugar.</li>
+                            <li>Se suma el múltiplo de una fila otra de forma simultánea.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex justify-end">
+                <button
+                    class="inline-flex items-center justify-center px-6 py-3 bg-slate-200 dark:bg-slate-800 text-slate-400 font-bold rounded-xl cursor-not-allowed">
+                    Práctica No Disponible Aún
+                </button>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>

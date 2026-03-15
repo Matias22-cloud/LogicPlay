@@ -39,7 +39,8 @@
         }
         .input-glow:focus-within {
             box-shadow: 0 0 15px rgba(79, 70, 229, 0.3);
-        }.nav-tab {
+        }
+        .nav-tab {
             @apply px-4 py-2 text-sm font-semibold transition-all duration-200 relative;
         }
         .nav-tab-active {
@@ -53,8 +54,16 @@
             @apply w-10 h-8 text-center text-xs font-bold bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 rounded focus:ring-0 focus:border-primary text-primary transition-all uppercase;
         }
         
-        .ox-input.correct {
-            @apply border-emerald-500 bg-emerald-50 text-emerald-600 shadow-[0_0_10px_rgba(16,185,129,0.3)];
+        .ox-input-upper {
+            @apply w-10 h-6 text-center text-[10px] font-bold bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 rounded focus:ring-0 focus:border-primary text-slate-700 dark:text-slate-300 transition-all uppercase;
+        }
+
+        .correct {
+            @apply border-emerald-500 bg-emerald-50 text-emerald-600 shadow-[0_0_8px_rgba(16,185,129,0.3)];
+        }
+        
+        .incorrect {
+            @apply border-red-500 bg-red-50 text-red-600 shadow-[0_0_8px_rgba(239,68,68,0.3)];
         }
         
         .coef-input {
@@ -140,7 +149,7 @@
                     <div class="lg:col-span-2 glass-panel p-8 rounded-3xl flex flex-col justify-center relative">
 
                         <!-- ETAPA 1 -->
-                        <div id="etapa1">
+                        <div id="etapa1" class="transition-all duration-500">
                             <div class="flex items-center justify-between mb-8">
                                 <h4 class="text-xs font-black uppercase tracking-[0.2em] text-slate-400">Etapa 1:
                                     Números de Oxidación</h4>
@@ -149,97 +158,273 @@
                             </div>
 
                             <div
-                                class="flex flex-wrap items-end justify-center gap-x-6 gap-y-12 text-2xl font-mono text-slate-800 dark:text-slate-200 py-6">
+                                class="flex flex-wrap items-end justify-center gap-x-4 gap-y-12 text-2xl font-mono text-slate-800 dark:text-slate-200 py-6">
                                 <!-- Cu -->
                                 <div class="flex flex-col items-center">
-                                    <input type="text" id="ox_cu1" class="ox-input mb-1" placeholder="?" maxlength="2">
-                                    <span>Cu</span>
+                                    <div class="flex items-center gap-1 mb-2 h-6"></div>
+                                    <!-- Espacio para empujar la fila de abajo -->
+                                    <div class="flex flex-col items-center">
+                                        <input type="text" id="ox_cu1"
+                                            class="ox-input mb-1 cursor-not-allowed bg-slate-100 text-slate-500 border-slate-300 dark:bg-slate-800 dark:border-slate-700"
+                                            value="0" disabled>
+                                        <span>Cu</span>
+                                    </div>
                                 </div>
+
                                 <span class="text-primary font-bold pb-1">+</span>
 
                                 <!-- HNO3 -->
-                                <div class="flex items-end">
-                                    <div class="flex flex-col items-center">
-                                        <input type="text" id="ox_h1" class="ox-input mb-1" placeholder="?"
-                                            maxlength="2">
-                                        <span>H</span>
+                                <div class="flex flex-col items-center">
+                                    <div class="flex items-center justify-center w-full mb-2 relative">
+                                        <input type="text" id="sum_hno3_pos" class="ox-input-upper" placeholder="?">
+                                        <span class="mx-1 font-bold text-slate-400 text-xs">+</span>
+                                        <input type="text" id="sum_hno3_neg" class="ox-input-upper" placeholder="?">
+                                        <span id="hno3_zero" class="hidden font-bold text-emerald-500 text-sm ml-2">=
+                                            0</span>
                                     </div>
-                                    <div class="flex flex-col items-center">
-                                        <input type="text" id="ox_n1" class="ox-input mb-1" placeholder="?"
-                                            maxlength="2">
-                                        <span>N</span>
-                                    </div>
-                                    <div class="flex flex-col items-center">
-                                        <input type="text" id="ox_o1" class="ox-input mb-1" placeholder="?"
-                                            maxlength="2">
-                                        <span>O₃</span>
+                                    <div class="flex items-end">
+                                        <div class="flex flex-col items-center">
+                                            <input type="text" id="ox_h1" class="ox-input mb-1" placeholder="?"
+                                                maxlength="2">
+                                            <span>H</span>
+                                        </div>
+                                        <div class="flex flex-col items-center">
+                                            <input type="text" id="ox_n1" class="ox-input mb-1" placeholder="?"
+                                                maxlength="2">
+                                            <span>N</span>
+                                        </div>
+                                        <div class="flex flex-col items-center">
+                                            <input type="text" id="ox_o1" class="ox-input mb-1" placeholder="?"
+                                                maxlength="2">
+                                            <span>O₃</span>
+                                        </div>
                                     </div>
                                 </div>
 
                                 <span class="text-primary font-bold mx-2 pb-1">→</span>
 
                                 <!-- Cu(NO3)2 -->
-                                <div class="flex items-end">
-                                    <div class="flex flex-col items-center">
-                                        <input type="text" id="ox_cu2" class="ox-input mb-1" placeholder="?"
-                                            maxlength="2">
-                                        <span>Cu(</span>
+                                <div class="flex flex-col items-center">
+                                    <div class="flex items-center justify-center w-full mb-2 relative">
+                                        <input type="text" id="sum_cuno32_cun" class="ox-input-upper" placeholder="?">
+                                        <span class="mx-1 font-bold text-slate-400 text-xs">+</span>
+                                        <input type="text" id="sum_cuno32_o" class="ox-input-upper" placeholder="?">
+                                        <span id="cuno32_zero" class="hidden font-bold text-emerald-500 text-sm ml-2">=
+                                            0</span>
                                     </div>
-                                    <div class="flex flex-col items-center">
-                                        <input type="text" id="ox_n2" class="ox-input mb-1" placeholder="?"
-                                            maxlength="2">
-                                        <span>N</span>
-                                    </div>
-                                    <div class="flex flex-col items-center">
-                                        <input type="text" id="ox_o2" class="ox-input mb-1" placeholder="?"
-                                            maxlength="2">
-                                        <span>O₃)₂</span>
+                                    <div class="flex items-end">
+                                        <div class="flex flex-col items-center">
+                                            <input type="text" id="ox_cu2" class="ox-input mb-1" placeholder="?"
+                                                maxlength="2">
+                                            <span>Cu(</span>
+                                        </div>
+                                        <div class="flex flex-col items-center">
+                                            <input type="text" id="ox_n2" class="ox-input mb-1" placeholder="?"
+                                                maxlength="2">
+                                            <span>N</span>
+                                        </div>
+                                        <div class="flex flex-col items-center">
+                                            <input type="text" id="ox_o2" class="ox-input mb-1" placeholder="?"
+                                                maxlength="2">
+                                            <span>O₃)₂</span>
+                                        </div>
                                     </div>
                                 </div>
+
                                 <span class="text-primary font-bold pb-1">+</span>
 
                                 <!-- NO -->
-                                <div class="flex items-end">
-                                    <div class="flex flex-col items-center">
-                                        <input type="text" id="ox_n3" class="ox-input mb-1" placeholder="?"
-                                            maxlength="2">
-                                        <span>N</span>
+                                <div class="flex flex-col items-center">
+                                    <div class="flex items-center justify-center w-full mb-2 relative">
+                                        <input type="text" id="sum_no_pos" class="ox-input-upper" placeholder="?">
+                                        <span class="mx-1 font-bold text-slate-400 text-xs">+</span>
+                                        <input type="text" id="sum_no_neg" class="ox-input-upper" placeholder="?">
+                                        <span id="no_zero" class="hidden font-bold text-emerald-500 text-sm ml-2">=
+                                            0</span>
                                     </div>
-                                    <div class="flex flex-col items-center">
-                                        <input type="text" id="ox_o3" class="ox-input mb-1" placeholder="?"
-                                            maxlength="2">
-                                        <span>O</span>
+                                    <div class="flex items-end">
+                                        <div class="flex flex-col items-center">
+                                            <input type="text" id="ox_n3" class="ox-input mb-1" placeholder="?"
+                                                maxlength="2">
+                                            <span>N</span>
+                                        </div>
+                                        <div class="flex flex-col items-center">
+                                            <input type="text" id="ox_o3" class="ox-input mb-1" placeholder="?"
+                                                maxlength="2">
+                                            <span>O</span>
+                                        </div>
                                     </div>
                                 </div>
+
                                 <span class="text-primary font-bold pb-1">+</span>
 
                                 <!-- H2O -->
-                                <div class="flex items-end">
-                                    <div class="flex flex-col items-center">
-                                        <input type="text" id="ox_h2" class="ox-input mb-1" placeholder="?"
-                                            maxlength="2">
-                                        <span>H₂</span>
+                                <div class="flex flex-col items-center">
+                                    <div class="flex items-center justify-center w-full mb-2 relative">
+                                        <input type="text" id="sum_h2o_pos" class="ox-input-upper" placeholder="?">
+                                        <span class="mx-1 font-bold text-slate-400 text-xs">+</span>
+                                        <input type="text" id="sum_h2o_neg" class="ox-input-upper" placeholder="?">
+                                        <span id="h2o_zero" class="hidden font-bold text-emerald-500 text-sm ml-2">=
+                                            0</span>
                                     </div>
-                                    <div class="flex flex-col items-center">
-                                        <input type="text" id="ox_o4" class="ox-input mb-1" placeholder="?"
-                                            maxlength="2">
-                                        <span>O</span>
+                                    <div class="flex items-end">
+                                        <div class="flex flex-col items-center">
+                                            <input type="text" id="ox_h2" class="ox-input mb-1" placeholder="?"
+                                                maxlength="2">
+                                            <span>H₂</span>
+                                        </div>
+                                        <div class="flex flex-col items-center">
+                                            <input type="text" id="ox_o4" class="ox-input mb-1" placeholder="?"
+                                                maxlength="2">
+                                            <span>O</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="flex justify-center mt-6">
+                            <div id="number_line_container"
+                                class="hidden w-full flex-col mt-4 pt-10 border-t border-slate-200 dark:border-slate-800 relative z-0">
+                                <h4
+                                    class="text-xs font-black uppercase tracking-[0.2em] text-slate-400 mb-6 w-full text-center">
+                                    Transferencia de Electrones</h4>
+                                <!-- Number line base -->
+                                <div class="relative w-full h-16 mt-16 mb-6">
+
+                                    <!-- Cu Arrow -->
+                                    <div
+                                        class="absolute bottom-16 left-[50%] w-[7.14%] flex flex-col items-center justify-end z-20">
+                                        <div
+                                            class="whitespace-nowrap font-mono text-xs font-bold text-indigo-600 dark:text-indigo-400 bg-white dark:bg-slate-900 border border-indigo-200 dark:border-indigo-800 px-2 py-1 rounded mb-1 shadow-sm">
+                                            Cu = 1 &times; <input type="number" id="mult_cu"
+                                                class="w-10 h-6 text-center border-2 border-indigo-300 rounded outline-none p-0 inline-block focus:border-indigo-500 appearance-none m-0">
+                                            <span id="res_cu" class="font-bold ml-1">= ?</span>
+                                        </div>
+                                        <div
+                                            class="text-xs font-black text-indigo-500 mb-1 z-30 bg-white/50 dark:bg-slate-900/50 px-1 rounded">
+                                            Cu</div>
+                                        <div class="w-full h-2 relative">
+                                            <div class="absolute w-full h-[2px] bg-indigo-500 top-[3px]"></div>
+                                            <div
+                                                class="absolute right-0 top-0 w-2 h-2 border-r-[2px] border-b-[2px] border-indigo-500 transform -rotate-45 translate-x-[1px] translate-y-[0px]">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- N Arrow -->
+                                    <div
+                                        class="absolute top-12 left-[64.28%] w-[21.42%] flex flex-col-reverse items-center justify-start z-20">
+                                        <div
+                                            class="whitespace-nowrap font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-white dark:bg-slate-900 border border-emerald-200 dark:border-emerald-800 px-2 py-1 rounded mt-1 shadow-sm">
+                                            N = 3 &times; <input type="number" id="mult_n"
+                                                class="w-10 h-6 text-center border-2 border-emerald-300 rounded outline-none p-0 inline-block focus:border-emerald-500 appearance-none m-0">
+                                            <span id="res_n" class="font-bold ml-1">= ?</span>
+                                        </div>
+                                        <div
+                                            class="text-xs font-black text-emerald-500 mt-1 z-30 bg-white/50 dark:bg-slate-900/50 px-1 rounded">
+                                            N</div>
+                                        <div class="w-full h-2 relative">
+                                            <div class="absolute w-full h-[2px] bg-emerald-500 top-[3px]"></div>
+                                            <div
+                                                class="absolute left-0 top-0 w-2 h-2 border-l-[2px] border-b-[2px] border-emerald-500 transform rotate-45 translate-x-[-1px] translate-y-[0px]">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Ticks and numbers -->
+                                    <div
+                                        class="flex justify-between w-full absolute bottom-0 px-2 font-mono text-xs text-slate-500 font-bold z-10">
+                                        <div class="flex flex-col items-center w-0">
+                                            <div class="h-2 w-0.5 bg-slate-300 dark:bg-slate-600 mb-1"></div>
+                                            <span>-7</span>
+                                        </div>
+                                        <div class="flex flex-col items-center w-0">
+                                            <div class="h-2 w-0.5 bg-slate-300 dark:bg-slate-600 mb-1"></div>
+                                            <span>-6</span>
+                                        </div>
+                                        <div class="flex flex-col items-center w-0">
+                                            <div class="h-2 w-0.5 bg-slate-300 dark:bg-slate-600 mb-1"></div>
+                                            <span>-5</span>
+                                        </div>
+                                        <div class="flex flex-col items-center w-0">
+                                            <div class="h-2 w-0.5 bg-slate-300 dark:bg-slate-600 mb-1"></div>
+                                            <span>-4</span>
+                                        </div>
+                                        <div class="flex flex-col items-center w-0">
+                                            <div class="h-2 w-0.5 bg-slate-300 dark:bg-slate-600 mb-1"></div>
+                                            <span>-3</span>
+                                        </div>
+                                        <div class="flex flex-col items-center w-0">
+                                            <div class="h-2 w-0.5 bg-slate-300 dark:bg-slate-600 mb-1"></div>
+                                            <span>-2</span>
+                                        </div>
+                                        <div class="flex flex-col items-center w-0">
+                                            <div class="h-2 w-0.5 bg-slate-300 dark:bg-slate-600 mb-1"></div>
+                                            <span>-1</span>
+                                        </div>
+                                        <div class="flex flex-col items-center w-0">
+                                            <div class="h-3 w-[2px] bg-slate-800 dark:bg-slate-200 mb-1 -translate-y-1">
+                                            </div><span class="text-slate-800 dark:text-slate-200 text-sm">0</span>
+                                        </div>
+                                        <div class="flex flex-col items-center w-0">
+                                            <div class="h-2 w-0.5 bg-slate-300 dark:bg-slate-600 mb-1"></div>
+                                            <span>+1</span>
+                                        </div>
+                                        <div class="flex flex-col items-center w-0">
+                                            <div class="h-2 w-0.5 bg-slate-300 dark:bg-slate-600 mb-1"></div><span
+                                                class="text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-900/30 px-1 rounded z-10 font-black">+2</span>
+                                        </div>
+                                        <div class="flex flex-col items-center w-0">
+                                            <div class="h-2 w-0.5 bg-slate-300 dark:bg-slate-600 mb-1"></div>
+                                            <span>+3</span>
+                                        </div>
+                                        <div class="flex flex-col items-center w-0">
+                                            <div class="h-2 w-0.5 bg-slate-300 dark:bg-slate-600 mb-1"></div>
+                                            <span>+4</span>
+                                        </div>
+                                        <div class="flex flex-col items-center w-0">
+                                            <div class="h-2 w-0.5 bg-slate-300 dark:bg-slate-600 mb-1"></div><span
+                                                class="text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/30 px-1 rounded z-10 font-black">+5</span>
+                                        </div>
+                                        <div class="flex flex-col items-center w-0">
+                                            <div class="h-2 w-0.5 bg-slate-300 dark:bg-slate-600 mb-1"></div>
+                                            <span>+6</span>
+                                        </div>
+                                        <div class="flex flex-col items-center w-0">
+                                            <div class="h-2 w-0.5 bg-slate-300 dark:bg-slate-600 mb-1"></div>
+                                            <span>+7</span>
+                                        </div>
+
+                                        <!-- Track line -->
+                                        <div
+                                            class="absolute w-[calc(100%-1rem)] left-2 bottom-5 h-[2px] bg-slate-200 dark:bg-slate-700 -z-10">
+                                        </div>
+                                    </div>
+                                </div>
+                                <style>
+                                    input[type="number"]::-webkit-outer-spin-button,
+                                    input[type="number"]::-webkit-inner-spin-button {
+                                        -webkit-appearance: none;
+                                        margin: 0;
+                                    }
+
+                                    input[type="number"] {
+                                        -moz-appearance: textfield;
+                                    }
+                                </style>
+                            </div>
+
+                            <div class="flex justify-center mt-6 h-12">
                                 <button id="btn_etapa1" onclick="verificarEtapa1()"
-                                    class="bg-slate-200 text-slate-500 transition-all font-bold py-2 px-6 rounded-lg text-sm uppercase tracking-wider">Verificar</button>
+                                    class="bg-slate-200 text-slate-500 transition-all font-bold py-2 px-6 rounded-lg text-sm uppercase tracking-wider h-full">Verificar</button>
                                 <button id="btn_pasar_etapa2" onclick="pasarEtapa2()"
-                                    class="hidden bg-primary text-white shadow-lg shadow-primary/30 transition-all hover:bg-primary/90 font-bold py-2 px-6 rounded-lg text-sm uppercase mr-2 flex items-center gap-2">Continuar
+                                    class="hidden bg-primary text-white shadow-lg shadow-primary/30 transition-all hover:bg-primary/90 font-bold py-2 px-6 rounded-lg text-sm uppercase mr-2 flex items-center gap-2 h-full">Continuar
                                     a Fase 2 <span
                                         class="material-symbols-outlined text-sm">arrow_forward</span></button>
                             </div>
                         </div>
 
                         <!-- ETAPA 2 -->
-                        <div id="etapa2" class="hidden">
+                        <div id="etapa2" class="hidden transition-all duration-500">
                             <div class="flex items-center justify-between mb-8">
                                 <h4 class="text-xs font-black uppercase tracking-[0.2em] text-slate-400">Etapa 2:
                                     Balanceo Final (Redox + Tanteo)</h4>
@@ -247,17 +432,32 @@
                                     class="bg-primary/10 text-primary text-xs font-bold px-3 py-1 rounded-full">Validando</span>
                             </div>
 
-                            <div class="bg-primary/5 rounded-xl border border-primary/20 p-6 relative">
+                            <div class="bg-primary/5 rounded-xl border border-primary/20 p-6 relative mb-8">
                                 <span
-                                    class="absolute top-2 left-4 text-xs font-bold text-primary opacity-50 uppercase">Semirreacciones
-                                    Evaluadas</span>
-                                <div class="font-mono text-lg space-y-2 mt-4 text-center">
-                                    <div>Cu<sup class="text-xs text-rose-500 font-bold">0</sup> &rarr; Cu<sup
-                                            class="text-xs text-rose-500 font-bold">+2</sup> + 2e⁻ <span
-                                            class="text-xs ml-4 text-slate-400">(x3)</span></div>
-                                    <div>N<sup class="text-xs text-emerald-500 font-bold">+5</sup> + 3e⁻ &rarr; N<sup
-                                            class="text-xs text-emerald-500 font-bold">+2</sup> <span
-                                            class="text-xs ml-4 text-slate-400">(x2)</span></div>
+                                    class="absolute top-2 left-4 text-xs font-bold text-primary opacity-50 uppercase">Ecuación
+                                    Igualada</span>
+                                <div
+                                    class="flex flex-wrap items-center justify-center gap-4 text-2xl font-mono text-slate-800 dark:text-slate-200 mt-4">
+                                    <div class="flex items-center gap-2">
+                                        <span class="text-primary font-bold text-3xl">3</span>
+                                        <span>Cu</span>
+                                    </div>
+                                    <span class="text-primary font-bold">+</span>
+                                    <div class="flex items-center gap-2">
+                                        <span>HNO₃</span>
+                                    </div>
+                                    <span class="text-primary font-bold mx-2">→</span>
+                                    <div class="flex items-center gap-2">
+                                        <span>Cu(NO₃)₂</span>
+                                    </div>
+                                    <span class="text-primary font-bold">+</span>
+                                    <div class="flex items-center gap-2">
+                                        <span>NO</span>
+                                    </div>
+                                    <span class="text-primary font-bold">+</span>
+                                    <div class="flex items-center gap-2">
+                                        <span>H₂O</span>
+                                    </div>
                                 </div>
                             </div>
 
@@ -265,7 +465,9 @@
                                 class="flex flex-wrap items-center justify-center gap-4 text-2xl font-mono text-slate-800 dark:text-slate-200 mt-8 mb-4">
                                 <!-- Ecuación Final -->
                                 <div class="flex items-center gap-2">
-                                    <input type="number" id="c1" min="1" max="15" class="coef-input">
+                                    <input type="number" id="c1"
+                                        class="coef-input cursor-not-allowed bg-slate-100 text-slate-500 border-slate-300 dark:bg-slate-800 dark:border-slate-700 font-black"
+                                        value="3" disabled>
                                     <span>Cu</span>
                                 </div>
                                 <span class="text-primary font-bold">+</span>
@@ -307,18 +509,31 @@
 
                     </div>
 
-                    <div class="glass-panel p-6 rounded-3xl bg-primary/5 border-primary/20 flex flex-col gap-3">
+                    <div
+                        class="glass-panel p-6 rounded-3xl bg-primary/5 border-primary/20 flex flex-col gap-3 h-fit sticky top-28">
                         <div class="flex items-center gap-2 text-primary">
                             <span class="material-symbols-outlined fill-1">lightbulb</span>
                             <h4 class="font-bold text-sm uppercase tracking-wider">Consejo Pedagógico</h4>
                         </div>
-                        <p id="tip_text" class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed italic">
-                            "Recuerda las reglas básicas: los elementos libres son igual a <strong
-                                class="text-primary">0</strong>. El oxígeno generalmente trabaja con <strong
-                                class="text-primary">-2</strong> y el hidrógeno con <strong
-                                class="text-primary">+1</strong>."
-                        </p>
-                        <div class="mt-auto pt-4 border-t border-primary/10">
+                        <div id="tip_content">
+                            <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed italic mb-4">
+                                <strong
+                                    class="text-slate-800 dark:text-slate-200 block mb-2 font-bold not-italic font-display border-b border-primary/10 pb-2">Reglas
+                                    de Asignación:</strong>
+                                1. Elementos libres = <strong class="text-primary">0</strong>.<br>
+                                2. El oxígeno (O) = <strong class="text-primary">-2</strong>.<br>
+                                3. El hidrógeno (H) = <strong class="text-primary">+1</strong>.
+                            </p>
+                            <p
+                                class="text-sm text-amber-700 dark:text-amber-400 bg-amber-50 dark:bg-amber-900/10 p-3 rounded-lg border border-amber-200 dark:border-amber-800/50 leading-relaxed font-medium">
+                                <span
+                                    class="material-symbols-outlined text-sm inline-block mr-1 translate-y-0.5">calculate</span>
+                                La suma de los estados de oxidación en una molécula neutra debe ser <strong
+                                    class="font-black text-rose-500">= 0</strong>. Multiplica el número escrito abajo en
+                                cada elemento por su carga.
+                            </p>
+                        </div>
+                        <div class="mt-4 pt-4 border-t border-primary/10">
                             <button
                                 class="text-[10px] font-black text-primary hover:underline uppercase tracking-widest">Ver
                                 tabla de valencias →</button>
@@ -346,55 +561,169 @@
 
     <script>
         // Lógica de Etapa 1
-        const inputsE1 = ['ox_cu1', 'ox_h1', 'ox_n1', 'ox_o1', 'ox_cu2', 'ox_n2', 'ox_o2', 'ox_n3', 'ox_o3', 'ox_h2', 'ox_o4'];
+        const inputsE1 = ['ox_h1', 'ox_n1', 'ox_o1', 'ox_cu2', 'ox_n2', 'ox_o2', 'ox_n3', 'ox_o3', 'ox_h2', 'ox_o4'];
+        const sumsE1 = [
+            { id: 'sum_hno3_pos', exp: ['+6', '6'] },
+            { id: 'sum_hno3_neg', exp: ['-6'] },
+            { id: 'sum_cuno32_cun', exp: ['+6', '6'] },
+            { id: 'sum_cuno32_o', exp: ['-6'] },
+            { id: 'sum_no_pos', exp: ['+2', '2'] },
+            { id: 'sum_no_neg', exp: ['-2'] },
+            { id: 'sum_h2o_pos', exp: ['+2', '2'] },
+            { id: 'sum_h2o_neg', exp: ['-2'] }
+        ];
 
-        // Setup listener para cambiar color del boton verificar
+        const changeVerifyState = () => {
+            document.getElementById('btn_etapa1').className = "bg-primary text-white shadow-lg shadow-primary/30 transition-all hover:bg-primary/90 font-bold py-2 px-6 rounded-lg text-sm uppercase tracking-wider h-full";
+        };
+
         inputsE1.forEach(id => {
-            document.getElementById(id).addEventListener('input', () => {
-                document.getElementById('btn_etapa1').className = "bg-primary text-white shadow-lg shadow-primary/30 transition-all hover:bg-primary/90 font-bold py-2 px-6 rounded-lg text-sm uppercase tracking-wider";
+            document.getElementById(id).addEventListener('input', changeVerifyState);
+        });
+
+        sumsE1.forEach(item => {
+            document.getElementById(item.id).addEventListener('input', function () {
+                changeVerifyState();
+
+                let val = this.value.trim();
+                // Flag interno temporal para mostrar el =0
+                if (item.exp.includes(val)) {
+                    this.dataset.ok = '1';
+                } else {
+                    this.dataset.ok = '0';
+                }
+
+                // Chequear grupos en tiempo real
+                checkZeros();
             });
         });
 
+        function checkZeros() {
+            const check = (list, zeroId) => {
+                const allOk = list.every(id => document.getElementById(id).dataset.ok === '1' || document.getElementById(id).classList.contains('correct'));
+                if (allOk) {
+                    document.getElementById(zeroId).classList.remove('hidden');
+                } else {
+                    document.getElementById(zeroId).classList.add('hidden');
+                }
+            };
+
+            check(['sum_hno3_pos', 'sum_hno3_neg'], 'hno3_zero');
+            check(['sum_cuno32_cun', 'sum_cuno32_o'], 'cuno32_zero');
+            check(['sum_no_pos', 'sum_no_neg'], 'no_zero');
+            check(['sum_h2o_pos', 'sum_h2o_neg'], 'h2o_zero');
+        }
+
         function verificarEtapa1() {
-            // Valores Esperados
-            const expected = {
-                ox_cu1: '0',
+            // Valores Esperados Oxidacion
+            const expectedOx = {
                 ox_h1: '+1', ox_n1: '+5', ox_o1: '-2', // HNO3
-                ox_cu2: '+2', ox_n2: '+5', ox_o2: '-2', // Cu(NO3)2
+                ox_cu2: '+1', ox_n2: '+5', ox_o2: '-2', // Cu(NO3)2
                 ox_n3: '+2', ox_o3: '-2', // NO
                 ox_h2: '+1', ox_o4: '-2' // H2O
             };
 
             let allCorrect = true;
 
+            // Revisar inputs inferiores
             inputsE1.forEach(id => {
                 const el = document.getElementById(id);
-                // Normalizar input (Aceptar 1 o +1, pero preferiblemente +1)
                 let val = el.value.trim();
-                if (val === '1' && expected[id] === '+1') val = '+1';
-                if (val === '2' && expected[id] === '+2') val = '+2';
-                if (val === '5' && expected[id] === '+5') val = '+5';
+                if (val === '1' && expectedOx[id] === '+1') val = '+1';
+                if (val === '2' && expectedOx[id] === '+2') val = '+2';
+                if (val === '5' && expectedOx[id] === '+5') val = '+5';
 
-                if (val === expected[id]) {
+                if (val === expectedOx[id]) {
                     el.classList.add('correct');
+                    el.classList.remove('incorrect');
                     el.disabled = true;
                 } else {
+                    el.classList.add('incorrect');
                     el.classList.remove('correct');
-                    el.value = '';
                     allCorrect = false;
                 }
             });
 
+            // Revisar sumas superiores
+            sumsE1.forEach(item => {
+                const el = document.getElementById(item.id);
+                let val = el.value.trim();
+
+                if (item.exp.includes(val)) {
+                    el.classList.add('correct');
+                    el.classList.remove('incorrect');
+                    el.disabled = true;
+                    el.dataset.ok = '1';
+                } else {
+                    el.classList.add('incorrect');
+                    el.classList.remove('correct');
+                    el.dataset.ok = '0';
+                    allCorrect = false;
+                }
+            });
+
+            checkZeros();
+
             if (allCorrect) {
                 document.getElementById('btn_etapa1').classList.add('hidden');
-                document.getElementById('btn_pasar_etapa2').classList.remove('hidden');
+                // Desplegar linea de tiempo y logica cross
+                document.getElementById('number_line_container').classList.remove('hidden');
+                document.getElementById('number_line_container').classList.add('flex');
             }
         }
 
+        // Logica para Numero Linea Transferencia
+        const checkMultipliers = () => {
+            const vCu = document.getElementById('mult_cu').value;
+            const vN = document.getElementById('mult_n').value;
+
+            let resCu = '?';
+            let resN = '?';
+
+            if (vCu !== '') {
+                resCu = 1 * parseInt(vCu);
+                document.getElementById('res_cu').innerHTML = `= ${resCu}`;
+            } else {
+                document.getElementById('res_cu').innerHTML = `= ?`;
+            }
+
+            if (vN !== '') {
+                resN = 3 * parseInt(vN);
+                document.getElementById('res_n').innerHTML = `= ${resN}`;
+            } else {
+                document.getElementById('res_n').innerHTML = `= ?`;
+            }
+
+            if (resCu === 3 && resN === 3) {
+                document.getElementById('mult_cu').classList.add('bg-indigo-50', 'text-indigo-600');
+                document.getElementById('mult_n').classList.add('bg-emerald-50', 'text-emerald-600');
+                document.getElementById('mult_cu').disabled = true;
+                document.getElementById('mult_n').disabled = true;
+                document.getElementById('btn_pasar_etapa2').classList.remove('hidden');
+            }
+        };
+
+        document.getElementById('mult_cu').addEventListener('input', checkMultipliers);
+        document.getElementById('mult_n').addEventListener('input', checkMultipliers);
+
         function pasarEtapa2() {
-            document.getElementById('etapa1').classList.add('hidden');
-            document.getElementById('etapa2').classList.remove('hidden');
-            document.getElementById('tip_text').innerHTML = '"Los coeficientes principales deben asegurar que se conserve todo. Fíjate en el Nitrógeno (N): una parte se vuelve <strong class="text-primary">+2</strong> pero otra se mantiene en el nitrato <strong class="text-primary">(NO₃)</strong>."';
+            document.getElementById('btn_pasar_etapa2').classList.add('hidden');
+            document.getElementById('etapa1').classList.add('opacity-50', 'pointer-events-none', 'scale-[0.98]');
+
+            // Revertir a scroll bottom o centrar etapa 2
+            setTimeout(() => {
+                document.getElementById('etapa2').classList.remove('hidden');
+                document.getElementById('tip_content').innerHTML = `
+                    <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed italic mb-4">
+                        "Los coeficientes principales multiplicadores calculados en la gráfica (<strong class="text-indigo-500">3</strong> para el Cobre y <strong class="text-emerald-500">2</strong> para el Nitrógeno) te guían en el cruce de electrones para mantener el equilibrio y asegurar que la carga se conserve."
+                    </p>
+                    <p class="text-sm text-indigo-700 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-900/10 p-3 rounded-lg border border-indigo-200 dark:border-indigo-800/50 leading-relaxed font-medium">
+                        <span class="material-symbols-outlined text-sm inline-block mr-1 translate-y-0.5">warning</span>
+                        <strong>¡Cuidado con el Nitrógeno!</strong><br>
+                        Una parte de él se redujo a gas NO, pero otra parte se quedó intacta dentro del ion nitrato (NO₃). ¡Debes sumar TODOS los átomos del lado derecho para ajustar el HNO₃ de la izquierda!
+                    </p>
+                `;
+            }, 300);
         }
 
         function verificarEtapa2() {
@@ -409,8 +738,8 @@
 
             // Resuelto: 3Cu + 8HNO3 -> 3Cu(NO3)2 + 2NO + 4H2O
             if (c1 === 3 && c2 === 8 && c3 === 3 && c4 === 2 && c5 === 4) {
-                fbMsg.className = "mt-8 flex items-center justify-center gap-2 text-green-600 bg-green-50 dark:bg-green-900/20 p-4 rounded-lg border border-green-200 dark:border-green-800 transition-all shadow-md";
-                fbMsg.innerHTML = '<span class="material-symbols-outlined text-xl">check_circle</span><span class="text-sm font-bold uppercase tracking-wider">¡ÉXITO! Ecuación balanceada correctamente con el método Redox.</span>';
+                fbMsg.className = "mt-8 flex items-center justify-center gap-2 text-emerald-600 bg-emerald-50 dark:bg-emerald-900/20 p-4 rounded-lg border border-emerald-200 dark:border-emerald-800 transition-all shadow-md";
+                fbMsg.innerHTML = '<span class="material-symbols-outlined text-xl">verified</span><span class="text-sm font-bold uppercase tracking-wider">¡ÉXITO! Ecuación balanceada correctamente.</span>';
 
                 // Efecto confeti css o resalte
                 document.querySelectorAll('.coef-input').forEach(el => {
@@ -425,13 +754,13 @@
                 let msg = 'Algunos coeficientes no cuadran.';
 
                 if (c1 !== 3 || c3 !== 3) {
-                    msg = 'Revisa los coeficientes sugeridos por la semirreacción para el Cobre (multiplicados por 3).';
+                    msg = 'Revisa los coeficientes sugeridos por la semirreacción para el Cobre (<strong class="text-indigo-500">×3</strong>).';
                 } else if (c4 !== 2) {
-                    msg = 'Revisa los coeficientes sugeridos para el Nitrógeno que se redujo a NO (multiplicado por 2).';
+                    msg = 'Revisa el coeficiente sugerido para el Nitrógeno que sí se redujo a NO (<strong class="text-emerald-500">×2</strong>).';
                 } else if (c2 !== 8) {
-                    msg = 'Debes sumar TODOS los nitrógenos de los productos (los del nitrato + el gas NO) para ajustar el HNO3.';
+                    msg = 'Suma cuántos nitrógenos (N) hay en TOTAL en tus productos: (Nitratos + NO) para ajustar el HNO₃ global.';
                 } else if (c5 !== 4) {
-                    msg = 'Ajusta por tanteo el agua para balancear los Hidrógenos.';
+                    msg = 'Te falta solo el paso final: balancea los Hidrógenos (H) agregando el peso correcto al agua.';
                 }
 
                 fbMsg.innerHTML = '<span class="material-symbols-outlined text-xl">warning</span><span class="text-sm font-bold tracking-wide">' + msg + '</span>';

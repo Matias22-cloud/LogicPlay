@@ -340,16 +340,25 @@
                 return;
             }
 
+            // Lógica de escalado de tiempo real: 1 año = 4 segundos visuales
+            let animDur = 4;
+            if (!isNaN(inputW) && inputW > 0) {
+                let ratio = correctW / inputW; // si ingresan w más grande, ratio es < 1, animDur baja (más rápido)
+                animDur = 4 * ratio;
+                if (animDur > 15) animDur = 15;
+                if (animDur < 0.5) animDur = 0.5;
+            }
+
             if (!isTCorrect) {
-                failSimulation('El Periodo (T) es incorrecto. Recuerda, ¿Cuántos segundos tiene un año entero? (Lee bien el enunciado)', 'crash');
+                failSimulation('El Periodo (T) es incorrecto. El cálculo de tiempo no cuadra de acuerdo al enunciado.', 'crash', animDur);
                 return;
             }
             if (!isWCorrect) {
-                failSimulation('La Velocidad Angular (ω) no coordina con el periodo. Revisa la fórmula ω = 2π/T.', 'escape');
+                failSimulation('La Velocidad Angular (ω) no coordina con el periodo. Revisa la fórmula ω = 2π/T.', 'escape', animDur);
                 return;
             }
             if (!isVCorrect) {
-                failSimulation('La Velocidad Orbital (v) es incorrecta, te desviarás. Revisa v = ω × r.', 'escape');
+                failSimulation('La Velocidad Orbital (v) es incorrecta, te desviarás. Revisa v = ω × r.', 'escape', animDur);
                 return;
             }
 
@@ -358,10 +367,10 @@
             fbMsg.innerHTML = '<span class="material-symbols-outlined text-sm">check_circle</span><span class="text-xs font-bold uppercase tracking-wider">¡ÉXITO! Velocidad y vectores matemáticos perfectos. Órbita estable.</span>';
 
             planet.style.transformOrigin = 'calc(-120px + 50%) 50%'; // offset radio (120px is the initial translateX so origin is 0,0)
-            planet.style.animation = 'orbit 4s linear infinite';
+            planet.style.animation = `orbit ${animDur}s linear infinite`;
         }
 
-        function failSimulation(message, type) {
+        function failSimulation(message, type, animDur) {
             const planet = document.getElementById('planet_container');
             const fbMsg = document.getElementById('feedback_msg');
 
@@ -371,9 +380,9 @@
             planet.style.transformOrigin = 'calc(-120px + 50%) 50%';
 
             if (type === 'escape') {
-                planet.style.animation = 'escape 2s ease-in forwards';
+                planet.style.animation = `escape ${animDur * 0.5}s ease-in forwards`;
             } else {
-                planet.style.animation = 'crash 2s ease-in forwards';
+                planet.style.animation = `crash ${animDur * 0.5}s ease-in forwards`;
             }
         }
     </script>
