@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100;300;400;600;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    <title>propiedades1.html</title>
+    <style>
+        :root {
+            --accent-blue: #0ea5e9;
+            --accent-indigo: #6366f1;
+            --slate-light: #f8fafc;
+        }
+
+        body { 
+            font-family: 'Lexend', sans-serif; 
+            background-color: #ffffff;
+            color: #0f172a;
+            min-height: 100vh;
+        }
+
+        .text-glitch {
+            text-shadow: 2px 0 #e2e8f0, -2px 0 #cbd5e1;
+            letter-spacing: -0.05em;
+        }
+
+        .carbon-panel {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .carbon-panel:hover {
+            border-color: var(--accent-blue);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+        }
+
+        .transpose-card {
+            transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        
+        .rotated {
+            transform: rotate(90deg) scale(0.9);
+            filter: drop-shadow(0 0 15px rgba(14, 165, 233, 0.2));
+        }
+
+        .jump-btn {
+            background: linear-gradient(90deg, #1e293b, #334155);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .btn-locked {
+            filter: grayscale(1);
+            opacity: 0.1;
+            cursor: not-allowed !important;
+        }
+
+        .matrix-bg {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: linear-gradient(#f1f5f9 1px, transparent 1px),
+                              linear-gradient(90deg, #f1f5f9 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: -1;
+        }
+
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+    </style>
+</head>
+<body class="selection:bg-blue-100 pb-20">
+    <div class="matrix-bg"></div>
+
+    <nav class="p-8 flex justify-between items-center max-w-7xl mx-auto">
+        <div class="flex items-center gap-4">
+            <span class="material-symbols-outlined text-blue-600 text-4xl">grid_guides</span>
+            <div class="h-10 w-[2px] bg-slate-200"></div>
+            <span class="font-black tracking-[0.4em] text-[10px] text-slate-400 uppercase">Core Properties Alpha</span>
+        </div>
+        <div class="flex gap-4">
+            <div class="px-4 py-2 rounded-xl bg-slate-100 border border-slate-200 text-[10px] font-black tracking-widest text-slate-600">SISTEMA: ONLINE</div>
+        </div>
+    </nav>
+
+    <main class="max-w-6xl mx-auto px-6 pt-20">
+        
+        <header class="mb-32">
+            <h1 class="text-7xl md:text-9xl font-black text-slate-900 italic mb-12 tracking-tighter uppercase">
+                AXIOMAS <br> <span class="text-blue-600">MAESTROS.</span>
+            </h1>
+            <div class="grid md:grid-cols-2 gap-12 items-end">
+                <p class="text-2xl text-slate-500 font-light leading-relaxed">
+                    Las propiedades no son reglas para memorizar, son <b class="text-slate-900">herramientas de poder</b>. Dominarlas es la diferencia entre un calculador y un arquitecto de sistemas.
+                </p>
+                <div class="flex gap-6 text-[10px] font-black uppercase tracking-widest text-blue-600">
+                    <span class="border-b-2 border-blue-600 pb-2">01. Suma</span>
+                    <span class="opacity-30">02. Producto</span>
+                    <span class="opacity-30">03. Inversa</span>
+                </div>
+            </div>
+        </header>
+
+        <section class="grid lg:grid-cols-3 gap-8 mb-40">
+            <div class="carbon-panel p-10 rounded-[3rem] group">
+                <h3 class="text-indigo-600 font-black text-[10px] uppercase tracking-[0.3em] mb-12">Ley Conmutativa</h3>
+                <div class="h-32 flex items-center justify-center mb-8 relative">
+                    <div class="absolute inset-0 bg-indigo-50 blur-3xl rounded-full"></div>
+                    <span class="text-3xl font-mono text-slate-900 tracking-widest group-hover:scale-110 transition-transform">A + B = B + A</span>
+                </div>
+                <p class="text-slate-500 text-sm leading-relaxed">
+                    El orden de los factores no altera la unión. El resultado de la suma es <b class="text-indigo-600">absoluto e invariable</b> sin importar el flujo.
+                </p>
+            </div>
+
+            <div class="carbon-panel p-10 rounded-[3rem] group">
+                <h3 class="text-emerald-600 font-black text-[10px] uppercase tracking-[0.3em] mb-12">Elemento Neutro</h3>
+                <div class="h-32 flex items-center justify-center mb-8 relative">
+                    <div class="absolute inset-0 bg-emerald-50 blur-3xl rounded-full"></div>
+                    <span class="text-3xl font-mono text-slate-900 tracking-widest group-hover:scale-110 transition-transform">A + 0 = A</span>
+                </div>
+                <p class="text-slate-500 text-sm leading-relaxed">
+                    La matriz nula es el <b class="text-emerald-600">vacío perfecto</b>. No añade peso ni cambia el destino; la estructura original permanece intacta.
+                </p>
+            </div>
+
+            <div class="carbon-panel p-10 rounded-[3rem] group">
+                <h3 class="text-rose-600 font-black text-[10px] uppercase tracking-[0.3em] mb-12">Escalar de Expansión</h3>
+                <div class="h-32 flex items-center justify-center mb-8 relative">
+                    <div class="absolute inset-0 bg-rose-50 blur-3xl rounded-full"></div>
+                    <span class="text-3xl font-mono text-slate-900 tracking-widest group-hover:scale-110 transition-transform">k · A</span>
+                </div>
+                <p class="text-slate-500 text-sm leading-relaxed">
+                    Un multiplicador externo afecta a <b class="text-rose-600">cada átomo</b> de la matriz. Es una expansión o contracción total de la red de datos.
+                </p>
+            </div>
+        </section>
+
+        <section class="mb-40">
+            <div class="flex flex-col lg:flex-row gap-16 items-center bg-slate-50 p-12 md:p-20 rounded-[4rem] border border-slate-200 shadow-sm relative overflow-hidden">
+                <div class="absolute -left-20 -top-20 w-64 h-64 bg-blue-100 blur-[100px]"></div>
+                
+                <div class="flex-1 relative z-10">
+                    <span class="bg-blue-100 text-blue-700 px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest">Protocolo Master: Transpose</span>
+                    <h2 class="text-6xl font-black italic mt-6 mb-8 tracking-tighter text-slate-900">LA <span class="text-blue-600">TRASPUESTA</span></h2>
+                    <p class="text-xl text-slate-500 leading-relaxed mb-10">
+                        Si las filas son el "cuerpo" y las columnas el "alma", trasponer es el acto de <b class="text-slate-900">reorientar la realidad</b> de los datos. 
+                    </p>
+                    <ul class="space-y-6 text-[11px] font-black text-slate-400 tracking-[0.2em]">
+                        <li class="flex items-center gap-4"><span class="w-2 h-2 bg-blue-500 rounded-full"></span> LA FILA 1 SE CONVIERTE EN COLUMNA 1</li>
+                        <li class="flex items-center gap-4"><span class="w-2 h-2 bg-blue-500 rounded-full"></span> LA DIAGONAL ACTÚA COMO EJE DE ROTACIÓN</li>
+                    </ul>
+                </div>
+
+                <div class="w-full max-w-md bg-white p-12 rounded-[3.5rem] border border-slate-200 relative shadow-xl">
+                    <div class="absolute top-8 right-8 opacity-10">
+                        <span class="material-symbols-outlined text-5xl text-blue-600">sync_alt</span>
+                    </div>
+                    
+                    <h4 class="text-center text-[10px] font-black text-slate-400 uppercase tracking-widest mb-10">Matriz de Entrada (A)</h4>
+                    
+                    <div class="flex flex-col gap-10 items-center">
+                        <div class="grid grid-cols-2 gap-4 font-mono text-3xl font-black p-8 bg-slate-50 rounded-3xl border border-slate-100 transpose-card" id="m-box">
+                            <div class="w-16 h-16 flex items-center justify-center text-blue-600 border border-blue-100 rounded-xl bg-white">5</div>
+                            <div class="w-16 h-16 flex items-center justify-center text-slate-900 bg-blue-50 rounded-xl animate-pulse">8</div>
+                            <div class="w-16 h-16 flex items-center justify-center text-slate-300">0</div>
+                            <div class="w-16 h-16 flex items-center justify-center text-slate-300">1</div>
+                        </div>
+
+                        <div class="w-full space-y-8">
+                            <div class="flex flex-col items-center gap-4">
+                                <p class="text-[9px] text-slate-400 font-bold uppercase tracking-[0.3em]">Destino: Columna Traspuesta</p>
+                                <div class="flex gap-4 items-center">
+                                    <span class="text-4xl font-black text-blue-600 opacity-30">5</span>
+                                    <input type="number" id="t-val" placeholder="?" class="w-20 h-20 bg-slate-50 border-2 border-slate-200 rounded-2xl text-center text-3xl font-black focus:border-blue-500 focus:bg-white transition-all outline-none text-slate-900">
+                                </div>
+                            </div>
+                            <button onclick="checkT()" class="w-full py-5 bg-slate-900 text-white font-black rounded-2xl hover:bg-blue-600 hover:scale-[1.02] transition-all active:scale-95 uppercase text-xs tracking-widest">
+                                Iniciar Reorientación
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="text-center">
+            <div class="h-[1px] bg-slate-200 mb-20"></div>
+            
+            <p class="text-slate-400 font-black text-[10px] uppercase tracking-[0.5em] mb-12">Integridad del Nexo: <span id="percent">50%</span></p>
+            
+            <div class="flex flex-col items-center gap-8">
+                <a href="propiedades2.html" id="final-btn" class="jump-btn btn-locked px-20 py-8 rounded-[2.5rem] text-3xl font-black text-white flex items-center gap-6 group">
+                    SALTO AL NIVEL 03
+                    <span class="material-symbols-outlined text-4xl group-hover:translate-x-4 transition-transform">rocket_launch</span>
+                </a>
+                <p id="msg" class="text-rose-500 font-black italic tracking-[0.2em] text-[11px] uppercase">
+                    ⚠️ Sincroniza la traspuesta para habilitar el motor de salto.
+                </p>
+            </div>
+        </footer>
+
+    </main>
+
+    <script>
+        function checkT() {
+            const val = document.getElementById('t-val').value;
+            const msg = document.getElementById('msg');
+            const btn = document.getElementById('final-btn');
+            const box = document.getElementById('m-box');
+            const percent = document.getElementById('percent');
+
+            if(val == "8") {
+                msg.innerText = "¡Sincronización al 100%! Motor de salto listo.";
+                msg.className = "text-emerald-600 font-black italic tracking-[0.2em] text-[11px] uppercase animate-pulse";
+                percent.innerText = "100%";
+                percent.className = "text-emerald-600";
+                
+                box.classList.add('rotated');
+                btn.classList.remove('btn-locked');
+                
+                document.body.animate([
+                    { backgroundColor: '#ffffff' },
+                    { backgroundColor: '#f0f9ff' },
+                    { backgroundColor: '#ffffff' }
+                ], { duration: 600 });
+            } else {
+                msg.innerText = "Error de eje: El valor 8 de la fila 1 debe rotar a la columna 1.";
+                msg.className = "text-rose-600 font-black italic tracking-[0.2em] text-[11px] uppercase";
+                
+                box.animate([
+                    { transform: 'translateX(-5px) rotate(0deg)' },
+                    { transform: 'translateX(5px) rotate(0deg)' },
+                    { transform: 'translateX(0) rotate(0deg)' }
+                ], { duration: 150, iterations: 2 });
+            }
+        }
+    </script>
+</body>
+</html>

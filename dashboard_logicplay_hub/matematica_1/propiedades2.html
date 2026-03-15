@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    <title>LogiPlay - Validación de Sistemas</title>
+    <style>
+        :root {
+            --indigo-primary: #4f46e5;
+            --emerald-vibrant: #10b981;
+            --rose-alert: #f43f5e;
+            --slate-light: #f8fafc;
+        }
+
+        body { 
+            font-family: 'Lexend', sans-serif; 
+            background-color: var(--slate-light); 
+            color: #1e293b;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 0% 0%, rgba(79, 70, 229, 0.03) 0%, transparent 40%),
+                radial-gradient(circle at 100% 100%, rgba(16, 185, 129, 0.03) 0%, transparent 40%);
+        }
+
+        .bit-bg {
+            position: fixed;
+            inset: 0;
+            background-image: radial-gradient(rgba(0,0,0,0.03) 1px, transparent 1px);
+            background-size: 30px 30px;
+            z-index: -1;
+        }
+
+        .challenge-card {
+            background: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px -5px rgba(0,0,0,0.05);
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .challenge-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--indigo-primary);
+            box-shadow: 0 20px 40px -10px rgba(79, 70, 229, 0.1);
+        }
+
+        .challenge-card.correct {
+            border-color: var(--emerald-vibrant);
+            background: rgba(16, 185, 129, 0.02);
+        }
+
+        .challenge-card.wrong {
+            border-color: var(--rose-alert);
+            animation: shake 0.4s ease-in-out;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-8px); }
+            75% { transform: translateX(8px); }
+        }
+
+        .option-btn {
+            background: #fff;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            padding: 1.25rem;
+            border-radius: 1.25rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #64748b;
+        }
+
+        .option-btn:hover:not(.locked) {
+            background: var(--indigo-primary);
+            border-color: var(--indigo-primary);
+            color: white;
+            transform: scale(1.02);
+        }
+
+        .sarrus-lock {
+            transition: all 1s ease;
+            filter: grayscale(1) opacity(0.4);
+            pointer-events: none;
+            transform: scale(0.98);
+        }
+
+        .sarrus-ready {
+            filter: grayscale(0) opacity(1);
+            transform: scale(1);
+            border: 3px solid var(--emerald-vibrant) !important;
+            animation: glow-pulse 2s infinite;
+        }
+
+        @keyframes glow-pulse {
+            0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.2); }
+            70% { box-shadow: 0 0 0 15px rgba(16, 185, 129, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+        }
+    </style>
+</head>
+<body class="p-6 md:p-12">
+    <div class="bit-bg"></div>
+
+    <nav class="max-w-6xl mx-auto flex justify-between items-center mb-16">
+        <button onclick="window.history.back()" class="flex items-center gap-3 group bg-white px-5 py-3 rounded-2xl shadow-sm border border-slate-100 hover:border-indigo-300 transition-all">
+            <span class="material-symbols-outlined text-indigo-500 group-hover:-translate-x-1 transition-transform">arrow_back</span>
+            <span class="text-xs font-black uppercase tracking-widest text-slate-500">Atrás</span>
+        </button>
+        <div class="text-right">
+            <span class="text-[10px] font-black text-indigo-500 uppercase tracking-[0.4em]">Protocolo Secundario</span>
+            <h2 class="text-xl font-black italic text-slate-900 tracking-tighter uppercase">Cámara de Sincronía</h2>
+        </div>
+    </nav>
+
+    <main class="max-w-4xl mx-auto">
+        
+        <section class="mb-20 text-center">
+            <h1 class="text-5xl md:text-6xl font-black mb-6 text-slate-900 tracking-tighter italic uppercase">
+                Validación de <span class="text-indigo-600">Sistemas</span>
+            </h1>
+            <p class="text-slate-500 text-lg max-w-2xl mx-auto font-medium">
+                Tu ADN matemático debe ser verificado. Resuelve estas 3 anomalías de propiedades para desbloquear el acceso a la <b class="text-indigo-600">Regla de Sarrus.</b>
+            </p>
+        </section>
+
+        <div class="space-y-10 mb-32">
+            
+            <div id="q1" class="challenge-card p-8 md:p-10 rounded-[3rem]">
+                <div class="flex items-center gap-5 mb-10">
+                    <span class="bg-indigo-600 text-white w-10 h-10 rounded-xl flex items-center justify-center font-black">1</span>
+                    <h3 class="text-lg font-black uppercase tracking-widest text-slate-800">Anomalía de Giro</h3>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center mb-10">
+                    <div class="bg-slate-50 p-6 rounded-[1.5rem] border border-slate-200 text-center">
+                        <p class="text-[9px] font-black text-slate-400 mb-3 uppercase">Matriz A</p>
+                        <div class="font-mono text-2xl font-bold text-slate-800">1 &nbsp; 5<br>0 &nbsp; 2</div>
+                    </div>
+                    <div class="bg-indigo-50 p-6 rounded-[1.5rem] border border-indigo-100 text-center">
+                        <p class="text-[9px] font-black text-indigo-400 mb-3 uppercase">Transformación B</p>
+                        <div class="font-mono text-2xl font-bold text-indigo-600">1 &nbsp; 0<br>5 &nbsp; 2</div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <button onclick="check(1, 'wrong', this)" class="option-btn">Neutro</button>
+                    <button onclick="check(1, 'correct', this)" class="option-btn text-indigo-600 border-indigo-100">Traspuesta ($A^T$)</button>
+                    <button onclick="check(1, 'wrong', this)" class="option-btn">Escalar</button>
+                    <button onclick="check(1, 'wrong', this)" class="option-btn">Identidad</button>
+                </div>
+            </div>
+
+            <div id="q2" class="challenge-card p-8 md:p-10 rounded-[3rem]">
+                <div class="flex items-center gap-5 mb-10">
+                    <span class="bg-indigo-600 text-white w-10 h-10 rounded-xl flex items-center justify-center font-black">2</span>
+                    <h3 class="text-lg font-black uppercase tracking-widest text-slate-800">Suma de Vacío</h3>
+                </div>
+                
+                <div class="bg-slate-900 p-8 rounded-[2rem] flex flex-wrap justify-center items-center gap-6 mb-10 text-white">
+                    <div class="font-mono text-xl">| 8 3 |</div>
+                    <span class="text-3xl text-indigo-400">+</span>
+                    <div class="font-mono text-xl text-indigo-300">| 0 0 |</div>
+                    <span class="text-3xl text-indigo-400">=</span>
+                    <div class="font-mono text-xl text-emerald-400">| 8 3 |</div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <button onclick="check(2, 'correct', this)" class="option-btn">Elemento Neutro</button>
+                    <button onclick="check(2, 'wrong', this)" class="option-btn">Involución</button>
+                    <button onclick="check(2, 'wrong', this)" class="option-btn">Asociativa</button>
+                    <button onclick="check(2, 'wrong', this)" class="option-btn">Cero Absoluto</button>
+                </div>
+            </div>
+
+            <div id="q3" class="challenge-card p-8 md:p-10 rounded-[3rem]">
+                <div class="flex items-center gap-5 mb-10">
+                    <span class="bg-indigo-600 text-white w-10 h-10 rounded-xl flex items-center justify-center font-black">3</span>
+                    <h3 class="text-lg font-black uppercase tracking-widest text-slate-800">Ley de Orden</h3>
+                </div>
+                
+                <div class="bg-white border-2 border-dashed border-slate-200 p-10 rounded-[2rem] text-center mb-10">
+                    <p class="font-mono text-2xl text-slate-800 font-black tracking-tighter">
+                        [ A + B ] = [ B + A ]
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <button onclick="check(3, 'wrong', this)" class="option-btn">Distributiva</button>
+                    <button onclick="check(3, 'correct', this)" class="option-btn">Conmutativa</button>
+                    <button onclick="check(3, 'wrong', this)" class="option-btn">Identidad</button>
+                    <button onclick="check(3, 'wrong', this)" class="option-btn">Sarrus</button>
+                </div>
+            </div>
+
+        </div>
+
+        <section id="sarrus-portal" class="sarrus-lock bg-white p-12 md:p-20 rounded-[4rem] text-center shadow-2xl border border-slate-100">
+            <div class="w-20 h-20 bg-indigo-600 rounded-2xl mx-auto mb-8 flex items-center justify-center text-white shadow-lg">
+                <span class="material-symbols-outlined text-4xl">database</span>
+            </div>
+            <h2 class="text-4xl font-black text-slate-950 mb-4 tracking-tighter uppercase italic">Protocolo Alpha-Core</h2>
+            <p class="text-slate-500 max-w-sm mx-auto mb-10 font-bold">
+                Identidad verificada. La puerta a los determinantes está abierta.
+            </p>
+            
+            <a href="../matematica_2/sarrus.html" class="inline-flex items-center gap-4 bg-slate-950 text-white px-12 py-6 rounded-3xl font-black text-xl hover:bg-emerald-500 hover:scale-105 transition-all shadow-xl group">
+                DESPLEGAR SARRUS
+                <span class="material-symbols-outlined group-hover:translate-x-2 transition-transform">rocket_launch</span>
+            </a>
+        </section>
+
+        <footer class="text-center py-20 opacity-30">
+            <p class="text-slate-400 text-[10px] font-black uppercase tracking-[0.5em]">LogiPlay // Root Directory: matematica_1</p>
+        </footer>
+
+    </main>
+
+    <script>
+        let solved = { q1: false, q2: false, q3: false };
+
+        function check(questionNum, status, element) {
+            const card = document.getElementById('q' + questionNum);
+            const buttons = card.querySelectorAll('.option-btn');
+
+            if (status === 'correct') {
+                card.classList.remove('wrong');
+                card.classList.add('correct');
+                
+                buttons.forEach(btn => {
+                    btn.classList.add('opacity-30', 'pointer-events-none', 'locked');
+                });
+                
+                element.classList.remove('opacity-30');
+                element.classList.add('bg-emerald-500', 'text-white', 'border-emerald-500');
+                
+                solved['q' + questionNum] = true;
+                verifyAllSolved();
+            } else {
+                card.classList.add('wrong');
+                element.classList.add('bg-rose-500', 'text-white', 'border-rose-500');
+                
+                setTimeout(() => {
+                    card.classList.remove('wrong');
+                    element.classList.remove('bg-rose-500', 'text-white', 'border-rose-500');
+                }, 800);
+            }
+        }
+
+        function verifyAllSolved() {
+            if (solved.q1 && solved.q2 && solved.q3) {
+                const portal = document.getElementById('sarrus-portal');
+                portal.classList.remove('sarrus-lock');
+                portal.classList.add('sarrus-ready');
+                
+                setTimeout(() => {
+                    portal.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }, 800);
+            }
+        }
+    </script>
+</body>
+</html>

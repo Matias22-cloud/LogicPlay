@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,fill,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+    <title>Sarrus Lab</title>
+    <style>
+        :root { --primary: #4f46e5; --bg: #f8fafc; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--bg); color: #1e293b; min-height: 100vh; }
+        .matrix-container { background: white; border-radius: 32px; border: 1px solid #e2e8f0; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05); }
+        .matrix-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; position: relative; padding: 20px; }
+        .matrix-grid::before, .matrix-grid::after { content: ''; position: absolute; top: 10px; bottom: 10px; width: 10px; border: 3px solid #cbd5e1; }
+        .matrix-grid::before { left: 5px; border-right: 0; border-radius: 10px 0 0 10px; }
+        .matrix-grid::after { left: 59%; border-left: 0; border-radius: 0 10px 10px 0; }
+        .cell { width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.2rem; color: #334155; }
+        .cell-ghost { color: #94a3b8; background: #f1f5f9; border-radius: 10px; font-weight: 500; opacity: 0.7; }
+        .tab-btn { transition: all 0.2s; border-radius: 12px; font-weight: 700; font-size: 0.75rem; color: #64748b; }
+        .tab-active { background: #4f46e5; color: white !important; box-shadow: 0 4px 12px rgba(79, 70, 229, 0.2); }
+        .input-box { border: 2px solid #e2e8f0; border-radius: 14px; padding: 12px; text-align: center; font-family: 'Fira Code', monospace; transition: 0.3s; width: 100%; }
+        .input-box:focus { border-color: #4f46e5; outline: none; background: #f5f3ff; }
+        .input-box:disabled { background: #f0fdf4; border-color: #22c55e; color: #15803d; opacity: 1; }
+    </style>
+</head>
+<body class="p-6 md:p-12">
+    <div class="max-w-6xl mx-auto">
+        <header class="flex flex-col md:flex-row justify-between items-center mb-12 gap-6">
+            <div class="text-center md:text-left">
+                <h1 class="text-4xl font-extrabold tracking-tight text-slate-900 uppercase">Sarrus <span class="text-indigo-600">Lab</span></h1>
+                <p class="text-slate-500 font-medium italic">Completa las 4 misiones para habilitar el acceso.</p>
+            </div>
+            <nav class="flex bg-slate-100 p-1.5 rounded-2xl gap-1">
+                <button onclick="loadEx(0)" id="tab0" class="tab-btn px-5 py-2 tab-active">MISIÓN 1</button>
+                <button onclick="loadEx(1)" id="tab1" class="tab-btn px-5 py-2">MISIÓN 2</button>
+                <button onclick="loadEx(2)" id="tab2" class="tab-btn px-5 py-2">MISIÓN 3</button>
+                <button onclick="loadEx(3)" id="tab3" class="tab-btn px-5 py-2">MISIÓN 4</button>
+            </nav>
+        </header>
+
+        <div class="grid lg:grid-cols-2 gap-12 items-start">
+            <div class="matrix-container p-10 flex flex-col items-center">
+                <div class="matrix-grid mb-10" id="matrix-display"></div>
+                <div class="w-full max-w-xs space-y-4">
+                    <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest block text-center">Determinante Det(A)</label>
+                    <input type="number" id="final-val" placeholder="???" disabled
+                        class="w-full text-center text-5xl font-black py-6 rounded-2xl border-4 border-slate-100 bg-slate-50 opacity-40 transition-all">
+                    
+                    <button onclick="checkFinal()" id="btn-check" class="hidden w-full bg-slate-900 text-white py-4 rounded-xl font-bold hover:bg-indigo-600 transition-all">VERIFICAR</button>
+                    
+                    <div id="final-container" class="hidden">
+                        <a href="matematica_3/jordan.html" class="w-full bg-emerald-600 text-white py-4 rounded-xl font-bold text-center block shadow-md hover:bg-emerald-700 transition-colors">
+                            IR A JORDAN
+                        </a>
+                    </div>
+                    <p id="progress-text" class="text-center text-xs font-bold text-slate-400 uppercase tracking-widest mt-4">Misiones: 0 / 4</p>
+                </div>
+            </div>
+
+            <div class="space-y-6">
+                <div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm">
+                    <h3 class="text-xs font-black text-slate-400 uppercase tracking-widest mb-6 flex items-center gap-2">
+                        <span class="material-symbols-rounded text-indigo-600">terminal</span> Panel de Pasos
+                    </h3>
+
+                    <div class="mb-8">
+                        <label class="text-[11px] font-bold text-slate-600 block mb-2 tracking-wide">Paso 1: Diagonales Principales (↘)</label>
+                        <div class="flex gap-3">
+                            <input type="number" id="s1-input" class="input-box" placeholder="Total S1">
+                            <button onclick="validateStep(1)" class="bg-indigo-600 text-white px-5 rounded-xl font-bold">OK</button>
+                        </div>
+                        <p id="h1" class="mt-3 text-[11px] text-slate-400 font-mono bg-slate-50 p-2 rounded-lg"></p>
+                    </div>
+
+                    <div id="step2-area" class="opacity-30 pointer-events-none transition-all duration-500">
+                        <label class="text-[11px] font-bold text-slate-600 block mb-2 tracking-wide">Paso 2: Diagonales Secundarias (↗)</label>
+                        <div class="flex gap-3">
+                            <input type="number" id="s2-input" class="input-box" placeholder="Total S2">
+                            <button onclick="validateStep(2)" class="bg-indigo-600 text-white px-5 rounded-xl font-bold">OK</button>
+                        </div>
+                        <p id="h2" class="mt-3 text-[11px] text-slate-400 font-mono bg-slate-50 p-2 rounded-lg"></p>
+                    </div>
+
+                    <div id="formula-display" class="hidden mt-8 pt-8 border-t border-slate-100 text-center">
+                        <div class="inline-flex items-center gap-4 bg-indigo-50 px-8 py-4 rounded-2xl border border-indigo-100 font-black text-2xl">
+                            <span id="val1" class="text-indigo-600">?</span>
+                            <span class="text-slate-300">−</span>
+                            <span id="val2" class="text-rose-500">?</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const exercises = [
+            { m: [[1, 0, 3], [2, 1, 0], [4, 2, 1]], s1: 13, s2: 12, a: 1, p1: "Suma: (1·1·1) + (0·0·4) + (3·2·2)", p2: "Suma: (3·1·4) + (0·2·1) + (1·0·2)", solved: false },
+            { m: [[2, -1, 3], [1, 1, 2], [0, 2, 1]], s1: 8, s2: 7, a: 1, p1: "Suma: (2·1·1) + (-1·2·0) + (3·1·2)", p2: "Suma: (0·1·3) + (2·2·2) + (1·1·-1)", solved: false },
+            { m: [[1, 2, 0], [3, 4, 5], [1, 0, 6]], s1: 34, s2: 0, a: 34, p1: "Suma: (1·4·6) + (2·5·1) + (0·3·0)", p2: "Suma: (0·4·1) + (5·0·1) + (6·3·2)", solved: false },
+            { m: [[3, 2, 1], [0, 2, -2], [3, 1, 1]], s1: -6, s2: 0, a: -6, p1: "Suma: (3·2·1) + (2·-2·3) + (1·0·1)", p2: "Suma: (1·2·3) + (2·0·1) + (3·-2·1)", solved: false }
+        ];
+
+        let curIdx = 0;
+
+        function loadEx(idx) {
+            curIdx = idx;
+            const ex = exercises[idx];
+            const grid = document.getElementById('matrix-display');
+            grid.innerHTML = '';
+            
+            ex.m.forEach(row => {
+                row.forEach(val => {
+                    const cell = document.createElement('div');
+                    cell.className = 'cell'; cell.innerText = val; grid.appendChild(cell);
+                });
+                for(let i=0; i<2; i++) {
+                    const cell = document.createElement('div');
+                    cell.className = 'cell cell-ghost'; cell.innerText = row[i]; grid.appendChild(cell);
+                }
+            });
+
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('tab-active'));
+            document.getElementById(`tab${idx}`).classList.add('tab-active');
+
+            const isS = ex.solved;
+            document.getElementById('s1-input').value = isS ? ex.s1 : '';
+            document.getElementById('s1-input').disabled = isS;
+            document.getElementById('s2-input').value = isS ? ex.s2 : '';
+            document.getElementById('s2-input').disabled = isS;
+            document.getElementById('h1').innerText = ex.p1;
+            document.getElementById('h2').innerText = ex.p2;
+            
+            if(isS) {
+                document.getElementById('step2-area').classList.remove('opacity-30', 'pointer-events-none');
+                document.getElementById('formula-display').classList.remove('hidden');
+                document.getElementById('val1').innerText = ex.s1;
+                document.getElementById('val2').innerText = ex.s2;
+                document.getElementById('final-val').value = ex.a;
+                document.getElementById('final-val').disabled = true;
+                document.getElementById('btn-check').classList.add('hidden');
+            } else {
+                document.getElementById('step2-area').classList.add('opacity-30', 'pointer-events-none');
+                document.getElementById('formula-display').classList.add('hidden');
+                document.getElementById('final-val').value = '';
+                document.getElementById('final-val').disabled = true;
+                document.getElementById('btn-check').classList.add('hidden');
+            }
+            updateUI();
+        }
+
+        function validateStep(step) {
+            const input = document.getElementById(`s${step}-input`);
+            const val = parseInt(input.value);
+            const target = (step === 1) ? exercises[curIdx].s1 : exercises[curIdx].s2;
+
+            if (val === target) {
+                input.disabled = true;
+                if (step === 1) {
+                    document.getElementById('step2-area').classList.remove('opacity-30', 'pointer-events-none');
+                    document.getElementById('val1').innerText = val;
+                } else {
+                    document.getElementById('val2').innerText = val;
+                    document.getElementById('formula-display').classList.remove('hidden');
+                    document.getElementById('final-val').disabled = false;
+                    document.getElementById('btn-check').classList.remove('hidden');
+                }
+            } else { alert("Calcula de nuevo."); }
+        }
+
+        function checkFinal() {
+            const val = parseInt(document.getElementById('final-val').value);
+            if (val === exercises[curIdx].a) {
+                exercises[curIdx].solved = true;
+                document.getElementById('btn-check').classList.add('hidden');
+                document.getElementById('final-val').disabled = true;
+                updateUI();
+            } else { alert("Determinante incorrecto."); }
+        }
+
+        function updateUI() {
+            const count = exercises.filter(e => e.solved).length;
+            document.getElementById('progress-text').innerText = `Misiones: ${count} / 4`;
+            if (count === 4) {
+                document.getElementById('final-container').classList.remove('hidden');
+            }
+        }
+
+        loadEx(0);
+    </script>
+</body>
+</html>
