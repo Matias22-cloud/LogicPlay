@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Cursos - LogicPlay</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2c0fbd",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#131022",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+    <div class="flex flex-col h-full grow">
+        <!-- Top Navigation Bar -->
+        <header
+            class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-6 py-4 sticky top-0 z-50">
+            <div class="flex items-center gap-4 text-primary">
+                <div class="size-8">
+                    <svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                        <path clip-rule="evenodd"
+                            d="M24 0.757355L47.2426 24L24 47.2426L0.757355 24L24 0.757355ZM21 35.7574V12.2426L9.24264 24L21 35.7574Z"
+                            fill="currentColor" fill-rule="evenodd"></path>
+                    </svg>
+                </div>
+                <h2 class="text-slate-900 dark:text-white text-xl font-extrabold leading-tight tracking-tight">LogicPlay
+                </h2>
+            </div>
+            <nav class="hidden md:flex gap-8 items-center mx-auto">
+                <a class="text-slate-500 hover:text-primary transition-colors flex items-center gap-2"
+                    href="../dashboard_logicplay_clasificaci_n_anonimizada/code.html"><span
+                        class="material-symbols-outlined text-[20px]">dashboard</span> Dashboard</a>
+                <a class="text-primary font-semibold transition-colors flex items-center gap-2" href="index.html"><span
+                        class="material-symbols-outlined text-[20px]">school</span> Cursos</a>
+            </nav>
+            <div class="flex items-center gap-4">
+                <div class="size-10 rounded-full bg-primary/20 border-2 border-primary overflow-hidden">
+                    <img alt="User" class="w-full h-full object-cover"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUfb_Q9KslIBxQYDwoIq6H1qMt1q6ogec8roP9aX1nW6a9srTIUVSJzz1MPhT7F4kKLpJNknTUH0zLjtR6xg5Td0Novi-J43sx89cdAUv7s0VlZI2C_vb7KvoAZH0FnXcZBgw4JK0SFwi2bTlhFYX1LG0xBrLcttzI7VtHMx62yOhks3rsc5Ba7cr2F52tuoxkkQJ-cSLZw6axmkd3JraNCQ-hjvC9Psul0uQgLxdX9P2sYxsQVRdQquvIEiH7XreEn7mYulpymzE" />
+                </div>
+            </div>
+        </header>
+
+        <main class="max-w-[1200px] mx-auto w-full px-6 py-12">
+            <div class="mb-10 text-center">
+                <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">Cursos Disponibles</h1>
+                <p class="text-lg text-slate-500 dark:text-slate-400 max-w-2xl mx-auto">Explora nuestro catálogo
+                    completo de lecciones en video para dominar cada tema a tu propio ritmo.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Física -->
+                <a href="fisica.html"
+                    class="group block bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden hover:border-primary hover:shadow-xl hover:shadow-primary/10 transition-all p-6 relative">
+                    <div class="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
+                        <span class="material-symbols-outlined text-9xl text-primary">science</span>
+                    </div>
+                    <div
+                        class="size-14 rounded-xl bg-blue-100 dark:bg-blue-900/40 text-blue-600 dark:text-blue-400 flex items-center justify-center mb-6">
+                        <span class="material-symbols-outlined text-3xl">science</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-2">Física</h3>
+                    <p class="text-slate-500 mb-6 relative z-10">Cinemática, dinámica y fuerzas explicadas en detalle.
+                    </p>
+                    <div class="flex items-center text-primary font-bold text-sm uppercase tracking-wide">
+                        Ver materias <span
+                            class="material-symbols-outlined ml-1 group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                    </div>
+                </a>
+
+                <!-- Química -->
+                <a href="quimica.html"
+                    class="group block bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden hover:border-primary hover:shadow-xl hover:shadow-primary/10 transition-all p-6 relative">
+                    <div class="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
+                        <span class="material-symbols-outlined text-9xl text-emerald-500">biotech</span>
+                    </div>
+                    <div
+                        class="size-14 rounded-xl bg-emerald-100 dark:bg-emerald-900/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mb-6">
+                        <span class="material-symbols-outlined text-3xl">biotech</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-2">Química</h3>
+                    <p class="text-slate-500 mb-6 relative z-10">Reacciones, enlaces y estequiometría paso a paso.</p>
+                    <div class="flex items-center text-emerald-600 font-bold text-sm uppercase tracking-wide">
+                        Ver materias <span
+                            class="material-symbols-outlined ml-1 group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                    </div>
+                </a>
+
+                <!-- Matemáticas -->
+                <a href="matematicas.html"
+                    class="group block bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden hover:border-primary hover:shadow-xl hover:shadow-primary/10 transition-all p-6 relative">
+                    <div class="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
+                        <span class="material-symbols-outlined text-9xl text-orange-500">functions</span>
+                    </div>
+                    <div
+                        class="size-14 rounded-xl bg-orange-100 dark:bg-orange-900/40 text-orange-600 dark:text-orange-400 flex items-center justify-center mb-6">
+                        <span class="material-symbols-outlined text-3xl">functions</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-2">Matemáticas</h3>
+                    <p class="text-slate-500 mb-6 relative z-10">Álgebra, geometría y cálculo en fundamentos sólidos.
+                    </p>
+                    <div class="flex items-center text-orange-600 font-bold text-sm uppercase tracking-wide">
+                        Ver materias <span
+                            class="material-symbols-outlined ml-1 group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                    </div>
+                </a>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>

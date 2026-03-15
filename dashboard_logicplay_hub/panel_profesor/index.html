@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Panel del Profesor - LogicPlay</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2c0fbd",
+                        "primary-hover": "#240c99",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#131022",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+
+    <!-- Confirm Alert -->
+    <div id="success-alert"
+        class="fixed top-4 left-1/2 -translate-x-1/2 z-[100] bg-emerald-500 text-white px-6 py-4 rounded-xl shadow-2xl flex items-center gap-3 transition-all duration-300 opacity-0 translate-y-[-20px] pointer-events-none">
+        <span class="material-symbols-outlined text-2xl">check_circle</span>
+        <p class="font-bold">Tu tema ha sido publicado exitosamente y ya está disponible para los estudiantes.</p>
+    </div>
+
+    <div class="flex flex-col h-full grow">
+        <header
+            class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-6 py-4 sticky top-0 z-50">
+            <div class="flex items-center gap-4 text-primary">
+                <div class="size-8">
+                    <svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                        <path clip-rule="evenodd"
+                            d="M24 0.757355L47.2426 24L24 47.2426L0.757355 24L24 0.757355ZM21 35.7574V12.2426L9.24264 24L21 35.7574Z"
+                            fill="currentColor" fill-rule="evenodd"></path>
+                    </svg>
+                </div>
+                <h2 class="text-slate-900 dark:text-white text-xl font-extrabold leading-tight tracking-tight">LogicPlay
+                </h2>
+                <span
+                    class="ml-2 px-2 py-0.5 bg-primary/10 text-primary rounded-md text-xs font-bold uppercase tracking-wider">Profesores</span>
+            </div>
+            <nav class="hidden md:flex gap-8 items-center mx-auto">
+                <a class="text-slate-500 hover:text-primary transition-colors flex items-center gap-2"
+                    href="../dashboard_logicplay_clasificaci_n_anonimizada/code.html"><span
+                        class="material-symbols-outlined text-[20px]">dashboard</span> Dashboard</a>
+                <a class="text-primary font-semibold transition-colors flex items-center gap-2" href="#"><span
+                        class="material-symbols-outlined text-[20px]">edit_note</span> Creador de Temas</a>
+            </nav>
+            <div class="flex items-center gap-4">
+                <div class="size-10 rounded-full bg-primary/20 border-2 border-primary overflow-hidden">
+                    <img alt="Teacher" class="w-full h-full object-cover"
+                        src="https://ui-avatars.com/api/?name=Profesor&background=2c0fbd&color=fff&bold=true" />
+                </div>
+            </div>
+        </header>
+
+        <main class="max-w-[1000px] mx-auto w-full px-6 py-12">
+
+            <!-- Encabezado de la vista -->
+            <div class="mb-10 text-center">
+                <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white mb-4">Panel
+                    del Profesor</h1>
+                <p class="text-xl text-slate-500 dark:text-slate-400">Crea y publica contenido para tus estudiantes</p>
+            </div>
+
+            <!-- Contenedor del Formulario -->
+            <form id="teacher-form" class="space-y-8" onsubmit="event.preventDefault(); showSuccessAlert();">
+
+                <!-- Sección 1: Información Básica -->
+                <div
+                    class="bg-white dark:bg-slate-900 p-8 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm relative overflow-hidden">
+                    <div class="absolute left-0 top-0 bottom-0 w-2 bg-blue-500"></div>
+                    <div class="flex items-center gap-2 mb-6 text-blue-600 dark:text-blue-400">
+                        <span class="material-symbols-outlined">info</span>
+                        <h2 class="text-xl font-bold text-slate-900 dark:text-white">1. Información básica</h2>
+                    </div>
+
+                    <div class="space-y-6">
+                        <div>
+                            <input type="text" placeholder="Escribe tu título aquí" required
+                                class="w-full text-3xl font-extrabold bg-transparent border-0 border-b-2 border-slate-200 dark:border-slate-700 focus:border-primary focus:ring-0 placeholder-slate-400 dark:placeholder-slate-500 px-0 py-3 text-slate-900 dark:text-white transition-colors" />
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label
+                                    class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">Materia</label>
+                                <select required
+                                    class="w-full bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl px-4 py-3 text-slate-900 dark:text-white focus:border-primary focus:ring-1 focus:ring-primary outline-none">
+                                    <option value="" disabled selected>Selecciona una opción...</option>
+                                    <option value="fisica">Física</option>
+                                    <option value="quimica">Química</option>
+                                    <option value="matematicas">Matemáticas</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">Tipo de
+                                    contenido</label>
+                                <select required
+                                    class="w-full bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl px-4 py-3 text-slate-900 dark:text-white focus:border-primary focus:ring-1 focus:ring-primary outline-none">
+                                    <option value="" disabled selected>Selecciona una opción...</option>
+                                    <option value="concepto">Concepto Teórico</option>
+                                    <option value="ejemplos">Casos y Ejemplos</option>
+                                    <option value="practica">Práctica Interactiva</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sección 2: Contenido Principal -->
+                <div
+                    class="bg-white dark:bg-slate-900 p-8 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm relative overflow-hidden">
+                    <div class="absolute left-0 top-0 bottom-0 w-2 bg-emerald-500"></div>
+                    <div class="flex items-center gap-2 mb-6 text-emerald-600 dark:text-emerald-400">
+                        <span class="material-symbols-outlined">text_snippet</span>
+                        <h2 class="text-xl font-bold text-slate-900 dark:text-white">2. Contenido principal</h2>
+                    </div>
+
+                    <div
+                        class="border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden focus-within:border-primary focus-within:ring-1 focus-within:ring-primary transition-colors">
+                        <!-- Toolbar WYSIWYG Simulada -->
+                        <div
+                            class="bg-slate-50 dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 p-2 flex gap-1">
+                            <button type="button"
+                                class="p-2 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-lg transition-colors"
+                                title="Negrita"><span
+                                    class="material-symbols-outlined text-[18px]">format_bold</span></button>
+                            <button type="button"
+                                class="p-2 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-lg transition-colors"
+                                title="Cursiva"><span
+                                    class="material-symbols-outlined text-[18px]">format_italic</span></button>
+                            <button type="button"
+                                class="p-2 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-lg transition-colors"
+                                title="Subrayado"><span
+                                    class="material-symbols-outlined text-[18px]">format_underlined</span></button>
+                            <div class="w-px h-6 bg-slate-300 dark:bg-slate-600 my-auto mx-1"></div>
+                            <button type="button"
+                                class="p-2 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-lg transition-colors"
+                                title="Lista Viñetas"><span
+                                    class="material-symbols-outlined text-[18px]">format_list_bulleted</span></button>
+                            <button type="button"
+                                class="p-2 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-lg transition-colors"
+                                title="Lista Números"><span
+                                    class="material-symbols-outlined text-[18px]">format_list_numbered</span></button>
+                        </div>
+                        <textarea required rows="6"
+                            placeholder="Escribe aquí la explicación del tema, conceptos clave, definiciones y teoría"
+                            class="w-full bg-transparent border-0 focus:ring-0 p-4 text-slate-700 dark:text-slate-300 resize-y leading-relaxed"></textarea>
+                    </div>
+                </div>
+
+                <!-- Sección 3: Ejemplos -->
+                <div
+                    class="bg-white dark:bg-slate-900 p-8 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm relative overflow-hidden">
+                    <div class="absolute left-0 top-0 bottom-0 w-2 bg-orange-500"></div>
+                    <div class="flex items-center gap-2 mb-6 text-orange-600 dark:text-orange-400">
+                        <span class="material-symbols-outlined">lightbulb</span>
+                        <h2 class="text-xl font-bold text-slate-900 dark:text-white">3. Ejemplos</h2>
+                    </div>
+
+                    <div id="ejemplos-container" class="space-y-4">
+                        <div class="relative group">
+                            <textarea rows="4" placeholder="Escribe aquí los ejemplos resueltos paso a paso"
+                                class="w-full bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-4 text-slate-700 dark:text-slate-300 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors"></textarea>
+                        </div>
+                    </div>
+                    <button type="button" onclick="addEjemplo()"
+                        class="mt-4 inline-flex items-center justify-center gap-2 px-4 py-2 bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400 font-bold rounded-lg hover:bg-orange-200 dark:hover:bg-orange-900/50 transition-colors">
+                        <span class="material-symbols-outlined size-5">add</span> Añadir más ejemplos
+                    </button>
+                </div>
+
+                <!-- Sección 4: Ejercicios -->
+                <div
+                    class="bg-white dark:bg-slate-900 p-8 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm relative overflow-hidden">
+                    <div class="absolute left-0 top-0 bottom-0 w-2 bg-rose-500"></div>
+                    <div class="flex items-center gap-2 mb-6 text-rose-600 dark:text-rose-400">
+                        <span class="material-symbols-outlined">assignment</span>
+                        <h2 class="text-xl font-bold text-slate-900 dark:text-white">4. Ejercicios prácticos</h2>
+                    </div>
+
+                    <div
+                        class="space-y-4 bg-slate-50 dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700">
+                        <div>
+                            <label
+                                class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">Enunciado</label>
+                            <textarea rows="3" placeholder="Escribe aquí el enunciado del ejercicio"
+                                class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg px-4 py-3 text-slate-900 dark:text-white focus:border-primary focus:ring-1 focus:ring-primary transition-colors"></textarea>
+                        </div>
+                        <div>
+                            <label
+                                class="block text-sm font-bold text-rose-600 dark:text-rose-400 mb-2 flex items-center gap-1"><span
+                                    class="material-symbols-outlined text-[16px]">key</span> Solución Esperada</label>
+                            <input type="text" placeholder="Escribe aquí la solución correcta"
+                                class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg px-4 py-3 text-slate-900 dark:text-white focus:border-primary focus:ring-1 focus:ring-primary font-mono transition-colors" />
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sección 5: Multimedia -->
+                <div
+                    class="bg-white dark:bg-slate-900 p-8 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm relative overflow-hidden">
+                    <div class="absolute left-0 top-0 bottom-0 w-2 bg-purple-500"></div>
+                    <div class="flex items-center gap-2 mb-6 text-purple-600 dark:text-purple-400">
+                        <span class="material-symbols-outlined">perm_media</span>
+                        <h2 class="text-xl font-bold text-slate-900 dark:text-white">5. Multimedia</h2>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+                        <!-- Upload Imagen -->
+                        <div>
+                            <label class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">Imágenes de
+                                Soporte</label>
+                            <div class="border-2 border-dashed border-slate-300 dark:border-slate-600 rounded-xl p-6 text-center hover:border-primary dark:hover:border-primary transition-colors bg-slate-50 dark:bg-slate-800 cursor-pointer relative group"
+                                onclick="document.getElementById('image-upload').click()">
+                                <input type="file" id="image-upload" accept="image/*" class="hidden"
+                                    onchange="previewImage(event)" />
+                                <div id="upload-placeholder">
+                                    <span
+                                        class="material-symbols-outlined text-4xl text-slate-400 mb-2 group-hover:text-primary transition-colors">cloud_upload</span>
+                                    <p class="text-slate-600 dark:text-slate-400 font-semibold">Subir imagen</p>
+                                    <p class="text-xs text-slate-400 mt-1">PNG, JPG hasta 5MB</p>
+                                </div>
+                                <div id="upload-preview"
+                                    class="hidden absolute inset-0 rounded-xl overflow-hidden bg-white dark:bg-slate-900">
+                                    <img id="img-preview" src="" class="w-full h-full object-contain p-2" />
+                                    <div
+                                        class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 to-transparent p-2">
+                                        <p class="text-white text-xs font-bold font-mono truncate" id="img-name">
+                                            imagen.png</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Video YouTube -->
+                        <div>
+                            <label class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">Material en
+                                Video</label>
+                            <div class="flex gap-2">
+                                <span
+                                    class="bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 border-r-0 rounded-l-lg px-3 py-3 text-slate-500 flex items-center justify-center">
+                                    <span class="material-symbols-outlined">link</span>
+                                </span>
+                                <input type="text" id="youtube-link"
+                                    placeholder="Pega aquí el link del video de YouTube"
+                                    oninput="updateYoutubePreview(this.value)"
+                                    class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-r-lg px-4 py-3 text-slate-900 dark:text-white focus:border-primary focus:ring-1 focus:ring-primary transition-colors" />
+                            </div>
+
+                            <!-- Preview de YouTube -->
+                            <div id="youtube-preview-container"
+                                class="mt-4 aspect-video bg-slate-900 rounded-xl overflow-hidden shadow-inner border border-slate-800 relative hidden">
+                                <iframe id="youtube-iframe" class="absolute top-0 left-0 w-full h-full" src=""
+                                    frameborder="0" allowfullscreen></iframe>
+                            </div>
+                            <div id="youtube-placeholder"
+                                class="mt-4 aspect-video bg-slate-100 dark:bg-slate-800 rounded-xl border border-dashed border-slate-300 dark:border-slate-700 flex flex-col items-center justify-center text-slate-400">
+                                <span class="material-symbols-outlined text-4xl mb-2 opacity-50">smart_display</span>
+                                <p class="text-sm">Preview del Video</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Sección 6: Fórmulas -->
+                <div
+                    class="bg-white dark:bg-slate-900 p-8 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm relative overflow-hidden">
+                    <div class="absolute left-0 top-0 bottom-0 w-2 bg-indigo-500"></div>
+                    <div class="flex items-center gap-2 mb-6 text-indigo-600 dark:text-indigo-400">
+                        <span class="material-symbols-outlined">functions</span>
+                        <h2 class="text-xl font-bold text-slate-900 dark:text-white">6. Fórmulas</h2>
+                    </div>
+
+                    <div class="relative">
+                        <textarea rows="3" placeholder="Escribe aquí las fórmulas del tema (ej. v = d/t, H₂O)"
+                            class="w-full bg-indigo-50 dark:bg-indigo-900/10 border border-indigo-200 dark:border-indigo-800 rounded-xl p-4 text-indigo-900 dark:text-indigo-200 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 font-mono text-lg transition-colors"></textarea>
+                        <div
+                            class="absolute right-3 top-3 px-2 py-1 bg-indigo-100 dark:bg-indigo-900/40 text-indigo-600 dark:text-indigo-400 rounded text-xs font-bold tracking-widest uppercase">
+                            Visualizador Matemático Activo</div>
+                    </div>
+                </div>
+
+                <!-- Botón de Publicar -->
+                <div class="pt-8 pb-12 flex justify-end border-t border-slate-200 dark:border-slate-800">
+                    <button type="submit"
+                        class="inline-flex items-center justify-center gap-3 px-10 py-5 bg-primary hover:bg-primary-hover text-white text-xl font-extrabold rounded-2xl shadow-xl hover:shadow-2xl hover:scale-[1.02] transform transition-all">
+                        <span class="material-symbols-outlined text-2xl">publish</span> Publicar tema
+                    </button>
+                </div>
+
+            </form>
+        </main>
+    </div>
+
+    <!-- Scripts locales para previsualizaciones -->
+    <script>
+        function updateYoutubePreview(url) {
+            const container = document.getElementById('youtube-preview-container');
+            const placeholder = document.getElementById('youtube-placeholder');
+            const iframe = document.getElementById('youtube-iframe');
+
+            // Simple extraction for embed
+            let videoId = "";
+            if (url.includes("youtube.com/watch?v=")) {
+                videoId = url.split("v=")[1].split("&")[0];
+            } else if (url.includes("youtu.be/")) {
+                videoId = url.split("youtu.be/")[1].split("?")[0];
+            } else if (url.includes("youtube.com/embed/")) {
+                videoId = url.split("embed/")[1].split("?")[0];
+            }
+
+            if (videoId) {
+                iframe.src = `https://www.youtube.com/embed/${videoId}`;
+                container.classList.remove('hidden');
+                placeholder.classList.add('hidden');
+            } else {
+                container.classList.add('hidden');
+                placeholder.classList.remove('hidden');
+                iframe.src = "";
+            }
+        }
+
+        function previewImage(event) {
+            const input = event.target;
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    document.getElementById('upload-placeholder').classList.add('hidden');
+                    const preview = document.getElementById('upload-preview');
+                    preview.classList.remove('hidden');
+                    document.getElementById('img-preview').src = e.target.result;
+                    document.getElementById('img-name').innerText = input.files[0].name;
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        function showSuccessAlert() {
+            const alert = document.getElementById('success-alert');
+            alert.style.opacity = '1';
+            alert.style.transform = 'translate(-50%, 0)';
+
+            // Scroll to top to see it clearly
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            setTimeout(() => {
+                alert.style.opacity = '0';
+                alert.style.transform = 'translate(-50%, -20px)';
+            }, 5000);
+        }
+
+        function addEjemplo() {
+            const container = document.getElementById('ejemplos-container');
+            const newDiv = document.createElement('div');
+            newDiv.className = 'relative group mt-4';
+            newDiv.innerHTML = `
+                <textarea rows="4" placeholder="Escribe aquí los ejemplos resueltos paso a paso" class="w-full bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-4 text-slate-700 dark:text-slate-300 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors"></textarea>
+                <button type="button" onclick="this.parentElement.remove()" class="absolute top-2 right-2 p-1.5 bg-rose-100 text-rose-600 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity" title="Eliminar ejemplo">
+                    <span class="material-symbols-outlined text-[18px]">delete</span>
+                </button>
+            `;
+            container.appendChild(newDiv);
+        }
+    </script>
+</body>
+
+</html>
