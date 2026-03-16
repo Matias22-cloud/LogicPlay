@@ -284,7 +284,7 @@
     
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js";
-        import { getFirestore, doc, getDoc, updateDoc, collection, query, where, orderBy, getDocs, limit } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js";
+        import { getFirestore, doc, getDoc, updateDoc, collection, query, where, orderBy, limit, onSnapshot } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyBD3-ZnbczYZOuDm7e9OHLP6Xg68sdZ1so",
@@ -321,11 +321,21 @@
                 temasBtn.onclick = () => window.location.href = 'panel_profesor/index.html';
                 temasBtn.innerHTML = `<span class="material-symbols-outlined text-[18px]">folder_open</span> Panel Docente`;
 
-                statsContainer.innerHTML = `<div class="bg-primary/10 text-primary px-4 py-3 rounded-xl border border-primary/20 font-bold w-full text-center">Modo Licenciado Activo: Estadísticas Ocultas</div>`;
-                domRoleLabel.textContent = "Licenciado / Docente";
-                domHeaderPts.textContent = "Puntos no aplican";
+                domRoleLabel.textContent = "Licenciado";
+                domHeaderPts.innerHTML = `<span class="text-xs text-slate-500 font-medium mt-1">Exclusivo para estudiantes</span>`;
+                domHeaderAvatar.innerHTML = `<div class="w-full h-full flex items-center justify-center bg-slate-300 text-white font-bold text-lg"><span class="material-symbols-outlined text-[20px]">school</span></div>`;
+
+                statsContainer.innerHTML = `
+                    <div class="bg-slate-100 dark:bg-slate-800/50 p-3 px-4 rounded-xl border border-slate-200 dark:border-slate-800 flex items-center gap-3 w-full">
+                         <span class="material-symbols-outlined text-slate-400 text-3xl">block</span>
+                         <div>
+                             <p class="text-xs text-slate-500 uppercase font-bold tracking-wider">Racha y Puntos</p>
+                             <p class="text-sm font-bold leading-none text-slate-400 mt-1">Exclusivo para estudiantes</p>
+                         </div>
+                    </div>
+                `;
                 
-                rankingContainer.innerHTML = `<div class="text-center text-slate-500 py-6 text-sm font-medium">El ranking de Puntos es exclusivamente para estudiantes.</div>`;
+                rankingContainer.innerHTML = `<div class="text-center text-slate-500 py-6 text-sm font-medium">Exclusivo para estudiantes</div>`;
                 
                 return; // Teachers don't load ranking or points
             }
@@ -361,60 +371,70 @@
             }
         }
 
-        async function loadRanking() {
+        let isRankingLoaded = false;
+        function loadRanking() {
             const usersRef = collection(db, "users");
             const q = query(usersRef, where("role", "==", "estudiante"), orderBy("points", "desc"), limit(10));
-            const querySnapshot = await getDocs(q);
             
-            let html = '';
-            let position = 1;
+            // Listen real-time
+            onSnapshot(q, (querySnapshot) => {
+                let html = '';
+                let position = 1;
 
-            querySnapshot.forEach((doc) => {
-                const data = doc.data();
-                const isMe = doc.id === uid;
-                
-                let avatarHtml = '';
-                if(data.photoURL) {
-                    avatarHtml = `<img alt="${data.name}" class="w-full h-full object-cover" src="${data.photoURL}" />`;
-                } else {
-                    avatarHtml = `<div class="w-full h-full flex items-center justify-center bg-indigo-500 text-white font-bold text-base">${data.name.charAt(0).toUpperCase()}</div>`;
+                if (querySnapshot.empty) {
+                    rankingContainer.innerHTML = `<div class="text-center text-slate-500 py-6 text-sm font-medium">Aún no hay estudiantes registrados</div>`;
+                    return;
                 }
 
-                let rowClass = "flex items-center gap-4 p-3 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors";
-                let rankStyle = "text-xl font-black text-slate-400 w-4";
-                let medal = "";
-                
-                if (position === 1) {
-                    rowClass = "flex items-center gap-4 p-3 rounded-lg bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-100 dark:border-yellow-900/30";
-                    rankStyle = "text-xl font-black text-yellow-600 w-4";
-                    medal = `<span class="material-symbols-outlined text-yellow-500">military_tech</span>`;
-                } else if (isMe) {
-                    rowClass = "flex items-center gap-4 p-3 rounded-lg bg-primary/5 border border-primary/10";
-                    rankStyle = "text-sm font-black text-primary w-4";
-                    medal = `<span class="text-[10px] font-bold text-primary uppercase">Tú</span>`;
-                }
+                querySnapshot.forEach((doc) => {
+                    const data = doc.data();
+                    const isMe = doc.id === uid;
+                    
+                    let avatarHtml = '';
+                    if(data.photoURL) {
+                        avatarHtml = `<img alt="${data.name}" class="w-full h-full object-cover" src="${data.photoURL}" />`;
+                    } else {
+                        avatarHtml = `<div class="w-full h-full flex items-center justify-center bg-indigo-500 text-white font-bold text-base">${data.name.charAt(0).toUpperCase()}</div>`;
+                    }
 
-                html += `
-                    <div class="${rowClass}">
-                        <span class="${rankStyle}">${position}</span>
-                        <div class="size-10 rounded-full bg-slate-200 border-2 overflow-hidden ${position===1?'border-yellow-400':isMe?'border-primary':'border-transparent'}">
-                            ${avatarHtml}
+                    let rowClass = "flex items-center gap-4 p-3 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors";
+                    let rankStyle = "text-xl font-black text-slate-400 w-4";
+                    let medal = "";
+                    
+                    if (position === 1) {
+                        rowClass = "flex items-center gap-4 p-3 rounded-lg bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-100 dark:border-yellow-900/30";
+                        rankStyle = "text-xl font-black text-yellow-600 w-4";
+                        medal = `<span class="material-symbols-outlined text-yellow-500">military_tech</span>`;
+                    } else if (isMe) {
+                        rowClass = "flex items-center gap-4 p-3 rounded-lg bg-primary/5 border border-primary/10";
+                        rankStyle = "text-sm font-black text-primary w-4";
+                        medal = `<span class="text-[10px] font-bold text-primary uppercase">Tú</span>`;
+                    }
+
+                    html += `
+                        <div class="${rowClass}">
+                            <span class="${rankStyle}">${position}</span>
+                            <div class="size-10 rounded-full bg-slate-200 border-2 overflow-hidden ${position===1?'border-yellow-400':isMe?'border-primary':'border-transparent'}">
+                                ${avatarHtml}
+                            </div>
+                            <div class="flex-1">
+                                <p class="text-sm font-bold ${isMe?'text-primary':''}">${data.name} ${isMe?'(Tú)':''}</p>
+                                <p class="text-xs text-slate-500">${data.points || 0} XP</p>
+                            </div>
+                            ${medal}
                         </div>
-                        <div class="flex-1">
-                            <p class="text-sm font-bold ${isMe?'text-primary':''}">${data.name} ${isMe?'(Tú)':''}</p>
-                            <p class="text-xs text-slate-500">${data.points || 0} XP</p>
-                        </div>
-                        ${medal}
-                    </div>
-                `;
-                position++;
+                    `;
+                    position++;
+                });
+
+                rankingContainer.innerHTML = html;
+            }, (error) => {
+                console.error("Error fetching real-time ranking: ", error);
+                if (!isRankingLoaded) {
+                     rankingContainer.innerHTML = `<div class="text-center text-red-500 py-4 text-sm font-medium">Error conectando con los servidores del ranking.</div>`;
+                }
             });
-
-            if(html === '') {
-                html = `<div class="text-center text-slate-500 py-6 text-sm font-medium">Aún no hay estudiantes registrados. Vuelve más tarde.</div>`;
-            }
-
-            rankingContainer.innerHTML = html;
+            isRankingLoaded = true;
         }
 
         // Streak / Activity Registration
