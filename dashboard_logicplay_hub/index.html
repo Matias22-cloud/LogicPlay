@@ -5,6 +5,13 @@
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <script>
+        // Verificación de Autenticación para LogiPlay
+        // Si no existe la bandera de login, redirigir inmeditamente al landing page
+        if (!localStorage.getItem('logicplay_auth')) {
+            window.location.replace('landing.html');
+        }
+    </script>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&amp;display=swap"
         rel="stylesheet" />
@@ -59,11 +66,11 @@
                     class="text-primary font-semibold hover:text-primary transition-colors flex items-center gap-2"
                     href="#"><span class="material-symbols-outlined text-[20px]">dashboard</span> Dashboard</a>
                 <a class="hover:text-primary transition-colors flex items-center gap-2 text-slate-500 dark:text-slate-400"
-                    href="../cursos/fisica.html">
+                    href="f_sica_selecci_n_de_temas/code.html">
                     <span class="material-symbols-outlined text-[20px]">science</span> Física
                 </a>
                 <a class="text-slate-500 dark:text-slate-400 hover:text-primary transition-colors flex items-center gap-2"
-                    href="../cursos/quimica.html">
+                    href="quimica_selecci_n_de_temas/code.html">
                     <span class="material-symbols-outlined text-[20px]">biotech</span> Química
                 </a>
                 <a class="text-slate-500 dark:text-slate-400 hover:text-primary transition-colors flex items-center gap-2"
@@ -103,7 +110,7 @@
                     <!-- Welcome & Stats -->
                     <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
                         <div>
-                            <h1 class="text-3xl font-extrabold tracking-tight">¡Hola de nuevo, Mateo! 👋</h1>
+                            <h1 id="user-greeting" class="text-3xl font-extrabold tracking-tight">¡Hola de nuevo, Mateo! 👋</h1>
                             <p class="text-slate-500 dark:text-slate-400 mt-1">Tienes 3 lecciones pendientes para hoy.
                             </p>
                         </div>
@@ -267,7 +274,7 @@
                                             src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-74IeL05ZAHo0_TzF56uvfdMbKDUonMwxYTsGHAjFqIYxQwJkwRD8hvWLVL-jdo9BXJmWvmCRgs_2Gb6bRm7AZ-IUzZyjIYvmA4FgyYQvYLQpWNnMiF-vizDQMDaXbzIrHea2BYPUDAisjPQnfPWT2DhBkSmCsVUbBSSsPbY8Kdc8upzPVzQlVDaf9RVqJmGTMUfmUstNDsrH7N31rJaZweHCTix4gz6NkNm99vioE0wjbEJnsRJTd26CdbUXFB1laYoYJZ81bHM" />
                                     </div>
                                     <div class="flex-1">
-                                        <p class="text-sm font-bold">Tú (Mateo)</p>
+                                        <p id="user-rank-name" class="text-sm font-bold">Tú (Mateo)</p>
                                         <p class="text-xs text-slate-500">1,250 XP</p>
                                     </div>
                                     <span class="text-[10px] font-bold text-primary uppercase">Tú</span>
@@ -329,6 +336,19 @@
             </div>
         </footer>
     </div>
+    
+    <script>
+        // Update user name dynamically based on localStorage (set from Firebase logic)
+        document.addEventListener('DOMContentLoaded', () => {
+            const userName = localStorage.getItem('logicplay_user_name');
+            if(userName && userName.trim() !== "") {
+                const greetingEl = document.getElementById('user-greeting');
+                const rankNameEl = document.getElementById('user-rank-name');
+                if(greetingEl) greetingEl.innerHTML = `¡Hola de nuevo, ${userName}! 👋`;
+                if(rankNameEl) rankNameEl.textContent = `Tú (${userName})`;
+            }
+        });
+    </script>
 </body>
 
 </html>
