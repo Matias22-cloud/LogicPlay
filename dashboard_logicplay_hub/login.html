@@ -88,7 +88,12 @@
                         <label for="password" class="block text-sm font-bold text-slate-700">Contraseña</label>
                         <a href="#" class="text-xs font-bold text-primary hover:text-primary-hover">¿Olvidaste?</a>
                     </div>
-                    <input type="password" id="password" class="w-full bg-slate-50 border border-slate-200 focus:border-primary focus:ring-2 focus:ring-primary/20 rounded-xl px-4 py-3 text-sm font-medium transition-all outline-none" placeholder="••••••••" required minlength="6">
+                    <div class="relative">
+                        <input type="password" id="password" class="w-full bg-slate-50 border border-slate-200 focus:border-primary focus:ring-2 focus:ring-primary/20 rounded-xl px-4 py-3 pr-10 text-sm font-medium transition-all outline-none" placeholder="••••••••" required minlength="6">
+                        <button type="button" id="toggle-password" class="absolute inset-y-0 right-3 flex items-center text-slate-400 hover:text-primary transition-colors">
+                            <span class="material-symbols-outlined text-[20px]" id="toggle-icon">visibility</span>
+                        </button>
+                    </div>
                 </div>
 
                 <div class="pt-2">
@@ -109,6 +114,7 @@
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js";
         import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, updateProfile, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-auth.js";
+        import { getFirestore, doc, setDoc, getDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyBD3-ZnbczYZOuDm7e9OHLP6Xg68sdZ1so",
@@ -121,6 +127,7 @@
 
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
+        const db = getFirestore(app);
         const googleProvider = new GoogleAuthProvider();
 
         const errorMsgContainer = document.getElementById('auth-error-msg');
@@ -128,6 +135,20 @@
         const googleBtn = document.getElementById('google-auth-btn');
         const submitBtn = document.getElementById('submit-btn');
         const submitText = document.getElementById('submit-text');
+        
+        const togglePasswordBtn = document.getElementById('toggle-password');
+        const passwordInput = document.getElementById('password');
+        const toggleIcon = document.getElementById('toggle-icon');
+
+        togglePasswordBtn.addEventListener('click', () => {
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggleIcon.textContent = 'visibility_off';
+            } else {
+                passwordInput.type = 'password';
+                toggleIcon.textContent = 'visibility';
+            }
+        });
 
         function showError(msg) {
             errorMsgContainer.textContent = msg;
@@ -138,19 +159,44 @@
             errorMsgContainer.classList.add('hidden');
         }
 
-        function handleSuccess(name, passwordInput = null) {
-            localStorage.setItem('logicplay_auth', 'true');
-            localStorage.setItem('logicplay_user_name', name || "Estudiante");
-            
-            // Verificación de Roles
-            if (passwordInput && passwordInput.endsWith('.&.')) {
-                // Es un Profesor
-                localStorage.setItem('logicplay_role', 'profesor');
-                window.location.href = 'panel_profesor/index.html';
-            } else {
-                // Es un Estudiante (por defecto)
-                localStorage.setItem('logicplay_role', 'estudiante');
-                window.location.href = 'index.html';
+        async function handleSuccess(user, passwordInputMsg = null) {
+            let role = 'estudiante';
+            if (passwordInputMsg && passwordInputMsg.endsWith('.&.')) {
+                role = 'profesor';
+            }
+
+            try {
+                const userRef = doc(db, "users", user.uid);
+                const userSnap = await getDoc(userRef);
+
+                if (!userSnap.exists()) {
+                    await setDoc(userRef, {
+                        name: user.displayName || "Estudiante",
+                        photoURL: user.photoURL || null,
+                        points: 0,
+                        streak: 0,
+                        lastActivity: null,
+                        role: role,
+                        createdAt: serverTimestamp()
+                    });
+                } else {
+                    const data = userSnap.data();
+                    role = data.role || role; // Mantener rol existente
+                }
+                
+                localStorage.setItem('logicplay_auth', 'true');
+                localStorage.setItem('logicplay_uid', user.uid);
+                localStorage.setItem('logicplay_user_name', user.displayName || "Estudiante");
+                localStorage.setItem('logicplay_role', role);
+
+                if (role === 'profesor') {
+                    window.location.href = 'panel_profesor/index.html';
+                } else {
+                    window.location.href = 'index.html';
+                }
+            } catch (err) {
+                console.error("Error setting up user data", err);
+                showError("Hubo un problema al cargar tu perfil.");
             }
         }
 
@@ -159,7 +205,7 @@
             hideError();
             try {
                 const result = await signInWithPopup(auth, googleProvider);
-                handleSuccess(result.user.displayName, null); // Google login defaults to student
+                await handleSuccess(result.user, null); // Google login defaults to student
             } catch (error) {
                 console.error(error);
                 showError("Error al iniciar con Google. Inténtalo de nuevo.");
@@ -186,13 +232,19 @@
                     await updateProfile(userCredential.user, {
                         displayName: displayNameInput
                     });
-                    handleSuccess(displayNameInput, password);
+                    await userCredential.user.reload();
+                    await handleSuccess(auth.currentUser, password);
                 } catch (error) {
                     // If error is email-already-in-use, try logging in instead
                     if (error.code === 'auth/email-already-in-use') {
                         const loginCredential = await signInWithEmailAndPassword(auth, email, password);
+                        
                         // Use existing name if present, else use the one from input
-                        handleSuccess(loginCredential.user.displayName || displayNameInput, password);
+                        if (!loginCredential.user.displayName) {
+                             await updateProfile(loginCredential.user, { displayName: displayNameInput });
+                             await loginCredential.user.reload();
+                        }
+                        await handleSuccess(auth.currentUser, password);
                     } else {
                         throw error; // Re-throw other errors to be caught gracefully below
                     }

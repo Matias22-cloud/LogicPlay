@@ -77,7 +77,7 @@
                     href="../matematica_selecci_n_de_temas.html">
                     <span class="material-symbols-outlined text-[20px]">functions</span> Matemáticas
                 </a>
-                <button
+                <button id="nav-temas-btn"
                     class="ml-4 bg-primary text-white px-4 py-1.5 rounded-lg text-sm font-bold flex items-center gap-2 hover:bg-primary/90 transition-all shadow-sm">
                     <span class="material-symbols-outlined text-[18px]">admin_panel_settings</span> Temas
                 </button>
@@ -92,12 +92,11 @@
                 <div class="h-10 w-px bg-slate-200 dark:bg-slate-800 mx-1"></div>
                 <div class="flex items-center gap-3">
                     <div class="text-right hidden sm:block">
-                        <p class="text-sm font-bold leading-none">Estudiante Pro</p>
-                        <p class="text-xs text-primary font-medium mt-1">1,250 XP • Nivel 15</p>
+                        <p class="text-sm font-bold leading-none" id="dom-role-label">Estudiante</p>
+                        <p class="text-xs text-primary font-medium mt-1" id="dom-header-pts">0 XP • Nivel 1</p>
                     </div>
-                    <div class="size-10 rounded-full bg-primary/20 border-2 border-primary overflow-hidden">
+                    <div class="size-10 rounded-full bg-primary/20 border-2 border-primary overflow-hidden" id="dom-header-avatar">
                         <img alt="User Avatar" class="w-full h-full object-cover"
-                            data-alt="Cartoon avatar of a young student"
                             src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUfb_Q9KslIBxQYDwoIq6H1qMt1q6ogec8roP9aX1nW6a9srTIUVSJzz1MPhT7F4kKLpJNknTUH0zLjtR6xg5Td0Novi-J43sx89cdAUv7s0VlZI2C_vb7KvoAZH0FnXcZBgw4JK0SFwi2bTlhFYX1LG0xBrLcttzI7VtHMx62yOhks3rsc5Ba7cr2F52tuoxkkQJ-cSLZw6axmkd3JraNCQ-hjvC9Psul0uQgLxdX9P2sYxsQVRdQquvIEiH7XreEn7mYulpymzE" />
                     </div>
                 </div>
@@ -114,22 +113,22 @@
                             <p class="text-slate-500 dark:text-slate-400 mt-1">Tienes 3 lecciones pendientes para hoy.
                             </p>
                         </div>
-                        <div class="flex gap-4">
+                        <div class="flex gap-4" id="stats-container">
                             <div
                                 class="bg-white dark:bg-slate-900 p-3 px-4 rounded-xl border border-slate-200 dark:border-slate-800 flex items-center gap-3">
                                 <span
                                     class="material-symbols-outlined text-orange-500 text-3xl">local_fire_department</span>
                                 <div>
                                     <p class="text-xs text-slate-500 uppercase font-bold tracking-wider">Racha</p>
-                                    <p class="text-lg font-bold leading-none">5 Días</p>
+                                    <p class="text-lg font-bold leading-none" id="dom-streak">0 Días</p>
                                 </div>
                             </div>
                             <div
                                 class="bg-white dark:bg-slate-900 p-3 px-4 rounded-xl border border-slate-200 dark:border-slate-800 flex items-center gap-3">
                                 <span class="material-symbols-outlined text-primary text-3xl">workspace_premium</span>
                                 <div>
-                                    <p class="text-xs text-slate-500 uppercase font-bold tracking-wider">Puesto</p>
-                                    <p class="text-lg font-bold leading-none">#12 Global</p>
+                                    <p class="text-xs text-slate-500 uppercase font-bold tracking-wider">Puntos</p>
+                                    <p class="text-lg font-bold leading-none" id="dom-points">0 XP</p>
                                 </div>
                             </div>
                         </div>
@@ -221,64 +220,10 @@
                             </h3>
                             <span class="text-xs font-bold text-slate-400">Global</span>
                         </div>
-                        <div class="space-y-4">
-                            <!-- Rank 1 -->
-                            <div
-                                class="flex items-center gap-4 p-3 rounded-lg bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-100 dark:border-yellow-900/30">
-                                <span class="text-xl font-black text-yellow-600 w-4">1</span>
-                                <div class="size-10 rounded-full bg-slate-200 border-2 border-yellow-400">
-                                    <img alt="Anna" class="w-full h-full" data-alt="Avatar of a student wearing glasses"
-                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCoLr_JNXvNEu0sCesY398C11nV2ibfXVoldtNePdAzNHLRI80KnB4vM00_Ct24Yd4KciPFYFUqD18QocdUjSh5tgPFY8amAQpqBs7_QfWG2slGwDn5-R35ksk1uoNC4dhY7NjAF7280j66kJ9yWNb0ll7aOGMZcODCW7amYpqjE2_ApP2msl-EOvsHVKFqSuCi3NHLxAjhmsWdpZWeOIj71sXweW5YIfg11Ruy-vKTkiqgcQ8CbyI-vUEpO8tot1p6RfYUfLwxSYk" />
-                                </div>
-                                <div class="flex-1">
-                                    <p class="text-sm font-bold">PC1</p>
-                                    <p class="text-xs text-slate-500">24,500 XP</p>
-                                </div>
-                                <span class="material-symbols-outlined text-yellow-500">military_tech</span>
-                            </div>
-                            <!-- Rank 2 -->
-                            <div
-                                class="flex items-center gap-4 p-3 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
-                                <span class="text-xl font-black text-slate-400 w-4">2</span>
-                                <div class="size-10 rounded-full bg-slate-200">
-                                    <img alt="Luis" class="w-full h-full"
-                                        data-alt="Avatar of a male student with short hair"
-                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGUflpuu6lBxLF9-Wmxkjp72TRyRZ9oRnV8Jv9deyYx2l1FdOXpFnryhtxCA36ei6L68WQQ-Cph7Sth5KCSNGAYZ_8Y-QFXfpJXgaCPbhqnebA8spXbDuWn1IVqMne2P3OHGdtaScC675rn3PnMs4eaiYgnuxNsfQVw2c1nY17KTdL3yWrYaveMouQWomAgbWWxJIgNqhe6kkQmY0duDD4fuI6ScZGH-kH4H_5DjStzZ3IznM1X5iWimaFVYAzoMO9q55v9cpaHYk" />
-                                </div>
-                                <div class="flex-1">
-                                    <p class="text-sm font-bold">PC2</p>
-                                    <p class="text-xs text-slate-500">22,100 XP</p>
-                                </div>
-                            </div>
-                            <!-- Rank 3 -->
-                            <div
-                                class="flex items-center gap-4 p-3 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
-                                <span class="text-xl font-black text-slate-400 w-4">3</span>
-                                <div class="size-10 rounded-full bg-slate-200">
-                                    <img alt="Elena" class="w-full h-full"
-                                        data-alt="Avatar of a female student with a ponytail"
-                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuARKemUXVdrmX18xxnOKM3UTV5D_icqH5EwUBGljvXjscXJ4UCkYK5VBWZvlOYmm5o_bBSHtx9Scy-cWJXnGDpPbOM55Dd-h_IqIK-MZNb6byasV8QFvDVPYT3KsgYbplk5ZkQSKU_JbV8gj1LPJlq6HxTu_KODS36HgBsOxm_E9m0-xRMuqarrA5l5JtyxQSRRqVB_hr7vw8YPiCnZN2qVwC4kOVM9hulxIimVVRpheAE4FIMcRfgpP_2c3XI3vRMvZf_NN0TgA6Y" />
-                                </div>
-                                <div class="flex-1">
-                                    <p class="text-sm font-bold">PC3</p>
-                                    <p class="text-xs text-slate-500">21,850 XP</p>
-                                </div>
-                            </div>
-                            <!-- User Rank (Me) -->
-                            <div class="pt-4 border-t border-slate-100 dark:border-slate-800 mt-4">
-                                <div
-                                    class="flex items-center gap-4 p-3 rounded-lg bg-primary/5 border border-primary/10">
-                                    <span class="text-sm font-black text-primary w-4">12</span>
-                                    <div class="size-10 rounded-full bg-primary/20">
-                                        <img alt="Me" class="w-full h-full" data-alt="Cartoon avatar of a young student"
-                                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-74IeL05ZAHo0_TzF56uvfdMbKDUonMwxYTsGHAjFqIYxQwJkwRD8hvWLVL-jdo9BXJmWvmCRgs_2Gb6bRm7AZ-IUzZyjIYvmA4FgyYQvYLQpWNnMiF-vizDQMDaXbzIrHea2BYPUDAisjPQnfPWT2DhBkSmCsVUbBSSsPbY8Kdc8upzPVzQlVDaf9RVqJmGTMUfmUstNDsrH7N31rJaZweHCTix4gz6NkNm99vioE0wjbEJnsRJTd26CdbUXFB1laYoYJZ81bHM" />
-                                    </div>
-                                    <div class="flex-1">
-                                        <p id="user-rank-name" class="text-sm font-bold">Tú (Mateo)</p>
-                                        <p class="text-xs text-slate-500">1,250 XP</p>
-                                    </div>
-                                    <span class="text-[10px] font-bold text-primary uppercase">Tú</span>
-                                </div>
+                        <div class="space-y-4" id="ranking-list">
+                            <div class="flex justify-center flex-col items-center py-6">
+                                <span class="material-symbols-outlined animate-spin text-primary text-3xl mb-2">autorenew</span>
+                                <p class="text-sm text-slate-500">Cargando clasificación...</p>
                             </div>
                         </div>
                         <button
@@ -337,16 +282,198 @@
         </footer>
     </div>
     
-    <script>
-        // Update user name dynamically based on localStorage (set from Firebase logic)
-        document.addEventListener('DOMContentLoaded', () => {
-            const userName = localStorage.getItem('logicplay_user_name');
-            if(userName && userName.trim() !== "") {
-                const greetingEl = document.getElementById('user-greeting');
-                const rankNameEl = document.getElementById('user-rank-name');
-                if(greetingEl) greetingEl.innerHTML = `¡Hola de nuevo, ${userName}! 👋`;
-                if(rankNameEl) rankNameEl.textContent = `Tú (${userName})`;
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js";
+        import { getFirestore, doc, getDoc, updateDoc, collection, query, where, orderBy, getDocs, limit } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBD3-ZnbczYZOuDm7e9OHLP6Xg68sdZ1so",
+            authDomain: "logicplay-e775c.firebaseapp.com",
+            projectId: "logicplay-e775c",
+            storageBucket: "logicplay-e775c.firebasestorage.app",
+            messagingSenderId: "11226997472",
+            appId: "1:11226997472:web:836d7d87f4f6a01987e685"
+        };
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        const uid = localStorage.getItem('logicplay_uid');
+        const role = localStorage.getItem('logicplay_role') || 'estudiante';
+        const userName = localStorage.getItem('logicplay_user_name') || 'Estudiante';
+
+        // Dom elements
+        const temasBtn = document.getElementById('nav-temas-btn');
+        const statsContainer = document.getElementById('stats-container');
+        const domStreak = document.getElementById('dom-streak');
+        const domPoints = document.getElementById('dom-points');
+        const domRoleLabel = document.getElementById('dom-role-label');
+        const domHeaderPts = document.getElementById('dom-header-pts');
+        const domHeaderAvatar = document.getElementById('dom-header-avatar');
+        const rankingContainer = document.getElementById('ranking-list');
+
+        document.getElementById('user-greeting').innerHTML = `¡Hola de nuevo, ${userName}! 👋`;
+
+        async function loadDashboard() {
+            if (role === 'profesor') {
+                // Setup teacher UI
+                temasBtn.className = "ml-4 bg-primary text-white px-4 py-1.5 rounded-lg text-sm font-bold flex items-center gap-2 hover:bg-primary/90 transition-all shadow-sm";
+                temasBtn.disabled = false;
+                temasBtn.onclick = () => window.location.href = 'panel_profesor/index.html';
+                temasBtn.innerHTML = `<span class="material-symbols-outlined text-[18px]">folder_open</span> Panel Docente`;
+
+                statsContainer.innerHTML = `<div class="bg-primary/10 text-primary px-4 py-3 rounded-xl border border-primary/20 font-bold w-full text-center">Modo Licenciado Activo: Estadísticas Ocultas</div>`;
+                domRoleLabel.textContent = "Licenciado / Docente";
+                domHeaderPts.textContent = "Puntos no aplican";
+                
+                rankingContainer.innerHTML = `<div class="text-center text-slate-500 py-6 text-sm font-medium">El ranking de Puntos es exclusivamente para estudiantes.</div>`;
+                
+                return; // Teachers don't load ranking or points
             }
+
+            // Setup Student UI
+            temasBtn.className = "ml-4 bg-slate-200 dark:bg-slate-800 text-slate-400 dark:text-slate-500 px-4 py-1.5 rounded-lg text-sm font-bold flex items-center gap-2 cursor-not-allowed transition-all shadow-sm opacity-60";
+            temasBtn.disabled = true;
+            temasBtn.innerHTML = `<span class="material-symbols-outlined text-[18px]">lock</span> Temas (Bloqueado)`;
+
+            domRoleLabel.textContent = "Estudiante";
+
+            try {
+                if(uid) {
+                    const userSnap = await getDoc(doc(db, "users", uid));
+                    if(userSnap.exists()) {
+                        const data = userSnap.data();
+                        domStreak.textContent = `${data.streak || 0} Días`;
+                        domPoints.textContent = `${data.points || 0} XP`;
+                        domHeaderPts.textContent = `${data.points || 0} XP • Nivel ${Math.floor((data.points||0)/100) + 1}`;
+                        
+                        if(data.photoURL) {
+                            domHeaderAvatar.innerHTML = `<img alt="${data.name}" class="w-full h-full object-cover" src="${data.photoURL}" />`;
+                        } else {
+                            domHeaderAvatar.innerHTML = `<div class="w-full h-full flex items-center justify-center bg-primary text-white font-bold text-lg">${data.name.charAt(0).toUpperCase()}</div>`;
+                        }
+                    }
+                }
+                
+                await loadRanking();
+            } catch(e) {
+                console.error("Error loading user data:", e);
+                rankingContainer.innerHTML = `<div class="text-center text-red-500 py-4 text-sm font-medium">Error al cargar la tabla de rankings.</div>`;
+            }
+        }
+
+        async function loadRanking() {
+            const usersRef = collection(db, "users");
+            const q = query(usersRef, where("role", "==", "estudiante"), orderBy("points", "desc"), limit(10));
+            const querySnapshot = await getDocs(q);
+            
+            let html = '';
+            let position = 1;
+
+            querySnapshot.forEach((doc) => {
+                const data = doc.data();
+                const isMe = doc.id === uid;
+                
+                let avatarHtml = '';
+                if(data.photoURL) {
+                    avatarHtml = `<img alt="${data.name}" class="w-full h-full object-cover" src="${data.photoURL}" />`;
+                } else {
+                    avatarHtml = `<div class="w-full h-full flex items-center justify-center bg-indigo-500 text-white font-bold text-base">${data.name.charAt(0).toUpperCase()}</div>`;
+                }
+
+                let rowClass = "flex items-center gap-4 p-3 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors";
+                let rankStyle = "text-xl font-black text-slate-400 w-4";
+                let medal = "";
+                
+                if (position === 1) {
+                    rowClass = "flex items-center gap-4 p-3 rounded-lg bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-100 dark:border-yellow-900/30";
+                    rankStyle = "text-xl font-black text-yellow-600 w-4";
+                    medal = `<span class="material-symbols-outlined text-yellow-500">military_tech</span>`;
+                } else if (isMe) {
+                    rowClass = "flex items-center gap-4 p-3 rounded-lg bg-primary/5 border border-primary/10";
+                    rankStyle = "text-sm font-black text-primary w-4";
+                    medal = `<span class="text-[10px] font-bold text-primary uppercase">Tú</span>`;
+                }
+
+                html += `
+                    <div class="${rowClass}">
+                        <span class="${rankStyle}">${position}</span>
+                        <div class="size-10 rounded-full bg-slate-200 border-2 overflow-hidden ${position===1?'border-yellow-400':isMe?'border-primary':'border-transparent'}">
+                            ${avatarHtml}
+                        </div>
+                        <div class="flex-1">
+                            <p class="text-sm font-bold ${isMe?'text-primary':''}">${data.name} ${isMe?'(Tú)':''}</p>
+                            <p class="text-xs text-slate-500">${data.points || 0} XP</p>
+                        </div>
+                        ${medal}
+                    </div>
+                `;
+                position++;
+            });
+
+            if(html === '') {
+                html = `<div class="text-center text-slate-500 py-6 text-sm font-medium">Aún no hay estudiantes registrados. Vuelve más tarde.</div>`;
+            }
+
+            rankingContainer.innerHTML = html;
+        }
+
+        // Streak / Activity Registration
+        function getTodayString() {
+            const d = new Date();
+            return d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate();
+        }
+
+        async function registerActivity(e) {
+            if (role === 'profesor' || !uid) return;
+            
+            const target = e.currentTarget;
+            let targetHref = target.getAttribute('href');
+            if (!targetHref && target.onclick) {
+                const match = target.getAttribute('onclick').match(/window\.location\.href='([^']+)'/);
+                if (match) targetHref = match[1];
+            }
+
+            if (!targetHref || targetHref === '#') return;
+            
+            e.preventDefault();
+            
+            try {
+                const userRef = doc(db, "users", uid);
+                const userSnap = await getDoc(userRef);
+                if (userSnap.exists()) {
+                    let data = userSnap.data();
+                    let today = getTodayString();
+                    
+                    let updates = { points: (data.points || 0) + 10 }; // 10 points per generic activity
+                    
+                    if (data.lastActivity !== today) {
+                        const yesterday = new Date();
+                        yesterday.setDate(yesterday.getDate() - 1);
+                        const yesterdayStr = yesterday.getFullYear() + "-" + (yesterday.getMonth() + 1) + "-" + yesterday.getDate();
+                        
+                        if (data.lastActivity === yesterdayStr) {
+                            updates.streak = (data.streak || 0) + 1;
+                        } else {
+                            updates.streak = 1;
+                        }
+                        updates.lastActivity = today;
+                    }
+                    
+                    await updateDoc(userRef, updates);
+                }
+            } catch (err) {
+                console.error("Error updating activity:", err);
+            }
+            
+            window.location.href = targetHref;
+        }
+
+        // Initialize UI Flow
+        loadDashboard();
+
+        // Attach listeners to relevant links (Physics, Chemistry, Math, Challenges)
+        document.querySelectorAll('a[href*="f_sica"], a[href*="quimica"], a[href*="matematica"], a[href*="reto_semanal"], button[onclick*="reto_semanal"], button[onclick*="cursos"]').forEach(el => {
+            el.addEventListener('click', registerActivity);
         });
     </script>
 </body>
