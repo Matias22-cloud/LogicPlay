@@ -209,6 +209,175 @@
         </div>
     </div>
 
-</body>
+    <!-- Faraday Chatbot UI -->
+    <div id="faraday-chat-container" class="fixed bottom-6 right-6 z-50 flex flex-col items-end">
+        <!-- Chat Window -->
+        <div id="faraday-chat-window" class="hidden w-80 md:w-96 bg-white dark:bg-slate-900 border border-primary/20 dark:border-slate-700 rounded-2xl shadow-2xl mb-4 overflow-hidden flex-col transition-all origin-bottom-right">
+            <!-- Header -->
+            <div class="bg-primary text-white p-4 flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <div class="size-8 rounded-full bg-white/20 flex items-center justify-center font-bold text-lg">
+                        🔬
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-sm">Faraday</h3>
+                        <p class="text-[10px] text-primary-100 opacity-80">Asistente de Física</p>
+                    </div>
+                </div>
+                <button id="close-faraday-btn" class="text-white hover:text-red-300 transition-colors">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+            
+            <!-- Messages Area -->
+            <div id="faraday-messages" class="h-80 overflow-y-auto p-4 flex flex-col gap-3 bg-slate-50 dark:bg-slate-800/50">
+                <div class="flex gap-2 w-full">
+                    <div class="size-6 shrink-0 rounded-full bg-primary/20 flex items-center justify-center text-xs">🔬</div>
+                    <div class="bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 p-3 rounded-2xl rounded-tl-none text-sm text-slate-700 dark:text-slate-300 shadow-sm">
+                        ¡Hola! Soy Faraday. ¿En qué conceptos de Movimiento Parabólico, MRU o Movimiento Circular te puedo ayudar hoy?
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Input Area -->
+            <div class="p-3 bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800">
+                <form id="faraday-form" class="flex items-center gap-2">
+                    <input type="text" id="faraday-input" placeholder="Pregunta sobre física..." class="flex-1 bg-slate-100 dark:bg-slate-800 border-none rounded-xl px-4 py-2 text-sm focus:ring-2 focus:ring-primary/50 text-slate-800 dark:text-slate-200" autocomplete="off" required>
+                    <button type="submit" class="shrink-0 size-9 rounded-xl bg-primary text-white flex items-center justify-center hover:bg-primary/90 transition-colors shadow-md disabled:opacity-50" id="faraday-submit">
+                        <span class="material-symbols-outlined text-sm">send</span>
+                    </button>
+                </form>
+            </div>
+        </div>
 
+        <!-- Floating Button -->
+        <button id="open-faraday-btn" class="flex items-center gap-2 bg-primary hover:bg-primary/90 text-white px-5 py-3 rounded-full shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+            <span class="material-symbols-outlined group-hover:animate-pulse">science</span>
+            <span class="font-bold text-sm">Pregunta a Faraday 🔬</span>
+        </button>
+    </div>
+
+    <!-- Gemini API Integration -->
+    <script type="importmap">
+      {
+        "imports": {
+          "@google/genai": "https://esm.run/@google/genai"
+        }
+      }
+    </script>
+    <script type="module">
+        import { GoogleGenAI } from '@google/genai';
+
+        const ai = new GoogleGenAI({
+            apiKey: 'AIzaSyC2jYxn8xi9lMEoE4HbtbKwsVnebqJ4G74',
+        });
+
+        const config = {
+            systemInstruction: [{
+                text: "Eres Faraday, un asistente educativo amable, paciente y motivador especializado únicamente en Física para estudiantes de bachillerato. Siempre saludas con entusiasmo y animas al estudiante. Solo respondes preguntas de Física como movimiento parabólico, MRU y movimiento circular. Si te preguntan algo de otra materia di amablemente que solo puedes ayudar con Física pero recomiéndale hablar con Heisenberg para Química o Leonhard para Matemáticas. Explica paso a paso de forma clara y sencilla usando ejemplos cotidianos."
+            }],
+        };
+        const model = 'gemini-3-flash-preview';
+
+        // UI Interactions
+        const chatWindow = document.getElementById('faraday-chat-window');
+        const openBtn = document.getElementById('open-faraday-btn');
+        const closeBtn = document.getElementById('close-faraday-btn');
+        const form = document.getElementById('faraday-form');
+        const input = document.getElementById('faraday-input');
+        const messagesArea = document.getElementById('faraday-messages');
+        const submitBtn = document.getElementById('faraday-submit');
+
+        openBtn.addEventListener('click', () => {
+            chatWindow.classList.toggle('hidden');
+            chatWindow.classList.toggle('flex');
+            if(!chatWindow.classList.contains('hidden')) input.focus();
+        });
+
+        closeBtn.addEventListener('click', () => {
+            chatWindow.classList.add('hidden');
+            chatWindow.classList.remove('flex');
+        });
+
+        function addMessage(text, isUser = false) {
+            const msgDiv = document.createElement('div');
+            msgDiv.className = `flex gap-2 w-full ${isUser ? 'justify-end' : ''} mb-2`;
+            
+            let avatarHTML = '';
+            let contentHTML = '';
+
+            const bubbleClass = isUser 
+                ? 'bg-primary text-white p-3 rounded-2xl rounded-tr-none text-sm shadow-sm max-w-[85%]'
+                : 'bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 p-3 rounded-2xl rounded-tl-none text-sm text-slate-700 dark:text-slate-300 shadow-sm max-w-[85%]';
+            
+            // Allow basic markdown bold parsing for better formatting
+            const formattedText = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\n/g, '<br>');
+
+            if(!isUser) {
+                avatarHTML = `<div class="size-6 shrink-0 rounded-full bg-primary/20 flex items-center justify-center text-xs mt-1">🔬</div>`;
+                contentHTML = `
+                    ${avatarHTML}
+                    <div class="${bubbleClass}">
+                        ${formattedText}
+                    </div>
+                `;
+            } else {
+                contentHTML = `
+                    <div class="${bubbleClass}">
+                        ${formattedText}
+                    </div>
+                `;
+            }
+
+            msgDiv.innerHTML = contentHTML;
+            messagesArea.appendChild(msgDiv);
+            messagesArea.scrollTop = messagesArea.scrollHeight;
+            return msgDiv;
+        }
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const prompt = input.value.trim();
+            if(!prompt) return;
+
+            // Add user message
+            addMessage(prompt, true);
+            input.value = '';
+            input.disabled = true;
+            submitBtn.disabled = true;
+
+            // Loading state bubble
+            const loadingMsg = addMessage('Pensando...', false);
+
+            try {
+                const response = await ai.models.generateContentStream({
+                    model,
+                    config,
+                    contents: [{ role: 'user', parts: [{ text: prompt }] }],
+                });
+
+                let fullText = '';
+                let firstChunk = true;
+
+                for await (const chunk of response) {
+                    if(firstChunk) {
+                        loadingMsg.querySelector('div.bg-white, div.bg-slate-800').innerHTML = ''; // Clear 'Pensando...'
+                        firstChunk = false;
+                    }
+                    fullText += chunk.text;
+                    loadingMsg.querySelector('div.bg-white, div.bg-slate-800').innerHTML = fullText.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\n/g, '<br>');
+                    messagesArea.scrollTop = messagesArea.scrollHeight;
+                }
+
+            } catch (error) {
+                console.error("Faraday Error:", error);
+                loadingMsg.querySelector('div.bg-white, div.bg-slate-800').innerHTML = '<span class="text-red-500">Hubo un error de conexión electromagnética. Vuelve a intentarlo.</span>';
+            } finally {
+                input.disabled = false;
+                submitBtn.disabled = false;
+                input.focus();
+            }
+        });
+    </script>
+</body>
 </html>

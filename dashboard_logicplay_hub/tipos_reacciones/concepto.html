@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2c0fbd",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#131022",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+    <title>Química Conceptos Claros - Tipos de Reacciones Químicas</title>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 transition-colors duration-300">
+    <div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+        <div class="layout-container flex h-full grow flex-col">
+            <header
+                class="flex items-center justify-between whitespace-nowrap border-b border-solid border-primary/10 px-6 py-3 lg:px-40 bg-white dark:bg-background-dark/50 backdrop-blur-md sticky top-0 z-50">
+                <div class="flex items-center gap-4 text-primary">
+                    <div class="size-8 flex items-center justify-center bg-primary/10 rounded-lg">
+                        <span class="material-symbols-outlined text-primary">rocket_launch</span>
+                    </div>
+                    <h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight tracking-[-0.015em]">
+                        Química
+                        Conceptos Claros</h2>
+                </div>
+                <div class="flex items-center gap-4">
+                    <a href="../dashboard_logicplay_clasificaci_n_anonimizada/code.html"
+                        class="px-4 py-2 text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-primary transition-colors">
+                        Dashboard
+                    </a>
+                    <button
+                        class="px-4 py-2 text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-primary transition-colors">
+                        Biblioteca
+                    </button>
+                    <button
+                        class="flex items-center justify-center rounded-lg h-10 w-10 bg-primary/10 text-primary hover:bg-primary hover:text-white transition-all">
+                        <span class="material-symbols-outlined">person</span>
+                    </button>
+                </div>
+            </header>
+            <main class="flex flex-1 justify-center py-8">
+                <div class="layout-content-container flex flex-col max-w-[960px] flex-1 px-4 lg:px-0">
+                    <div class="flex flex-wrap justify-between items-end gap-3 mb-6">
+                        <div class="flex flex-col gap-1">
+                            <span class="text-primary font-bold text-sm uppercase tracking-wider">Cinética y
+                                Dinámica</span>
+                            <h1
+                                class="text-slate-900 dark:text-slate-100 tracking-tight text-4xl font-extrabold leading-tight">
+                                Tipos de Reacciones Químicas</h1>
+                        </div>
+                    </div>
+                    <div
+                        class="flex flex-col gap-3 p-6 bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-primary/5 mb-8">
+                        <div class="flex gap-6 justify-between items-center">
+                            <div class="flex items-center gap-2">
+                                <span class="material-symbols-outlined text-primary">auto_stories</span>
+                                <p class="text-slate-700 dark:text-slate-300 text-base font-medium leading-normal">5 de
+                                    6 lecciones
+                                    completadas</p>
+                            </div>
+                            <p class="text-primary text-sm font-bold leading-normal">80%</p>
+                        </div>
+                        <div class="rounded-full bg-primary/10 h-3 overflow-hidden">
+                            <div class="h-full rounded-full bg-primary" style="width: 80%;"></div>
+                        </div>
+                    </div>
+                    <div class="mb-8">
+                        <div class="flex border-b border-primary/10 px-0 justify-between">
+                            <a class="flex flex-col items-center justify-center border-b-[3px] border-b-primary text-primary pb-4 pt-4 flex-1 font-bold bg-primary/5"
+                                href="concepto.html">
+                                <div class="flex items-center gap-2">
+                                    <span class="text-sm">1. Concepto</span>
+                                </div>
+                            </a>
+                            <a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-slate-500 dark:text-slate-400 hover:text-primary pb-4 pt-4 flex-1 font-medium transition-all"
+                                href="ejemplos.html">
+                                <div class="flex items-center gap-2">
+                                    <span class="text-sm">2. Ejemplos</span>
+                                </div>
+                            </a>
+                            <a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-slate-500 dark:text-slate-400 hover:text-primary pb-4 pt-4 flex-1 font-medium transition-all"
+                                href="#">
+                                <div class="flex items-center gap-2">
+                                    <span class="text-sm">3. Laboratorio</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="space-y-8">
+                        <section class="bg-white dark:bg-slate-900 rounded-xl p-8 border border-primary/10 shadow-sm">
+                            <div class="flex items-center gap-3 mb-8">
+                                <div
+                                    class="bg-primary text-white w-10 h-10 rounded-lg flex items-center justify-center font-bold text-xl">
+                                    <span class="material-symbols-outlined">visibility</span>
+                                </div>
+                                <h2 class="text-slate-900 dark:text-slate-100 text-2xl font-bold tracking-tight">
+                                    Análisis Visual de las Reacciones</h2>
+                            </div>
+
+                            <!-- Gráfico de las 4 reacciones con círculos de colores -->
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                                <!-- Síntesis -->
+                                <div
+                                    class="relative bg-slate-50 dark:bg-slate-950 rounded-xl border border-dashed border-primary/20 p-6 flex flex-col items-center justify-center">
+                                    <h3
+                                        class="text-lg font-bold text-slate-900 dark:text-slate-100 mb-6 w-full text-center">
+                                        Síntesis (A + B → AB)</h3>
+                                    <div class="flex items-center gap-4">
+                                        <div
+                                            class="w-12 h-12 rounded-full bg-blue-500 shadow-lg flex items-center justify-center text-white font-bold text-xl">
+                                            A</div>
+                                        <span class="text-slate-400 text-2xl font-bold">+</span>
+                                        <div
+                                            class="w-12 h-12 rounded-full bg-red-500 shadow-lg flex items-center justify-center text-white font-bold text-xl">
+                                            B</div>
+                                        <span class="text-primary text-2xl font-bold mx-2">→</span>
+                                        <div class="flex">
+                                            <div
+                                                class="w-12 h-12 rounded-l-full bg-blue-500 shadow-lg flex items-center justify-center text-white font-bold text-xl border-r border-white/20">
+                                                A</div>
+                                            <div
+                                                class="w-12 h-12 rounded-r-full bg-red-500 shadow-lg flex items-center justify-center text-white font-bold text-xl">
+                                                B</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Descomposición -->
+                                <div
+                                    class="relative bg-slate-50 dark:bg-slate-950 rounded-xl border border-dashed border-primary/20 p-6 flex flex-col items-center justify-center">
+                                    <h3
+                                        class="text-lg font-bold text-slate-900 dark:text-slate-100 mb-6 w-full text-center">
+                                        Descomposición (AB → A + B)</h3>
+                                    <div class="flex items-center gap-4">
+                                        <div class="flex">
+                                            <div
+                                                class="w-12 h-12 rounded-l-full bg-purple-500 shadow-lg flex items-center justify-center text-white font-bold text-xl border-r border-white/20">
+                                                A</div>
+                                            <div
+                                                class="w-12 h-12 rounded-r-full bg-green-500 shadow-lg flex items-center justify-center text-white font-bold text-xl">
+                                                B</div>
+                                        </div>
+                                        <span class="text-primary text-2xl font-bold mx-2">→</span>
+                                        <div
+                                            class="w-12 h-12 rounded-full bg-purple-500 shadow-lg flex items-center justify-center text-white font-bold text-xl">
+                                            A</div>
+                                        <span class="text-slate-400 text-2xl font-bold">+</span>
+                                        <div
+                                            class="w-12 h-12 rounded-full bg-green-500 shadow-lg flex items-center justify-center text-white font-bold text-xl">
+                                            B</div>
+                                    </div>
+                                </div>
+
+                                <!-- Sustitución Simple -->
+                                <div
+                                    class="relative bg-slate-50 dark:bg-slate-950 rounded-xl border border-dashed border-primary/20 p-6 flex flex-col items-center justify-center">
+                                    <h3
+                                        class="text-lg font-bold text-slate-900 dark:text-slate-100 mb-6 w-full text-center">
+                                        Sustitución Simple (AB + C → AC + B)</h3>
+                                    <div class="flex items-center gap-4">
+                                        <div class="flex">
+                                            <div
+                                                class="w-12 h-12 rounded-l-full bg-yellow-500 shadow-lg flex items-center justify-center text-white font-bold text-xl border-r border-white/20">
+                                                A</div>
+                                            <div
+                                                class="w-12 h-12 rounded-r-full bg-indigo-500 shadow-lg flex items-center justify-center text-white font-bold text-xl">
+                                                B</div>
+                                        </div>
+                                        <span class="text-slate-400 text-2xl font-bold">+</span>
+                                        <div
+                                            class="w-12 h-12 rounded-full bg-pink-500 shadow-lg flex items-center justify-center text-white font-bold text-xl">
+                                            C</div>
+                                        <span class="text-primary text-2xl font-bold mx-2">→</span>
+                                        <div class="flex">
+                                            <div
+                                                class="w-12 h-12 rounded-l-full bg-yellow-500 shadow-lg flex items-center justify-center text-white font-bold text-xl border-r border-white/20">
+                                                A</div>
+                                            <div
+                                                class="w-12 h-12 rounded-r-full bg-pink-500 shadow-lg flex items-center justify-center text-white font-bold text-xl">
+                                                C</div>
+                                        </div>
+                                        <span class="text-slate-400 text-2xl font-bold">+</span>
+                                        <div
+                                            class="w-12 h-12 rounded-full bg-indigo-500 shadow-lg flex items-center justify-center text-white font-bold text-xl">
+                                            B</div>
+                                    </div>
+                                </div>
+
+                                <!-- Doble Sustitución -->
+                                <div
+                                    class="relative bg-slate-50 dark:bg-slate-950 rounded-xl border border-dashed border-primary/20 p-6 flex flex-col items-center justify-center">
+                                    <h3
+                                        class="text-lg font-bold text-slate-900 dark:text-slate-100 mb-6 w-full text-center">
+                                        Doble Sustitución (AB + CD → AD + CB)</h3>
+                                    <div class="flex items-center gap-2 scale-90 sm:scale-100 transform origin-center">
+                                        <div class="flex">
+                                            <div
+                                                class="w-10 h-10 rounded-l-full bg-teal-500 shadow-lg flex items-center justify-center text-white font-bold text-lg border-r border-white/20">
+                                                A</div>
+                                            <div
+                                                class="w-10 h-10 rounded-r-full bg-orange-500 shadow-lg flex items-center justify-center text-white font-bold text-lg">
+                                                B</div>
+                                        </div>
+                                        <span class="text-slate-400 text-xl font-bold">+</span>
+                                        <div class="flex">
+                                            <div
+                                                class="w-10 h-10 rounded-l-full bg-cyan-500 shadow-lg flex items-center justify-center text-white font-bold text-lg border-r border-white/20">
+                                                C</div>
+                                            <div
+                                                class="w-10 h-10 rounded-r-full bg-rose-500 shadow-lg flex items-center justify-center text-white font-bold text-lg">
+                                                D</div>
+                                        </div>
+                                        <span class="text-primary text-xl font-bold mx-1">→</span>
+                                        <div class="flex">
+                                            <div
+                                                class="w-10 h-10 rounded-l-full bg-teal-500 shadow-lg flex items-center justify-center text-white font-bold text-lg border-r border-white/20">
+                                                A</div>
+                                            <div
+                                                class="w-10 h-10 rounded-r-full bg-rose-500 shadow-lg flex items-center justify-center text-white font-bold text-lg">
+                                                D</div>
+                                        </div>
+                                        <span class="text-slate-400 text-xl font-bold">+</span>
+                                        <div class="flex">
+                                            <div
+                                                class="w-10 h-10 rounded-l-full bg-cyan-500 shadow-lg flex items-center justify-center text-white font-bold text-lg border-r border-white/20">
+                                                C</div>
+                                            <div
+                                                class="w-10 h-10 rounded-r-full bg-orange-500 shadow-lg flex items-center justify-center text-white font-bold text-lg">
+                                                B</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <!-- Tarjeta Síntesis -->
+                                <div
+                                    class="p-6 bg-background-light dark:bg-background-dark rounded-xl border border-primary/10 hover:border-primary/30 transition-all">
+                                    <div class="flex items-center gap-3 mb-4">
+                                        <div
+                                            class="w-8 h-8 rounded-full bg-blue-500 text-white flex items-center justify-center font-bold">
+                                            1</div>
+                                        <h3 class="text-lg font-bold text-slate-900 dark:text-white">Reacción de
+                                            Síntesis</h3>
+                                    </div>
+                                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+                                        Ocurre cuando dos o más reactivos simples se combinan para formar un solo
+                                        producto más complejo.
+                                        La forma general es: <strong class="text-blue-500 dark:text-blue-400">A + B →
+                                            AB</strong>.
+                                    </p>
+                                </div>
+                                <!-- Tarjeta Descomposición -->
+                                <div
+                                    class="p-6 bg-background-light dark:bg-background-dark rounded-xl border border-primary/10 hover:border-primary/30 transition-all">
+                                    <div class="flex items-center gap-3 mb-4">
+                                        <div
+                                            class="w-8 h-8 rounded-full bg-purple-500 text-white flex items-center justify-center font-bold">
+                                            2</div>
+                                        <h3 class="text-lg font-bold text-slate-900 dark:text-white">Reacción de
+                                            Descomposición</h3>
+                                    </div>
+                                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+                                        Es el proceso inverso a la síntesis. Un solo compuesto se divide en dos o más
+                                        sustancias más simples, generalmente mediante la aplicación de energía.
+                                        La forma general es: <strong class="text-purple-500 dark:text-purple-400">AB → A
+                                            + B</strong>.
+                                    </p>
+                                </div>
+                                <!-- Tarjeta Sustitución Simple -->
+                                <div
+                                    class="p-6 bg-background-light dark:bg-background-dark rounded-xl border border-primary/10 hover:border-primary/30 transition-all">
+                                    <div class="flex items-center gap-3 mb-4">
+                                        <div
+                                            class="w-8 h-8 rounded-full bg-yellow-500 text-white flex items-center justify-center font-bold">
+                                            3</div>
+                                        <h3 class="text-lg font-bold text-slate-900 dark:text-white">Reacción de
+                                            Sustitución Simple</h3>
+                                    </div>
+                                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+                                        Ocurre cuando un elemento libre desplaza a otro elemento en un compuesto
+                                        químico. El elemento más reactivo desplaza al menos reactivo.
+                                        La forma general es: <strong class="text-yellow-500 dark:text-yellow-400">AB + C
+                                            → AC + B</strong>.
+                                    </p>
+                                </div>
+                                <!-- Tarjeta Doble Sustitución -->
+                                <div
+                                    class="p-6 bg-background-light dark:bg-background-dark rounded-xl border border-primary/10 hover:border-primary/30 transition-all">
+                                    <div class="flex items-center gap-3 mb-4">
+                                        <div
+                                            class="w-8 h-8 rounded-full bg-teal-500 text-white flex items-center justify-center font-bold">
+                                            4</div>
+                                        <h3 class="text-lg font-bold text-slate-900 dark:text-white">Reacción de Doble
+                                            Sustitución</h3>
+                                    </div>
+                                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+                                        Implica un intercambio de iones entre dos compuestos para formar dos compuestos
+                                        nuevos. Suele darse en soluciones acuosas.
+                                        La forma general es: <strong class="text-teal-500 dark:text-teal-400">AB + CD →
+                                            AD + CB</strong>.
+                                    </p>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="bg-primary/5 rounded-xl p-8 border border-primary/20">
+                            <div class="flex items-start gap-4">
+                                <span class="material-symbols-outlined text-primary text-3xl">info</span>
+                                <div>
+                                    <h3 class="text-primary font-bold text-lg mb-2">Resumen Conceptual</h3>
+                                    <p class="text-slate-700 dark:text-slate-300 leading-relaxed">
+                                        Reconocer el tipo de reacción química es vital para predecir los productos
+                                        finales y entender la naturaleza de las interacciones químicas. Cada uno de
+                                        estos cuatro patrones básicos representa cómo los átomos se reorganizan durante
+                                        una transformación química y obedecen a la <strong class="font-bold">Ley de
+                                            Conservación de la Masa</strong>.
+                                    </p>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                    <div
+                        class="mt-12 mb-20 flex justify-between items-center bg-white dark:bg-slate-900 p-6 rounded-xl border border-primary/10">
+                        <button class="flex items-center gap-2 text-slate-400 cursor-not-allowed font-bold" disabled="">
+                            <span class="material-symbols-outlined">arrow_back</span>
+                            Inicio
+                        </button>
+                        <a href="ejemplos.html"
+                            class="flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-lg font-bold hover:bg-primary/90 transition-all shadow-lg shadow-primary/20">
+                            Siguiente: Ejemplos
+                            <span class="material-symbols-outlined">arrow_forward</span>
+                        </a>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+</body>
+
+</html>

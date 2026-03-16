@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html class="light" lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#4f46e5",
+                        "accent": "#f43f5e",
+                        "background-light": "#f8fafc",
+                        "background-dark": "#0f172a",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend"]
+                    },
+                    borderRadius: { "DEFAULT": "0.375rem", "lg": "0.75rem", "xl": "1rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+    <style type="text/tailwindcss">
+        :root {
+            --primary-color: #4f46e5;
+            --accent-color: #f43f5e;
+        }
+        .glass-panel {
+            @apply bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border border-white/20 dark:border-slate-800/50 shadow-xl;
+        }
+        .nav-tab {
+            @apply px-4 py-2 text-sm font-semibold transition-all duration-200 relative;
+        }
+        .nav-tab-active {
+            @apply text-primary border-b-2 border-primary;
+        }
+        .nav-tab-inactive {
+            @apply text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 border-b-2 border-transparent;
+        }
+        .btn-option {
+            @apply w-full py-4 px-6 rounded-xl bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border-2 border-slate-200 dark:border-slate-700 hover:border-primary hover:text-primary transition-all font-bold text-lg shadow-sm flex justify-center items-center;
+        }
+        .btn-option:disabled {
+            @apply opacity-50 cursor-not-allowed hover:border-slate-200 dark:hover:border-slate-700 hover:text-slate-700 dark:hover:text-slate-200 cursor-not-allowed;
+        }
+        .btn-option.correct {
+            @apply border-emerald-500 bg-emerald-50 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-400 !opacity-100;
+        }
+        .btn-option.incorrect {
+            @apply border-accent bg-accent/5 text-accent dark:bg-accent/10 opacity-50 cursor-not-allowed;
+        }
+        .incorrect-msg {
+            @apply bg-accent/10 border border-accent/20 text-accent p-4 rounded-xl flex items-center gap-3 font-medium;
+        }
+    </style>
+    <title>Tipos de Reacciones Químicas</title>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased">
+    <div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+        
+        <!-- HEADER EXACTAMENTE IGUAL A QUIMICA_LABORATORIO/CODE.HTML -->
+        <header class="sticky top-0 z-50 glass-panel border-b px-6 md:px-20 py-4">
+            <div class="flex items-center justify-between max-w-7xl mx-auto w-full">
+                <div class="flex items-center gap-4 text-primary">
+                    <div class="size-10 flex items-center justify-center bg-primary/10 rounded-xl">
+                        <span class="material-symbols-outlined text-primary text-2xl font-bold">science</span>
+                    </div>
+                    <div>
+                        <h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight">Química Laboratorio</h2>
+                    </div>
+                </div>
+                <div class="flex items-center gap-6">
+                    <nav class="hidden md:flex gap-8 items-center text-sm font-semibold text-slate-500">
+                        <a class="hover:text-primary transition-colors" href="../dashboard_logicplay_clasificaci_n_anonimizada/code.html">Dashboard</a>
+                        <a class="hover:text-primary transition-colors" href="#">Biblioteca</a>
+                    </nav>
+                    <button class="flex items-center justify-center rounded-xl h-10 w-10 bg-slate-100 dark:bg-slate-800 hover:bg-primary/10 transition-all group">
+                        <span class="material-symbols-outlined text-slate-600 dark:text-slate-400 group-hover:text-primary">person</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <main class="flex-1 max-w-4xl mx-auto w-full px-6 py-10">
+            <!-- TITULO Y BARRA DE PROGRESO (ARRIBA COMO SE PIDIÓ) -->
+            <div class="mb-8">
+                <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6">
+                    <div>
+                        <span class="text-primary font-bold text-sm tracking-widest uppercase mb-2 block">Módulo 05: Reacciones Químicas</span>
+                        <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight">Tipos de Reacciones Químicas</h1>
+                    </div>
+                    <div class="flex flex-col items-end gap-2 shrink-0" id="progress-container">
+                        <span id="progress-text" class="text-sm font-bold text-slate-500 tracking-wide">Ecuación 1 de 6</span>
+                        <div class="w-48 h-3 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden shadow-inner">
+                            <div id="progress-bar" class="h-full bg-primary rounded-full transition-all duration-500" style="width: 16.6%;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-1 border-b border-slate-200 dark:border-slate-800">
+                    <a class="nav-tab nav-tab-inactive" href="concepto.html">1. Concepto</a>
+                    <a class="nav-tab nav-tab-inactive" href="ejemplos.html">2. Ejemplos</a>
+                    <a class="nav-tab nav-tab-active" href="laboratorio.html">3. Laboratorio</a>
+                </div>
+            </div>
+
+            <!-- JUEGO PRINCIPAL / ECUACIÓN Y ANIMACIÓN EN EL CENTRO -->
+            <div id="game-container" class="glass-panel p-8 md:p-12 rounded-3xl flex flex-col gap-8 shadow-sm relative">
+                
+                <!-- Ecuación -->
+                <div class="text-center py-6 bg-slate-50 dark:bg-slate-800/40 rounded-2xl border border-slate-100 dark:border-slate-700 shadow-inner">
+                    <h2 id="equation-display" class="text-4xl md:text-5xl font-mono font-black text-slate-800 dark:text-slate-100 tracking-wide">
+                        2H₂ + O₂ → 2H₂O
+                    </h2>
+                </div>
+
+                <!-- Canvas de Animación Visual -->
+                <div class="w-full relative shrink-0 aspect-video md:aspect-[21/9] bg-white dark:bg-slate-900 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-inner flex flex-col justify-center items-center">
+                    <canvas id="reactionCanvas" class="w-full h-full relative z-10"></canvas>
+                </div>
+
+                <!-- Mensaje de Error (Oculto por defecto) -->
+                <div id="feedback-message" class="hidden incorrect-msg">
+                    <span class="material-symbols-outlined font-bold text-2xl">error</span>
+                    <span id="feedback-text"></span>
+                </div>
+
+                <!-- Botones / Opciones de respuesta -->
+                <div class="mt-2 text-center">
+                    <h3 class="text-xl md:text-2xl font-bold text-slate-800 dark:text-slate-200 mb-6">¿Qué tipo de reacción es?</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <button class="btn-option" onclick="checkAnswer('Síntesis', this)">Síntesis</button>
+                        <button class="btn-option" onclick="checkAnswer('Descomposición', this)">Descomposición</button>
+                        <button class="btn-option" onclick="checkAnswer('Sustitución Simple', this)">Sustitución Simple</button>
+                        <button class="btn-option" onclick="checkAnswer('Doble Sustitución', this)">Doble Sustitución</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PANTALLA FIN DE NIVEL -->
+            <div id="end-screen" class="hidden glass-panel py-16 px-8 rounded-3xl text-center shadow-lg relative overflow-hidden flex-col items-center">
+                <div class="absolute -top-32 -right-32 size-72 bg-emerald-500/10 rounded-full blur-3xl"></div>
+                
+                <div class="size-24 bg-emerald-100 dark:bg-emerald-900/30 border border-emerald-200 dark:border-emerald-800 rounded-full flex items-center justify-center mb-6 mx-auto relative z-10 shadow-inner">
+                    <span class="material-symbols-outlined text-6xl text-emerald-500">emoji_events</span>
+                </div>
+                
+                <h2 class="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white mb-4 relative z-10">¡Laboratorio Completado!</h2>
+                <p class="text-lg text-slate-600 dark:text-slate-400 mb-10 max-w-lg mx-auto relative z-10">
+                    Has clasificado exitosamente las 6 reacciones químicas de este módulo. ¡Excelente trabajo!
+                </p>
+                
+                <div class="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 w-full max-w-sm mb-10 mx-auto relative z-10">
+                    <div class="text-6xl font-black text-primary mb-2" id="final-score">6 / 6</div>
+                    <div class="text-sm font-bold text-slate-400 uppercase tracking-widest">Aciertos a la 1ª</div>
+                </div>
+                
+                <div class="flex flex-col sm:flex-row justify-center gap-4 w-full relative z-10">
+                    <button onclick="location.reload()" class="px-8 py-4 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 border border-transparent hover:border-slate-300 dark:hover:border-slate-600 rounded-xl font-bold transition-all w-full sm:w-auto">
+                        Repetir
+                    </button>
+                    <a href="../dashboard_logicplay_clasificaci_n_anonimizada/code.html" class="px-8 py-4 bg-primary hover:bg-primary/90 text-white rounded-xl font-bold transition-all shadow-md w-full sm:w-auto">
+                        Volver al Dashboard
+                    </a>
+                </div>
+            </div>
+
+            <footer class="mt-16 py-8 border-t border-slate-200 dark:border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4">
+                <div class="flex items-center gap-4 text-slate-400 text-sm">
+                    <span>© 2026 Química Interactiva</span>
+                    <span class="w-1 h-1 bg-slate-300 rounded-full"></span>
+                    <a class="hover:text-primary transition-colors" href="#">Guía de Uso</a>
+                </div>
+                <div class="flex gap-4">
+                    <div class="flex items-center gap-2 px-3 py-1 bg-slate-100 dark:bg-slate-800 rounded-full text-[10px] font-bold text-slate-500">
+                        <span class="size-2 bg-green-500 rounded-full"></span> ENGINE V3.0 ONLINE
+                    </div>
+                </div>
+            </footer>
+        </main>
+    </div>
+
+    <!-- LOGICA DEL SIMULADOR Y CANVAS HTML5 -->
+    <script>
+        // Data requirements: Minimum 6 equations in total. Complete dataset here.
+        const poolEquations = [
+            { text: "2H₂ + O₂ → 2H₂O", type: "Síntesis", reason: "Dos o más reactivos simples se combinan para formar un producto." },
+            { text: "N₂ + 3H₂ → 2NH₃", type: "Síntesis", reason: "El Nitrógeno y el Hidrógeno se unen formando un solo compuesto." },
+            { text: "2H₂O → 2H₂ + O₂", type: "Descomposición", reason: "Un solo compuesto complejo se divide en sustancias más simples." },
+            { text: "CaCO₃ → CaO + CO₂", type: "Descomposición", reason: "Una sustancia reacciona separándose en dos moléculas más sencillas." },
+            { text: "Zn + 2HCl → ZnCl₂ + H₂", type: "Sustitución Simple", reason: "El Zinc (elemento libre) reemplaza al Hidrógeno en el compuesto." },
+            { text: "AgNO₃ + NaCl → AgCl + NaNO₃", type: "Doble Sustitución", reason: "Ambos compuestos intercambian a dos de sus componentes para formar dos compuestos nuevos." }
+        ];
+
+        // Mezclar aleatoriamente pero limitarlo a 6 para cumplir con el requerimiento.
+        const currentEquationsSet = poolEquations.sort(() => Math.random() - 0.5).slice(0, 6);
+
+        let currentIndex = 0;
+        let score = 0;
+        let hasFailedCurrent = false;
+        let isAnimating = false;
+
+        // UI Elements
+        const eqDisplay = document.getElementById('equation-display');
+        const progressText = document.getElementById('progress-text');
+        const progressBar = document.getElementById('progress-bar');
+        const feedbackMsg = document.getElementById('feedback-message');
+        const buttons = document.querySelectorAll('.btn-option');
+        const canvas = document.getElementById('reactionCanvas');
+        const ctx = canvas.getContext('2d');
+
+        function resizeCanvas() {
+            canvas.width = canvas.parentElement.clientWidth;
+            canvas.height = canvas.parentElement.clientHeight;
+            if (!isAnimating) {
+                drawIdleCanvas();
+            }
+        }
+
+        window.addEventListener('resize', resizeCanvas);
+
+        function drawIdleCanvas() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = document.documentElement.classList.contains('dark') ? '#475569' : '#94a3b8';
+            ctx.font = '500 18px Lexend';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText("Selecciona la respuesta correcta para la animación", canvas.width / 2, canvas.height / 2);
+        }
+
+        function loadEquation() {
+            const eq = currentEquationsSet[currentIndex];
+            eqDisplay.textContent = eq.text;
+            
+            // Stats Text
+            const currentNum = currentIndex + 1;
+            const total = currentEquationsSet.length;
+            progressText.textContent = `Ecuación ${currentNum} de ${total}`;
+            
+            // Bar calculation
+            const percentage = (currentNum / total) * 100;
+            progressBar.style.width = percentage + '%';
+
+            // Reset States
+            hasFailedCurrent = false;
+            isAnimating = false;
+            feedbackMsg.classList.add('hidden');
+            
+            buttons.forEach(btn => {
+                btn.classList.remove('incorrect', 'correct');
+                btn.disabled = false;
+            });
+
+            resizeCanvas(); // Ensure scaled right, draws idle
+        }
+
+        function checkAnswer(selectedType, btnElement) {
+            if (isAnimating) return;
+
+            const currentEq = currentEquationsSet[currentIndex];
+
+            if (selectedType === currentEq.type) {
+                // CORRETO
+                if (!hasFailedCurrent) {
+                    score++;
+                }
+
+                btnElement.classList.remove('incorrect');
+                btnElement.classList.add('correct');
+                feedbackMsg.classList.add('hidden');
+
+                buttons.forEach(b => b.disabled = true); // Todo bloqueado hasta que pase animacion
+                
+                isAnimating = true;
+                
+                // Limpiar mensaje error de otros botones
+                buttons.forEach(b => {
+                    if (b !== btnElement) b.classList.remove('incorrect');
+                });
+
+                playCanvasAnimation(currentEq.type, () => {
+                    // Mover al siguiente nivel
+                    currentIndex++;
+                    if (currentIndex < currentEquationsSet.length) {
+                        loadEquation();
+                    } else {
+                        showResults();
+                    }
+                });
+
+            } else {
+                // INCORRECTO
+                hasFailedCurrent = true;
+                btnElement.classList.add('incorrect');
+                
+                // Mostrar razón
+                feedbackMsg.querySelector('#feedback-text').textContent = `Incorrecto. ${currentEq.reason}`;
+                feedbackMsg.classList.remove('hidden');
+            }
+        }
+
+        function showResults() {
+            document.getElementById('progress-container').classList.add('invisible');
+            document.getElementById('game-container').classList.add('hidden');
+            const endScreen = document.getElementById('end-screen');
+            endScreen.classList.remove('hidden');
+            endScreen.classList.add('flex');
+            
+            document.getElementById('final-score').textContent = `${score} / ${currentEquationsSet.length}`;
+        }
+
+        // --- SISTEMA DE ANIMACIÓN EN CANVAS PARA TIPOS DE REACCIONES --- //
+        
+        function drawCircle(x, y, color, labelText) {
+            ctx.beginPath();
+            ctx.arc(x, y, 32, 0, Math.PI * 2);
+            ctx.fillStyle = color;
+            ctx.fill();
+            
+            // Borde suave
+            ctx.strokeStyle = document.documentElement.classList.contains('dark') ? '#0f172a' : '#ffffff';
+            ctx.lineWidth = 4;
+            ctx.stroke();
+
+            // Texto interno
+            ctx.fillStyle = '#ffffff';
+            ctx.font = 'bold 24px Lexend';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText(labelText, x, y);
+        }
+
+        function playCanvasAnimation(reactionType, onAnimationEnd) {
+            let startTime = null;
+            const duration = 2000; // Exacto a lo indicado: la animacion dura 2 segundos
+            
+            const w = canvas.width;
+            const h = canvas.height;
+            const cx = w / 2;
+            const cy = h / 2;
+
+            function renderFrame(timestamp) {
+                if (!startTime) startTime = timestamp;
+                const elapsed = timestamp - startTime;
+                let t = Math.min(elapsed / duration, 1);
+                
+                // Ease in out suavizado
+                const ease = t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+
+                ctx.clearRect(0, 0, w, h);
+
+                if (reactionType === "Síntesis") { 
+                    // Dos separados se unen
+                    let dist = 140 - (120 * ease); 
+                    // A empieza en -140 y termina en -20. B empieza en +140 y termina en +20
+                    drawCircle(cx - dist, cy, "#ef4444", "A");
+                    drawCircle(cx + dist, cy, "#3b82f6", "B");
+
+                } else if (reactionType === "Descomposición") {
+                    // Dos juntos se separan
+                    let dist = 20 + (120 * ease); 
+                    // Empiezan en 20 distancia, terminan en 140 separados.
+                    drawCircle(cx - dist, cy, "#ef4444", "A");
+                    drawCircle(cx + dist, cy, "#3b82f6", "B");
+
+                } else if (reactionType === "Sustitución Simple") {
+                    // A + BC  ->  AC + B
+                    // Elemento A rojo llega de lejos. El Compuesto BC (Azul+Verde) está al centro.
+                    let distRed = 160 - (180 * ease);     // Rojo de izq a centro (-160 a 20)
+                    let distBlue = -20 + (180 * ease);    // Azul de centro a der (-20 a 160)
+                    let distGreen = 20;                   // Verde se queda en +20 esperando a A
+                    
+                    if (ease > 0.5) distGreen = -20; // Pegarse al rojo
+
+                    drawCircle(cx + distBlue, cy, "#3b82f6", "B");
+                    drawCircle(cx + distGreen, cy, "#10b981", "C");
+                    drawCircle(cx - distRed, cy, "#ef4444", "A");
+
+                } else if (reactionType === "Doble Sustitución") {
+                    // AB + CD -> AD + CB
+                    // Elementos cruzan con arco
+                    let fixedA = cx - 80;
+                    let fixedD = cx + 80;
+                    
+                    let moveB_X = (cx - 20) + (40 * ease); 
+                    let moveC_X = (cx + 20) - (40 * ease);
+
+                    let arcDist = Math.sin(ease * Math.PI) * 60; // Arco vertical mientras cambian
+                    
+                    drawCircle(fixedA, cy, "#ef4444", "A");
+                    drawCircle(fixedD, cy, "#f59e0b", "D");
+
+                    // B y C subiendo y bajando en el cambio cruzado
+                    drawCircle(moveB_X, cy - arcDist, "#3b82f6", "B");
+                    drawCircle(moveC_X, cy + arcDist, "#10b981", "C");
+                }
+
+                if (t < 1) {
+                    requestAnimationFrame(renderFrame);
+                } else {
+                    // Mantener estado final un poco
+                    setTimeout(onAnimationEnd, 150);
+                }
+            }
+
+            requestAnimationFrame(renderFrame);
+        }
+
+        // Init
+        window.addEventListener('DOMContentLoaded', () => {
+            loadEquation();
+        });
+    </script>
+</body>
+</html>

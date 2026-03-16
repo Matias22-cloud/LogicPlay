@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&amp;display=swap" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2c0fbd",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#131022",
+                    },
+                    fontFamily: {
+                        "sans": ["Lexend", "sans-serif"],
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+    <style type="text/tailwindcss">
+        :root {
+            --primary-color: #2c0fbd;
+        }
+        body {
+            font-family: 'Lexend', sans-serif;
+        }
+    </style>
+    <title>Química: Tipos de Reacciones Químicas - Ejemplos</title>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 transition-colors duration-300">
+    <div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+        <div class="layout-container flex h-full grow flex-col">
+            <header
+                class="flex items-center justify-between whitespace-nowrap border-b border-solid border-primary/10 px-6 py-3 lg:px-40 bg-white dark:bg-background-dark/50 backdrop-blur-md sticky top-0 z-50">
+                <div class="flex items-center gap-4 text-primary">
+                    <div class="size-8 flex items-center justify-center bg-primary/10 rounded-lg">
+                        <span class="material-symbols-outlined text-primary">rocket_launch</span>
+                    </div>
+                    <h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight tracking-[-0.015em]">
+                        Química
+                        Ejemplos Paso a Paso</h2>
+                </div>
+                <div class="flex items-center gap-6">
+                    <nav class="flex items-center gap-4">
+                        <a href="../dashboard_logicplay_clasificaci_n_anonimizada/code.html"
+                            class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary font-medium transition-colors text-sm">Dashboard</a>
+                        <button
+                            class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary font-medium transition-colors text-sm">Biblioteca</button>
+                    </nav>
+                    <button
+                        class="flex items-center justify-center rounded-lg h-10 w-10 bg-primary/10 text-primary hover:bg-primary hover:text-white transition-all">
+                        <span class="material-symbols-outlined">person</span>
+                    </button>
+                </div>
+            </header>
+            <main class="flex flex-1 justify-center py-8">
+                <div class="layout-content-container flex flex-col max-w-[960px] flex-1 px-4 lg:px-0">
+                    <div class="flex flex-wrap justify-between items-end gap-3 mb-6">
+                        <div class="flex flex-col gap-1">
+                            <span class="text-primary font-bold text-sm uppercase tracking-wider">Cinética y
+                                Dinámica</span>
+                            <h1
+                                class="text-slate-900 dark:text-slate-100 tracking-tight text-4xl font-extrabold leading-tight">
+                                Tipos de Reacciones Químicas</h1>
+                        </div>
+                    </div>
+                    <div
+                        class="flex flex-col gap-3 p-6 bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-primary/5 mb-8">
+                        <div class="flex gap-6 justify-between items-center">
+                            <div class="flex items-center gap-2">
+                                <span class="material-symbols-outlined text-primary">auto_stories</span>
+                                <p class="text-slate-700 dark:text-slate-300 text-base font-medium leading-normal">5 de
+                                    6 lecciones
+                                    completadas</p>
+                            </div>
+                            <p class="text-primary text-sm font-bold leading-normal">80%</p>
+                        </div>
+                        <div class="rounded-full bg-primary/10 h-3 overflow-hidden">
+                            <div class="h-full rounded-full bg-primary" style="width: 80%;"></div>
+                        </div>
+                    </div>
+                    <div class="mb-8">
+                        <div class="flex border-b border-primary/10 px-0 justify-between">
+                            <a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-slate-500 dark:text-slate-400 hover:text-primary pb-4 pt-4 flex-1 font-medium transition-all"
+                                href="concepto.html">
+                                <div class="flex items-center gap-2">
+                                    <span class="text-sm">1. Concepto</span>
+                                </div>
+                            </a>
+                            <a class="flex flex-col items-center justify-center border-b-[3px] border-b-primary text-primary pb-4 pt-4 flex-1 font-bold bg-primary/5"
+                                href="#">
+                                <div class="flex items-center gap-2">
+                                    <span class="text-sm">2. Ejemplos</span>
+                                </div>
+                            </a>
+                            <a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-slate-500 dark:text-slate-400 hover:text-primary pb-4 pt-4 flex-1 font-medium transition-all"
+                                href="#">
+                                <div class="flex items-center gap-2">
+                                    <span class="text-sm">3. Laboratorio</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="space-y-12">
+                        <!-- Ejemplos: Reacciones de Síntesis -->
+                        <div
+                            class="flex items-center justify-center py-4 bg-primary/10 text-primary rounded-xl font-bold uppercase tracking-widest text-lg">
+                            Reacciones de Síntesis
+                        </div>
+
+                        <section class="bg-white dark:bg-slate-900 rounded-xl p-8 border border-primary/10 shadow-sm">
+                            <div class="flex items-center gap-3 mb-6">
+                                <div
+                                    class="bg-primary text-white w-10 h-10 rounded-lg flex items-center justify-center font-bold text-xl">
+                                    1</div>
+                                <h2 class="text-slate-900 dark:text-slate-100 text-2xl font-bold tracking-tight">
+                                    Formación del Agua</h2>
+                            </div>
+                            <div class="mb-8">
+                                <h3 class="text-primary font-bold text-sm uppercase mb-2 flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-sm">help</span> Enunciado
+                                </h3>
+                                <p class="text-slate-700 dark:text-slate-300 leading-relaxed text-lg">
+                                    El gas hidrógeno reacciona con el gas oxígeno para producir agua líquida. Represente
+                                    y balancee esta reacción de síntesis.<br />
+                                    <strong>H₂ (g) + O₂ (g) → H₂O (l)</strong>
+                                </p>
+                            </div>
+                            <div class="space-y-6">
+                                <h3 class="text-primary font-bold text-sm uppercase mb-2 flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-sm">calculate</span> Procedimiento
+                                </h3>
+                                <div class="grid grid-cols-1 gap-6">
+                                    <div class="p-6 bg-background-light dark:bg-background-dark rounded-lg">
+                                        <p class="text-sm text-slate-600 dark:text-slate-400 mb-2">Identificamos el
+                                            patrón <strong class="text-primary">A + B → AB</strong>. Dos sustancias más
+                                            simples se unen para crear una compleja.</p>
+                                        <p class="text-sm text-slate-600 dark:text-slate-400 mb-2">Paso 1: Evidenciamos
+                                            2 átomos de H y 2 de O en los reactivos, pero 2 de H y 1 de O en el
+                                            producto.</p>
+                                        <p class="text-sm text-slate-600 dark:text-slate-400 mb-2">Paso 2: Agregamos
+                                            coeficiente 2 a la molécula de H₂O para balancear el O, y luego coeficiente
+                                            2 al H₂ para balancear el H.</p>
+                                        <code
+                                            class="block font-mono bg-white dark:bg-slate-800 p-3 rounded border border-primary/10 mt-4 text-center">
+                        <span class="text-primary font-bold">2H₂ + O₂ → 2H₂O</span>
+                    </code>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-8 p-6 bg-primary/5 rounded-xl border-l-4 border-primary">
+                                <div class="flex items-center gap-2 mb-1">
+                                    <span class="material-symbols-outlined text-primary">task_alt</span>
+                                    <p class="text-primary font-bold">Respuesta Final</p>
+                                </div>
+                                <p class="text-slate-900 dark:text-slate-100 font-bold text-xl">2H₂ (g) + O₂ (g) → 2H₂O
+                                    (l)</p>
+                            </div>
+                        </section>
+
+                        <section class="bg-white dark:bg-slate-900 rounded-xl p-8 border border-primary/10 shadow-sm">
+                            <div class="flex items-center gap-3 mb-6">
+                                <div
+                                    class="bg-primary text-white w-10 h-10 rounded-lg flex items-center justify-center font-bold text-xl">
+                                    2</div>
+                                <h2 class="text-slate-900 dark:text-slate-100 text-2xl font-bold tracking-tight">
+                                    Formación del Cloruro de Sodio</h2>
+                            </div>
+                            <div class="mb-8">
+                                <h3 class="text-primary font-bold text-sm uppercase mb-2 flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-sm">help</span> Enunciado
+                                </h3>
+                                <p class="text-slate-700 dark:text-slate-300 leading-relaxed text-lg">
+                                    El sodio sólido reacciona violentamente con el cloro gaseoso para formar cloruro de
+                                    sodio sólido. Analice esta reacción de síntesis.<br />
+                                    <strong>Na (s) + Cl₂ (g) → NaCl (s)</strong>
+                                </p>
+                            </div>
+                            <div class="space-y-6">
+                                <h3 class="text-primary font-bold text-sm uppercase mb-2 flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-sm">calculate</span> Procedimiento
+                                </h3>
+                                <div class="grid grid-cols-1 gap-6">
+                                    <div class="p-6 bg-background-light dark:bg-background-dark rounded-lg">
+                                        <p class="text-sm text-slate-600 dark:text-slate-400 mb-2">Identificamos el
+                                            patrón de síntesis: metal + no metal para formar sal. <strong
+                                                class="text-primary">A + B → AB</strong>.</p>
+                                        <p class="text-sm text-slate-600 dark:text-slate-400 mb-2">Para poder formar el
+                                            NaCl y conservar la masa de reactivos, necesitamos que exista una molécula
+                                            de Cloro (Cl₂) dada por la naturaleza.</p>
+                                        <p class="text-sm text-slate-600 dark:text-slate-400 mb-2">Ajustamos los
+                                            coeficientes: un 2 delante del NaCl, y un 2 delante del Na.</p>
+                                        <code
+                                            class="block font-mono bg-white dark:bg-slate-800 p-3 rounded border border-primary/10 mt-4 text-center">
+                        <span class="text-primary font-bold">2Na + Cl₂ → 2NaCl</span>
+                    </code>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-8 p-6 bg-primary/5 rounded-xl border-l-4 border-primary">
+                                <div class="flex items-center gap-2 mb-1">
+                                    <span class="material-symbols-outlined text-primary">task_alt</span>
+                                    <p class="text-primary font-bold">Respuesta Final</p>
+                                </div>
+                                <p class="text-slate-900 dark:text-slate-100 font-bold text-xl">2Na (s) + Cl₂ (g) →
+                                    2NaCl (s)</p>
+                            </div>
+                        </section>
+
+                        <!-- Ejemplos: Reacciones de Descomposición -->
+                        <div
+                            class="flex items-center justify-center py-4 bg-purple-500/10 text-purple-600 font-bold uppercase tracking-widest text-lg rounded-xl">
+                            Reacciones de Descomposición
+                        </div>
+
+                        <section class="bg-white dark:bg-slate-900 rounded-xl p-8 border border-primary/10 shadow-sm">
+                            <div class="flex items-center gap-3 mb-6">
+                                <div
+                                    class="bg-purple-600 text-white w-10 h-10 rounded-lg flex items-center justify-center font-bold text-xl">
+                                    3</div>
+                                <h2 class="text-slate-900 dark:text-slate-100 text-2xl font-bold tracking-tight">
+                                    Descomposición del Carbonato de Calcio</h2>
+                            </div>
+                            <div class="mb-8">
+                                <h3 class="text-primary font-bold text-sm uppercase mb-2 flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-sm">help</span> Enunciado
+                                </h3>
+                                <p class="text-slate-700 dark:text-slate-300 leading-relaxed text-lg">
+                                    El óxido de calcio se produce mediante la descomposición térmica del carbonato de
+                                    calcio. Analice la reacción.<br />
+                                    <strong>CaCO₃ (s) → CaO (s) + CO₂ (g)</strong>
+                                </p>
+                            </div>
+                            <div class="space-y-6">
+                                <h3 class="text-primary font-bold text-sm uppercase mb-2 flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-sm">calculate</span> Procedimiento
+                                </h3>
+                                <div class="grid grid-cols-1 gap-6">
+                                    <div class="p-6 bg-background-light dark:bg-background-dark rounded-lg">
+                                        <p class="text-sm text-slate-600 dark:text-slate-400 mb-2">El patrón es <strong
+                                                class="text-purple-500">AB → A + B</strong> (un compuesto inicial se
+                                            fractura). Esta reacción requiere calor (Endotérmica).</p>
+                                        <p class="text-sm text-slate-600 dark:text-slate-400 mb-2">Comprobación de
+                                            balance: Ca (1 en reactivos = 1 producto), C (1 reactivo = 1 producto), O (3
+                                            reactivo = 1 + 2 = 3 producto). Ya se encuentra balanceada.</p>
+                                        <code
+                                            class="block font-mono bg-white dark:bg-slate-800 p-3 rounded border border-primary/10 mt-4 text-center">
+                        <span class="text-primary font-bold">CaCO₃ + Calor → CaO + CO₂</span>
+                    </code>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-8 p-6 bg-primary/5 rounded-xl border-l-4 border-primary">
+                                <div class="flex items-center gap-2 mb-1">
+                                    <span class="material-symbols-outlined text-primary">task_alt</span>
+                                    <p class="text-primary font-bold">Respuesta Final</p>
+                                </div>
+                                <p class="text-slate-900 dark:text-slate-100 font-bold text-xl">CaCO₃ (s) ➔ CaO (s) +
+                                    CO₂ (g)</p>
+                            </div>
+                        </section>
+
+                        <section class="bg-white dark:bg-slate-900 rounded-xl p-8 border border-primary/10 shadow-sm">
+                            <div class="flex items-center gap-3 mb-6">
+                                <div
+                                    class="bg-purple-600 text-white w-10 h-10 rounded-lg flex items-center justify-center font-bold text-xl">
+                                    4</div>
+                                <h2 class="text-slate-900 dark:text-slate-100 text-2xl font-bold tracking-tight">
+                                    Electrólisis del Agua</h2>
+                            </div>
+                            <div class="mb-8">
+                                <h3 class="text-primary font-bold text-sm uppercase mb-2 flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-sm">help</span> Enunciado
+                                </h3>
+                                <p class="text-slate-700 dark:text-slate-300 leading-relaxed text-lg">
+                                    Mediante el flujo de corriente eléctrica, el agua (líquida) puede fragmentarse en
+                                    gas hidrógeno y gas oxígeno. Modele la ecuación de descomposición.<br />
+                                    <strong>H₂O (l) → H₂ (g) + O₂ (g)</strong>
+                                </p>
+                            </div>
+                            <div class="space-y-6">
+                                <h3 class="text-primary font-bold text-sm uppercase mb-2 flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-sm">calculate</span> Procedimiento
+                                </h3>
+                                <div class="grid grid-cols-1 gap-6">
+                                    <div class="p-6 bg-background-light dark:bg-background-dark rounded-lg">
+                                        <p class="text-sm text-slate-600 dark:text-slate-400 mb-2">Este es el opuesto de
+                                            la síntesis del agua y su patrón es <strong class="text-purple-500">AB → A +
+                                                B</strong>.</p>
+                                        <p class="text-sm text-slate-600 dark:text-slate-400 mb-2">Tenemos 1 átomo de O
+                                            en reactivos y 2 en productos. Necesitamos balancear. Colocamos el
+                                            coeficiente '2' en el reactivo del H₂O.</p>
+                                        <p class="text-sm text-slate-600 dark:text-slate-400 mb-2">Ahora el hidrógeno
+                                            está desbalanceado (4 contra 2), agregamos '2' en el reactivo del hidrógeno
+                                            gaseoso (H₂).</p>
+                                        <code
+                                            class="block font-mono bg-white dark:bg-slate-800 p-3 rounded border border-primary/10 mt-4 text-center">
+                        <span class="text-primary font-bold">2H₂O → 2H₂ + O₂</span>
+                    </code>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-8 p-6 bg-primary/5 rounded-xl border-l-4 border-primary">
+                                <div class="flex items-center gap-2 mb-1">
+                                    <span class="material-symbols-outlined text-primary">task_alt</span>
+                                    <p class="text-primary font-bold">Respuesta Final</p>
+                                </div>
+                                <p class="text-slate-900 dark:text-slate-100 font-bold text-xl">2H₂O (l) + Corriente
+                                    Eléctrica → 2H₂ (g) + O₂ (g)</p>
+                            </div>
+                        </section>
+
+                        <!-- Ejemplos: Reacciones de Sustitución Simple -->
+                        <div
+                            class="flex items-center justify-center py-4 bg-yellow-500/10 text-yellow-600 font-bold uppercase tracking-widest text-lg rounded-xl">
+                            Reacciones de Sustitución Simple
+                        </div>
+
+                        <section class="bg-white dark:bg-slate-900 rounded-xl p-8 border border-primary/10 shadow-sm">
+                            <div class="flex items-center gap-3 mb-6">
+                                <div
+                                    class="bg-yellow-500 text-white w-10 h-10 rounded-lg flex items-center justify-center font-bold text-xl">
+                                    5</div>
+                                <h2 class="text-slate-900 dark:text-slate-100 text-2xl font-bold tracking-tight">Cinc y
+                                    Ácido Clorhídrico</h2>
+                            </div>
+                            <div class="mb-8">
+                                <h3 class="text-primary font-bold text-sm uppercase mb-2 flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-sm">help</span> Enunciado
+                                </h3>
+                                <p class="text-slate-700 dark:text-slate-300 leading-relaxed text-lg">
+                                    El Cinc sólido reacciona con una solución acuosa de ácido clorhídrico formando
+                                    cloruro de cinc y liberando hidrógeno diatómico gaseoso. Describa la reacción.<br />
+                                    <strong>Zn (s) + HCl (ac) → ZnCl₂ (ac) + H₂ (g)</strong>
+                                </p>
+                            </div>
+                            <div class="space-y-6">
+                                <h3 class="text-primary font-bold text-sm uppercase mb-2 flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-sm">calculate</span> Procedimiento
+                                </h3>
+                                <div class="grid grid-cols-1 gap-6">
+                                    <div class="p-6 bg-background-light dark:bg-background-dark rounded-lg">
+                                        <p class="text-sm text-slate-600 dark:text-slate-400 mb-2">Comprobamos el
+                                            patrón: <strong class="text-yellow-500">C + AB → CB + A</strong>. Un
+                                            elemento único (Zn) toma el lugar de otro (H) en un compuesto.</p>
+                                        <p class="text-sm text-slate-600 dark:text-slate-400 mb-2">Revisamos el balance
+                                            de masa. Aparecen 2 átomos de H (producto) y 2 de Cloro (producto). Debemos
+                                            poner un '2' frente al reactivo HCl.</p>
+                                        <code
+                                            class="block font-mono bg-white dark:bg-slate-800 p-3 rounded border border-primary/10 mt-4 text-center">
+                        <span class="text-primary font-bold">Zn + 2HCl → ZnCl₂ + H₂</span>
+                    </code>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-8 p-6 bg-primary/5 rounded-xl border-l-4 border-primary">
+                                <div class="flex items-center gap-2 mb-1">
+                                    <span class="material-symbols-outlined text-primary">task_alt</span>
+                                    <p class="text-primary font-bold">Respuesta Final</p>
+                                </div>
+                                <p class="text-slate-900 dark:text-slate-100 font-bold text-xl">Zn (s) + 2HCl (ac) →
+                                    ZnCl₂ (ac) + H₂ (g)</p>
+                            </div>
+                        </section>
+
+                        <section class="bg-white dark:bg-slate-900 rounded-xl p-8 border border-primary/10 shadow-sm">
+                            <div class="flex items-center gap-3 mb-6">
+                                <div
+                                    class="bg-yellow-500 text-white w-10 h-10 rounded-lg flex items-center justify-center font-bold text-xl">
+                                    6</div>
+                                <h2 class="text-slate-900 dark:text-slate-100 text-2xl font-bold tracking-tight">
+                                    Magnesio y Nitrato de Plata</h2>
+                            </div>
+                            <div class="mb-8">
+                                <h3 class="text-primary font-bold text-sm uppercase mb-2 flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-sm">help</span> Enunciado
+                                </h3>
+                                <p class="text-slate-700 dark:text-slate-300 leading-relaxed text-lg">
+                                    El Magnesio sólido reacciona con una solución a base de nitrato de plata formando
+                                    nitrato de magnesio y plata elemental suspendida. Describa la reacción.<br />
+                                    <strong>Mg (s) + AgNO₃ (ac) → Mg(NO₃)₂ (ac) + Ag (s)</strong>
+                                </p>
+                            </div>
+                            <div class="space-y-6">
+                                <h3 class="text-primary font-bold text-sm uppercase mb-2 flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-sm">calculate</span> Procedimiento
+                                </h3>
+                                <div class="grid grid-cols-1 gap-6">
+                                    <div class="p-6 bg-background-light dark:bg-background-dark rounded-lg">
+                                        <p class="text-sm text-slate-600 dark:text-slate-400 mb-2">Patrón de
+                                            desplazamiento: <strong class="text-yellow-500">C + AB → CB + A</strong>. El
+                                            Magnesio es más electrorreactivo y precipita a la plata.</p>
+                                        <p class="text-sm text-slate-600 dark:text-slate-400 mb-2">Hay 2 iones nitrato
+                                            (NO₃⁻) en los productos, comparado a 1 solo del reactivo. Añadimos un '2'
+                                            frente al Nitrato de plata (AgNO₃).</p>
+                                        <p class="text-sm text-slate-600 dark:text-slate-400 mb-2">Esto provocará que
+                                            debamos tener 2 átomos de plata (Ag) en los reactivos. Sumamos un
+                                            coeficiente '2' al producto Ag.</p>
+                                        <code
+                                            class="block font-mono bg-white dark:bg-slate-800 p-3 rounded border border-primary/10 mt-4 text-center">
+                        <span class="text-primary font-bold">Mg + 2AgNO₃ → Mg(NO₃)₂ + 2Ag</span>
+                    </code>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-8 p-6 bg-primary/5 rounded-xl border-l-4 border-primary">
+                                <div class="flex items-center gap-2 mb-1">
+                                    <span class="material-symbols-outlined text-primary">task_alt</span>
+                                    <p class="text-primary font-bold">Respuesta Final</p>
+                                </div>
+                                <p class="text-slate-900 dark:text-slate-100 font-bold text-xl">Mg (s) + 2AgNO₃ (ac) →
+                                    Mg(NO₃)₂ (ac) + 2Ag (s)</p>
+                            </div>
+                        </section>
+
+                        <!-- Ejemplos: Reacciones de Doble Sustitución -->
+                        <div
+                            class="flex items-center justify-center py-4 bg-teal-500/10 text-teal-600 font-bold uppercase tracking-widest text-lg rounded-xl">
+                            Reacciones de Doble Sustitución
+                        </div>
+
+                        <section class="bg-white dark:bg-slate-900 rounded-xl p-8 border border-primary/10 shadow-sm">
+                            <div class="flex items-center gap-3 mb-6">
+                                <div
+                                    class="bg-teal-500 text-white w-10 h-10 rounded-lg flex items-center justify-center font-bold text-xl">
+                                    7</div>
+                                <h2 class="text-slate-900 dark:text-slate-100 text-2xl font-bold tracking-tight">Sulfuro
+                                    de Sodio y Ácido Clorhídrico</h2>
+                            </div>
+                            <div class="mb-8">
+                                <h3 class="text-primary font-bold text-sm uppercase mb-2 flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-sm">help</span> Enunciado
+                                </h3>
+                                <p class="text-slate-700 dark:text-slate-300 leading-relaxed text-lg">
+                                    El sulfuro de sodio se mezcla con el ácido clorhídrico y forma cloruro de sodio
+                                    reaccionante y gas de ácido sulfhídrico. Muestre la ecuación.<br />
+                                    <strong>Na₂S (ac) + HCl (ac) → NaCl (ac) + H₂S (g)</strong>
+                                </p>
+                            </div>
+                            <div class="space-y-6">
+                                <h3 class="text-primary font-bold text-sm uppercase mb-2 flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-sm">calculate</span> Procedimiento
+                                </h3>
+                                <div class="grid grid-cols-1 gap-6">
+                                    <div class="p-6 bg-background-light dark:bg-background-dark rounded-lg">
+                                        <p class="text-sm text-slate-600 dark:text-slate-400 mb-2">Comprobamos el patrón
+                                            de sustitución aniónica-catiónica y metátesis: <strong
+                                                class="text-teal-500">AB + CD → AD + CB</strong>. (Por cada ión
+                                            positivo, uno negativo).</p>
+                                        <p class="text-sm text-slate-600 dark:text-slate-400 mb-2">Ajustamos los iones
+                                            de Sodio e Hidrógeno colocando un '2' al producto NaCl y al reactivo HCl
+                                            simultáneamente.</p>
+                                        <code
+                                            class="block font-mono bg-white dark:bg-slate-800 p-3 rounded border border-primary/10 mt-4 text-center">
+                        <span class="text-primary font-bold">Na₂S + 2HCl → 2NaCl + H₂S</span>
+                    </code>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-8 p-6 bg-primary/5 rounded-xl border-l-4 border-primary">
+                                <div class="flex items-center gap-2 mb-1">
+                                    <span class="material-symbols-outlined text-primary">task_alt</span>
+                                    <p class="text-primary font-bold">Respuesta Final</p>
+                                </div>
+                                <p class="text-slate-900 dark:text-slate-100 font-bold text-xl">Na₂S (ac) + 2HCl (ac) →
+                                    2NaCl (ac) + H₂S (g)</p>
+                            </div>
+                        </section>
+
+                        <section class="bg-white dark:bg-slate-900 rounded-xl p-8 border border-primary/10 shadow-sm">
+                            <div class="flex items-center gap-3 mb-6">
+                                <div
+                                    class="bg-teal-500 text-white w-10 h-10 rounded-lg flex items-center justify-center font-bold text-xl">
+                                    8</div>
+                                <h2 class="text-slate-900 dark:text-slate-100 text-2xl font-bold tracking-tight">Cromato
+                                    de plomo y Nitrato de plomo(II)</h2>
+                            </div>
+                            <div class="mb-8">
+                                <h3 class="text-primary font-bold text-sm uppercase mb-2 flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-sm">help</span> Enunciado
+                                </h3>
+                                <p class="text-slate-700 dark:text-slate-300 leading-relaxed text-lg">
+                                    El nitrato de plomo acuoso reacciona frente al cromato de potasio causando un
+                                    precipitado amarillo llamado cromato de plomo (II) y separando los nitratos.
+                                    Determine la reacción.<br />
+                                    <strong>Pb(NO₃)₂ (ac) + K₂CrO₄ (ac) → PbCrO₄ (s) + KNO₃ (ac)</strong>
+                                </p>
+                            </div>
+                            <div class="space-y-6">
+                                <h3 class="text-primary font-bold text-sm uppercase mb-2 flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-sm">calculate</span> Procedimiento
+                                </h3>
+                                <div class="grid grid-cols-1 gap-6">
+                                    <div class="p-6 bg-background-light dark:bg-background-dark rounded-lg">
+                                        <p class="text-sm text-slate-600 dark:text-slate-400 mb-2">Comprobamos el patrón
+                                            de precipitación: <strong class="text-teal-500">AB + CD → AD + CB</strong>.
+                                            Intercambio de las partículas acuosas por formación de sólido inmiscible.
+                                        </p>
+                                        <p class="text-sm text-slate-600 dark:text-slate-400 mb-2">Se ve claramente que
+                                            tanto el catión Potasio (K) como el anión Nitrato (NO₃⁻) tienen '2'
+                                            instancias en los reactivos.</p>
+                                        <p class="text-sm text-slate-600 dark:text-slate-400 mb-2">Balanceamos colocando
+                                            el coeficiente multiplicador número '2' en el producto final KNO₃ y esto
+                                            ajustará los nitratos al mismo tiempo.</p>
+                                        <code
+                                            class="block font-mono bg-white dark:bg-slate-800 p-3 rounded border border-primary/10 mt-4 text-center">
+                        <span class="text-primary font-bold">Pb(NO₃)₂ + K₂CrO₄ → PbCrO₄ + 2KNO₃</span>
+                    </code>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-8 p-6 bg-primary/5 rounded-xl border-l-4 border-primary">
+                                <div class="flex items-center gap-2 mb-1">
+                                    <span class="material-symbols-outlined text-primary">task_alt</span>
+                                    <p class="text-primary font-bold">Respuesta Final</p>
+                                </div>
+                                <p class="text-slate-900 dark:text-slate-100 font-bold text-xl">Pb(NO₃)₂ (ac) + K₂CrO₄
+                                    (ac) → PbCrO₄ (s) + 2KNO₃ (ac)</p>
+                            </div>
+                        </section>
+
+                    </div>
+                    <div
+                        class="mt-12 mb-20 flex justify-between items-center bg-white dark:bg-slate-900 p-6 rounded-xl border border-primary/10">
+                        <a href="concepto.html"
+                            class="flex items-center gap-2 text-slate-600 dark:text-slate-400 hover:text-primary transition-colors font-bold">
+                            <span class="material-symbols-outlined">arrow_back</span>
+                            Anterior: Concepto
+                        </a>
+                        <a href="#"
+                            class="flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-lg font-bold hover:bg-primary/90 transition-all shadow-lg shadow-primary/20">
+                            Siguiente: Laboratorio
+                            <span class="material-symbols-outlined">arrow_forward</span>
+                        </a>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+</body>
+
+</html>
