@@ -44,6 +44,26 @@
             },
         }
     </script>
+
+    <!-- PWA Meta Tags & Service Worker -->
+    <link rel="manifest" href="./manifest.json">
+    <meta name="theme-color" content="#2c0fbd">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./service-worker.js')
+                .then(registration => {
+                    console.log('ServiceWorker registration successful');
+                })
+                .catch(err => {
+                    console.log('ServiceWorker registration failed: ', err);
+                });
+            });
+        }
+    </script>
+
 </head>
 
 <body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
@@ -59,10 +79,12 @@
                             fill="currentColor" fill-rule="evenodd"></path>
                     </svg>
                 </div>
-                <h2 class="text-slate-900 dark:text-white text-xl font-extrabold leading-tight tracking-tight">LogicPlay
+                <h2
+                    class="text-slate-900 dark:text-white text-xl font-extrabold leading-tight tracking-tight hidden sm:block">
+                    LogicPlay
                 </h2>
             </div>
-            <nav class="hidden md:flex gap-8 items-center mx-auto"><a
+            <nav class="hidden xl:flex gap-8 items-center mx-auto"><a
                     class="text-primary font-semibold hover:text-primary transition-colors flex items-center gap-2"
                     href="#"><span class="material-symbols-outlined text-[20px]">dashboard</span> Dashboard</a>
                 <a class="hover:text-primary transition-colors flex items-center gap-2 text-slate-500 dark:text-slate-400"
@@ -82,26 +104,62 @@
                     <span class="material-symbols-outlined text-[18px]">admin_panel_settings</span> Temas
                 </button>
             </nav>
-            <div class="flex items-center gap-4">
+            <div class="flex items-center gap-2 sm:gap-4">
+                <button id="install-button"
+                    class="hidden sm:flex bg-primary/10 text-primary border border-primary/20 px-3 py-1.5 rounded-lg text-sm font-bold items-center gap-1 hover:bg-primary/20 transition-all"
+                    style="display: none;">
+                    <span class="material-symbols-outlined text-[18px]">download</span> Descargar
+                </button>
                 <button
                     class="relative p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-primary/10 hover:text-primary transition-all">
                     <span class="material-symbols-outlined">notifications</span>
                     <span
                         class="absolute top-1.5 right-1.5 size-2 bg-red-500 rounded-full ring-2 ring-white dark:ring-slate-900"></span>
                 </button>
-                <div class="h-10 w-px bg-slate-200 dark:bg-slate-800 mx-1"></div>
+                <div class="h-10 w-px bg-slate-200 dark:bg-slate-800 mx-1 hidden sm:block"></div>
                 <div class="flex items-center gap-3">
-                    <div class="text-right hidden sm:block">
+                    <div class="text-right hidden xl:block">
                         <p class="text-sm font-bold leading-none" id="dom-role-label">Estudiante</p>
                         <p class="text-xs text-primary font-medium mt-1" id="dom-header-pts">0 XP • Nivel 1</p>
                     </div>
-                    <div class="size-10 rounded-full bg-primary/20 border-2 border-primary overflow-hidden" id="dom-header-avatar">
+                    <div class="size-8 sm:size-10 rounded-full bg-primary/20 border-2 border-primary overflow-hidden"
+                        id="dom-header-avatar">
                         <img alt="User Avatar" class="w-full h-full object-cover"
                             src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUfb_Q9KslIBxQYDwoIq6H1qMt1q6ogec8roP9aX1nW6a9srTIUVSJzz1MPhT7F4kKLpJNknTUH0zLjtR6xg5Td0Novi-J43sx89cdAUv7s0VlZI2C_vb7KvoAZH0FnXcZBgw4JK0SFwi2bTlhFYX1LG0xBrLcttzI7VtHMx62yOhks3rsc5Ba7cr2F52tuoxkkQJ-cSLZw6axmkd3JraNCQ-hjvC9Psul0uQgLxdX9P2sYxsQVRdQquvIEiH7XreEn7mYulpymzE" />
                     </div>
                 </div>
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn"
+                    class="xl:hidden p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 ml-1">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
             </div>
         </header>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu"
+            class="hidden xl:hidden flex-col bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 p-4 gap-4 px-6 absolute w-full z-40 shadow-lg top-[72px]">
+            <a class="text-primary font-semibold flex items-center gap-2" href="#"><span
+                    class="material-symbols-outlined text-[20px]">dashboard</span> Dashboard</a>
+            <a class="text-slate-500 dark:text-slate-400 flex items-center gap-2"
+                href="f_sica_selecci_n_de_temas/code.html"><span
+                    class="material-symbols-outlined text-[20px]">science</span> Física</a>
+            <a class="text-slate-500 dark:text-slate-400 flex items-center gap-2"
+                href="quimica_selecci_n_de_temas/code.html"><span
+                    class="material-symbols-outlined text-[20px]">biotech</span> Química</a>
+            <a class="text-slate-500 dark:text-slate-400 flex items-center gap-2"
+                href="../matematica_selecci_n_de_temas.html"><span
+                    class="material-symbols-outlined text-[20px]">functions</span> Matemáticas</a>
+            <button id="nav-temas-btn-mobile"
+                class="bg-slate-200 dark:bg-slate-800 text-slate-400 dark:text-slate-500 px-4 py-2 rounded-lg text-sm font-bold flex items-center justify-center gap-2 mt-2 cursor-not-allowed opacity-60">
+                <span class="material-symbols-outlined text-[18px]">lock</span> Temas (Bloqueado)
+            </button>
+            <button id="install-button-mobile"
+                class="flex sm:hidden bg-primary/10 text-primary border border-primary/20 px-4 py-2 rounded-lg text-sm font-bold items-center justify-center gap-2 mt-2 mb-2"
+                style="display: none;">
+                <span class="material-symbols-outlined text-[18px]">download</span> Descargar App
+            </button>
+        </div>
         <main class="max-w-[1440px] mx-auto w-full px-6 py-8">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
                 <!-- Left Content Column -->
@@ -109,7 +167,8 @@
                     <!-- Welcome & Stats -->
                     <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
                         <div>
-                            <h1 id="user-greeting" class="text-3xl font-extrabold tracking-tight">¡Hola de nuevo, Mateo! 👋</h1>
+                            <h1 id="user-greeting" class="text-3xl font-extrabold tracking-tight">¡Hola de nuevo, Mateo!
+                                👋</h1>
                             <p class="text-slate-500 dark:text-slate-400 mt-1">Tienes 3 lecciones pendientes para hoy.
                             </p>
                         </div>
@@ -222,7 +281,8 @@
                         </div>
                         <div class="space-y-4" id="ranking-list">
                             <div class="flex justify-center flex-col items-center py-6">
-                                <span class="material-symbols-outlined animate-spin text-primary text-3xl mb-2">autorenew</span>
+                                <span
+                                    class="material-symbols-outlined animate-spin text-primary text-3xl mb-2">autorenew</span>
                                 <p class="text-sm text-slate-500">Cargando clasificación...</p>
                             </div>
                         </div>
@@ -281,7 +341,7 @@
             </div>
         </footer>
     </div>
-    
+
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js";
         import { getFirestore, doc, getDoc, updateDoc, collection, query, where, orderBy, limit, onSnapshot } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js";
@@ -303,6 +363,7 @@
 
         // Dom elements
         const temasBtn = document.getElementById('nav-temas-btn');
+        const temasBtnMobile = document.getElementById('nav-temas-btn-mobile');
         const statsContainer = document.getElementById('stats-container');
         const domStreak = document.getElementById('dom-streak');
         const domPoints = document.getElementById('dom-points');
@@ -321,6 +382,13 @@
                 temasBtn.onclick = () => window.location.href = 'panel_profesor/index.html';
                 temasBtn.innerHTML = `<span class="material-symbols-outlined text-[18px]">folder_open</span> Panel Docente`;
 
+                if (temasBtnMobile) {
+                    temasBtnMobile.className = "bg-primary text-white px-4 py-2 rounded-lg text-sm font-bold flex items-center justify-center gap-2 mt-2";
+                    temasBtnMobile.disabled = false;
+                    temasBtnMobile.onclick = () => window.location.href = 'panel_profesor/index.html';
+                    temasBtnMobile.innerHTML = `<span class="material-symbols-outlined text-[18px]">folder_open</span> Panel Docente`;
+                }
+
                 domRoleLabel.textContent = "Licenciado";
                 domHeaderPts.innerHTML = `<span class="text-xs text-slate-500 font-medium mt-1">Exclusivo para estudiantes</span>`;
                 domHeaderAvatar.innerHTML = `<div class="w-full h-full flex items-center justify-center bg-slate-300 text-white font-bold text-lg"><span class="material-symbols-outlined text-[20px]">school</span></div>`;
@@ -334,9 +402,9 @@
                          </div>
                     </div>
                 `;
-                
+
                 rankingContainer.innerHTML = `<div class="text-center text-slate-500 py-6 text-sm font-medium">Exclusivo para estudiantes</div>`;
-                
+
                 return; // Teachers don't load ranking or points
             }
 
@@ -345,27 +413,33 @@
             temasBtn.disabled = true;
             temasBtn.innerHTML = `<span class="material-symbols-outlined text-[18px]">lock</span> Temas (Bloqueado)`;
 
+            if (temasBtnMobile) {
+                temasBtnMobile.className = "bg-slate-200 dark:bg-slate-800 text-slate-400 dark:text-slate-500 px-4 py-2 rounded-lg text-sm font-bold flex items-center justify-center gap-2 mt-2 cursor-not-allowed opacity-60";
+                temasBtnMobile.disabled = true;
+                temasBtnMobile.innerHTML = `<span class="material-symbols-outlined text-[18px]">lock</span> Temas (Bloqueado)`;
+            }
+
             domRoleLabel.textContent = "Estudiante";
 
             try {
-                if(uid) {
+                if (uid) {
                     const userSnap = await getDoc(doc(db, "users", uid));
-                    if(userSnap.exists()) {
+                    if (userSnap.exists()) {
                         const data = userSnap.data();
                         domStreak.textContent = `${data.streak || 0} Días`;
                         domPoints.textContent = `${data.points || 0} XP`;
-                        domHeaderPts.textContent = `${data.points || 0} XP • Nivel ${Math.floor((data.points||0)/100) + 1}`;
-                        
-                        if(data.photoURL) {
+                        domHeaderPts.textContent = `${data.points || 0} XP • Nivel ${Math.floor((data.points || 0) / 100) + 1}`;
+
+                        if (data.photoURL) {
                             domHeaderAvatar.innerHTML = `<img alt="${data.name}" class="w-full h-full object-cover" src="${data.photoURL}" />`;
                         } else {
                             domHeaderAvatar.innerHTML = `<div class="w-full h-full flex items-center justify-center bg-primary text-white font-bold text-lg">${data.name.charAt(0).toUpperCase()}</div>`;
                         }
                     }
                 }
-                
+
                 await loadRanking();
-            } catch(e) {
+            } catch (e) {
                 console.error("Error loading user data:", e);
                 rankingContainer.innerHTML = `<div class="text-center text-red-500 py-4 text-sm font-medium">Error al cargar la tabla de rankings.</div>`;
             }
@@ -375,7 +449,7 @@
         function loadRanking() {
             const usersRef = collection(db, "users");
             const q = query(usersRef, where("role", "==", "estudiante"), orderBy("points", "desc"), limit(10));
-            
+
             // Listen real-time
             onSnapshot(q, (querySnapshot) => {
                 let html = '';
@@ -389,9 +463,9 @@
                 querySnapshot.forEach((doc) => {
                     const data = doc.data();
                     const isMe = doc.id === uid;
-                    
+
                     let avatarHtml = '';
-                    if(data.photoURL) {
+                    if (data.photoURL) {
                         avatarHtml = `<img alt="${data.name}" class="w-full h-full object-cover" src="${data.photoURL}" />`;
                     } else {
                         avatarHtml = `<div class="w-full h-full flex items-center justify-center bg-indigo-500 text-white font-bold text-base">${data.name.charAt(0).toUpperCase()}</div>`;
@@ -400,7 +474,7 @@
                     let rowClass = "flex items-center gap-4 p-3 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors";
                     let rankStyle = "text-xl font-black text-slate-400 w-4";
                     let medal = "";
-                    
+
                     if (position === 1) {
                         rowClass = "flex items-center gap-4 p-3 rounded-lg bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-100 dark:border-yellow-900/30";
                         rankStyle = "text-xl font-black text-yellow-600 w-4";
@@ -414,11 +488,11 @@
                     html += `
                         <div class="${rowClass}">
                             <span class="${rankStyle}">${position}</span>
-                            <div class="size-10 rounded-full bg-slate-200 border-2 overflow-hidden ${position===1?'border-yellow-400':isMe?'border-primary':'border-transparent'}">
+                            <div class="size-10 rounded-full bg-slate-200 border-2 overflow-hidden ${position === 1 ? 'border-yellow-400' : isMe ? 'border-primary' : 'border-transparent'}">
                                 ${avatarHtml}
                             </div>
                             <div class="flex-1">
-                                <p class="text-sm font-bold ${isMe?'text-primary':''}">${data.name} ${isMe?'(Tú)':''}</p>
+                                <p class="text-sm font-bold ${isMe ? 'text-primary' : ''}">${data.name} ${isMe ? '(Tú)' : ''}</p>
                                 <p class="text-xs text-slate-500">${data.points || 0} XP</p>
                             </div>
                             ${medal}
@@ -431,7 +505,7 @@
             }, (error) => {
                 console.error("Error fetching real-time ranking: ", error);
                 if (!isRankingLoaded) {
-                     rankingContainer.innerHTML = `<div class="text-center text-red-500 py-4 text-sm font-medium">Error conectando con los servidores del ranking.</div>`;
+                    rankingContainer.innerHTML = `<div class="text-center text-red-500 py-4 text-sm font-medium">Error conectando con los servidores del ranking.</div>`;
                 }
             });
             isRankingLoaded = true;
@@ -445,7 +519,7 @@
 
         async function registerActivity(e) {
             if (role === 'profesor' || !uid) return;
-            
+
             const target = e.currentTarget;
             let targetHref = target.getAttribute('href');
             if (!targetHref && target.onclick) {
@@ -454,23 +528,23 @@
             }
 
             if (!targetHref || targetHref === '#') return;
-            
+
             e.preventDefault();
-            
+
             try {
                 const userRef = doc(db, "users", uid);
                 const userSnap = await getDoc(userRef);
                 if (userSnap.exists()) {
                     let data = userSnap.data();
                     let today = getTodayString();
-                    
+
                     let updates = { points: (data.points || 0) + 10 }; // 10 points per generic activity
-                    
+
                     if (data.lastActivity !== today) {
                         const yesterday = new Date();
                         yesterday.setDate(yesterday.getDate() - 1);
                         const yesterdayStr = yesterday.getFullYear() + "-" + (yesterday.getMonth() + 1) + "-" + yesterday.getDate();
-                        
+
                         if (data.lastActivity === yesterdayStr) {
                             updates.streak = (data.streak || 0) + 1;
                         } else {
@@ -478,13 +552,13 @@
                         }
                         updates.lastActivity = today;
                     }
-                    
+
                     await updateDoc(userRef, updates);
                 }
             } catch (err) {
                 console.error("Error updating activity:", err);
             }
-            
+
             window.location.href = targetHref;
         }
 
@@ -495,7 +569,38 @@
         document.querySelectorAll('a[href*="f_sica"], a[href*="quimica"], a[href*="matematica"], a[href*="reto_semanal"], button[onclick*="reto_semanal"], button[onclick*="cursos"]').forEach(el => {
             el.addEventListener('click', registerActivity);
         });
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                mobileMenu.classList.toggle('flex');
+            });
+        }
     </script>
+
+    <script>
+        let deferredPrompt;
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            const installButtons = document.querySelectorAll('#install-button, #install-button-mobile, #install-button-landing');
+            installButtons.forEach(btn => {
+                btn.style.display = 'flex'; // Make it visible if hidden
+                btn.addEventListener('click', async () => {
+                    if (deferredPrompt) {
+                        deferredPrompt.prompt();
+                        const { outcome } = await deferredPrompt.userChoice;
+                        console.log(`User response to the install prompt: ${outcome}`);
+                        deferredPrompt = null;
+                    }
+                });
+            });
+        });
+    </script>
+
 </body>
 
 </html>

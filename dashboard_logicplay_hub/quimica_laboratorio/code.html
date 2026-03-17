@@ -50,6 +50,26 @@
         }
     </style>
     <title>Química: Laboratorio (Estilo Final)</title>
+
+    <!-- PWA Meta Tags & Service Worker -->
+    <link rel="manifest" href="../manifest.json">
+    <meta name="theme-color" content="#2c0fbd">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('../service-worker.js')
+                .then(registration => {
+                    console.log('ServiceWorker registration successful');
+                })
+                .catch(err => {
+                    console.log('ServiceWorker registration failed: ', err);
+                });
+            });
+        }
+    </script>
+
 </head>
 
 <body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased">
@@ -66,7 +86,7 @@
                     </div>
                 </div>
                 <div class="flex items-center gap-6">
-                    <nav class="hidden md:flex gap-8 items-center text-sm font-semibold text-slate-500">
+                    <nav class="flex flex-wrap lg:flex-nowrap gap-4 md:gap-8 justify-center items-center text-sm font-semibold text-slate-500">
                         <a class="hover:text-primary transition-colors"
                             href="../dashboard_logicplay_clasificaci_n_anonimizada/code.html">Dashboard</a>
                         <a class="hover:text-primary transition-colors" href="#">Biblioteca</a>
@@ -324,6 +344,27 @@
 
         updateScale(); // init load trigger
     </script>
+
+    <script>
+        let deferredPrompt;
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            const installButtons = document.querySelectorAll('#install-button, #install-button-mobile, #install-button-landing');
+            installButtons.forEach(btn => {
+                btn.style.display = 'flex'; // Make it visible if hidden
+                btn.addEventListener('click', async () => {
+                    if (deferredPrompt) {
+                        deferredPrompt.prompt();
+                        const { outcome } = await deferredPrompt.userChoice;
+                        console.log(`User response to the install prompt: ${outcome}`);
+                        deferredPrompt = null;
+                    }
+                });
+            });
+        });
+    </script>
+
 </body>
 
 </html>
