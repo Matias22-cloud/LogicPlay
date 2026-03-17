@@ -27,6 +27,26 @@
         }
     </script>
     <title>Química Conceptos Claros - Igualación por Método Redox</title>
+
+    <!-- PWA Meta Tags & Service Worker -->
+    <link rel="manifest" href="../manifest.json">
+    <meta name="theme-color" content="#2c0fbd">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('../service-worker.js')
+                .then(registration => {
+                    console.log('ServiceWorker registration successful');
+                })
+                .catch(err => {
+                    console.log('ServiceWorker registration failed: ', err);
+                });
+            });
+        }
+    </script>
+
 </head>
 
 <body
@@ -350,6 +370,27 @@
             </main>
         </div>
     </div>
+
+
+    <script>
+        let deferredPrompt;
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            const installButtons = document.querySelectorAll('#install-button, #install-button-mobile, #install-button-landing');
+            installButtons.forEach(btn => {
+                btn.style.display = 'flex'; // Make it visible if hidden
+                btn.addEventListener('click', async () => {
+                    if (deferredPrompt) {
+                        deferredPrompt.prompt();
+                        const { outcome } = await deferredPrompt.userChoice;
+                        console.log(`User response to the install prompt: ${outcome}`);
+                        deferredPrompt = null;
+                    }
+                });
+            });
+        });
+    </script>
 
 </body>
 
