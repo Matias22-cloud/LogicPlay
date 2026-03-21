@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>LogicPlay — Sin Conexión</title>
+    <link rel="manifest" href="./manifest.json">
+    <meta name="theme-color" content="#2c0fbd">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: #0a061d;
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            text-align: center;
+            overflow: hidden;
+            position: relative;
+        }
+        /* Background blobs */
+        .blob {
+            position: absolute;
+            border-radius: 9999px;
+            filter: blur(80px);
+            opacity: 0.35;
+            animation: blobMove 8s ease-in-out infinite;
+        }
+        .blob-1 { width: 350px; height: 350px; background: #2c0fbd; top: -100px; left: -100px; }
+        .blob-2 { width: 300px; height: 300px; background: #7c3aed; top: -50px; right: -80px; animation-delay: 3s; }
+        .blob-3 { width: 280px; height: 280px; background: #1d4ed8; bottom: -80px; left: 30%; animation-delay: 5s; }
+        @keyframes blobMove {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(20px, -30px) scale(1.05); }
+            66% { transform: translate(-15px, 15px) scale(0.95); }
+        }
+        .card {
+            position: relative;
+            z-index: 10;
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 24px;
+            padding: 48px 40px;
+            max-width: 480px;
+            width: 100%;
+        }
+        .logo-ring {
+            width: 80px;
+            height: 80px;
+            background: rgba(44,15,189,0.3);
+            border: 2px solid rgba(44,15,189,0.6);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            box-shadow: 0 0 40px rgba(44,15,189,0.4);
+        }
+        .logo-ring svg { width: 40px; height: 40px; fill: #fff; }
+        .wifi-icon {
+            font-size: 56px;
+            margin-bottom: 4px;
+            animation: pulseWifi 2.5s ease-in-out infinite;
+        }
+        @keyframes pulseWifi {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(0.95); }
+        }
+        h1 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            letter-spacing: -0.02em;
+        }
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.15);
+            padding: 4px 14px;
+            border-radius: 9999px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 20px;
+            color: rgba(255,255,255,0.7);
+        }
+        .dot {
+            width: 7px; height: 7px;
+            background: #f87171;
+            border-radius: 9999px;
+            animation: blink 1.2s ease-in-out infinite;
+        }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.2; } }
+        p {
+            color: rgba(255,255,255,0.65);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 32px;
+        }
+        .tips {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 36px;
+            text-align: left;
+        }
+        .tip {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            padding: 12px 16px;
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.7);
+        }
+        .tip-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 1px; }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #2c0fbd;
+            color: #fff;
+            font-weight: 700;
+            font-size: 0.95rem;
+            padding: 14px 32px;
+            border-radius: 14px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: 0 8px 30px rgba(44,15,189,0.5);
+            width: 100%;
+            justify-content: center;
+        }
+        .btn:hover { background: #240a99; transform: translateY(-2px); box-shadow: 0 12px 35px rgba(44,15,189,0.7); }
+        .btn:active { transform: translateY(0); }
+        .footer-note {
+            margin-top: 24px;
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+
+    <div class="card">
+        <div class="logo-ring">
+            <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                <path clip-rule="evenodd"
+                    d="M24 0.757355L47.2426 24L24 47.2426L0.757355 24L24 0.757355ZM21 35.7574V12.2426L9.24264 24L21 35.7574Z"
+                    fill-rule="evenodd"/>
+            </svg>
+        </div>
+
+        <div class="badge">
+            <span class="dot"></span>
+            Sin Conexión
+        </div>
+
+        <div class="wifi-icon">📡</div>
+        <h1>¡Ups! Sin Internet</h1>
+        <p>LogicPlay no puede conectarse en este momento. Verifica tu conexión a internet e inténtalo de nuevo.</p>
+
+        <div class="tips">
+            <div class="tip">
+                <span class="tip-icon">📶</span>
+                <span>Activa tu Wi-Fi o datos móviles y recarga la página.</span>
+            </div>
+            <div class="tip">
+                <span class="tip-icon">🔄</span>
+                <span>Si ya tienes conexión, presiona el botón de abajo para reintentar.</span>
+            </div>
+            <div class="tip">
+                <span class="tip-icon">💡</span>
+                <span>Las páginas que visitaste antes pueden estar disponibles offline.</span>
+            </div>
+        </div>
+
+        <button class="btn" onclick="window.location.reload()">
+            <span>↺</span> Reintentar conexión
+        </button>
+
+        <p class="footer-note">LogicPlay — Plataforma Educativa Interactiva</p>
+    </div>
+</body>
+</html>

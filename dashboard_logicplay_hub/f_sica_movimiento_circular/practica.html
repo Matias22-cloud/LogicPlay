@@ -105,25 +105,24 @@
 
 <body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased">
     <div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
-        <header class="sticky top-0 z-50 glass-panel border-b px-6 md:px-20 py-4">
-            <div class="flex items-center justify-between max-w-7xl mx-auto w-full">
-                <div class="flex items-center gap-4 text-primary">
-                    <div class="size-10 flex items-center justify-center bg-primary/10 rounded-xl">
+        <header class="sticky top-0 z-50 glass-panel border-b px-4 sm:px-6 md:px-20 py-4">
+            <div class="flex items-center justify-between max-w-7xl mx-auto w-full gap-2">
+                <div class="flex items-center gap-2 sm:gap-4 text-primary min-w-0">
+                    <div class="size-10 shrink-0 flex items-center justify-center bg-primary/10 rounded-xl">
                         <span class="material-symbols-outlined text-primary text-2xl font-bold">science</span>
                     </div>
-                    <div>
-                        <h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight">Física Práctica
-                            Interactiva</h2>
+                    <div class="min-w-0">
+                        <h2 class="text-slate-900 dark:text-slate-100 text-xs sm:text-sm md:text-base font-bold leading-tight truncate">Física Práctica Interactiva</h2>
                     </div>
                 </div>
-                <div class="flex items-center gap-6">
-                    <nav class="flex flex-wrap lg:flex-nowrap gap-4 md:gap-8 justify-center items-center text-sm font-semibold text-slate-500">
-                        <a class="hover:text-primary transition-colors"
+                <div class="flex items-center gap-2 sm:gap-4 shrink-0">
+                    <nav class="flex items-center gap-2 sm:gap-4 text-sm font-semibold text-slate-500">
+                        <a class="hover:text-primary transition-colors text-xs sm:text-sm whitespace-nowrap"
                             href="../dashboard_logicplay_clasificaci_n_anonimizada/code.html">Dashboard</a>
-                        <a class="hover:text-primary transition-colors" href="#">Biblioteca</a>
+                        <a class="hidden sm:block hover:text-primary transition-colors" href="#">Biblioteca</a>
                     </nav>
                     <button
-                        class="flex items-center justify-center rounded-xl h-10 w-10 bg-slate-100 dark:bg-slate-800 hover:bg-primary/10 transition-all group">
+                        class="flex items-center justify-center rounded-xl h-9 w-9 sm:h-10 sm:w-10 bg-slate-100 dark:bg-slate-800 hover:bg-primary/10 transition-all group">
                         <span
                             class="material-symbols-outlined text-slate-600 dark:text-slate-400 group-hover:text-primary">person</span>
                     </button>
@@ -448,9 +447,9 @@
         </div>
 
         <!-- Floating Button -->
-        <button id="open-faraday-btn" class="flex items-center gap-2 bg-primary hover:bg-primary/90 text-white px-5 py-3 rounded-full shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+        <button id="open-faraday-btn" class="flex items-center gap-2 bg-primary hover:bg-primary/90 text-white px-3 sm:px-5 py-3 rounded-full shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
             <span class="material-symbols-outlined group-hover:animate-pulse">science</span>
-            <span class="font-bold text-sm">Pregunta a Faraday 🔬</span>
+            <span class="font-bold text-sm hidden sm:inline">Pregunta a Faraday 🔬</span>
         </button>
     </div>
 
