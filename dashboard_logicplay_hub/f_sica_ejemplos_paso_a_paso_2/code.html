@@ -54,25 +54,24 @@
   <div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
     <div class="layout-container flex h-full grow flex-col">
       <header
-        class="flex items-center justify-between whitespace-nowrap border-b border-solid border-primary/10 px-6 py-3 lg:px-40 bg-white dark:bg-background-dark/50 backdrop-blur-md sticky top-0 z-50">
-        <div class="flex items-center gap-4 text-primary">
-          <div class="size-8 flex items-center justify-center bg-primary/10 rounded-lg">
+        class="flex items-center justify-between border-b border-solid border-primary/10 px-4 sm:px-6 py-3 lg:px-40 bg-white dark:bg-background-dark/50 backdrop-blur-md sticky top-0 z-50 gap-2">
+        <div class="flex items-center gap-2 sm:gap-4 text-primary min-w-0">
+          <div class="size-8 shrink-0 flex items-center justify-center bg-primary/10 rounded-lg">
             <span class="material-symbols-outlined text-primary">rocket_launch</span>
           </div>
-          <h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight tracking-[-0.015em]">Física
-            Conceptos Claros</h2>
+          <h2 class="text-slate-900 dark:text-slate-100 text-xs sm:text-sm md:text-base font-bold leading-tight tracking-[-0.015em] truncate">Física Conceptos Claros</h2>
         </div>
-        <div class="flex items-center gap-4">
+        <div class="flex items-center gap-2 sm:gap-4 shrink-0">
           <a href="../dashboard_logicplay_clasificaci_n_anonimizada/code.html"
-            class="px-4 py-2 text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-primary transition-colors">
+            class="px-2 sm:px-4 py-2 text-xs sm:text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-primary transition-colors whitespace-nowrap">
             Dashboard
           </a>
           <button
-            class="px-4 py-2 text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-primary transition-colors">
+            class="hidden sm:block px-4 py-2 text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-primary transition-colors">
             Biblioteca
           </button>
           <button
-            class="flex items-center justify-center rounded-lg h-10 w-10 bg-primary/10 text-primary hover:bg-primary hover:text-white transition-all">
+            class="flex items-center justify-center rounded-lg h-9 w-9 sm:h-10 sm:w-10 bg-primary/10 text-primary hover:bg-primary hover:text-white transition-all">
             <span class="material-symbols-outlined">person</span>
           </button>
         </div>
@@ -290,9 +289,9 @@
         </div>
 
         <!-- Floating Button -->
-        <button id="open-faraday-btn" class="flex items-center gap-2 bg-primary hover:bg-primary/90 text-white px-5 py-3 rounded-full shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+        <button id="open-faraday-btn" class="flex items-center gap-2 bg-primary hover:bg-primary/90 text-white px-3 sm:px-5 py-3 rounded-full shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
             <span class="material-symbols-outlined group-hover:animate-pulse">science</span>
-            <span class="font-bold text-sm">Pregunta a Faraday 🔬</span>
+            <span class="font-bold text-sm hidden sm:inline">Pregunta a Faraday 🔬</span>
         </button>
     </div>
 
