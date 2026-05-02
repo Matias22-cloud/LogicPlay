@@ -51,14 +51,14 @@
     <title>Física: Práctica Interactiva (Movimiento Rectilíneo Uniforme)</title>
 
     <!-- PWA Meta Tags & Service Worker -->
-    <link rel="manifest" href="../manifest.json">
+    <link rel="manifest" href="../../manifest.json">
     <meta name="theme-color" content="#2c0fbd">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('../service-worker.js')
+                navigator.serviceWorker.register('../../service-worker.js')
                     .then(registration => {
                         console.log('ServiceWorker registration successful');
                     })
@@ -88,7 +88,7 @@
                 <div class="flex items-center gap-2 sm:gap-4 shrink-0">
                     <nav class="flex items-center gap-2 sm:gap-4 text-sm font-semibold text-slate-500">
                         <a class="hover:text-primary transition-colors text-xs sm:text-sm whitespace-nowrap"
-                            href="../dashboard_logicplay_clasificaci_n_anonimizada/code.html">Dashboard</a>
+                            href="../../dashboard_logicplay_clasificaci_n_anonimizada/code.html">Dashboard</a>
                         <a class="hidden sm:block hover:text-primary transition-colors" href="#">Biblioteca</a>
                     </nav>
                     <button
