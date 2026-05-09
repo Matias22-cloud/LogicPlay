@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#4f46e5",
+                        "accent": "#f43f5e",
+                        "background-light": "#f8fafc",
+                        "background-dark": "#0f172a",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend"]
+                    },
+                    borderRadius: { "DEFAULT": "0.375rem", "lg": "0.75rem", "xl": "1rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+    <style type="text/tailwindcss">
+        :root {
+            --primary-color: #4f46e5;
+            --accent-color: #f43f5e;
+        }
+        .glass-panel {
+            @apply bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border border-white/20 dark:border-slate-800/50 shadow-xl;
+        }
+        .input-glow:focus-within {
+            box-shadow: 0 0 15px rgba(79, 70, 229, 0.3);
+        }
+        .nav-tab {
+            @apply px-4 py-2 text-sm font-semibold transition-all duration-200 relative;
+        }
+        .nav-tab-active {
+            @apply text-primary border-b-2 border-primary;
+        }
+        .nav-tab-inactive {
+            @apply text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 border-b-2 border-transparent;
+        }
+        .input-box {
+            @apply w-28 h-10 text-center font-mono text-xl bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 rounded-lg focus:ring-0 focus:border-primary text-slate-900 dark:text-slate-100 transition-all shadow-sm;
+        }
+    </style>
+    <title>Química Laboratorio - Composición Porcentual</title>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased min-h-screen flex flex-col">
+    <div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+        <header class="sticky top-0 z-50 glass-panel border-b px-6 md:px-20 py-4">
+            <div class="flex items-center justify-between max-w-7xl mx-auto w-full">
+                <div class="flex items-center gap-4 text-primary">
+                    <div class="size-10 flex items-center justify-center bg-primary/10 rounded-xl">
+                        <span class="material-symbols-outlined text-primary text-2xl font-bold">science</span>
+                    </div>
+                    <div>
+                        <h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight">Química
+                            Laboratorio</h2>
+                    </div>
+                </div>
+                <div class="flex items-center gap-6">
+                    <nav
+                        class="flex flex-wrap lg:flex-nowrap gap-4 md:gap-8 justify-center items-center text-sm font-semibold text-slate-500">
+                        <a class="hover:text-primary transition-colors" href="../../index.html">Dashboard</a>
+                        <a class="hover:text-primary transition-colors" href="#">Biblioteca</a>
+                    </nav>
+                    <button
+                        class="flex items-center justify-center rounded-xl h-10 w-10 bg-slate-100 dark:bg-slate-800 hover:bg-primary/10 transition-all group">
+                        <span
+                            class="material-symbols-outlined text-slate-600 dark:text-slate-400 group-hover:text-primary">person</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <main class="flex-1 max-w-7xl mx-auto w-full px-6 py-8">
+            <div class="mb-10">
+                <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6">
+                    <div>
+                        <span class="text-primary font-bold text-sm tracking-widest uppercase mb-2 block">MÓDULO 04:
+                            ESTEQUIOMETRÍA</span>
+                        <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 dark:white tracking-tight">
+                            Composición Porcentual</h1>
+                    </div>
+                    <div class="flex flex-col items-end gap-2">
+                        <span class="text-xs font-bold text-slate-500">COMPLETADO: 66%</span>
+                        <div class="w-48 h-2 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden shadow-inner">
+                            <div class="h-full bg-primary rounded-full shadow-[0_0_10px_rgba(79,70,229,0.5)]"
+                                style="width: 66%;"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex items-center gap-1 border-b border-slate-200 dark:border-slate-800">
+                    <a class="nav-tab nav-tab-inactive" href="composicion_concepto.html">1. Concepto</a>
+                    <a class="nav-tab nav-tab-inactive" href="composicion_ejemplos.html">2. Ejemplos</a>
+                    <a class="nav-tab nav-tab-active" href="#">3. Laboratorio</a>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 gap-8">
+                <!-- Enunciado -->
+                <section class="glass-panel p-8 rounded-3xl border-l-[6px] border-l-primary relative overflow-hidden">
+                    <div class="absolute top-0 right-0 p-4 opacity-5">
+                        <span class="material-symbols-outlined text-9xl">experiment</span>
+                    </div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="material-symbols-outlined text-primary fill-1">assignment</span>
+                        <h3 class="text-xl font-bold text-slate-800 dark:text-slate-200">Enunciado del Desafío</h3>
+                    </div>
+                    <div class="relative z-10">
+                        <p class="text-lg text-slate-600 dark:text-slate-400 leading-relaxed font-light">
+                            Selecciona un compuesto para revelar su masa molecular en la balanza. Tu misión es calcular
+                            qué porcentaje exacto de esa masa total le corresponde a cada elemento presente en la
+                            fórmula (utilizando 2 decimales para la evaluación).
+                        </p>
+                    </div>
+                </section>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <div
+                        class="lg:col-span-2 glass-panel p-8 rounded-3xl flex flex-col justify-center relative min-h-[400px]">
+                        <!-- Área Interactiva -->
+                        <div class="flex items-center justify-between mb-8">
+                            <h4 class="text-xs font-black uppercase tracking-[0.2em] text-slate-400">Pizarra de Análisis
+                            </h4>
+                            <select id="compoundSelect"
+                                class="bg-slate-100 dark:bg-slate-800 border-none text-slate-900 dark:text-white rounded-lg focus:ring-primary focus:border-primary font-bold text-sm px-4 py-2 cursor-pointer shadow-sm">
+                                <option value="">-- Elige un Compuesto --</option>
+                                <option value="h2o">Agua (H₂O) - 18 g/mol</option>
+                                <option value="co2">Dióxido Carbono (CO₂) - 44 g/mol</option>
+                                <option value="c6h12o6">Glucosa (C₆H₁₂O₆) - 180 g/mol</option>
+                            </select>
+                        </div>
+
+                        <div id="workspace" class="hidden flex-col items-center">
+                            <div id="elementsContainer" class="flex flex-col gap-6 w-full max-w-lg mb-8">
+                                <!-- JS Injecta filas -->
+                            </div>
+
+                            <div
+                                class="w-full flex flex-col items-center pt-8 border-t border-slate-200 dark:border-slate-800">
+                                <button id="checkBtn"
+                                    class="bg-primary hover:bg-primary/90 text-white px-8 py-3 rounded-xl font-bold transition-all shadow-lg shadow-primary/30 flex items-center gap-2 relative overflow-hidden group">
+                                    <div
+                                        class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform">
+                                    </div>
+                                    <span class="relative z-10 flex items-center gap-2">Evaluar <span
+                                            class="material-symbols-outlined text-sm">spellcheck</span></span>
+                                </button>
+                                <p id="feedbackMsg"
+                                    class="mt-6 font-bold text-sm h-6 text-center w-full max-w-md mx-auto"></p>
+                            </div>
+                        </div>
+
+                        <div id="initialState" class="flex flex-col items-center justify-center py-24 opacity-30">
+                            <span class="material-symbols-outlined text-[60px] mb-4">touch_app</span>
+                            <p class="text-sm font-bold uppercase tracking-widest">Carga un compuesto</p>
+                        </div>
+                    </div>
+
+                    <!-- Panel de Apoyo (Consejo Pedagógico) -->
+                    <div class="glass-panel p-8 rounded-3xl flex flex-col justify-start h-fit">
+                        <div class="flex items-center gap-3 mb-6">
+                            <span class="material-symbols-outlined text-primary fill-1">lightbulb</span>
+                            <h4 class="text-sm font-black uppercase tracking-[0.1em] text-slate-400">TIP DE LABORATORIO
+                            </h4>
+                        </div>
+                        <p class="text-sm text-slate-600 dark:text-slate-400 italic mb-6 leading-relaxed">
+                            "Comprueba tus propios cálculos antes de introducirlos. La suma de los porcentajes que
+                            averigües debe dar siempre entre 99.9% y 100%."
+                        </p>
+
+                        <div
+                            class="bg-slate-50 dark:bg-slate-800/50 rounded-xl p-5 border border-slate-200 dark:border-slate-700 font-mono text-xs space-y-3">
+                            <p class="font-bold uppercase tracking-widest text-slate-500 mb-2">Paso a paso:</p>
+                            <p class="pl-2 border-l-2 border-primary text-slate-700 dark:text-slate-300"><span
+                                    class="text-primary font-bold">1.</span> Encuentra la masa total que aporta el
+                                elemento.</p>
+                            <p class="pl-2 border-l-2 border-primary text-slate-700 dark:text-slate-300"><span
+                                    class="text-primary font-bold">2.</span> Divídelo entre la masa molecular total
+                                (g/mol).</p>
+                            <p class="pl-2 border-l-2 border-primary text-slate-700 dark:text-slate-300"><span
+                                    class="text-primary font-bold">3.</span> Multiplica por 100 para convertirlo al
+                                porcentaje matemático final.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <script>
+        const db = {
+            'h2o': { symbol: 'H₂O', total: 18, elements: [{ name: 'Hidrógeno (H)', p: 11.11 }, { name: 'Oxígeno (O)', p: 88.89 }] },
+            'co2': { symbol: 'CO₂', total: 44, elements: [{ name: 'Carbono (C)', p: 27.27 }, { name: 'Oxígeno (O)', p: 72.73 }] },
+            'c6h12o6': { symbol: 'C₆H₁₂O₆ (Glucosa)', total: 180, elements: [{ name: 'Carbono (C)', p: 40.00 }, { name: 'Hidrógeno (H)', p: 6.67 }, { name: 'Oxígeno (O)', p: 53.33 }] }
+        };
+
+        const select = document.getElementById('compoundSelect');
+        const workspace = document.getElementById('workspace');
+        const initial = document.getElementById('initialState');
+        const container = document.getElementById('elementsContainer');
+        const checkBtn = document.getElementById('checkBtn');
+        const feedback = document.getElementById('feedbackMsg');
+
+        let currentMol = null;
+
+        select.addEventListener('change', (e) => {
+            const val = e.target.value;
+            if (!val) {
+                workspace.classList.add('hidden');
+                workspace.classList.remove('flex');
+                initial.classList.remove('hidden');
+                initial.classList.add('flex');
+                return;
+            }
+            initial.classList.add('hidden');
+            initial.classList.remove('flex');
+            workspace.classList.remove('hidden');
+            workspace.classList.add('flex');
+
+            currentMol = db[val];
+            feedback.innerText = '';
+
+            container.innerHTML = currentMol.elements.map((el, i) => `
+                <div class="flex items-center justify-between bg-white dark:bg-slate-800 p-5 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm transition-transform hover:-translate-y-1">
+                    <span class="font-bold text-lg text-slate-700 dark:text-slate-200 capitalize">${el.name}</span>
+                    <div class="flex items-center gap-2 relative">
+                        <span class="absolute -top-3 left-2 text-[10px] text-slate-400 font-bold tracking-widest uppercase">Porcentaje</span>
+                        <input type="number" step="0.01" id="p_${i}" class="input-box" placeholder="0.00">
+                        <span class="font-bold text-xl text-slate-400">%</span>
+                    </div>
+                </div>
+            `).join('');
+        });
+
+        checkBtn.addEventListener('click', () => {
+            if (!currentMol) return;
+            let success = true;
+
+            currentMol.elements.forEach((el, i) => {
+                const pIn = document.getElementById(`p_${i}`);
+                const val = parseFloat(pIn.value);
+
+                // Allow error margin of 0.5%
+                if (isNaN(val) || Math.abs(val - el.p) > 0.5) {
+                    success = false;
+                    pIn.classList.add('!border-accent', '!text-accent');
+                    pIn.classList.remove('!border-emerald-500');
+                } else {
+                    pIn.classList.remove('!border-accent', '!text-accent');
+                    pIn.classList.add('!border-emerald-500');
+                }
+            });
+
+            if (success) {
+                feedback.innerHTML = '<span class="text-emerald-500 px-4 py-2 bg-emerald-50 dark:bg-emerald-900/20 rounded-full w-full block">¡Laboratorio exitoso! Los cálculos son correctos.</span>';
+                checkBtn.classList.replace('bg-primary', 'bg-emerald-500');
+                setTimeout(() => checkBtn.classList.replace('bg-emerald-500', 'bg-primary'), 2000);
+            } else {
+                feedback.innerHTML = '<span class="text-accent px-4 py-2 bg-accent/10 rounded-full w-full block">Las proporciones no concuerdan. Intenta otra vez.</span>';
+            }
+        });
+    </script>
+</body>
+
+</html>

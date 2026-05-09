@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    <title>LogiPlay - Elementos de la Parábola</title>
+    <style>
+        body { font-family: 'Lexend', sans-serif; background: #fdfeff; }
+        .reveal { animation: fadeInUp 0.6s ease-out forwards; opacity: 0; }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .formula-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+        .formula-card:hover {
+            border-color: #f43f5e;
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        .math-font { font-family: 'Courier New', Courier, monospace; font-weight: 700; }
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 1.5rem;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body class="p-4 md:p-10 text-slate-800">
+
+    <div class="max-w-6xl mx-auto">
+        
+        <!-- CABECERA CON NAVEGACIÓN -->
+        <header class="reveal mb-12 text-center">
+            <!-- Botones de Navegación -->
+            <div class="flex justify-between mb-8">
+                <a href="../matematica_4/funcioncuadratica2.html" class="flex items-center gap-2 bg-slate-100 hover:bg-slate-200 text-slate-700 px-4 py-2 rounded-xl text-xs font-bold transition-all border border-slate-200">
+                    <span class="material-symbols-outlined text-sm">arrow_back</span>
+                    ATRÁS
+                </a>
+                <a href="../matematica_4/funcioncuadratica4.html" class="flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-xl text-xs font-bold transition-all shadow-lg shadow-indigo-200">
+                    SIGUIENTE
+                    <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                </a>
+            </div>
+
+            <div class="inline-block bg-indigo-100 text-indigo-700 px-6 py-2 rounded-full font-black text-xs uppercase tracking-[0.3em] mb-4">
+                Análisis Geométrico Avanzado
+            </div>
+            <h1 class="text-6xl font-black text-slate-900 tracking-tighter mb-4">
+                Anatomía de la <span class="text-indigo-600">Parábola</span>
+            </h1>
+            <p class="text-slate-500 text-xl font-light">Desglosando los 4 elementos clave de la función cuadrática.</p>
+        </header>
+
+        <!-- 1. ORIENTACIÓN Y CONCAVIDAD -->
+        <section class="reveal mb-12" style="animation-delay: 0.1s">
+            <div class="bg-slate-900 rounded-[3rem] p-10 text-white flex flex-col md:flex-row items-center gap-10 overflow-hidden relative shadow-2xl">
+                <div class="flex-1 z-10">
+                    <span class="text-rose-500 font-black text-xs uppercase tracking-widest">Elemento 01</span>
+                    <h2 class="text-4xl font-black mb-6">Orientación (¿Hacia dónde mira?)</h2>
+                    <p class="text-slate-400 text-lg font-light leading-relaxed mb-6">
+                        Todo depende del signo de <b>a</b>. Es el "humor" de la función:
+                    </p>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-white/5 p-4 rounded-2xl border border-white/10">
+                            <p class="text-emerald-400 font-bold">Si a > 0</p>
+                            <p class="text-xs text-slate-400 uppercase">Cóncava hacia arriba (Sonríe)</p>
+                        </div>
+                        <div class="bg-white/5 p-4 rounded-2xl border border-white/10">
+                            <p class="text-rose-400 font-bold">Si a < 0</p>
+                            <p class="text-xs text-slate-400 uppercase">Cóncava hacia abajo (Triste)</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-8xl md:text-[12rem] font-black opacity-10 select-none">
+                    ax²
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. VÉRTICE Y EJE DE SIMETRÍA -->
+        <section class="reveal mb-12" style="animation-delay: 0.2s">
+            <h3 class="text-3xl font-black mb-8 text-slate-800">El Corazón: Vértice y Eje</h3>
+            <div class="grid lg:grid-cols-2 gap-8">
+                <!-- Eje de Simetría -->
+                <div class="formula-card p-8 rounded-[2.5rem]">
+                    <div class="flex items-center gap-4 mb-6">
+                        <span class="material-symbols-outlined text-indigo-600 bg-indigo-50 p-3 rounded-2xl">straighten</span>
+                        <div>
+                            <h4 class="font-black text-xl">Eje de Simetría</h4>
+                            <p class="text-xs text-slate-400 uppercase">La línea invisible que divide todo</p>
+                        </div>
+                    </div>
+                    <p class="text-sm text-slate-500 mb-6">Es una línea vertical que pasa justo por el centro. Divide la parábola en dos partes idénticas (como un espejo).</p>
+                    <div class="bg-slate-50 p-6 rounded-3xl text-center">
+                        <span class="text-slate-400 text-xs block mb-2 font-black uppercase">Fórmula Maestra</span>
+                        <div class="text-3xl math-font text-indigo-600">x = -b / (2a)</div>
+                    </div>
+                </div>
+
+                <!-- Vértice -->
+                <div class="formula-card p-8 rounded-[2.5rem]">
+                    <div class="flex items-center gap-4 mb-6">
+                        <span class="material-symbols-outlined text-rose-600 bg-rose-50 p-3 rounded-2xl">location_on</span>
+                        <div>
+                            <h4 class="font-black text-xl">El Vértice (V)</h4>
+                            <p class="text-xs text-slate-400 uppercase">El punto más bajo o más alto</p>
+                        </div>
+                    </div>
+                    <p class="text-sm text-slate-500 mb-6">Es la coordenada <b>(x, y)</b> donde la parábola da la vuelta. La <b>x</b> ya la sabes (es el eje de simetría), ¡solo falta la <b>y</b>!</p>
+                    <div class="bg-slate-50 p-6 rounded-3xl text-center">
+                        <span class="text-slate-400 text-xs block mb-2 font-black uppercase">Coordenada</span>
+                        <div class="text-3xl math-font text-rose-600">V = (x , f(x))</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. PUNTOS DE CORTE -->
+        <section class="reveal mb-16" style="animation-delay: 0.3s">
+            <h3 class="text-3xl font-black mb-8 text-slate-800">Puntos de Intersección</h3>
+            <div class="grid lg:grid-cols-2 gap-8">
+                <!-- Corte con Eje Y -->
+                <div class="bg-white border border-slate-200 p-8 rounded-[2.5rem] relative overflow-hidden group">
+                    <div class="relative z-10">
+                        <h4 class="font-black text-2xl mb-4">Corte con Eje Y</h4>
+                        <p class="text-slate-500 text-sm mb-6 leading-relaxed">
+                            Es el punto donde la parábola choca con la línea vertical. ¡Es el más fácil! <br>
+                            Simplemente es el valor de la constante <b>c</b>.
+                        </p>
+                        <div class="inline-flex items-center gap-3 bg-emerald-50 text-emerald-700 px-6 py-3 rounded-2xl font-bold">
+                            Punto: (0 , c)
+                        </div>
+                    </div>
+                    <span class="material-symbols-outlined absolute -right-4 -bottom-4 text-9xl text-slate-50 opacity-10 group-hover:text-emerald-100 transition-colors">vertical_align_center</span>
+                </div>
+
+                <!-- Corte con Eje X -->
+                <div class="bg-white border border-slate-200 p-8 rounded-[2.5rem] relative overflow-hidden group">
+                    <div class="relative z-10">
+                        <h4 class="font-black text-2xl mb-4">Corte con Eje X (Raíces)</h4>
+                        <p class="text-slate-500 text-sm mb-6 leading-relaxed">
+                            Donde la parábola toca el suelo. Puede tocarlo 2 veces, 1 vez o ninguna. Para hallarlo usamos la famosa:
+                        </p>
+                        <div class="bg-indigo-600 text-white p-4 rounded-2xl text-center font-mono text-sm">
+                            x = [-b ± √(b² - 4ac)] / 2a
+                        </div>
+                    </div>
+                    <span class="material-symbols-outlined absolute -right-4 -bottom-4 text-9xl text-slate-50 opacity-10 group-hover:text-indigo-100 transition-colors">horizontal_distribute</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- RESUMEN MAESTRO Y VIDEOS -->
+        <section class="reveal mb-20" style="animation-delay: 0.4s">
+            <div class="bg-indigo-50 border-2 border-indigo-100 p-10 rounded-[4rem] mb-12">
+                <h3 class="text-3xl font-black text-indigo-900 mb-6">¡No te pierdas en el camino!</h3>
+                <ul class="space-y-4 max-w-2xl">
+                    <li class="flex items-start gap-3">
+                        <span class="bg-indigo-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-[10px] mt-1 shrink-0">1</span>
+                        <p class="text-sm"><b>Mira el signo de a:</b> Sabrás si la "U" va hacia arriba o abajo.</p>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="bg-indigo-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-[10px] mt-1 shrink-0">2</span>
+                        <p class="text-sm"><b>Calcula x = -b/2a:</b> Ya tienes el centro y la mitad del vértice.</p>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="bg-indigo-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-[10px] mt-1 shrink-0">3</span>
+                        <p class="text-sm"><b>Ubica el punto c:</b> Ya sabes dónde cruza el eje vertical Y.</p>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Sección de Videos de Referencia -->
+            <h3 class="text-2xl font-black mb-8 text-slate-800 flex items-center gap-3">
+                <span class="material-symbols-outlined text-rose-600">play_circle</span>
+                Videos Recomendados
+            </h3>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="video-container shadow-xl">
+                    <iframe src="https://www.youtube.com/embed/6JQw45YO3Fs" title="Video de referencia 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+                <div class="video-container shadow-xl">
+                    <iframe src="https://www.youtube.com/embed/gnAdna_tLK0" title="Video de referencia 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+            </div>
+        </section>
+
+        <footer class="flex justify-center py-10 border-t border-slate-200">
+            <p class="text-slate-400 text-sm font-medium italic">LogiPlay: El arte de entender las curvas.</p>
+        </footer>
+    </div>
+
+</body>
+</html>

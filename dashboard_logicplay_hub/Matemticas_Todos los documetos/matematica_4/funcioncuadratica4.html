@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    <title>LogiPlay - Ecuaciones Incompletas</title>
+    <style>
+        body { font-family: 'Lexend', sans-serif; background: #fdfeff; }
+        .reveal { animation: fadeInUp 0.6s ease-out forwards; opacity: 0; }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .math-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .math-card:hover {
+            border-color: #6366f1;
+            transform: scale(1.02);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05);
+        }
+        .step-badge {
+            background: #f1f5f9;
+            color: #64748b;
+            font-size: 10px;
+            font-weight: 800;
+            padding: 2px 8px;
+            border-radius: 99px;
+            text-transform: uppercase;
+        }
+        input:focus { outline: none; border-color: #6366f1; }
+        .correct-input { border-color: #10b981 !important; color: #10b981 !important; background: rgba(16, 185, 129, 0.1) !important; }
+    </style>
+</head>
+<body class="p-4 md:p-10 text-slate-800">
+
+    <div class="max-w-5xl mx-auto">
+        
+        <!-- CABECERA CON NAVEGACIÓN -->
+        <header class="reveal mb-16 text-center">
+            <!-- Botones de Navegación -->
+            <div class="flex justify-between mb-10">
+                <a href="../matematica_4/funcioncuadratica3.html" class="flex items-center gap-2 bg-slate-100 hover:bg-slate-200 text-slate-700 px-4 py-2 rounded-xl text-xs font-bold transition-all border border-slate-200">
+                    <span class="material-symbols-outlined text-sm">arrow_back</span>
+                    ATRÁS
+                </a>
+                <a href="../matematica_4/funcioncuadratica5.html" class="flex items-center gap-2 bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-xl text-xs font-bold transition-all shadow-lg shadow-amber-200">
+                    SIGUIENTE
+                    <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                </a>
+            </div>
+
+            <div class="inline-block bg-amber-100 text-amber-700 px-6 py-2 rounded-full font-black text-xs uppercase tracking-[0.3em] mb-4">
+                Taller Práctico de Álgebra
+            </div>
+            <h1 class="text-6xl font-black text-slate-900 tracking-tighter mb-4">
+                Ecuaciones <span class="text-amber-500">Incompletas</span>
+            </h1>
+            <p class="text-slate-500 text-xl font-light italic">Cuando b = 0, el despeje es tu mejor aliado.</p>
+        </header>
+
+        <!-- SECCIÓN DE EJEMPLOS RESUELTOS -->
+        <section class="reveal mb-20" style="animation-delay: 0.1s">
+            <h3 class="text-3xl font-black mb-10 text-slate-800 flex items-center gap-3">
+                <span class="material-symbols-outlined text-emerald-500 text-4xl">check_circle</span>
+                5 Ejemplos Paso a Paso
+            </h3>
+
+            <div class="grid gap-6">
+                <!-- Ejemplo 1 -->
+                <div class="math-card p-8 rounded-[2rem] border-l-8 border-l-emerald-500">
+                    <div class="flex justify-between items-start mb-4">
+                        <span class="text-2xl font-mono font-black">x² - 9 = 27</span>
+                        <span class="bg-emerald-100 text-emerald-700 text-[10px] font-bold px-3 py-1 rounded-full uppercase">Nivel Básico</span>
+                    </div>
+                    <div class="space-y-3 text-slate-600 text-sm">
+                        <p><span class="step-badge">Paso 1</span> Pasamos el -9 sumando: <span class="font-bold text-slate-900">x² = 27 + 9</span></p>
+                        <p><span class="step-badge">Paso 2</span> Sumamos: <span class="font-bold text-slate-900">x² = 36</span></p>
+                        <p><span class="step-badge">Paso 3</span> Aplicamos raíz cuadrada: <span class="font-bold text-indigo-600">x = ±6</span></p>
+                    </div>
+                </div>
+
+                <!-- Ejemplo 2 -->
+                <div class="math-card p-8 rounded-[2rem] border-l-8 border-l-emerald-500">
+                    <div class="flex justify-between items-start mb-4">
+                        <span class="text-2xl font-mono font-black">2x² = 50</span>
+                    </div>
+                    <div class="space-y-3 text-slate-600 text-sm">
+                        <p><span class="step-badge">Paso 1</span> El 2 multiplica, pasa dividiendo: <span class="font-bold text-slate-900">x² = 50 / 2</span></p>
+                        <p><span class="step-badge">Paso 2</span> Dividimos: <span class="font-bold text-slate-900">x² = 25</span></p>
+                        <p><span class="step-badge">Paso 3</span> Raíz: <span class="font-bold text-indigo-600">x = ±5</span></p>
+                    </div>
+                </div>
+
+                <!-- Ejemplo 3 -->
+                <div class="math-card p-8 rounded-[2rem] border-l-8 border-l-emerald-500">
+                    <div class="flex justify-between items-start mb-4">
+                        <span class="text-2xl font-mono font-black">3x² - 12 = 0</span>
+                    </div>
+                    <div class="space-y-3 text-slate-600 text-sm">
+                        <p><span class="step-badge">Paso 1</span> Despejamos el -12: <span class="font-bold text-slate-900">3x² = 12</span></p>
+                        <p><span class="step-badge">Paso 2</span> Despejamos el 3: <span class="font-bold text-slate-900">x² = 4</span></p>
+                        <p><span class="step-badge">Paso 3</span> Resultado: <span class="font-bold text-indigo-600">x = ±2</span></p>
+                    </div>
+                </div>
+
+                <!-- Ejemplo 4 -->
+                <div class="math-card p-8 rounded-[2rem] border-l-8 border-l-emerald-500">
+                    <div class="flex justify-between items-start mb-4">
+                        <span class="text-2xl font-mono font-black">x² + 5 = 30</span>
+                    </div>
+                    <div class="space-y-3 text-slate-600 text-sm">
+                        <p><span class="step-badge">Paso 1</span> Restamos 5: <span class="font-bold text-slate-900">x² = 25</span></p>
+                        <p><span class="step-badge">Paso 2</span> Raíz: <span class="font-bold text-indigo-600">x = ±5</span></p>
+                    </div>
+                </div>
+
+                <!-- Ejemplo 5 -->
+                <div class="math-card p-8 rounded-[2rem] border-l-8 border-l-emerald-500">
+                    <div class="flex justify-between items-start mb-4">
+                        <span class="text-2xl font-mono font-black">5x² = 80</span>
+                    </div>
+                    <div class="space-y-3 text-slate-600 text-sm">
+                        <p><span class="step-badge">Paso 1</span> Dividimos entre 5: <span class="font-bold text-slate-900">x² = 16</span></p>
+                        <p><span class="step-badge">Paso 2</span> Resultado: <span class="font-bold text-indigo-600">x = ±4</span></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN DE EJERCICIOS INTERACTIVOS PASO A PASO -->
+        <section class="reveal mb-20" style="animation-delay: 0.2s">
+            <div class="bg-slate-900 rounded-[4rem] p-12 text-white">
+                <h3 class="text-4xl font-black mb-4 text-center">Tu Turno de <span class="text-indigo-400">Brillar</span></h3>
+                <p class="text-slate-400 text-center mb-12">Resuelve cada paso para llegar a la solución final.</p>
+                
+                <div class="grid md:grid-cols-1 gap-10 max-w-2xl mx-auto">
+                    
+                    <!-- Ejercicio 01 -->
+                    <div class="border-b border-white/10 pb-8">
+                        <div class="flex items-center gap-4 mb-4">
+                            <span class="text-indigo-400 font-black">01.</span>
+                            <span class="text-2xl font-mono italic tracking-widest">x² - 10 = 90</span>
+                        </div>
+                        <div class="flex flex-wrap items-center gap-3 text-slate-400 text-sm pl-10">
+                            <span>x² = 90 + 10 → x² =</span>
+                            <input type="number" oninput="checkStep(this, 100)" class="w-16 bg-white/5 border border-white/20 rounded px-2 py-1 text-center font-bold">
+                            <span>→ x = ±</span>
+                            <input type="number" oninput="checkStep(this, 10)" class="w-16 bg-white/5 border border-white/20 rounded px-2 py-1 text-center font-bold">
+                        </div>
+                    </div>
+
+                    <!-- Ejercicio 02 -->
+                    <div class="border-b border-white/10 pb-8">
+                        <div class="flex items-center gap-4 mb-4">
+                            <span class="text-indigo-400 font-black">02.</span>
+                            <span class="text-2xl font-mono italic tracking-widest">4x² = 64</span>
+                        </div>
+                        <div class="flex flex-wrap items-center gap-3 text-slate-400 text-sm pl-10">
+                            <span>x² = 64 / 4 → x² =</span>
+                            <input type="number" oninput="checkStep(this, 16)" class="w-16 bg-white/5 border border-white/20 rounded px-2 py-1 text-center font-bold">
+                            <span>→ x = ±</span>
+                            <input type="number" oninput="checkStep(this, 4)" class="w-16 bg-white/5 border border-white/20 rounded px-2 py-1 text-center font-bold">
+                        </div>
+                    </div>
+
+                    <!-- Ejercicio 03 -->
+                    <div class="border-b border-white/10 pb-8">
+                        <div class="flex items-center gap-4 mb-4">
+                            <span class="text-indigo-400 font-black">03.</span>
+                            <span class="text-2xl font-mono italic tracking-widest">x² + 7 = 56</span>
+                        </div>
+                        <div class="flex flex-wrap items-center gap-3 text-slate-400 text-sm pl-10">
+                            <span>x² = 56 - 7 → x² =</span>
+                            <input type="number" oninput="checkStep(this, 49)" class="w-16 bg-white/5 border border-white/20 rounded px-2 py-1 text-center font-bold">
+                            <span>→ x = ±</span>
+                            <input type="number" oninput="checkStep(this, 7)" class="w-16 bg-white/5 border border-white/20 rounded px-2 py-1 text-center font-bold">
+                        </div>
+                    </div>
+
+                    <!-- Ejercicio 04 -->
+                    <div class="border-b border-white/10 pb-8">
+                        <div class="flex items-center gap-4 mb-4">
+                            <span class="text-indigo-400 font-black">04.</span>
+                            <span class="text-2xl font-mono italic tracking-widest">2x² - 18 = 0</span>
+                        </div>
+                        <div class="flex flex-wrap items-center gap-3 text-slate-400 text-sm pl-10">
+                            <span>2x² = 18 → x² =</span>
+                            <input type="number" oninput="checkStep(this, 9)" class="w-16 bg-white/5 border border-white/20 rounded px-2 py-1 text-center font-bold">
+                            <span>→ x = ±</span>
+                            <input type="number" oninput="checkStep(this, 3)" class="w-16 bg-white/5 border border-white/20 rounded px-2 py-1 text-center font-bold">
+                        </div>
+                    </div>
+
+                    <!-- Ejercicio 05 -->
+                    <div class="">
+                        <div class="flex items-center gap-4 mb-4">
+                            <span class="text-indigo-400 font-black">05.</span>
+                            <span class="text-2xl font-mono italic tracking-widest">3x² = 75</span>
+                        </div>
+                        <div class="flex flex-wrap items-center gap-3 text-slate-400 text-sm pl-10">
+                            <span>x² = 75 / 3 → x² =</span>
+                            <input type="number" oninput="checkStep(this, 25)" class="w-16 bg-white/5 border border-white/20 rounded px-2 py-1 text-center font-bold">
+                            <span>→ x = ±</span>
+                            <input type="number" oninput="checkStep(this, 5)" class="w-16 bg-white/5 border border-white/20 rounded px-2 py-1 text-center font-bold">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- RECORDATORIO FINAL -->
+        <section class="reveal mb-20 text-center" style="animation-delay: 0.3s">
+            <div class="inline-flex items-center gap-2 bg-rose-50 text-rose-600 px-8 py-4 rounded-3xl border border-rose-100 shadow-sm">
+                <span class="material-symbols-outlined">warning</span>
+                <p class="text-sm font-bold uppercase tracking-tighter">
+                    Recuerda: Al sacar raíz cuadrada siempre obtendrás dos soluciones (positiva y negativa).
+                </p>
+            </div>
+        </section>
+
+        <footer class="flex justify-center py-10 border-t border-slate-200">
+            <p class="text-slate-400 text-sm font-medium italic">LogiPlay 2026 - El camino hacia el dominio algebraico.</p>
+        </footer>
+    </div>
+
+    <script>
+        function checkStep(el, correct) {
+            if (el.value == correct) {
+                el.classList.add('correct-input');
+            } else {
+                el.classList.remove('correct-input');
+            }
+        }
+    </script>
+
+</body>
+</html>

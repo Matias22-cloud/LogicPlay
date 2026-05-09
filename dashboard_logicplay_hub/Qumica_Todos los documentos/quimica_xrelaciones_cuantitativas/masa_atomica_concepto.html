@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: { "primary": "#2c0fbd", "background-light": "#f6f6f8", "background-dark": "#131022" },
+                    fontFamily: { "display": ["Lexend"] },
+                },
+            },
+        }
+    </script>
+    <title>Química Conceptos Claros - Masa Atómica</title>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 transition-colors duration-300">
+    <div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+        <div class="layout-container flex h-full grow flex-col">
+            <header
+                class="flex items-center justify-between whitespace-nowrap border-b border-solid border-primary/10 px-6 py-3 lg:px-40 bg-white dark:bg-background-dark/50 backdrop-blur-md sticky top-0 z-50">
+                <div class="flex items-center gap-4 text-primary">
+                    <div class="size-8 flex items-center justify-center bg-primary/10 rounded-lg"><span
+                            class="material-symbols-outlined text-primary">rocket_launch</span></div>
+                    <h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight tracking-[-0.015em]">
+                        Química Conceptos Claros</h2>
+                </div>
+                <div class="flex items-center gap-4">
+                    <a href="../../index.html"
+                        class="px-4 py-2 text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-primary transition-colors">Dashboard</a>
+                </div>
+            </header>
+            <main class="flex flex-1 justify-center py-8">
+                <div class="layout-content-container flex flex-col max-w-[960px] flex-1 px-4 lg:px-0">
+                    <div class="flex flex-wrap justify-between items-end gap-3 mb-6">
+                        <div class="flex flex-col gap-1">
+                            <span class="text-primary font-bold text-sm uppercase tracking-wider">Relaciones
+                                Cuantitativas</span>
+                            <h1
+                                class="text-slate-900 dark:text-slate-100 tracking-tight text-4xl font-extrabold leading-tight">
+                                Masa Atómica y Molecular</h1>
+                        </div>
+                    </div>
+                    <div
+                        class="flex flex-col gap-3 p-6 bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-primary/5 mb-8">
+                        <div class="flex gap-6 justify-between items-center">
+                            <div class="flex items-center gap-2"><span
+                                    class="material-symbols-outlined text-primary">auto_stories</span>
+                                <p class="text-slate-700 dark:text-slate-300 text-base font-medium leading-normal">
+                                    Comprende cuánto pesa la materia a nivel microscópico.</p>
+                            </div>
+                            <p class="text-primary text-sm font-bold leading-normal">1/3</p>
+                        </div>
+                        <div class="rounded-full bg-primary/10 h-3 overflow-hidden">
+                            <div class="h-full rounded-full bg-primary" style="width: 33%;"></div>
+                        </div>
+                    </div>
+                    <div class="mb-8">
+                        <div class="flex border-b border-primary/10 px-0 justify-between">
+                            <a class="flex flex-col items-center justify-center border-b-[3px] border-b-primary text-primary pb-4 pt-4 flex-1 font-bold bg-primary/5"
+                                href="masa_atomica_concepto.html">
+                                <div class="flex items-center gap-2"><span class="text-sm">1. Concepto</span></div>
+                            </a>
+                            <a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-slate-500 hover:text-primary pb-4 pt-4 flex-1 font-medium transition-all"
+                                href="masa_atomica_ejemplos.html">
+                                <div class="flex items-center gap-2"><span class="text-sm">2. Ejemplos</span></div>
+                            </a>
+                            <a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-slate-500 hover:text-primary pb-4 pt-4 flex-1 font-medium transition-all"
+                                href="masa_atomica_laboratorio.html">
+                                <div class="flex items-center gap-2"><span class="text-sm">3. Laboratorio</span></div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Teoría Fundamental Ampliada -->
+                    <div class="space-y-8">
+                        <section class="bg-white dark:bg-slate-900 rounded-xl p-8 border border-primary/10 shadow-sm">
+                            <div class="flex items-center gap-3 mb-8">
+                                <div
+                                    class="bg-primary text-white w-10 h-10 rounded-lg flex items-center justify-center font-bold text-xl">
+                                    <span class="material-symbols-outlined">visibility</span>
+                                </div>
+                                <h2 class="text-slate-900 dark:text-slate-100 text-2xl font-bold tracking-tight">Teoría
+                                    Fundamental</h2>
+                            </div>
+
+                            <div
+                                class="prose dark:prose-invert max-w-none text-slate-600 dark:text-slate-300 space-y-6">
+                                <p class="text-lg leading-relaxed">
+                                    En química, la <strong>masa atómica</strong> es la masa de un átomo individual.
+                                    Debido a que los átomos son minúsculos, no se pesan en gramos habituales de nuestro
+                                    día a día, sino en <strong>unidades de masa atómica (uma)</strong>, comúnmente
+                                    denominadas "Daltons" o equivalentes a gramos por mol (g/mol) a nivel macroscópico.
+                                </p>
+
+                                <div
+                                    class="bg-primary/5 border border-primary/20 p-6 rounded-xl flex gap-4 items-start">
+                                    <span class="material-symbols-outlined text-primary text-3xl">scale</span>
+                                    <div>
+                                        <h3 class="text-lg font-bold text-primary mb-2">El patrón de referencia:
+                                            Carbono-12</h3>
+                                        <p class="leading-relaxed">
+                                            Una <em>uma</em> se define exactamente como 1/12 de la masa de un átomo de
+                                            carbono-12 libre y en reposo en su estado fundamental. Esta estandarización
+                                            permite crear una tabla periódica con valores relativos y altamente precisos
+                                            para todos los elementos conocidos.
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8 mb-8">
+                                    <div
+                                        class="border border-slate-200 dark:border-slate-700 p-6 rounded-xl bg-slate-50 dark:bg-slate-800">
+                                        <h4
+                                            class="font-bold text-slate-800 dark:text-slate-200 mb-3 flex items-center gap-2">
+                                            <span class="material-symbols-outlined text-amber-500">scatter_plot</span>
+                                            Masa Atómica
+                                        </h4>
+                                        <p class="text-sm">
+                                            Es la masa promedio ponderada de los isótopos de un <strong>solo
+                                                elemento</strong>, tal como aparece en la Tabla Periódica. Ejemplo:
+                                            Oxígeno (O) ≈ 16 g/mol, Hidrógeno (H) ≈ 1 g/mol.
+                                        </p>
+                                    </div>
+                                    <div
+                                        class="border border-slate-200 dark:border-slate-700 p-6 rounded-xl bg-slate-50 dark:bg-slate-800">
+                                        <h4
+                                            class="font-bold text-slate-800 dark:text-slate-200 mb-3 flex items-center gap-2">
+                                            <span class="material-symbols-outlined text-emerald-500">bubble_chart</span>
+                                            Masa Molecular (M)
+                                        </h4>
+                                        <p class="text-sm">
+                                            También conocida como Peso Molecular. Es la <strong>suma de las masas
+                                                atómicas</strong> de todos los átomos que componen una molécula. Es
+                                            vital para realizar conversiones estequiométricas.
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <h3
+                                    class="font-bold text-xl mt-8 mb-4 text-slate-900 dark:text-white border-b border-primary/10 pb-2">
+                                    El cálculo de la Masa Molecular</h3>
+                                <p>Para determinar la masa de un compuesto entero, seguimos estos sencillos pasos:</p>
+                                <ol
+                                    class="list-decimal pl-6 space-y-2 mt-4 font-medium marker:text-primary w-fit mx-auto md:mx-0">
+                                    <li>Identificamos la <strong>fórmula química</strong> del compuesto.</li>
+                                    <li>Listamos cada <strong>elemento</strong> y su subíndice (cantidad de átomos).
+                                    </li>
+                                    <li>Buscamos la masa atómica de cada uno en la Tabla Periódica.</li>
+                                    <li>Multiplicamos el número de átomos por la masa atómica de ese elemento.</li>
+                                    <li>Sumamos todos los subtotales para obtener la masa molecular total en g/mol (ó
+                                        uma).</li>
+                                </ol>
+
+                                <div
+                                    class="relative w-full bg-slate-900 rounded-xl border border-primary/20 flex flex-col items-center justify-center mt-12 mb-8 p-8 max-h-[300px]">
+                                    <div
+                                        class="text-center z-10 border border-white/20 rounded-2xl bg-white/5 p-6 shadow-xl">
+                                        <p class="text-xs uppercase tracking-[0.2em] text-cyan-400 mb-2 font-bold">
+                                            FÓRMULA MAESTRA</p>
+                                        <div class="text-xl md:text-3xl font-mono font-black text-white">
+                                            M = Σ ( <span class="text-cyan-400"># Átomos</span> × <span
+                                                class="text-emerald-400">Masa Atómica</span> )
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+
+                    <div
+                        class="mt-12 mb-20 flex justify-between items-center bg-white dark:bg-slate-900 p-6 rounded-xl border border-primary/10">
+                        <a href="../quimica.html"
+                            class="flex items-center gap-2 text-slate-600 dark:text-slate-400 hover:text-primary transition-colors font-bold">
+                            <span class="material-symbols-outlined">arrow_back</span> Volver
+                        </a>
+                        <a href="masa_atomica_ejemplos.html"
+                            class="flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-lg font-bold hover:bg-primary/90 transition-all shadow-lg shadow-primary/20">
+                            Siguiente: Ejemplos <span class="material-symbols-outlined">arrow_forward</span>
+                        </a>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>

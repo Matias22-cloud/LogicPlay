@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#4f46e5",
+                        "accent": "#f43f5e",
+                        "background-light": "#f8fafc",
+                        "background-dark": "#0f172a",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend"]
+                    },
+                    borderRadius: { "DEFAULT": "0.375rem", "lg": "0.75rem", "xl": "1rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+    <style type="text/tailwindcss">
+        :root {
+            --primary-color: #4f46e5;
+            --accent-color: #f43f5e;
+        }
+        .glass-panel {
+            @apply bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border border-white/20 dark:border-slate-800/50 shadow-xl;
+        }
+        .input-glow:focus-within {
+            box-shadow: 0 0 15px rgba(79, 70, 229, 0.3);
+        }
+        .nav-tab {
+            @apply px-4 py-2 text-sm font-semibold transition-all duration-200 relative;
+        }
+        .nav-tab-active {
+            @apply text-primary border-b-2 border-primary;
+        }
+        .nav-tab-inactive {
+            @apply text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 border-b-2 border-transparent;
+        }
+        .input-box {
+            @apply w-20 h-10 text-center font-mono text-xl bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 rounded-lg focus:ring-0 focus:border-primary text-slate-900 dark:text-slate-100 transition-all shadow-sm;
+        }
+    </style>
+    <title>Química Laboratorio - Masa Atómica</title>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased min-h-screen flex flex-col">
+    <div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+        <header class="sticky top-0 z-50 glass-panel border-b px-6 md:px-20 py-4">
+            <div class="flex items-center justify-between max-w-7xl mx-auto w-full">
+                <div class="flex items-center gap-4 text-primary">
+                    <div class="size-10 flex items-center justify-center bg-primary/10 rounded-xl">
+                        <span class="material-symbols-outlined text-primary text-2xl font-bold">science</span>
+                    </div>
+                    <div>
+                        <h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight">Química
+                            Laboratorio</h2>
+                    </div>
+                </div>
+                <div class="flex items-center gap-6">
+                    <nav
+                        class="flex flex-wrap lg:flex-nowrap gap-4 md:gap-8 justify-center items-center text-sm font-semibold text-slate-500">
+                        <a class="hover:text-primary transition-colors" href="../../index.html">Dashboard</a>
+                        <a class="hover:text-primary transition-colors" href="#">Biblioteca</a>
+                    </nav>
+                    <button
+                        class="flex items-center justify-center rounded-xl h-10 w-10 bg-slate-100 dark:bg-slate-800 hover:bg-primary/10 transition-all group">
+                        <span
+                            class="material-symbols-outlined text-slate-600 dark:text-slate-400 group-hover:text-primary">person</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <main class="flex-1 max-w-7xl mx-auto w-full px-6 py-8">
+            <div class="mb-10">
+                <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6">
+                    <div>
+                        <span class="text-primary font-bold text-sm tracking-widest uppercase mb-2 block">MÓDULO 04:
+                            ESTEQUIOMETRÍA</span>
+                        <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 dark:white tracking-tight">
+                            Masa Atómica</h1>
+                    </div>
+                    <div class="flex flex-col items-end gap-2">
+                        <span class="text-xs font-bold text-slate-500">COMPLETADO: 33%</span>
+                        <div class="w-48 h-2 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden shadow-inner">
+                            <div class="h-full bg-primary rounded-full shadow-[0_0_10px_rgba(79,70,229,0.5)]"
+                                style="width: 33%;"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex items-center gap-1 border-b border-slate-200 dark:border-slate-800">
+                    <a class="nav-tab nav-tab-inactive" href="masa_atomica_concepto.html">1. Concepto</a>
+                    <a class="nav-tab nav-tab-inactive" href="masa_atomica_ejemplos.html">2. Ejemplos</a>
+                    <a class="nav-tab nav-tab-active" href="#">3. Laboratorio</a>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 gap-8">
+                <section class="glass-panel p-8 rounded-3xl border-l-[6px] border-l-primary relative overflow-hidden">
+                    <div class="absolute top-0 right-0 p-4 opacity-5">
+                        <span class="material-symbols-outlined text-9xl">experiment</span>
+                    </div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="material-symbols-outlined text-primary fill-1">assignment</span>
+                        <h3 class="text-xl font-bold text-slate-800 dark:text-slate-200">Enunciado del Desafío</h3>
+                    </div>
+                    <div class="relative z-10">
+                        <p class="text-lg text-slate-600 dark:text-slate-400 leading-relaxed font-light">
+                            Selecciona un compuesto para construir su masa molecular. Registra la cantidad de átomos
+                            presentes de cada elemento y la masa atómica respectiva (redondeada). Luego verifica el
+                            total.
+                        </p>
+                    </div>
+                </section>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <div class="lg:col-span-2 glass-panel p-8 rounded-3xl flex flex-col justify-center relative">
+                        <!-- ETAPA 1 -->
+                        <div id="etapa1" class="transition-all duration-500 min-h-[400px]">
+                            <div class="flex items-center justify-between mb-8">
+                                <h4 class="text-xs font-black uppercase tracking-[0.2em] text-slate-400">Pizarra de
+                                    Cálculo</h4>
+                                <select id="moleculeSelect"
+                                    class="bg-slate-100 dark:bg-slate-800 border-none text-slate-900 dark:text-white rounded-lg focus:ring-primary focus:border-primary font-bold text-sm px-4 py-2 cursor-pointer shadow-sm">
+                                    <option value="">-- Elige una Molécula --</option>
+                                    <option value="agua">Agua (H₂O)</option>
+                                    <option value="metano">Metano (CH₄)</option>
+                                    <option value="sal">Sal de Mesa (NaCl)</option>
+                                    <option value="acido">Acido Sulfúrico (H₂SO₄)</option>
+                                </select>
+                            </div>
+
+                            <div id="workspace" class="hidden flex-col items-center">
+                                <h2 id="moleculeTitle"
+                                    class="text-4xl font-mono font-black text-slate-800 dark:text-slate-200 tracking-widest mb-10 mt-4 text-center">
+                                    H₂O</h2>
+
+                                <div id="elementsContainer" class="flex flex-wrap justify-center gap-8 mb-10 w-full">
+                                    <!-- JS Injecta inputs -->
+                                </div>
+
+                                <div
+                                    class="w-full flex flex-col items-center pt-8 border-t border-slate-200 dark:border-slate-800 mt-4">
+                                    <div
+                                        class="flex items-center justify-center gap-4 text-xl font-mono text-slate-800 dark:text-slate-200">
+                                        <span>Masa Total =</span>
+                                        <input id="totalInput" type="number" class="input-box !w-24" placeholder="?">
+                                        <span>g/mol</span>
+                                    </div>
+
+                                    <button id="checkBtn"
+                                        class="mt-8 bg-primary hover:bg-primary/90 text-white px-8 py-3 rounded-xl font-bold transition-all shadow-lg shadow-primary/30 flex items-center gap-2 relative overflow-hidden group">
+                                        <div
+                                            class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform">
+                                        </div>
+                                        <span class="relative z-10 flex items-center gap-2">Verificar <span
+                                                class="material-symbols-outlined text-sm">spellcheck</span></span>
+                                    </button>
+                                    <p id="feedbackMsg"
+                                        class="mt-6 font-bold text-sm h-6 text-center w-full max-w-md mx-auto"></p>
+                                </div>
+                            </div>
+
+                            <div id="initialState" class="flex flex-col items-center justify-center py-24 opacity-30">
+                                <span class="material-symbols-outlined text-[60px] mb-4">touch_app</span>
+                                <p class="text-sm font-bold uppercase tracking-widest">Selecciona una molécula</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Consejo Pedagógico -->
+                    <div class="glass-panel p-8 rounded-3xl flex flex-col justify-start">
+                        <div class="flex items-center gap-3 mb-6">
+                            <span class="material-symbols-outlined text-primary fill-1">lightbulb</span>
+                            <h4 class="text-sm font-black uppercase tracking-[0.1em] text-slate-400">TIP DE LABORATORIO
+                            </h4>
+                        </div>
+                        <p class="text-sm text-slate-600 dark:text-slate-400 italic mb-6 leading-relaxed">
+                            "Para obtener los cálculos exactos de esta práctica simulada, utiliza los siguientes valores
+                            redondeados de la tabla periódica."
+                        </p>
+
+                        <div
+                            class="bg-slate-50 dark:bg-slate-800/50 rounded-xl p-5 border border-slate-200 dark:border-slate-700">
+                            <ul class="text-sm font-mono space-y-3 text-slate-700 dark:text-slate-300">
+                                <li class="flex justify-between border-b border-slate-200 dark:border-slate-700 pb-2">
+                                    <span>H</span> <b>1 g/mol</b></li>
+                                <li class="flex justify-between border-b border-slate-200 dark:border-slate-700 pb-2">
+                                    <span>C</span> <b>12 g/mol</b></li>
+                                <li class="flex justify-between border-b border-slate-200 dark:border-slate-700 pb-2">
+                                    <span>N</span> <b>14 g/mol</b></li>
+                                <li class="flex justify-between border-b border-slate-200 dark:border-slate-700 pb-2">
+                                    <span>O</span> <b>16 g/mol</b></li>
+                                <li class="flex justify-between border-b border-slate-200 dark:border-slate-700 pb-2">
+                                    <span>Na</span> <b>23 g/mol</b></li>
+                                <li class="flex justify-between border-b border-slate-200 dark:border-slate-700 pb-2">
+                                    <span>S</span> <b>32 g/mol</b></li>
+                                <li class="flex justify-between"><span>Cl</span> <b>35.5 g/mol</b></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <script>
+        const db = {
+            'agua': { symbol: 'H₂O', total: 18, elements: [{ name: 'H', q: 2, m: 1 }, { name: 'O', q: 1, m: 16 }] },
+            'metano': { symbol: 'CH₄', total: 16, elements: [{ name: 'C', q: 1, m: 12 }, { name: 'H', q: 4, m: 1 }] },
+            'sal': { symbol: 'NaCl', total: 58.5, elements: [{ name: 'Na', q: 1, m: 23 }, { name: 'Cl', q: 1, m: 35.5 }] },
+            'acido': { symbol: 'H₂SO₄', total: 98, elements: [{ name: 'H', q: 2, m: 1 }, { name: 'S', q: 1, m: 32 }, { name: 'O', q: 4, m: 16 }] }
+        };
+
+        const select = document.getElementById('moleculeSelect');
+        const workspace = document.getElementById('workspace');
+        const initial = document.getElementById('initialState');
+        const title = document.getElementById('moleculeTitle');
+        const container = document.getElementById('elementsContainer');
+        const totalInput = document.getElementById('totalInput');
+        const checkBtn = document.getElementById('checkBtn');
+        const feedback = document.getElementById('feedbackMsg');
+
+        let currentMol = null;
+
+        select.addEventListener('change', (e) => {
+            const val = e.target.value;
+            if (!val) {
+                workspace.classList.add('hidden');
+                workspace.classList.remove('flex');
+                initial.classList.remove('hidden');
+                initial.classList.add('flex');
+                return;
+            }
+            initial.classList.add('hidden');
+            initial.classList.remove('flex');
+            workspace.classList.remove('hidden');
+            workspace.classList.add('flex');
+
+            currentMol = db[val];
+            title.innerText = currentMol.symbol;
+            totalInput.value = '';
+            feedback.innerText = '';
+
+            container.innerHTML = currentMol.elements.map((el, i) => `
+                <div class="flex items-center gap-4 bg-slate-50 dark:bg-slate-800/50 p-4 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm relative">
+                    <span class="text-xs font-bold text-slate-400 absolute -top-2 left-4 bg-background-light dark:bg-background-dark px-2 rounded-full uppercase tracking-wider">${el.name}</span>
+                    <div class="flex flex-col items-center">
+                        <span class="text-[10px] text-slate-500 mb-1 uppercase tracking-widest font-bold">Cant.</span>
+                        <input type="number" id="q_${i}" class="input-box !h-8 !w-16 !text-sm" placeholder="#">
+                    </div>
+                    <span class="font-bold text-slate-300 mx-1 mt-4">×</span>
+                    <div class="flex flex-col items-center">
+                        <span class="text-[10px] text-slate-500 mb-1 uppercase tracking-widest font-bold">Masa</span>
+                        <input type="number" id="m_${i}" class="input-box !h-8 !w-16 !text-sm" placeholder="g">
+                    </div>
+                </div>
+            `).join('');
+        });
+
+        checkBtn.addEventListener('click', () => {
+            if (!currentMol) return;
+            let success = true;
+
+            currentMol.elements.forEach((el, i) => {
+                const qIn = document.getElementById(`q_${i}`);
+                const mIn = document.getElementById(`m_${i}`);
+
+                if (parseFloat(qIn.value) !== el.q) {
+                    success = false;
+                    qIn.classList.add('!border-accent', '!text-accent');
+                    qIn.classList.remove('!border-emerald-500');
+                } else {
+                    qIn.classList.remove('!border-accent', '!text-accent');
+                    qIn.classList.add('!border-emerald-500');
+                }
+
+                if (parseFloat(mIn.value) !== el.m) {
+                    success = false;
+                    mIn.classList.add('!border-accent', '!text-accent');
+                    mIn.classList.remove('!border-emerald-500');
+                } else {
+                    mIn.classList.remove('!border-accent', '!text-accent');
+                    mIn.classList.add('!border-emerald-500');
+                }
+            });
+
+            if (parseFloat(totalInput.value) !== currentMol.total) {
+                totalInput.classList.add('!border-accent', '!text-accent');
+                totalInput.classList.remove('!border-emerald-500');
+                success = false;
+            } else {
+                totalInput.classList.remove('!border-accent', '!text-accent');
+                totalInput.classList.add('!border-emerald-500');
+            }
+
+            if (success) {
+                feedback.innerHTML = '<span class="text-emerald-500 px-4 py-2 bg-emerald-50 dark:bg-emerald-900/20 rounded-full w-full block">¡Ecuación verificada correctamente!</span>';
+            } else {
+                feedback.innerHTML = '<span class="text-accent px-4 py-2 bg-accent/10 rounded-full w-full block">Existen errores de cálculo. Revisa el consejo pedagógico.</span>';
+            }
+        });
+    </script>
+</body>
+
+</html>

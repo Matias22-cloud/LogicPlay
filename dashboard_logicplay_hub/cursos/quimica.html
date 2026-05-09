@@ -37,12 +37,12 @@
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('../service-worker.js')
-                .then(registration => {
-                    console.log('ServiceWorker registration successful');
-                })
-                .catch(err => {
-                    console.log('ServiceWorker registration failed: ', err);
-                });
+                    .then(registration => {
+                        console.log('ServiceWorker registration successful');
+                    })
+                    .catch(err => {
+                        console.log('ServiceWorker registration failed: ', err);
+                    });
             });
         }
     </script>
@@ -66,8 +66,8 @@
             </div>
             <nav class="flex flex-wrap lg:flex-nowrap gap-4 md:gap-8 justify-center items-center mx-auto">
                 <a class="text-slate-500 hover:text-primary transition-colors flex items-center gap-2"
-                    href="../index.html"><span
-                        class="material-symbols-outlined text-[20px]">dashboard</span> Dashboard</a>
+                    href="../index.html"><span class="material-symbols-outlined text-[20px]">dashboard</span>
+                    Dashboard</a>
                 <a class="text-primary font-semibold transition-colors flex items-center gap-2" href="index.html"><span
                         class="material-symbols-outlined text-[20px]">school</span> Cursos</a>
             </nav>
@@ -127,6 +127,22 @@
                     <a href="curso_balanceo_redox.html"
                         class="w-full py-3 text-center bg-emerald-600 text-white font-bold rounded-xl hover:bg-emerald-500 transition-all shadow-md">
                         Ver curso
+                    </a>
+                </div>
+
+                <!-- Tarjeta 3 -->
+                <div
+                    class="glass-panel bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 flex flex-col h-full">
+                    <div
+                        class="w-full aspect-video bg-emerald-100 dark:bg-emerald-900/40 rounded-xl mb-6 flex items-center justify-center text-emerald-500">
+                        <span class="material-symbols-outlined text-5xl">calculate</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Relaciones Cuantitativas</h3>
+                    <p class="text-slate-500 text-sm mb-6 flex-grow">Domina el cálculo de masas atómicas, composición
+                        porcentual y conversiones químicas.</p>
+                    <a href="../Qumica_Todos los documentos/quimica_xrelaciones_cuantitativas/masa_atomica_concepto.html"
+                        class="w-full py-3 text-center bg-emerald-600 text-white font-bold rounded-xl hover:bg-emerald-500 transition-all shadow-md">
+                        Ver tema
                     </a>
                 </div>
             </div>

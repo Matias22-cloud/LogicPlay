@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    <title>LogiPlay - Ecuaciones de 2do Grado</title>
+    <style>
+        body { font-family: 'Lexend', sans-serif; background: #fdfeff; }
+        .reveal { animation: fadeInUp 0.6s ease-out forwards; opacity: 0; }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .formula-box {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+        .highlight-a { color: #f43f5e; font-weight: 900; }
+        .highlight-b { color: #6366f1; font-weight: 900; }
+        .highlight-c { color: #10b981; font-weight: 900; }
+        
+        .type-card { border-left: 4px solid; }
+    </style>
+</head>
+<body class="p-4 md:p-10">
+
+    <div class="max-w-6xl mx-auto">
+        
+        <header class="reveal mb-12 text-center">
+            <!-- Botón con la ruta corregida: matematica 4/funcioncuadratica2.html -->
+            <div class="flex justify-end mb-6">
+                <a href="../matematica_4/funcioncuadratica2.html" class="flex items-center gap-2 bg-slate-100 hover:bg-slate-200 text-slate-700 px-4 py-2 rounded-xl text-xs font-bold transition-all border border-slate-200">
+                    <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                    IR A FUNCIONCUADRATICA2
+                </a>
+            </div>
+
+            <div class="inline-block bg-rose-100 text-rose-700 px-6 py-2 rounded-full font-black text-xs uppercase tracking-[0.3em] mb-4">
+                Módulo Académico: Álgebra
+            </div>
+            <h1 class="text-6xl font-black text-slate-900 tracking-tighter mb-4">
+                Ecuaciones de <span class="text-rose-600">2do Grado</span>
+            </h1>
+            <p class="text-slate-500 text-xl font-light">Dominando la forma general y sus variantes.</p>
+        </header>
+
+        <!-- Sección de Teoría Profunda (LA FORMA GENERAL) -->
+        <section class="reveal grid lg:grid-cols-1 gap-8 mb-12" style="animation-delay: 0.1s">
+            <div class="formula-box rounded-[3rem] p-10 md:p-14 text-white relative overflow-hidden">
+                <h2 class="text-emerald-400 font-black text-sm uppercase tracking-widest mb-6">Definición Matemática</h2>
+                <p class="text-slate-300 mb-8 leading-relaxed">
+                    Una ecuación cuadrática es aquella donde la <b>variable x</b> tiene como exponente máximo el 2. Su forma estándar es:
+                </p>
+                
+                <div class="text-4xl md:text-6xl font-mono text-center mb-10 tracking-widest">
+                    <span class="highlight-a">a</span>x² + <span class="highlight-b">b</span>x + <span class="highlight-c">c</span> = 0
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-6 bg-white/5 p-8 rounded-3xl border border-white/10">
+                    <div>
+                        <span class="highlight-a text-xs uppercase block mb-1">Constante a</span>
+                        <p class="text-sm text-slate-400">Coeficiente cuadrático. <b>Nunca cero</b> (a ≠ 0). Dicta si la parábola abre arriba o abajo.</p>
+                    </div>
+                    <div>
+                        <span class="highlight-b text-xs uppercase block mb-1">Constante b</span>
+                        <p class="text-sm text-slate-400">Coeficiente lineal. Mueve la parábola de forma lateral.</p>
+                    </div>
+                    <div>
+                        <span class="highlight-c text-xs uppercase block mb-1">Constante c</span>
+                        <p class="text-sm text-slate-400">Término independiente. Es el punto donde se corta el eje Y.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Nueva Sección: Clasificación (Sustituye Eje de Simetría) -->
+        <section class="reveal mb-16" style="animation-delay: 0.2s">
+            <h3 class="text-3xl font-black text-slate-800 mb-8 flex items-center gap-3">
+                <span class="material-symbols-outlined text-rose-600">category</span>
+                Clasificación de Funciones
+            </h3>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- COMPLETAS -->
+                <div class="bg-white p-8 rounded-[2.5rem] shadow-lg border-l-8 border-emerald-500">
+                    <h4 class="font-black text-emerald-600 uppercase text-xs mb-2">01. Completas</h4>
+                    <p class="text-slate-500 text-sm mb-4">Tienen los tres términos (a, b y c son diferentes a cero).</p>
+                    <div class="bg-slate-50 p-4 rounded-xl font-mono text-sm font-bold text-slate-700">
+                        3x² + 2x - 5 = 0
+                    </div>
+                </div>
+
+                <!-- INCOMPLETAS -->
+                <div class="bg-white p-8 rounded-[2.5rem] shadow-lg border-l-8 border-indigo-500">
+                    <h4 class="font-black text-indigo-600 uppercase text-xs mb-2">02. Incompletas</h4>
+                    <p class="text-slate-500 text-sm mb-4">Les falta el término lineal (b=0) o el independiente (c=0).</p>
+                    <div class="space-y-2 font-mono text-sm font-bold text-slate-700">
+                        <div class="bg-slate-50 p-2 rounded-lg">x² - 9 = 0</div>
+                        <div class="bg-slate-50 p-2 rounded-lg">2x² + 4x = 0</div>
+                    </div>
+                </div>
+
+                <!-- NO CUADRÁTICAS -->
+                <div class="bg-slate-100 p-8 rounded-[2.5rem] border-2 border-dashed border-slate-300">
+                    <h4 class="font-black text-slate-400 uppercase text-xs mb-2 italic">03. No Cuadráticas</h4>
+                    <p class="text-slate-400 text-sm mb-4">Si "a" es cero o si el exponente es distinto de 2, ¡no son!</p>
+                    <div class="space-y-2 font-mono text-sm font-bold text-slate-400">
+                        <div class="bg-white/50 p-2 rounded-lg line-through">5x + 3 = 0</div>
+                        <div class="bg-white/50 p-2 rounded-lg line-through">x³ + 2x² = 0</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de Visualización de Comportamiento -->
+        <section class="reveal bg-rose-600 rounded-[4rem] p-12 text-white mb-16 shadow-2xl" style="animation-delay: 0.3s">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h3 class="text-3xl font-black mb-6">Reglas Geométricas</h3>
+                    <div class="space-y-6">
+                        <div class="bg-white/10 p-6 rounded-2xl">
+                            <h4 class="font-bold text-rose-200 mb-2">¿Cómo identificar el "fraude"?</h4>
+                            <p class="text-sm">Si ves una ecuación donde la x está "desnuda" (exponente 1), es una <b>recta</b>. Si tiene un 3, es una <b>cúbica</b>. La cuadrática siempre tiene un 2 como líder.</p>
+                        </div>
+                        <div class="bg-white/10 p-6 rounded-2xl">
+                            <h4 class="font-bold text-rose-200 mb-2">El poder de "a"</h4>
+                            <p class="text-sm">Si <b>a</b> es positivo, la parábola sonríe. Si <b>a</b> es negativo, está triste. ¡Sin "a" no hay parábola!</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white/5 border border-white/20 rounded-[3rem] p-8 text-center backdrop-blur-lg">
+                    <span class="material-symbols-outlined text-[80px] mb-4">warning</span>
+                    <p class="text-xl font-light italic">"Mucho cuidado: Una ecuación incompleta sigue siendo cuadrática, pero una sin x² es solo una línea."</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reto de Identificación -->
+        <section class="reveal mb-20" style="animation-delay: 0.4s">
+            <h3 class="text-4xl font-black text-slate-900 mb-10 text-center text-balance">Desafío de <span class="italic text-rose-600">Análisis</span></h3>
+            
+            <div class="max-w-2xl mx-auto bg-white p-10 rounded-[3rem] border border-slate-200 shadow-lg">
+                <p class="text-center text-slate-500 mb-8 font-medium italic">¿A qué categoría pertenece esta ecuación?</p>
+                <div class="text-3xl font-mono font-black text-slate-800 text-center mb-10 bg-slate-50 py-6 rounded-3xl">
+                    7x² + 14 = 0
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <button onclick="checkType(1)" class="p-4 bg-slate-900 text-white rounded-2xl font-bold text-xs uppercase hover:bg-emerald-500 transition-all">Completa</button>
+                    <button onclick="checkType(2)" class="p-4 bg-slate-900 text-white rounded-2xl font-bold text-xs uppercase hover:bg-indigo-500 transition-all">Incompleta</button>
+                    <button onclick="checkType(3)" class="p-4 bg-slate-900 text-white rounded-2xl font-bold text-xs uppercase hover:bg-rose-500 transition-all">No Cuadrática</button>
+                </div>
+                
+                <p id="finalFeedback" class="mt-8 text-center font-black uppercase text-xs min-h-[20px]"></p>
+            </div>
+        </section>
+
+        <footer class="reveal flex justify-center py-10 border-t border-slate-200">
+            <p class="text-slate-400 text-sm font-medium">LogiPlay 2026 - Educación Adaptativa</p>
+        </footer>
+    </div>
+
+    <script>
+        function checkType(choice) {
+            const fb = document.getElementById('finalFeedback');
+            if (choice === 2) {
+                fb.innerText = "✨ ¡Exacto! Es incompleta porque le falta el término lineal (bx). a=7, b=0, c=14.";
+                fb.className = "mt-8 text-center font-black uppercase text-xs text-emerald-500 animate-bounce";
+            } else if (choice === 1) {
+                fb.innerText = "❌ No. Para ser completa necesita un término con 'x' (por ejemplo, 14x).";
+                fb.className = "mt-8 text-center font-black uppercase text-xs text-rose-500";
+            } else {
+                fb.innerText = "❌ ¡Error! Tiene un x² al principio, así que sí es cuadrática.";
+                fb.className = "mt-8 text-center font-black uppercase text-xs text-rose-500";
+            }
+        }
+    </script>
+</body>
+</html>

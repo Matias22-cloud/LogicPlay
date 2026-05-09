@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    <title>LogiPlay - Práctica Cuadrática</title>
+    <style>
+        body { font-family: 'Lexend', sans-serif; background: #fdfeff; }
+        .reveal { animation: fadeInUp 0.6s ease-out forwards; opacity: 0; }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .formula-box {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+        .highlight-a { color: #f43f5e; font-weight: 900; }
+        .highlight-b { color: #6366f1; font-weight: 900; }
+        .highlight-c { color: #10b981; font-weight: 900; }
+        
+        input:focus { outline: none; border-color: #f43f5e; ring: 2px ring-rose-500; }
+    </style>
+</head>
+<body class="p-4 md:p-10">
+
+    <div class="max-w-6xl mx-auto">
+        
+        <!-- CABECERA -->
+        <header class="reveal mb-12 text-center">
+            <!-- Botones de Navegación -->
+            <div class="flex justify-between mb-8">
+                <a href="../matematica_4/funcioncuadratica.html" class="flex items-center gap-2 bg-slate-100 hover:bg-slate-200 text-slate-700 px-4 py-2 rounded-xl text-xs font-bold transition-all border border-slate-200">
+                    <span class="material-symbols-outlined text-sm">arrow_back</span>
+                    ATRÁS
+                </a>
+                <a href="../matematica_4/funcioncuadratica3.html" class="flex items-center gap-2 bg-slate-900 hover:bg-rose-600 text-white px-4 py-2 rounded-xl text-xs font-bold transition-all">
+                    SIGUIENTE
+                    <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                </a>
+            </div>
+
+            <div class="inline-block bg-rose-100 text-rose-700 px-6 py-2 rounded-full font-black text-xs uppercase tracking-[0.3em] mb-4">
+                Módulo Académico: Álgebra
+            </div>
+            <h1 class="text-6xl font-black text-slate-900 tracking-tighter mb-4">
+                Laboratorio <span class="text-rose-600">Cuadrático</span>
+            </h1>
+            <p class="text-slate-500 text-xl font-light">Pon a prueba tu capacidad de análisis y creación.</p>
+        </header>
+
+        <!-- SECCIÓN 1: LABORATORIO DE CREACIÓN -->
+        <section class="reveal mb-16" style="animation-delay: 0.1s">
+            <h2 class="text-3xl font-black text-slate-800 mb-8 flex items-center gap-3">
+                <span class="material-symbols-outlined text-indigo-600 text-4xl">edit_square</span>
+                1. Taller de Escritura
+            </h2>
+            <p class="text-slate-500 mb-8">Escribe 2 ejemplos originales para cada categoría. ¡No olvides el $= 0$!</p>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Columna Completas -->
+                <div class="space-y-4">
+                    <span class="tag bg-emerald-100 text-emerald-600 px-3 py-1 rounded-lg text-[10px] font-black uppercase">Completas</span>
+                    <input type="text" placeholder="Ej: 2x² + 3x - 1 = 0" class="w-full p-4 rounded-2xl border-2 border-slate-100 bg-white shadow-sm font-mono text-sm">
+                    <input type="text" placeholder="Tu segundo ejemplo..." class="w-full p-4 rounded-2xl border-2 border-slate-100 bg-white shadow-sm font-mono text-sm">
+                </div>
+
+                <!-- Columna Incompletas -->
+                <div class="space-y-4">
+                    <span class="tag bg-indigo-100 text-indigo-600 px-3 py-1 rounded-lg text-[10px] font-black uppercase">Incompletas</span>
+                    <input type="text" placeholder="Ej: x² - 25 = 0" class="w-full p-4 rounded-2xl border-2 border-slate-100 bg-white shadow-sm font-mono text-sm">
+                    <input type="text" placeholder="Ej: 5x² + 2x = 0" class="w-full p-4 rounded-2xl border-2 border-slate-100 bg-white shadow-sm font-mono text-sm">
+                </div>
+
+                <!-- Columna No Cuadráticas -->
+                <div class="space-y-4">
+                    <span class="tag bg-slate-200 text-slate-600 px-3 py-1 rounded-lg text-[10px] font-black uppercase">No Cuadráticas</span>
+                    <input type="text" placeholder="Ej: 8x + 4 = 0" class="w-full p-4 rounded-2xl border-2 border-slate-100 bg-white shadow-sm font-mono text-sm italic">
+                    <input type="text" placeholder="Ej: x³ - x = 0" class="w-full p-4 rounded-2xl border-2 border-slate-100 bg-white shadow-sm font-mono text-sm italic">
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 2: ESCÁNER DE COEFICIENTES -->
+        <section class="reveal mb-20" style="animation-delay: 0.2s">
+            <h2 class="text-3xl font-black text-slate-800 mb-8 flex items-center gap-3">
+                <span class="material-symbols-outlined text-rose-600 text-4xl">biotech</span>
+                2. Escáner de Coeficientes
+            </h2>
+            <p class="text-slate-500 mb-8">Identifica los valores de <b>a</b>, <b>b</b> y <b>c</b>. Si falta alguno, pon <b>0</b>.</p>
+
+            <div class="bg-slate-900 rounded-[3rem] p-8 md:p-12 overflow-hidden relative shadow-2xl">
+                <div class="grid gap-6 relative z-10">
+                    
+                    <!-- Ejercicio 1 -->
+                    <div class="grid md:grid-cols-4 items-center gap-4 bg-white/5 p-6 rounded-3xl border border-white/10">
+                        <div class="text-xl font-mono text-white font-bold">5x² - 3x + 8 = 0</div>
+                        <div class="flex items-center gap-2">
+                            <span class="highlight-a text-[10px] uppercase">a=</span>
+                            <input type="number" class="w-full bg-slate-800 rounded-lg p-2 text-white text-center border border-white/10">
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="highlight-b text-[10px] uppercase">b=</span>
+                            <input type="number" class="w-full bg-slate-800 rounded-lg p-2 text-white text-center border border-white/10">
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="highlight-c text-[10px] uppercase">c=</span>
+                            <input type="number" class="w-full bg-slate-800 rounded-lg p-2 text-white text-center border border-white/10">
+                        </div>
+                    </div>
+
+                    <!-- Ejercicio 2 -->
+                    <div class="grid md:grid-cols-4 items-center gap-4 bg-white/5 p-6 rounded-3xl border border-white/10">
+                        <div class="text-xl font-mono text-white font-bold">x² + 7x = 0</div>
+                        <div class="flex items-center gap-2">
+                            <span class="highlight-a text-[10px] uppercase">a=</span>
+                            <input type="number" class="w-full bg-slate-800 rounded-lg p-2 text-white text-center border border-white/10">
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="highlight-b text-[10px] uppercase">b=</span>
+                            <input type="number" class="w-full bg-slate-800 rounded-lg p-2 text-white text-center border border-white/10">
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="highlight-c text-[10px] uppercase">c=</span>
+                            <input type="number" class="w-full bg-slate-800 rounded-lg p-2 text-white text-center border border-white/10">
+                        </div>
+                    </div>
+
+                    <!-- Ejercicio 3 -->
+                    <div class="grid md:grid-cols-4 items-center gap-4 bg-white/5 p-6 rounded-3xl border border-white/10">
+                        <div class="text-xl font-mono text-white font-bold">-2x² + 10 = 0</div>
+                        <div class="flex items-center gap-2">
+                            <span class="highlight-a text-[10px] uppercase">a=</span>
+                            <input type="number" class="w-full bg-slate-800 rounded-lg p-2 text-white text-center border border-white/10">
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="highlight-b text-[10px] uppercase">b=</span>
+                            <input type="number" class="w-full bg-slate-800 rounded-lg p-2 text-white text-center border border-white/10">
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="highlight-c text-[10px] uppercase">c=</span>
+                            <input type="number" class="w-full bg-slate-800 rounded-lg p-2 text-white text-center border border-white/10">
+                        </div>
+                    </div>
+
+                    <!-- Ejercicio 4 -->
+                    <div class="grid md:grid-cols-4 items-center gap-4 bg-white/5 p-6 rounded-3xl border border-white/10">
+                        <div class="text-xl font-mono text-white font-bold">3x² = 0</div>
+                        <div class="flex items-center gap-2">
+                            <span class="highlight-a text-[10px] uppercase">a=</span>
+                            <input type="number" class="w-full bg-slate-800 rounded-lg p-2 text-white text-center border border-white/10">
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="highlight-b text-[10px] uppercase">b=</span>
+                            <input type="number" class="w-full bg-slate-800 rounded-lg p-2 text-white text-center border border-white/10">
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="highlight-c text-[10px] uppercase">c=</span>
+                            <input type="number" class="w-full bg-slate-800 rounded-lg p-2 text-white text-center border border-white/10">
+                        </div>
+                    </div>
+
+                    <!-- Ejercicio 5 -->
+                    <div class="grid md:grid-cols-4 items-center gap-4 bg-white/5 p-6 rounded-3xl border border-white/10">
+                        <div class="text-xl font-mono text-white font-bold">x² - x - 1 = 0</div>
+                        <div class="flex items-center gap-2">
+                            <span class="highlight-a text-[10px] uppercase">a=</span>
+                            <input type="number" class="w-full bg-slate-800 rounded-lg p-2 text-white text-center border border-white/10">
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="highlight-b text-[10px] uppercase">b=</span>
+                            <input type="number" class="w-full bg-slate-800 rounded-lg p-2 text-white text-center border border-white/10">
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="highlight-c text-[10px] uppercase">c=</span>
+                            <input type="number" class="w-full bg-slate-800 rounded-lg p-2 text-white text-center border border-white/10">
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="absolute -top-20 -right-20 w-64 h-64 bg-rose-500/10 rounded-full blur-3xl"></div>
+                <div class="absolute -bottom-20 -left-20 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl"></div>
+            </div>
+        </section>
+
+        <footer class="reveal flex justify-between items-center py-10 border-t border-slate-200">
+            <p class="text-slate-400 text-sm font-medium">LogiPlay 2026 - Guía de Ejercicios</p>
+            <button onclick="window.print()" class="bg-slate-900 text-white px-6 py-2 rounded-xl text-xs font-black uppercase tracking-widest hover:bg-rose-600 transition-colors">Imprimir Guía</button>
+        </footer>
+    </div>
+
+</body>
+</html>

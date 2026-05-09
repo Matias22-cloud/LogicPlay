@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: { "primary": "#2c0fbd", "background-light": "#f6f6f8", "background-dark": "#131022" },
+                    fontFamily: { "display": ["Lexend"] },
+                },
+            },
+        }
+    </script>
+    <style>
+        .table-row-hover:hover {
+            background-color: rgba(44, 15, 189, 0.05);
+            transition: all 0.2s;
+        }
+
+        .formula-tag {
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: 700;
+            color: #2c0fbd;
+            background: rgba(44, 15, 189, 0.1);
+            padding: 4px 8px;
+            border-radius: 6px;
+        }
+
+        .example-block {
+            font-family: 'Courier New', Courier, monospace;
+            background: rgba(0, 0, 0, 0.03);
+            padding: 8px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            border-left: 3px solid #2c0fbd;
+        }
+
+        .dark .example-block {
+            background: rgba(255, 255, 255, 0.05);
+            border-left-color: #818cf8;
+            color: #cbd5e1;
+        }
+
+        .dark .formula-tag {
+            color: #818cf8;
+            background: rgba(129, 140, 248, 0.2);
+        }
+
+        .dark .table-row-hover:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+    </style>
+    <title>Química Conceptos Claros - Tabla de Conversiones</title>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 transition-colors duration-300">
+    <div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+        <div class="layout-container flex h-full grow flex-col">
+            <header
+                class="flex items-center justify-between whitespace-nowrap border-b border-solid border-primary/10 px-6 py-3 lg:px-40 bg-white dark:bg-background-dark/50 backdrop-blur-md sticky top-0 z-50">
+                <div class="flex items-center gap-4 text-primary">
+                    <div class="size-8 flex items-center justify-center bg-primary/10 rounded-lg"><span
+                            class="material-symbols-outlined text-primary">rocket_launch</span></div>
+                    <h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight tracking-[-0.015em]">
+                        Química Conceptos Claros</h2>
+                </div>
+                <div class="flex items-center gap-4">
+                    <a href="../../index.html"
+                        class="px-4 py-2 text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-primary transition-colors">Dashboard</a>
+                </div>
+            </header>
+            <main class="flex flex-1 justify-center py-8">
+                <div class="layout-content-container flex flex-col max-w-[1000px] flex-1 px-4 lg:px-0">
+                    <div class="flex flex-wrap justify-between items-end gap-3 mb-6">
+                        <div class="flex flex-col gap-1">
+                            <span class="text-primary font-bold text-sm uppercase tracking-wider">Relaciones
+                                Cuantitativas</span>
+                            <h1
+                                class="text-slate-900 dark:text-slate-100 tracking-tight text-4xl font-extrabold leading-tight">
+                                Tabla de Conversiones</h1>
+                        </div>
+                    </div>
+                    <div
+                        class="flex flex-col gap-3 p-6 bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-primary/5 mb-8">
+                        <div class="flex items-center gap-2">
+                            <span class="material-symbols-outlined text-primary">format_list_bulleted</span>
+                            <p class="text-slate-700 dark:text-slate-300 text-base font-medium leading-normal italic">
+                                "Todas las llaves para abrir el mundo de las relaciones cuantitativas."
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- TABLA MAESTRA -->
+                    <section
+                        class="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-primary/10 overflow-hidden mb-8">
+                        <div
+                            class="bg-primary/5 dark:bg-primary/20 p-6 flex items-center gap-4 border-b border-primary/10">
+                            <span class="material-symbols-outlined text-primary text-3xl">build</span>
+                            <div>
+                                <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Fórmulas y Relaciones</h2>
+                                <p class="text-sm text-slate-600 dark:text-slate-400">Guía práctica para estequiometría
+                                    básica con ejemplos</p>
+                            </div>
+                        </div>
+
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left border-collapse">
+                                <thead>
+                                    <tr
+                                        class="bg-slate-50 dark:bg-slate-950/50 text-slate-500 dark:text-slate-400 text-xs uppercase tracking-widest border-b border-slate-200 dark:border-slate-800">
+                                        <th class="p-6 font-bold w-1/5">Conversión</th>
+                                        <th class="p-6 font-bold w-1/4">Fórmula Maestra</th>
+                                        <th class="p-6 font-bold w-2/5">Ejemplo Práctico</th>
+                                        <th class="p-6 font-bold text-center w-[10%]">Unidad</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-slate-700 dark:text-slate-300 text-sm">
+
+                                    <tr class="table-row-hover border-b border-slate-100 dark:border-slate-800">
+                                        <td class="p-6 font-bold text-slate-900 dark:text-white">Masa Molecular (M)</td>
+                                        <td class="p-6"><span class="formula-tag">M = Σ (át. × m.atómica)</span></td>
+                                        <td class="p-6">
+                                            <div class="example-block">
+                                                <b>H₂O:</b><br>
+                                                (2 × 1g) + (16g) = 18 g/mol
+                                            </div>
+                                        </td>
+                                        <td
+                                            class="p-6 text-center font-mono font-bold text-primary dark:text-primary-light">
+                                            g/mol</td>
+                                    </tr>
+
+                                    <tr class="table-row-hover border-b border-slate-100 dark:border-slate-800">
+                                        <td class="p-6 font-bold text-slate-900 dark:text-white">Masa ➔ Moles</td>
+                                        <td class="p-6"><span class="formula-tag">n = m / M</span></td>
+                                        <td class="p-6">
+                                            <div class="example-block">
+                                                <b>36g de H₂O:</b><br>
+                                                n = 36g / 18(g/mol) = 2 mol
+                                            </div>
+                                        </td>
+                                        <td
+                                            class="p-6 text-center font-mono font-bold text-primary dark:text-primary-light">
+                                            mol</td>
+                                    </tr>
+
+                                    <tr class="table-row-hover border-b border-slate-100 dark:border-slate-800">
+                                        <td class="p-6 font-bold text-slate-900 dark:text-white">Moles ➔ Masa</td>
+                                        <td class="p-6"><span class="formula-tag">m = n × M</span></td>
+                                        <td class="p-6">
+                                            <div class="example-block">
+                                                <b>3 moles de H₂O:</b><br>
+                                                m = 3 mol × 18(g/mol) = 54g
+                                            </div>
+                                        </td>
+                                        <td
+                                            class="p-6 text-center font-mono font-bold text-primary dark:text-primary-light">
+                                            g</td>
+                                    </tr>
+
+                                    <tr class="table-row-hover border-b border-slate-100 dark:border-slate-800">
+                                        <td class="p-6 font-bold text-slate-900 dark:text-white">Moles ➔ Partículas</td>
+                                        <td class="p-6"><span class="formula-tag">P = n × (6.022×10²³)</span></td>
+                                        <td class="p-6">
+                                            <div class="example-block">
+                                                <b>2 moles de H₂O:</b><br>
+                                                2 × 6.022×10²³ = 1.204×10²⁴ moléc.
+                                            </div>
+                                        </td>
+                                        <td
+                                            class="p-6 text-center font-mono font-bold text-primary dark:text-primary-light">
+                                            moléc</td>
+                                    </tr>
+
+                                    <tr class="table-row-hover border-b border-slate-100 dark:border-slate-800">
+                                        <td class="p-6 font-bold text-slate-900 dark:text-white">Partículas ➔ Moles</td>
+                                        <td class="p-6"><span class="formula-tag">n = P / (6.022×10²³)</span></td>
+                                        <td class="p-6">
+                                            <div class="example-block">
+                                                <b>3.011×10²³ átomos de C:</b><br>
+                                                (3...×10²³) / (6...×10²³) = 0.5 mol
+                                            </div>
+                                        </td>
+                                        <td
+                                            class="p-6 text-center font-mono font-bold text-primary dark:text-primary-light">
+                                            mol</td>
+                                    </tr>
+
+                                    <tr class="table-row-hover border-b border-slate-100 dark:border-slate-800">
+                                        <td class="p-6 font-bold text-slate-900 dark:text-white">Masa ➔ Partículas</td>
+                                        <td class="p-6"><span class="formula-tag">P = (m / M) × Nₐ</span></td>
+                                        <td class="p-6">
+                                            <div class="example-block">
+                                                <b>9g de H₂O:</b><br>
+                                                (9/18) × 6.022×10²³ = 3.011×10²³
+                                            </div>
+                                        </td>
+                                        <td
+                                            class="p-6 text-center font-mono font-bold text-primary dark:text-primary-light">
+                                            moléc</td>
+                                    </tr>
+
+                                    <tr class="table-row-hover border-b border-slate-100 dark:border-slate-800">
+                                        <td class="p-6 font-bold text-slate-900 dark:text-white">Partículas ➔ Masa</td>
+                                        <td class="p-6"><span class="formula-tag">m = (P / Nₐ) × M</span></td>
+                                        <td class="p-6">
+                                            <div class="example-block">
+                                                <b>3.011×10²³ moléc de H₂O:</b><br>
+                                                (3.../6...) × 18 = 9g
+                                            </div>
+                                        </td>
+                                        <td
+                                            class="p-6 text-center font-mono font-bold text-primary dark:text-primary-light">
+                                            g</td>
+                                    </tr>
+
+                                    <tr class="table-row-hover border-b border-slate-100 dark:border-slate-800">
+                                        <td class="p-6 font-bold text-slate-900 dark:text-white">Composición %</td>
+                                        <td class="p-6"><span class="formula-tag">% = (n×M_e / M_tot)×100</span></td>
+                                        <td class="p-6">
+                                            <div class="example-block">
+                                                <b>% O en H₂O:</b><br>
+                                                (16/18) × 100 = 88.89%
+                                            </div>
+                                        </td>
+                                        <td
+                                            class="p-6 text-center font-mono font-bold text-primary dark:text-primary-light">
+                                            %</td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <!-- LEYENDA -->
+                    <section class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-20 text-center">
+                        <div
+                            class="p-4 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+                            <p class="text-xs uppercase font-black text-slate-400">n</p>
+                            <p class="text-sm font-bold text-slate-700 dark:text-slate-300">Moles</p>
+                        </div>
+                        <div
+                            class="p-4 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+                            <p class="text-xs uppercase font-black text-slate-400">m</p>
+                            <p class="text-sm font-bold text-slate-700 dark:text-slate-300">Masa (g)</p>
+                        </div>
+                        <div
+                            class="p-4 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+                            <p class="text-xs uppercase font-black text-slate-400">M</p>
+                            <p class="text-sm font-bold text-slate-700 dark:text-slate-300">Masa Molecular</p>
+                        </div>
+                        <div
+                            class="p-4 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+                            <p class="text-xs uppercase font-black text-slate-400">Nₐ</p>
+                            <p class="text-sm font-bold text-slate-700 dark:text-slate-300 font-mono">6.022 × 10²³</p>
+                        </div>
+                    </section>
+
+                    <div
+                        class="mt-12 mb-20 flex justify-between items-center bg-white dark:bg-slate-900 p-6 rounded-xl border border-primary/10">
+                        <a href="composicion_laboratorio.html"
+                            class="flex items-center gap-2 text-slate-600 dark:text-slate-400 hover:text-primary transition-colors font-bold">
+                            <span class="material-symbols-outlined">arrow_back</span> Anterior: Composición %
+                        </a>
+                        <button disabled
+                            class="flex items-center gap-2 bg-slate-200 dark:bg-slate-800 text-slate-400 px-6 py-3 rounded-lg font-bold cursor-not-allowed">
+                            Fin del Tema
+                        </button>
+                    </div>
+
+                </div>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>

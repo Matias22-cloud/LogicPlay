@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Cargar Lista - LogiPlay</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 600px; margin: 40px auto; padding: 20px; }
+    h2 { color: #333; }
+    #estado { margin-top: 20px; }
+    .ok { color: green; }
+    .error { color: red; }
+    button { padding: 12px 24px; font-size: 16px; background: #4CAF50; color: white; border: none; border-radius: 6px; cursor: pointer; }
+    button:disabled { background: #aaa; cursor: not-allowed; }
+    #progreso { margin-top: 10px; font-weight: bold; }
+  </style>
+</head>
+<body>
+
+  <h2>📋 Cargar Lista del Curso a Firestore</h2>
+  <p>Haz clic en el botón para subir los 33 estudiantes. Esto solo se hace <strong>una vez</strong>.</p>
+  <button id="btn" onclick="cargarLista()">Subir Lista</button>
+  <div id="progreso"></div>
+  <div id="estado"></div>
+
+  <!-- Firebase SDK -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyBD3-ZnbczYZOuDm7e9OHLP6Xg68sdZ1so",
+      authDomain: "logicplay-e775c.firebaseapp.com",
+      projectId: "logicplay-e775c",
+      storageBucket: "logicplay-e775c.firebasestorage.app",
+      messagingSenderId: "11226997472",
+      appId: "1:11226997472:web:836d7d87f4f6a01987e685",
+      measurementId: "G-3EJBS09212"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    const lista_curso = [
+      "BERMEJO TERAN JEREMY ALEXANDER",
+      "BUSTOS HARO JOSEPH XAVIER",
+      "CAIZAGUANO GUAMAN ANAHI ALEXANDRA",
+      "CALVOPIÑA GONZALEZ LUIS MATEO",
+      "CHAMBA LOBATO DENICE AYME",
+      "COLCHA COLUMBA DUBRASKA MAYLI",
+      "COLLAGUAZO CACHIGUANGO KARLA POLETH",
+      "DEMERA CASTILLO SCARLETH LISSETTE",
+      "DIAZ SHIGUANGO DANIELA JEAMILETH",
+      "ESPIN PACHECO DARLEY RAISA",
+      "GUEVARA CHANCUSIG FERNANDO DANIEL",
+      "JIMENEZ NARVAEZ MAYRA GABRIELA",
+      "LEON TOAPANTA DANIELA SARAHI",
+      "LLALLICO REMACHE ANTHONY PATRICIO",
+      "MEJIA MONTAGUANO ALEXANDER MATIAS",
+      "MENDEZ COLCHA JAZMIN ANAHI",
+      "MONCAYO SIMBAÑA MATIAS ADRIAN",
+      "MONTOYA MONTIEL MARLON MAURICIO",
+      "MORALES CHANGO GABRIEL ISAAC",
+      "MOYANO ORTEGA YULIANA ANABELA",
+      "NAVARRETE BURGOS JOSE FRANCISCO",
+      "NOROÑA ALBARRAN ARIADNA DANIELA",
+      "PAUCAR GUZMAN ALAN FABRICIO",
+      "PAZMIÑO POZO MARIA ESTRELLA",
+      "PUCACHAQUI CHULCA LEYSI JENEBRIHP",
+      "PUENTE SANCHEZ JORDY DAMIAN",
+      "QUINCHIGUANGO TOALA SEBASTIAN ALEJANDRO",
+      "TANGUILA TUALOMBO JHOSTIN JOSUE",
+      "TAPUY GREFA MAURICIO ALEXANDER",
+      "TOAPANTA CHANCUSIG MIGUEL ANGEL",
+      "TOTOY SILVA LEONEL STEVEN",
+      "VERA CASTRO SULAY MILENA",
+      "VIZCAINO RODRIGUEZ AYLIN ITHAMAR"
+    ];
+
+    window.cargarLista = async function() {
+      const btn = document.getElementById('btn');
+      const estado = document.getElementById('estado');
+      const progreso = document.getElementById('progreso');
+
+      btn.disabled = true;
+      estado.innerHTML = '';
+      let exitosos = 0;
+
+      for (let i = 0; i < lista_curso.length; i++) {
+        const nombre = lista_curso[i];
+        progreso.textContent = `Subiendo ${i + 1} de ${lista_curso.length}...`;
+        try {
+          await addDoc(collection(db, 'lista_curso'), {
+            nombre_completo: nombre,
+            aprobado: true,
+            uid_vinculado: null
+          });
+          estado.innerHTML += `<p class="ok">✅ ${nombre}</p>`;
+          exitosos++;
+        } catch (e) {
+          estado.innerHTML += `<p class="error">❌ Error en ${nombre}: ${e.message}</p>`;
+        }
+      }
+
+      progreso.textContent = `✅ Listo. ${exitosos} de ${lista_curso.length} estudiantes subidos.`;
+      btn.textContent = 'Ya terminó - puedes cerrar esta página';
+    }
+  </script>
+
+</body>
+</html>
