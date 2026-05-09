@@ -120,11 +120,11 @@
             <!-- Email Form (Firebase Auth) -->
             <form id="email-form" class="space-y-4">
                 <div>
-                    <label for="displayName" class="block text-sm font-bold text-slate-700 mb-1.5">Nombre de
-                        usuario</label>
+                    <label for="displayName" class="block text-sm font-bold text-slate-700 mb-1.5">Nombre
+                        completo</label>
                     <input type="text" id="displayName"
                         class="w-full bg-slate-50 border border-slate-200 focus:border-primary focus:ring-2 focus:ring-primary/20 rounded-xl px-4 py-3 text-sm font-medium transition-all outline-none"
-                        placeholder="Tu nombre" required>
+                        placeholder="Tu nombre y apellido" required>
                 </div>
                 <div>
                     <label for="email" class="block text-sm font-bold text-slate-700 mb-1.5">Correo electrónico</label>
@@ -242,20 +242,24 @@
                 }
 
                 if (!userSnap.exists()) {
+                    let enLista = null;
 
-                    // Verificar en la lista del curso
-                    const enLista = await verificarEnLista(user.displayName || "");
+                    // Bug 1 & 2: Verificar por rol antes de buscar en lista. El profesor entra directo.
+                    if (role === 'estudiante') {
+                        // Solo buscar si el rol es estudiante
+                        enLista = await verificarEnLista(user.displayName || "");
 
-                    if (!enLista) {
-                        // No está en la lista — notificar al profesor
-                        await addDoc(collection(db, 'alertas_profesor'), {
-                            tipo: 'estudiante_no_encontrado',
-                            nombre_ingresado: user.displayName || "Sin nombre",
-                            email: user.email,
-                            fecha: serverTimestamp(),
-                            revisado: false
-                        });
-                        // Igual lo deja entrar pero queda marcado para revisión
+                        if (!enLista) {
+                            // No está en la lista — notificar al profesor
+                            await addDoc(collection(db, 'alertas_profesor'), {
+                                tipo: 'estudiante_no_encontrado',
+                                nombre_ingresado: user.displayName || "Sin nombre",
+                                email: user.email,
+                                fecha: serverTimestamp(),
+                                revisado: false
+                            });
+                            // Igual lo deja entrar pero queda marcado para revisión
+                        }
                     }
 
                     await setDoc(userRef, {
@@ -266,7 +270,7 @@
                         lastActivity: null,
                         role: role,
                         createdAt: serverTimestamp(),
-                        verificado: enLista ? true : false,
+                        verificado: role === 'profesor' ? true : (enLista ? true : false),
                         nombre_lista: enLista ? enLista.nombre_completo : null
                     });
                 } else {
@@ -312,6 +316,13 @@
             const email = document.getElementById('email').value.trim();
             const password = document.getElementById('password').value;
             const displayNameInput = document.getElementById('displayName').value.trim();
+
+            if (displayNameInput.split(/\s+/).length < 2) {
+                showError("Por favor ingresa tu nombre completo (nombre y al menos un apellido).");
+                submitBtn.disabled = false;
+                submitText.textContent = "Iniciar Sesión / Registrarse";
+                return;
+            }
 
             try {
                 // Check if user is logging in (tries creating, if fails because exists, logs in)
