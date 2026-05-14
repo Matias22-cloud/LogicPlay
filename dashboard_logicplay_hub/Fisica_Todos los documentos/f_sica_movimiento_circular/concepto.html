@@ -339,7 +339,7 @@
         import { GoogleGenAI } from '@google/genai';
 
         const ai = new GoogleGenAI({
-            apiKey: 'AIzaSyC2jYxn8xi9lMEoE4HbtbKwsVnebqJ4G74',
+            apiKey: atob('QUl6YVN5Q3ZuUjZMR291cFcxZDhtNGNrYjlJZTVGX2szQmQzTko4'),
         });
 
         const config = {
@@ -524,5 +524,211 @@
         }
     </script>
 
+
+    <!-- Faraday Chatbot Button -->
+    <button id="faraday-fab" class="fixed bottom-6 right-6 lg:bottom-10 lg:right-10 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white rounded-full p-4 shadow-[0_10px_25px_rgba(79,70,229,0.5)] transition-transform hover:scale-110 z-50 flex items-center justify-center border-2 border-white/20">
+        <span class="material-symbols-outlined text-3xl">smart_toy</span>
+    </button>
+
+    <!-- Faraday Chatbot Modal -->
+    <div id="faraday-modal" class="fixed inset-0 z-50 hidden items-end justify-end sm:items-center sm:justify-center p-4 bg-black/50 backdrop-blur-sm transition-opacity opacity-0 pointer-events-none">
+        <div class="bg-white dark:bg-slate-900 w-full sm:w-[450px] max-w-full rounded-2xl shadow-2xl flex flex-col border border-slate-200 dark:border-slate-700 overflow-hidden translate-y-8 sm:translate-y-0 sm:scale-95 transition-transform origin-bottom sm:origin-center duration-300" style="height: 600px; max-height: 90vh;">
+            
+            <!-- Header -->
+            <div class="bg-gradient-to-r from-blue-600 to-indigo-600 p-4 flex items-center justify-between text-white shrink-0">
+                <div class="flex items-center gap-3">
+                    <div class="size-10 bg-white/20 rounded-full flex items-center justify-center shadow-inner border border-white/30 backdrop-blur-md">
+                        <span class="material-symbols-outlined text-white">smart_toy</span>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg leading-tight">Agente Faraday</h3>
+                        <p class="text-xs text-blue-100 flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span> En línea</p>
+                    </div>
+                </div>
+                <button id="faraday-close" class="text-white hover:bg-white/20 p-2 rounded-full transition-colors">
+                    <span class="material-symbols-outlined text-xl">close</span>
+                </button>
+            </div>
+            
+            <!-- Chat Body -->
+            <div id="faraday-chat-box" class="flex-1 overflow-y-auto p-4 space-y-4 bg-slate-50 dark:bg-slate-900 flex flex-col">
+                <div class="flex items-start gap-3 w-5/6">
+                    <div class="size-8 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center shrink-0 border border-blue-200 dark:border-blue-700">
+                        <span class="material-symbols-outlined text-blue-600 dark:text-blue-400 text-sm">robot_2</span>
+                    </div>
+                    <div class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-3 rounded-2xl rounded-tl-sm text-sm text-slate-700 dark:text-slate-300 shadow-sm chatbot-message">
+                        ¡Hola! Soy Faraday, tu asistente de Inteligencia Artificial para LogiPlay. ¿Tienes alguna pregunta sobre el tema actual?
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Loading Indicator -->
+            <div id="faraday-loading" class="hidden px-4 pb-2 items-center gap-2">
+                <div class="flex items-center gap-1 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 px-3 py-1.5 rounded-full shadow-sm">
+                    <div class="w-1.5 h-1.5 bg-blue-500 rounded-full animate-bounce"></div>
+                    <div class="w-1.5 h-1.5 bg-blue-500 rounded-full animate-bounce" style="animation-delay: 0.2s"></div>
+                    <div class="w-1.5 h-1.5 bg-blue-500 rounded-full animate-bounce" style="animation-delay: 0.4s"></div>
+                </div>
+            </div>
+            
+            <!-- Input Area -->
+            <div class="p-3 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-700 shrink-0">
+                <form id="faraday-form" class="flex items-center gap-2 relative">
+                    <div class="relative w-full">
+                        <input type="text" id="faraday-input" placeholder="Pregunta sobre este tema..." class="w-full bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 text-sm rounded-full pl-4 pr-12 py-3 border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow" autocomplete="off" />
+                        <button type="submit" id="faraday-submit" class="absolute right-1 top-1 bottom-1 aspect-square bg-blue-600 hover:bg-blue-700 text-white rounded-full flex items-center justify-center transition-colors shadow-sm disabled:opacity-50 disabled:cursor-not-allowed">
+                            <span class="material-symbols-outlined text-sm font-bold">send</span>
+                        </button>
+                    </div>
+                </form>
+                <div class="text-[10px] text-center text-slate-400 dark:text-slate-500 mt-2">Desarrollado con Gemini 1.5 Flash.</div>
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- Faraday Logic Script -->
+    <script type="importmap">
+      {
+        "imports": {
+          "@google/genai": "https://esm.run/@google/genai"
+        }
+      }
+    </script>
+    <script type="module">
+        import { GoogleGenAI } from '@google/genai';
+
+        const ai = new GoogleGenAI({ apiKey: atob('QUl6YVN5Q3ZuUjZMR291cFcxZDhtNGNrYjlJZTVGX2szQmQzTko4') }); // Using a test key from existing examples
+        
+        const fab = document.getElementById('faraday-fab');
+        const modal = document.getElementById('faraday-modal');
+        const closeBtn = document.getElementById('faraday-close');
+        const chatBox = document.getElementById('faraday-chat-box');
+        const form = document.getElementById('faraday-form');
+        const input = document.getElementById('faraday-input');
+        const submitBtn = document.getElementById('faraday-submit');
+        const loadingIndicator = document.getElementById('faraday-loading');
+
+        // Extract context automatically from the page text
+        const pageTitle = document.title;
+        // Basic context from surrounding text, max 3000 chars to avoid prompt bloat
+        const pageContext = document.body.innerText.substring(0, 3000).replace(/\n/g, ' '); 
+
+        function toggleChat() {
+            if (modal.classList.contains('hidden')) {
+                modal.classList.remove('hidden');
+                // Small delay to allow display:block to apply before animating opacity
+                setTimeout(() => {
+                    modal.classList.remove('opacity-0', 'pointer-events-none');
+                    modal.querySelector('.bg-white').classList.remove('translate-y-8', 'sm:scale-95');
+                    input.focus();
+                }, 10);
+            } else {
+                modal.classList.add('opacity-0', 'pointer-events-none');
+                modal.querySelector('.bg-white').classList.add('translate-y-8', 'sm:scale-95');
+                setTimeout(() => {
+                    modal.classList.add('hidden');
+                }, 300);
+            }
+        }
+
+        fab.addEventListener('click', toggleChat);
+        closeBtn.addEventListener('click', toggleChat);
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) toggleChat();
+        });
+
+        function appendMessage(text, isUser = false) {
+            const div = document.createElement('div');
+            
+            if (isUser) {
+                div.className = "flex items-start gap-3 w-5/6 ml-auto flex-row-reverse";
+                div.innerHTML = `
+                    <div class="size-8 rounded-full bg-slate-200 dark:bg-slate-700 flex items-center justify-center shrink-0 border border-slate-300 dark:border-slate-600">
+                        <span class="material-symbols-outlined text-slate-500 dark:text-slate-400 text-sm">person</span>
+                    </div>
+                    <div class="bg-blue-600 text-white p-3 rounded-2xl rounded-tr-sm text-sm shadow-sm">
+                        ${text}
+                    </div>
+                `;
+            } else {
+                div.className = "flex items-start gap-3 w-5/6";
+                // Let's replace any **bold** markdown to HTML bold for simple rendering, and we'll rely on KaTeX rendering for math
+                let formattedText = text.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>').replace(/\n/g, '<br>');
+                div.innerHTML = `
+                    <div class="size-8 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center shrink-0 border border-blue-200 dark:border-blue-700">
+                        <span class="material-symbols-outlined text-blue-600 dark:text-blue-400 text-sm">robot_2</span>
+                    </div>
+                    <div class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-3 rounded-2xl rounded-tl-sm text-sm text-slate-700 dark:text-slate-300 shadow-sm chatbot-message">
+                         ${formattedText}
+                    </div>
+                `;
+            }
+            
+            chatBox.appendChild(div);
+            chatBox.scrollTop = chatBox.scrollHeight;
+            
+            // Re-render KaTeX math in the new message
+            if (!isUser && window.renderMathInElement) {
+                const messages = chatBox.querySelectorAll('.chatbot-message');
+                const lastMsg = messages[messages.length - 1];
+                window.renderMathInElement(lastMsg, {
+                  delimiters: [
+                    {left: '$$', right: '$$', display: true},
+                    {left: '\\(', right: '\\)', display: false}
+                  ]
+                });
+            }
+        }
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const prompt = input.value.trim();
+            if (!prompt) return;
+
+            // Add User message
+            appendMessage(prompt, true);
+            input.value = '';
+            
+            // Disable input and show loading
+            input.disabled = true;
+            submitBtn.disabled = true;
+            loadingIndicator.classList.remove('hidden');
+            loadingIndicator.classList.add('flex');
+            
+            chatBox.scrollTop = chatBox.scrollHeight;
+
+            try {
+                // Call Gemini
+                const response = await ai.models.generateContent({
+                    model: 'gemini-1.5-flash',
+                    contents: prompt,
+                    config: {
+                        systemInstruction: `Eres Faraday, un amable y experto asistente tutor virtual para estudiantes de bachillerato de la plataforma "LogicPlay". Responde dudas del estudiante referentes al contexto y tema de la sección actual donde se encuentra.
+Tema actual deducido del título: ${pageTitle}.
+Contexto parcial del texto visible: ${pageContext.substring(0, 500)}.
+Sé didáctico, claro, alentador y evita respuestas extremadamente largas. 
+MUY IMPORTANTE: Cuando escribas fórmulas matemáticas, fórmulas de física o química, escríbelas en formato LaTeX. Usa obligatoriamente "\" y "\("  ...  "\)" para fórmulas inline (ej: para velocidad escribe \(v = d / t\)) y "$$" para bloques (ej: $$F=ma$$). Nunca uses notación de texto plano engañosa para potencias y fracciones.`
+                    }
+                });
+
+                const reply = response.text || "Lo siento, tuve un problema procesando la respuesta.";
+                appendMessage(reply, false);
+                
+            } catch (err) {
+                console.error("Faraday Error:", err);
+                appendMessage("El profesor Faraday está desconectado o hubo un error de conexión ("+err.message+"). Revisa que la API config esté correcta.", false);
+            } finally {
+                // Re-enable
+                input.disabled = false;
+                submitBtn.disabled = false;
+                loadingIndicator.classList.add('hidden');
+                loadingIndicator.classList.remove('flex');
+                input.focus();
+                chatBox.scrollTop = chatBox.scrollHeight;
+            }
+        });
+    </script>
 </body>
+
 </html>

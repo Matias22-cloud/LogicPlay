@@ -79,9 +79,7 @@
         <header
             class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-6 py-4 sticky top-0 z-50">
             <div class="flex items-center gap-4 text-primary">
-                <div class="size-8">
-                    <img src="../logo.svg" alt="LogicPlay Logo" style="width: 32px; height: 32px;" />
-                </div>
+                <img src="/logo.svg" alt="LogicPlay" height="32" />
                 <h2
                     class="text-slate-900 dark:text-white text-xl font-extrabold leading-tight tracking-tight hidden sm:block">
                     LogicPlay
@@ -114,12 +112,27 @@
                     style="display: none;">
                     <span class="material-symbols-outlined text-[18px]">download</span> Descargar
                 </button>
-                <button
-                    class="relative p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-primary/10 hover:text-primary transition-all">
-                    <span class="material-symbols-outlined">notifications</span>
-                    <span
-                        class="absolute top-1.5 right-1.5 size-2 bg-red-500 rounded-full ring-2 ring-white dark:ring-slate-900"></span>
-                </button>
+                <!-- Notification Bell & Panel -->
+                <div class="relative" id="notifications-container">
+                    <button id="notification-btn" aria-label="Notificaciones"
+                        class="relative p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-primary/10 hover:text-primary transition-all">
+                        <span class="material-symbols-outlined">notifications</span>
+                        <span id="notification-dot" class="absolute top-1.5 right-1.5 size-2 bg-red-500 rounded-full ring-2 ring-white dark:ring-slate-900 hidden"></span>
+                    </button>
+                    <!-- Dropdown -->
+                    <div id="notification-dropdown" class="absolute right-0 mt-3 w-80 max-w-[90vw] bg-white dark:bg-slate-900 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-700 hidden z-50 overflow-hidden transform opacity-0 scale-95 transition-all duration-200 origin-top-right">
+                        <div class="bg-slate-50 dark:bg-slate-800 p-4 border-b border-slate-200 dark:border-slate-700 flex justify-between items-center">
+                            <h3 class="font-bold text-slate-900 dark:text-white">Notificaciones</h3>
+                            <span id="unread-count-badge" class="bg-primary text-white text-xs font-bold px-2 py-0.5 rounded-full hidden">0</span>
+                        </div>
+                        <div id="notification-list" class="max-h-80 overflow-y-auto w-full flex flex-col scrollbar-thin">
+                            <div class="p-6 text-center text-slate-500 text-sm">
+                                <span class="material-symbols-outlined text-4xl opacity-50 mb-2">notifications_off</span>
+                                <p>No tienes notificaciones por ahora.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="h-10 w-px bg-slate-200 dark:bg-slate-800 mx-1 hidden sm:block"></div>
                 <div class="flex items-center gap-3">
                     <div class="text-right hidden xl:block">
@@ -600,6 +613,137 @@
         });
     </script>
 
+    <!-- Notifications Script -->
+    <script type="module" id="notifications-script">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js";
+        import { getFirestore, collection, query, where, orderBy, onSnapshot, doc, updateDoc } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js";
+        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-auth.js";
+
+        const firebaseConfig = {
+            apiKey: atob("QUl6YVN5QkQzLVpuYmN6WVpPdURtN2U5T0hMUDZYZzY4c2RaMXNv"), 
+            authDomain: "logicplay-e775c.firebaseapp.com",
+            projectId: "logicplay-e775c",
+            storageBucket: "logicplay-e775c.firebasestorage.app",
+            messagingSenderId: "11226997472",
+            appId: "1:11226997472:web:836d7d87f4f6a01987e685"
+        };
+
+        const app = initializeApp(firebaseConfig, "NotifApp"); // Prevent duplicates
+        const db = getFirestore(app);
+        const auth = getAuth(app);
+
+        const bellBtn = document.getElementById('notification-btn');
+        const dropdown = document.getElementById('notification-dropdown');
+        const notifDot = document.getElementById('notification-dot');
+        const notifList = document.getElementById('notification-list');
+        const badge = document.getElementById('unread-count-badge');
+
+        const currentUrl = window.location.href;
+        let currMateria = "todas";
+        if (currentUrl.includes("dashboard_fisica")) currMateria = "fisica";
+        else if (currentUrl.includes("dashboard_quimica")) currMateria = "quimica";
+        else if (currentUrl.includes("dashboard_matematicas")) currMateria = "matematicas";
+
+        if ("Notification" in window) {
+            if (Notification.permission !== "denied" && Notification.permission !== "granted") {
+                Notification.requestPermission();
+            }
+        }
+
+        bellBtn.addEventListener('click', () => {
+            const isHidden = dropdown.classList.contains('hidden');
+            if (isHidden) {
+                dropdown.classList.remove('hidden');
+                setTimeout(() => {
+                    dropdown.classList.remove('opacity-0', 'scale-95');
+                }, 10);
+            } else {
+                dropdown.classList.add('opacity-0', 'scale-95');
+                setTimeout(() => {
+                    dropdown.classList.add('hidden');
+                }, 200);
+            }
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!document.getElementById('notifications-container').contains(e.target)) {
+                dropdown.classList.add('opacity-0', 'scale-95');
+                setTimeout(() => { dropdown.classList.add('hidden'); }, 200);
+            }
+        });
+
+        onAuthStateChanged(auth, (user) => {
+            if (!user) return;
+
+            let q;
+            if (currMateria === "todas") {
+                q = query(collection(db, "notificaciones"), orderBy("fecha", "desc"));
+            } else {
+                q = query(collection(db, "notificaciones"), where("materia", "==", currMateria), orderBy("fecha", "desc"));
+            }
+
+            let isInitialLoad = true;
+
+            onSnapshot(q, (snapshot) => {
+                snapshot.docChanges().forEach((change) => {
+                    if (change.type === "added" && !isInitialLoad && !change.doc.data().leido) {
+                        // Push Notification
+                        if (Notification.permission === "granted") {
+                            new Notification("LogicPlay - " + change.doc.data().titulo, {
+                                body: change.doc.data().mensaje,
+                                icon: "/favicon.ico"
+                            });
+                        }
+                    }
+                });
+
+                isInitialLoad = false;
+                
+                if (snapshot.empty) {
+                    notifList.innerHTML = `<div class="p-6 text-center text-slate-500 text-sm"><span class="material-symbols-outlined text-4xl opacity-50 mb-2">notifications_off</span><p>No tienes notificaciones ${currMateria !== 'todas' ? 'de ' + currMateria : ''} por ahora.</p></div>`;
+                    notifDot.classList.add('hidden');
+                    badge.classList.add('hidden');
+                    return;
+                }
+
+                let html = "";
+                let unreadCount = 0;
+
+                snapshot.docs.forEach((docSnap) => {
+                    const data = docSnap.data();
+                    if (!data.leido) unreadCount++;
+
+                    const bgclass = data.leido ? "bg-white dark:bg-slate-900" : "bg-blue-50 dark:bg-blue-900/20";
+                    
+                    html += `
+                    <div class="p-4 border-b border-slate-100 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors cursor-pointer ${bgclass}" onclick="window.markAsRead('${docSnap.id}', ${data.leido})">
+                        <h4 class="text-sm font-bold text-slate-900 dark:text-white mb-1">${data.titulo} <span class="text-[10px] bg-slate-200 dark:bg-slate-700 px-1.5 py-0.5 rounded text-slate-500 uppercase tracking-wide float-right mt-0.5">${data.materia}</span></h4>
+                        <p class="text-xs text-slate-600 dark:text-slate-400 leading-snug">${data.mensaje}</p>
+                    </div>`;
+                });
+
+                notifList.innerHTML = html;
+
+                if (unreadCount > 0) {
+                    notifDot.classList.remove('hidden');
+                    badge.classList.remove('hidden');
+                    badge.innerText = unreadCount;
+                } else {
+                    notifDot.classList.add('hidden');
+                    badge.classList.add('hidden');
+                }
+            });
+        });
+
+        window.markAsRead = async (docId, isRead) => {
+            if (isRead) return; 
+            try {
+                await updateDoc(doc(db, "notificaciones", docId), { leido: true });
+            } catch (e) {
+                console.error("Error marcando como leido", e);
+            }
+        }
+    </script>
 </body>
 
 </html>

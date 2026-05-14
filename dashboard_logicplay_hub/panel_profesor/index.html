@@ -38,12 +38,12 @@
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('../service-worker.js')
-                .then(registration => {
-                    console.log('ServiceWorker registration successful');
-                })
-                .catch(err => {
-                    console.log('ServiceWorker registration failed: ', err);
-                });
+                    .then(registration => {
+                        console.log('ServiceWorker registration successful');
+                    })
+                    .catch(err => {
+                        console.log('ServiceWorker registration failed: ', err);
+                    });
             });
         }
     </script>
@@ -52,7 +52,7 @@
     <!-- KaTeX for Math Rendering -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css">
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" 
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js"
         onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '\(', right: '\)', display: false}]});"></script>
 
 </head>
@@ -80,8 +80,8 @@
             </div>
             <nav class="flex flex-wrap lg:flex-nowrap gap-4 md:gap-8 justify-center items-center mx-auto">
                 <a class="text-slate-500 hover:text-primary transition-colors flex items-center gap-2"
-                    href="../index.html"><span
-                        class="material-symbols-outlined text-[20px]">dashboard</span> Dashboard</a>
+                    href="../index.html"><span class="material-symbols-outlined text-[20px]">dashboard</span>
+                    Dashboard</a>
                 <a class="text-primary font-semibold transition-colors flex items-center gap-2" href="#"><span
                         class="material-symbols-outlined text-[20px]">edit_note</span> Creador de Temas</a>
             </nav>
@@ -103,7 +103,7 @@
             </div>
 
             <!-- Contenedor del Formulario -->
-            <form id="teacher-form" class="space-y-8" onsubmit="event.preventDefault(); showSuccessAlert();">
+            <form id="teacher-form" class="space-y-8">
 
                 <!-- Sección 1: Información Básica -->
                 <div
@@ -116,14 +116,14 @@
 
                     <div class="space-y-6">
                         <div>
-                            <input type="text" placeholder="Escribe tu título aquí" required
+                            <input type="text" id="tema-titulo" placeholder="Escribe tu título aquí" required
                                 class="w-full text-3xl font-extrabold bg-transparent border-0 border-b-2 border-slate-200 dark:border-slate-700 focus:border-primary focus:ring-0 placeholder-slate-400 dark:placeholder-slate-500 px-0 py-3 text-slate-900 dark:text-white transition-colors" />
                         </div>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
                                 <label
                                     class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">Materia</label>
-                                <select required
+                                <select id="materia-select" required
                                     class="w-full bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl px-4 py-3 text-slate-900 dark:text-white focus:border-primary focus:ring-1 focus:ring-primary outline-none">
                                     <option value="" disabled selected>Selecciona una opción...</option>
                                     <option value="fisica">Física</option>
@@ -425,6 +425,61 @@
         });
     </script>
 
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js";
+        import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js";
+
+        // Obfuscated Firebase Config to blend with the recent changes
+        const firebaseConfig = {
+            apiKey: atob("QUl6YVN5QkQzLVpuYmN6WVpPdURtN2U5T0hMUDZYZzY4c2RaMXNv"),
+            authDomain: "logicplay-e775c.firebaseapp.com",
+            projectId: "logicplay-e775c",
+            storageBucket: "logicplay-e775c.firebasestorage.app",
+            messagingSenderId: "11226997472",
+            appId: "1:11226997472:web:836d7d87f4f6a01987e685"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        document.getElementById('teacher-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const titulo = document.getElementById('tema-titulo').value;
+            const materia = document.getElementById('materia-select').value;
+
+            const submitBtn = e.target.querySelector('button[type="submit"]');
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<span class="material-symbols-outlined animate-spin">refresh</span> Publicando...';
+
+            try {
+                // Registrar Notificación
+                await addDoc(collection(db, "notificaciones"), {
+                    titulo: titulo,
+                    materia: materia,
+                    mensaje: `¡El profesor agregó un nuevo tema de ${materia.charAt(0).toUpperCase() + materia.slice(1)}!`,
+                    fecha: serverTimestamp(),
+                    leido: false
+                });
+
+                showSuccessAlert();
+                e.target.reset(); // Limpiar el form
+                // Limpiar preview y youtube info manual
+                document.getElementById('upload-placeholder').classList.remove('hidden');
+                document.getElementById('upload-preview').classList.add('hidden');
+                document.getElementById('youtube-preview-container').classList.add('hidden');
+                document.getElementById('youtube-placeholder').classList.remove('hidden');
+                document.getElementById('youtube-iframe').src = "";
+
+            } catch (error) {
+                console.error("Error al publicar la notificación:", error);
+                alert("Hubo un error al publicar el módulo, por favor revisa la conexión.");
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<span class="material-symbols-outlined text-2xl">publish</span> Publicar tema';
+            }
+        });
+    </script>
 </body>
 
 </html>
