@@ -178,7 +178,7 @@
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js";
         import { getFirestore, doc, updateDoc, increment } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js";
-        const firebaseConfig = { apiKey: "AIzaSyBD3-ZnbczYZOuDm7e9OHLP6Xg68sdZ1so", authDomain: "logicplay-e775c.firebaseapp.com", projectId: "logicplay-e775c", storageBucket: "logicplay-e775c.firebasestorage.app", messagingSenderId: "11226997472", appId: "1:11226997472:web:836d7d87f4f6a01987e685" };
+        const firebaseConfig = { apiKey: "AIzaSyCvnR6LGoupW1d8m4ckb9Ie5F_k3Bd3NJ8", authDomain: "logicplay-e775c.firebaseapp.com", projectId: "logicplay-e775c", storageBucket: "logicplay-e775c.firebasestorage.app", messagingSenderId: "11226997472", appId: "1:11226997472:web:836d7d87f4f6a01987e685" };
         const app = initializeApp(firebaseConfig); const db = getFirestore(app);
         window.savePointsFisica = async function(pts) { const uid = localStorage.getItem('logicplay_uid'); if(uid) { try { await updateDoc(doc(db, "users", uid), { points: increment(pts), puntos_fisica: increment(pts), racha_fisica: increment(1), streak: increment(1) }); } catch(e) { console.error(e); } } };
     </script>
@@ -370,7 +370,7 @@
         import { getFirestore, doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js";
 
         const firebaseConfig = {
-            apiKey: "AIzaSyBD3-ZnbczYZOuDm7e9OHLP6Xg68sdZ1so",
+            apiKey: "AIzaSyCvnR6LGoupW1d8m4ckb9Ie5F_k3Bd3NJ8",
             authDomain: "logicplay-e775c.firebaseapp.com",
             projectId: "logicplay-e775c",
             storageBucket: "logicplay-e775c.firebasestorage.app",
