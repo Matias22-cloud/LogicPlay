@@ -78,13 +78,13 @@
         <!-- Top Navigation Bar -->
         <header
             class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-6 py-4 sticky top-0 z-50">
-            <div class="flex items-center gap-4 text-primary">
-                <img src="./logo.svg" alt="LogicPlay" height="32" />
+            <a href="index.html" class="flex items-center gap-4 text-primary no-underline">
+                <img src="/logo.svg" alt="LogicPlay" height="32" />
                 <h2
                     class="text-slate-900 dark:text-white text-xl font-extrabold leading-tight tracking-tight hidden sm:block">
                     LogicPlay
                 </h2>
-            </div>
+            </a>
             <nav class="hidden xl:flex gap-8 items-center mx-auto"><a
                     class="text-slate-500 dark:text-slate-400 hover:text-primary transition-colors flex items-center gap-2"
                     href="Qumica_Todos los documentos/quimica_selecci_n_de_temas/code.html"><span
@@ -108,8 +108,7 @@
             </nav>
             <div class="flex items-center gap-2 sm:gap-4">
                 <button id="install-button"
-                    class="hidden sm:flex bg-primary/10 text-primary border border-primary/20 px-3 py-1.5 rounded-lg text-sm font-bold items-center gap-1 hover:bg-primary/20 transition-all"
-                    >
+                    class="hidden sm:flex bg-primary/10 text-primary border border-primary/20 px-3 py-1.5 rounded-lg text-sm font-bold items-center gap-1 hover:bg-primary/20 transition-all">
                     <span class="material-symbols-outlined text-[18px]">download</span> Descargar
                 </button>
                 <!-- Notification Bell & Panel -->
@@ -117,17 +116,23 @@
                     <button id="notification-btn" aria-label="Notificaciones"
                         class="relative p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-primary/10 hover:text-primary transition-all">
                         <span class="material-symbols-outlined">notifications</span>
-                        <span id="notification-dot" class="absolute top-1.5 right-1.5 size-2 bg-red-500 rounded-full ring-2 ring-white dark:ring-slate-900 hidden"></span>
+                        <span id="notification-dot"
+                            class="absolute top-1.5 right-1.5 size-2 bg-red-500 rounded-full ring-2 ring-white dark:ring-slate-900 hidden"></span>
                     </button>
                     <!-- Dropdown -->
-                    <div id="notification-dropdown" class="absolute right-0 mt-3 w-80 max-w-[90vw] bg-white dark:bg-slate-900 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-700 hidden z-50 overflow-hidden transform opacity-0 scale-95 transition-all duration-200 origin-top-right">
-                        <div class="bg-slate-50 dark:bg-slate-800 p-4 border-b border-slate-200 dark:border-slate-700 flex justify-between items-center">
+                    <div id="notification-dropdown"
+                        class="absolute right-0 mt-3 w-80 max-w-[90vw] bg-white dark:bg-slate-900 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-700 hidden z-50 overflow-hidden transform opacity-0 scale-95 transition-all duration-200 origin-top-right">
+                        <div
+                            class="bg-slate-50 dark:bg-slate-800 p-4 border-b border-slate-200 dark:border-slate-700 flex justify-between items-center">
                             <h3 class="font-bold text-slate-900 dark:text-white">Notificaciones</h3>
-                            <span id="unread-count-badge" class="bg-primary text-white text-xs font-bold px-2 py-0.5 rounded-full hidden">0</span>
+                            <span id="unread-count-badge"
+                                class="bg-primary text-white text-xs font-bold px-2 py-0.5 rounded-full hidden">0</span>
                         </div>
-                        <div id="notification-list" class="max-h-80 overflow-y-auto w-full flex flex-col scrollbar-thin">
+                        <div id="notification-list"
+                            class="max-h-80 overflow-y-auto w-full flex flex-col scrollbar-thin">
                             <div class="p-6 text-center text-slate-500 text-sm">
-                                <span class="material-symbols-outlined text-4xl opacity-50 mb-2">notifications_off</span>
+                                <span
+                                    class="material-symbols-outlined text-4xl opacity-50 mb-2">notifications_off</span>
                                 <p>No tienes notificaciones por ahora.</p>
                             </div>
                         </div>
@@ -170,8 +175,7 @@
                 <span class="material-symbols-outlined text-[18px]">lock</span> Temas (Bloqueado)
             </button>
             <button id="install-button-mobile"
-                class="flex sm:hidden bg-primary/10 text-primary border border-primary/20 px-4 py-2 rounded-lg text-sm font-bold items-center justify-center gap-2 mt-2 mb-2"
-                >
+                class="flex sm:hidden bg-primary/10 text-primary border border-primary/20 px-4 py-2 rounded-lg text-sm font-bold items-center justify-center gap-2 mt-2 mb-2">
                 <span class="material-symbols-outlined text-[18px]">download</span> Descargar App
             </button>
         </div>
@@ -599,7 +603,7 @@
             deferredPrompt = e;
             const installButtons = document.querySelectorAll('#install-button, #install-button-mobile, #install-button-landing');
             installButtons.forEach(btn => {
-                btn.style.display = 'flex'; 
+                btn.style.display = 'flex';
                 btn.addEventListener('click', async () => {
                     if (deferredPrompt) {
                         try {
@@ -625,7 +629,7 @@
         import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-auth.js";
 
         const firebaseConfig = {
-            apiKey: atob("QUl6YVN5QkQzLVpuYmN6WVpPdURtN2U5T0hMUDZYZzY4c2RaMXNv"), 
+            apiKey: atob("QUl6YVN5QkQzLVpuYmN6WVpPdURtN2U5T0hMUDZYZzY4c2RaMXNv"),
             authDomain: "logicplay-e775c.firebaseapp.com",
             projectId: "logicplay-e775c",
             storageBucket: "logicplay-e775c.firebasestorage.app",
@@ -703,7 +707,7 @@
                 });
 
                 isInitialLoad = false;
-                
+
                 if (snapshot.empty) {
                     notifList.innerHTML = `<div class="p-6 text-center text-slate-500 text-sm"><span class="material-symbols-outlined text-4xl opacity-50 mb-2">notifications_off</span><p>No tienes notificaciones ${currMateria !== 'todas' ? 'de ' + currMateria : ''} por ahora.</p></div>`;
                     notifDot.classList.add('hidden');
@@ -719,7 +723,7 @@
                     if (!data.leido) unreadCount++;
 
                     const bgclass = data.leido ? "bg-white dark:bg-slate-900" : "bg-blue-50 dark:bg-blue-900/20";
-                    
+
                     html += `
                     <div class="p-4 border-b border-slate-100 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors cursor-pointer ${bgclass}" onclick="window.markAsRead('${docSnap.id}', ${data.leido})">
                         <h4 class="text-sm font-bold text-slate-900 dark:text-white mb-1">${data.titulo} <span class="text-[10px] bg-slate-200 dark:bg-slate-700 px-1.5 py-0.5 rounded text-slate-500 uppercase tracking-wide float-right mt-0.5">${data.materia}</span></h4>
@@ -741,7 +745,7 @@
         });
 
         window.markAsRead = async (docId, isRead) => {
-            if (isRead) return; 
+            if (isRead) return;
             try {
                 await updateDoc(doc(db, "notificaciones", docId), { leido: true });
             } catch (e) {
