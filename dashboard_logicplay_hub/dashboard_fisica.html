@@ -68,7 +68,7 @@
     <!-- KaTeX for Math Rendering -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css">
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" 
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js"
         onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '\(', right: '\)', display: false}]});"></script>
 
 </head>
@@ -89,7 +89,8 @@
             </div>
             <nav class="hidden xl:flex gap-8 items-center mx-auto"><a
                     class="text-slate-500 dark:text-slate-400 hover:text-primary transition-colors flex items-center gap-2"
-                    href="index.html"><span class="material-symbols-outlined text-[20px]">dashboard</span> Dashboard</a>
+                    href="Fisica_Todos los documentos/f_sica_selecci_n_de_temas/code.html"><span
+                        class="material-symbols-outlined text-[20px]">view_list</span> Ver Temas</a>
                 <a class="text-primary font-semibold bg-primary/10 px-3 py-1.5 rounded-lg hover:text-primary transition-colors flex items-center gap-2"
                     href="dashboard_fisica.html">
                     <span class="material-symbols-outlined text-[20px]">science</span> Física
@@ -123,7 +124,7 @@
                 <div class="flex items-center gap-3">
                     <div class="text-right hidden xl:block">
                         <p class="text-sm font-bold leading-none" id="dom-role-label">Estudiante</p>
-                        <p class="text-xs text-primary font-medium mt-1" id="dom-header-pts">0 XP • Nivel 1</p>
+                        <p class="text-xs text-primary font-medium mt-1" id="dom-header-pts">0 XP</p>
                     </div>
                     <div class="size-8 sm:size-10 rounded-full bg-primary/20 border-2 border-primary overflow-hidden"
                         id="dom-header-avatar">
@@ -139,11 +140,11 @@
             </div>
         </header>
 
-        <!-- Mobile Navigation Menu -->
         <div id="mobile-menu"
             class="hidden xl:hidden flex-col bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 p-4 gap-4 px-6 absolute w-full z-40 shadow-lg top-[72px]">
-            <a class="text-primary font-semibold flex items-center gap-2" href="#"><span
-                    class="material-symbols-outlined text-[20px]">dashboard</span> Dashboard</a>
+            <a class="text-primary font-semibold flex items-center gap-2"
+                href="Fisica_Todos los documentos/f_sica_selecci_n_de_temas/code.html"><span
+                    class="material-symbols-outlined text-[20px]">view_list</span> Ver Temas</a>
             <a class="text-slate-500 dark:text-slate-400 flex items-center gap-2" href="dashboard_fisica.html"><span
                     class="material-symbols-outlined text-[20px]">science</span> Física</a>
             <a class="text-slate-500 dark:text-slate-400 flex items-center gap-2" href="dashboard_quimica.html"><span
@@ -298,27 +299,24 @@
                         <h3 class="text-lg font-bold mb-4">Objetivos Semanales</h3>
                         <div class="space-y-4">
                             <div class="flex items-start gap-3">
-                                <div
-                                    class="mt-1 size-5 rounded border-2 border-primary flex items-center justify-center bg-primary text-white">
-                                    <span class="material-symbols-outlined text-sm font-bold">check</span>
-                                </div>
+                                <div class="mt-1 size-5 rounded border-2 border-slate-300 dark:border-slate-600"></div>
                                 <div>
                                     <p class="text-sm font-medium">Completar 2 lecciones de Física</p>
-                                    <p class="text-xs text-slate-400">¡Conseguido! +100 XP</p>
+                                    <p class="text-xs text-slate-400 font-medium">Pendiente</p>
                                 </div>
                             </div>
                             <div class="flex items-start gap-3">
                                 <div class="mt-1 size-5 rounded border-2 border-slate-300 dark:border-slate-600"></div>
                                 <div>
                                     <p class="text-sm font-medium">Repasar Química (Espaciado)</p>
-                                    <p class="text-xs text-slate-400">Faltan 10 minutos</p>
+                                    <p class="text-xs text-slate-400 font-medium">Pendiente</p>
                                 </div>
                             </div>
                             <div class="flex items-start gap-3">
                                 <div class="mt-1 size-5 rounded border-2 border-slate-300 dark:border-slate-600"></div>
                                 <div>
                                     <p class="text-sm font-medium">Resolver 5 problemas de Cálculo</p>
-                                    <p class="text-xs text-slate-400">0/5 completados</p>
+                                    <p class="text-xs text-slate-400 font-medium">Pendiente</p>
                                 </div>
                             </div>
                         </div>
@@ -429,7 +427,7 @@
                         const data = userSnap.data();
                         domStreak.textContent = `${data.racha_fisica || 0} Días`;
                         domPoints.textContent = `${data.puntos_fisica || 0} XP`;
-                        domHeaderPts.textContent = `${data.points || 0} XP • Nivel ${Math.floor((data.points || 0) / 100) + 1}`;
+                        domHeaderPts.textContent = `${data.points || 0} XP`;
 
                         if (data.photoURL) {
                             domHeaderAvatar.innerHTML = `<img alt="${data.name}" class="w-full h-full object-cover" src="${data.photoURL}" />`;
