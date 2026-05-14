@@ -264,13 +264,19 @@
             deferredPrompt = e;
             const installButtons = document.querySelectorAll('#install-button, #install-button-mobile, #install-button-landing');
             installButtons.forEach(btn => {
-                btn.style.display = 'flex'; // Make it visible if hidden
+                btn.style.display = 'flex'; 
                 btn.addEventListener('click', async () => {
                     if (deferredPrompt) {
-                        deferredPrompt.prompt();
-                        const { outcome } = await deferredPrompt.userChoice;
-                        console.log(`User response to the install prompt: ${outcome}`);
-                        deferredPrompt = null;
+                        try {
+                            deferredPrompt.prompt();
+                            const { outcome } = await deferredPrompt.userChoice;
+                            console.log(`User response to the install prompt: ${outcome}`);
+                            deferredPrompt = null;
+                        } catch (e) {
+                            console.error(e);
+                        }
+                    } else {
+                        alert('La aplicación LogicPlay ya está instalada o no se puede descargar automáticamente desde aquí. Por favor, utiliza la opción "Instalar aplicación" desde el menú de tu navegador.');
                     }
                 });
             });
