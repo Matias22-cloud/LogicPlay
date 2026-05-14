@@ -202,6 +202,40 @@
         </main>
     </div>
 
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js";
+        import { getFirestore, doc, updateDoc, increment } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBD3-ZnbczYZOuDm7e9OHLP6Xg68sdZ1so",
+            authDomain: "logicplay-e775c.firebaseapp.com",
+            projectId: "logicplay-e775c",
+            storageBucket: "logicplay-e775c.firebasestorage.app",
+            messagingSenderId: "11226997472",
+            appId: "1:11226997472:web:836d7d87f4f6a01987e685",
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const firestoreDB = getFirestore(app);
+
+        window.savePointsQuimica = async function (pts) {
+            const uid = localStorage.getItem('logicplay_uid');
+            if (uid) {
+                try {
+                    const userRef = doc(firestoreDB, "users", uid);
+                    await updateDoc(userRef, {
+                        points: increment(pts),
+                        puntos_quimica: increment(pts),
+                        racha_quimica: increment(1),
+                        streak: increment(1)
+                    });
+                    console.log("Puntos de química guardados (Composición)!");
+                } catch (e) {
+                    console.error("Error guardando puntos: ", e);
+                }
+            }
+        };
+    </script>
     <script>
         const db = {
             'h2o': { symbol: 'H₂O', total: 18, elements: [{ name: 'Hidrógeno (H)', p: 11.11 }, { name: 'Oxígeno (O)', p: 88.89 }] },
@@ -268,6 +302,10 @@
 
             if (success) {
                 feedback.innerHTML = '<span class="text-emerald-500 px-4 py-2 bg-emerald-50 dark:bg-emerald-900/20 rounded-full w-full block">¡Laboratorio exitoso! Los cálculos son correctos.</span>';
+                if (!window.compGiven && window.savePointsQuimica) {
+                    window.savePointsQuimica(100);
+                    window.compGiven = true;
+                }
                 checkBtn.classList.replace('bg-primary', 'bg-emerald-500');
                 setTimeout(() => checkBtn.classList.replace('bg-emerald-500', 'bg-primary'), 2000);
             } else {

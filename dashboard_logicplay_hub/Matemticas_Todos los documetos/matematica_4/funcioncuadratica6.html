@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,16 +9,34 @@
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
     <title>LogiPlay - La Fórmula General</title>
     <style>
-        body { font-family: 'Lexend', sans-serif; background: #fdfeff; scroll-behavior: smooth; }
-        .reveal { animation: fadeInUp 0.8s ease-out forwards; opacity: 0; }
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(40px); }
-            to { opacity: 1; transform: translateY(0); }
+        body {
+            font-family: 'Lexend', sans-serif;
+            background: #fdfeff;
+            scroll-behavior: smooth;
         }
+
+        .reveal {
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         .formula-card {
             background: linear-gradient(145deg, #1e293b, #0f172a);
-            box-shadow: 0 30px 60px -12px rgba(0,0,0,0.4);
+            box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.4);
         }
+
         .step-pill {
             background: white;
             border: 1px solid #e2e8f0;
@@ -25,7 +44,12 @@
             padding: 2rem;
             transition: all 0.3s ease;
         }
-        .step-pill:hover { border-color: #f43f5e; transform: translateX(10px); }
+
+        .step-pill:hover {
+            border-color: #f43f5e;
+            transform: translateX(10px);
+        }
+
         .math-input {
             border: 2px solid #e2e8f0;
             border-radius: 0.75rem;
@@ -35,31 +59,43 @@
             font-weight: 800;
             color: #f43f5e;
         }
-        .math-input:focus { outline: none; border-color: #6366f1; }
-        .correct { border-color: #10b981 !important; background: #f0fdf4; }
+
+        .math-input:focus {
+            outline: none;
+            border-color: #6366f1;
+        }
+
+        .correct {
+            border-color: #10b981 !important;
+            background: #f0fdf4;
+        }
     </style>
 </head>
+
 <body class="p-4 md:p-10 text-slate-800">
 
     <div class="max-w-6xl mx-auto">
-        
+
         <!-- HEADER -->
         <header class="reveal mb-16 text-center">
             <!-- Botón de Navegación -->
             <div class="flex justify-start mb-10">
-                <a href="../matematica_4/funcioncuadratica5.html" class="flex items-center gap-2 bg-slate-100 hover:bg-slate-200 text-slate-700 px-4 py-2 rounded-xl text-xs font-bold transition-all border border-slate-200">
+                <a href="../matematica_4/funcioncuadratica5.html"
+                    class="flex items-center gap-2 bg-slate-100 hover:bg-slate-200 text-slate-700 px-4 py-2 rounded-xl text-xs font-bold transition-all border border-slate-200">
                     <span class="material-symbols-outlined text-sm">arrow_back</span>
                     ATRÁS
                 </a>
             </div>
 
-            <div class="inline-block bg-rose-100 text-rose-700 px-6 py-2 rounded-full font-black text-xs uppercase tracking-[0.3em] mb-4">
+            <div
+                class="inline-block bg-rose-100 text-rose-700 px-6 py-2 rounded-full font-black text-xs uppercase tracking-[0.3em] mb-4">
                 Herramienta Definitiva
             </div>
             <h1 class="text-6xl font-black text-slate-900 tracking-tighter mb-4">
                 La <span class="text-rose-600">Fórmula General</span>
             </h1>
-            <p class="text-slate-500 text-xl font-light italic">"La llave maestra que abre cualquier ecuación cuadrática."</p>
+            <p class="text-slate-500 text-xl font-light italic">"La llave maestra que abre cualquier ecuación
+                cuadrática."</p>
         </header>
 
         <!-- SECCIÓN 1: EL CONCEPTO -->
@@ -76,7 +112,8 @@
                     <div class="text-center text-2xl mt-2">2a</div>
                 </div>
                 <p class="text-slate-400 text-sm leading-relaxed">
-                    A diferencia de la factorización, la Fórmula General funciona **siempre**, incluso si los resultados son decimales o números complejos. Es el método más confiable en el álgebra.
+                    A diferencia de la factorización, la Fórmula General funciona **siempre**, incluso si los resultados
+                    son decimales o números complejos. Es el método más confiable en el álgebra.
                 </p>
             </div>
 
@@ -84,7 +121,9 @@
                 <h3 class="text-3xl font-black text-slate-800">¿Por qué usarla?</h3>
                 <div class="bg-indigo-50 p-6 rounded-3xl border border-indigo-100">
                     <p class="text-slate-700 leading-relaxed">
-                        Cuando una ecuación como <b class="text-indigo-600 font-mono">3x² - 5x + 1 = 0</b> es imposible de factorizar por mente, la fórmula general desglosa los valores exactos de <b>x</b> usando solo los coeficientes <b>a, b y c</b>.
+                        Cuando una ecuación como <b class="text-indigo-600 font-mono">3x² - 5x + 1 = 0</b> es imposible
+                        de factorizar por mente, la fórmula general desglosa los valores exactos de <b>x</b> usando solo
+                        los coeficientes <b>a, b y c</b>.
                     </p>
                 </div>
                 <div class="flex gap-4">
@@ -103,7 +142,8 @@
         <!-- SECCIÓN 2: EL PASO A PASO EXPLICADO -->
         <section class="reveal mb-20" style="animation-delay: 0.2s">
             <h3 class="text-4xl font-black text-slate-900 mb-12 flex items-center gap-4">
-                <span class="bg-rose-600 text-white p-3 rounded-2xl material-symbols-outlined text-3xl">format_list_numbered</span>
+                <span
+                    class="bg-rose-600 text-white p-3 rounded-2xl material-symbols-outlined text-3xl">format_list_numbered</span>
                 Guía de Ejecución Perfecta
             </h3>
 
@@ -112,25 +152,29 @@
                 <div class="step-pill">
                     <span class="text-rose-600 font-black text-4xl mb-4 block">01</span>
                     <h4 class="font-bold text-slate-800 mb-2 uppercase text-xs tracking-widest">Identificar</h4>
-                    <p class="text-slate-500 text-sm">Extrae los valores de <b>a</b>, <b>b</b> y <b>c</b> con todo y su signo (positivo o negativo).</p>
+                    <p class="text-slate-500 text-sm">Extrae los valores de <b>a</b>, <b>b</b> y <b>c</b> con todo y su
+                        signo (positivo o negativo).</p>
                 </div>
                 <!-- PASO 2 -->
                 <div class="step-pill">
                     <span class="text-rose-600 font-black text-4xl mb-4 block">02</span>
                     <h4 class="font-bold text-slate-800 mb-2 uppercase text-xs tracking-widest">Discriminante</h4>
-                    <p class="text-slate-500 text-sm">Calcula <b class="text-slate-800">b² - 4ac</b>. Si es negativo, ¡la ecuación no tiene solución real!</p>
+                    <p class="text-slate-500 text-sm">Calcula <b class="text-slate-800">b² - 4ac</b>. Si es negativo,
+                        ¡la ecuación no tiene solución real!</p>
                 </div>
                 <!-- PASO 3 -->
                 <div class="step-pill">
                     <span class="text-rose-600 font-black text-4xl mb-4 block">03</span>
                     <h4 class="font-bold text-slate-800 mb-2 uppercase text-xs tracking-widest">Sustituir</h4>
-                    <p class="text-slate-500 text-sm">Coloca los valores en la fórmula. Ojo: <b class="text-rose-600">-b</b> significa cambiarle el signo al valor original.</p>
+                    <p class="text-slate-500 text-sm">Coloca los valores en la fórmula. Ojo: <b
+                            class="text-rose-600">-b</b> significa cambiarle el signo al valor original.</p>
                 </div>
                 <!-- PASO 4 -->
                 <div class="step-pill">
                     <span class="text-rose-600 font-black text-4xl mb-4 block">04</span>
                     <h4 class="font-bold text-slate-800 mb-2 uppercase text-xs tracking-widest">Bifurcar</h4>
-                    <p class="text-slate-500 text-sm">Resuelve una vez usando el signo <b class="text-indigo-600">+</b> y otra con el signo <b class="text-rose-600">-</b>.</p>
+                    <p class="text-slate-500 text-sm">Resuelve una vez usando el signo <b class="text-indigo-600">+</b>
+                        y otra con el signo <b class="text-rose-600">-</b>.</p>
                 </div>
             </div>
         </section>
@@ -138,26 +182,34 @@
         <!-- SECCIÓN 3: EJEMPLO MAESTRO RESUELTO -->
         <section class="reveal mb-20 bg-slate-900 rounded-[4rem] p-10 md:p-20 text-white" style="animation-delay: 0.3s">
             <div class="max-w-4xl mx-auto">
-                <h3 class="text-3xl font-black text-center mb-16 uppercase tracking-tighter">Ejemplo de resolución total</h3>
-                
+                <h3 class="text-3xl font-black text-center mb-16 uppercase tracking-tighter">Ejemplo de resolución total
+                </h3>
+
                 <div class="grid md:grid-cols-2 gap-16 items-start">
                     <div class="space-y-12">
                         <div class="relative">
                             <span class="absolute -left-8 top-0 text-rose-500 font-black">Eq.</span>
                             <h4 class="text-4xl font-mono">x² - 5x + 6 = 0</h4>
                         </div>
-                        
+
                         <div class="space-y-6">
                             <div class="flex items-center gap-4">
-                                <div class="w-10 h-10 rounded-full bg-rose-500 flex items-center justify-center font-bold">1</div>
+                                <div
+                                    class="w-10 h-10 rounded-full bg-rose-500 flex items-center justify-center font-bold">
+                                    1</div>
                                 <p class="text-slate-400">Identificamos: <b class="text-white">a=1, b=-5, c=6</b></p>
                             </div>
                             <div class="flex items-center gap-4">
-                                <div class="w-10 h-10 rounded-full bg-rose-500 flex items-center justify-center font-bold">2</div>
-                                <p class="text-slate-400">Discriminante: (-5)² - 4(1)(6) = <b class="text-white">25 - 24 = 1</b></p>
+                                <div
+                                    class="w-10 h-10 rounded-full bg-rose-500 flex items-center justify-center font-bold">
+                                    2</div>
+                                <p class="text-slate-400">Discriminante: (-5)² - 4(1)(6) = <b class="text-white">25 - 24
+                                        = 1</b></p>
                             </div>
                             <div class="flex items-center gap-4">
-                                <div class="w-10 h-10 rounded-full bg-rose-500 flex items-center justify-center font-bold">3</div>
+                                <div
+                                    class="w-10 h-10 rounded-full bg-rose-500 flex items-center justify-center font-bold">
+                                    3</div>
                                 <p class="text-slate-400">Sustitución: x = [ 5 ± √1 ] / 2(1)</p>
                             </div>
                         </div>
@@ -168,12 +220,14 @@
                         <div class="space-y-8">
                             <div>
                                 <span class="text-slate-400 text-xs block mb-1 uppercase">Camino Positivo</span>
-                                <p class="text-3xl font-mono">x₁ = (5 + 1) / 2 = <span class="text-emerald-400 font-black">3</span></p>
+                                <p class="text-3xl font-mono">x₁ = (5 + 1) / 2 = <span
+                                        class="text-emerald-400 font-black">3</span></p>
                             </div>
                             <hr class="border-white/10">
                             <div>
                                 <span class="text-slate-400 text-xs block mb-1 uppercase">Camino Negativo</span>
-                                <p class="text-3xl font-mono">x₂ = (5 - 1) / 2 = <span class="text-emerald-400 font-black">2</span></p>
+                                <p class="text-3xl font-mono">x₂ = (5 - 1) / 2 = <span
+                                        class="text-emerald-400 font-black">2</span></p>
                             </div>
                         </div>
                     </div>
@@ -190,20 +244,25 @@
 
             <div class="bg-white border-2 border-slate-100 rounded-[4rem] p-12 shadow-xl max-w-4xl mx-auto">
                 <div class="text-center mb-12">
-                    <h4 class="text-xs font-black uppercase tracking-widest text-indigo-600 mb-2">Ecuación a resolver</h4>
+                    <h4 class="text-xs font-black uppercase tracking-widest text-indigo-600 mb-2">Ecuación a resolver
+                    </h4>
                     <div class="text-4xl font-mono font-black text-slate-800">x² - 2x - 8 = 0</div>
                 </div>
 
                 <div class="grid md:grid-cols-2 gap-12">
                     <div class="space-y-8">
                         <div>
-                            <label class="block text-xs font-bold text-slate-400 uppercase mb-2">1. Valor de b² - 4ac</label>
-                            <input type="number" id="discrInput" placeholder="?" oninput="validate(this, 36)" class="math-input w-full">
+                            <label class="block text-xs font-bold text-slate-400 uppercase mb-2">1. Valor de b² -
+                                4ac</label>
+                            <input type="number" id="discrInput" placeholder="?" oninput="validate(this, 36)"
+                                class="math-input w-full">
                             <p class="text-[10px] mt-2 text-slate-400">Pista: (-2)² - 4(1)(-8)</p>
                         </div>
                         <div>
-                            <label class="block text-xs font-bold text-slate-400 uppercase mb-2">2. Raíz del discriminante</label>
-                            <input type="number" id="rootInput" placeholder="?" oninput="validate(this, 6)" class="math-input w-full">
+                            <label class="block text-xs font-bold text-slate-400 uppercase mb-2">2. Raíz del
+                                discriminante</label>
+                            <input type="number" id="rootInput" placeholder="?" oninput="validate(this, 6)"
+                                class="math-input w-full">
                         </div>
                     </div>
 
@@ -212,14 +271,18 @@
                         <div class="flex flex-col gap-4">
                             <div class="flex justify-between items-center bg-white p-4 rounded-2xl shadow-sm">
                                 <span class="font-black italic text-rose-600">x₁</span>
-                                <input type="number" id="x1Input" placeholder="?" oninput="validate(this, 4)" class="math-input">
+                                <input type="number" id="x1Input" placeholder="?" oninput="validate(this, 4)"
+                                    class="math-input">
                             </div>
                             <div class="flex justify-between items-center bg-white p-4 rounded-2xl shadow-sm">
                                 <span class="font-black italic text-rose-600">x₂</span>
-                                <input type="number" id="x2Input" placeholder="?" oninput="validate(this, -2)" class="math-input">
+                                <input type="number" id="x2Input" placeholder="?" oninput="validate(this, -2)"
+                                    class="math-input">
                             </div>
                         </div>
-                        <p id="successMsg" class="text-center text-emerald-500 font-black text-xs mt-6 opacity-0 uppercase tracking-tighter">✨ ¡Ecuación dominada perfectamente! ✨</p>
+                        <p id="successMsg"
+                            class="text-center text-emerald-500 font-black text-xs mt-6 opacity-0 uppercase tracking-tighter">
+                            ✨ ¡Ecuación dominada perfectamente! ✨</p>
                     </div>
                 </div>
             </div>
@@ -236,6 +299,40 @@
         </footer>
     </div>
 
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js";
+        import { getFirestore, doc, updateDoc, increment } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBD3-ZnbczYZOuDm7e9OHLP6Xg68sdZ1so",
+            authDomain: "logicplay-e775c.firebaseapp.com",
+            projectId: "logicplay-e775c",
+            storageBucket: "logicplay-e775c.firebasestorage.app",
+            messagingSenderId: "11226997472",
+            appId: "1:11226997472:web:836d7d87f4f6a01987e685",
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        window.savePointsMatematicas = async function (pts) {
+            const uid = localStorage.getItem('logicplay_uid');
+            if (uid) {
+                try {
+                    const userRef = doc(db, "users", uid);
+                    await updateDoc(userRef, {
+                        points: increment(pts),
+                        puntos_matematicas: increment(pts),
+                        racha_matematicas: increment(1),
+                        streak: increment(1)
+                    });
+                    console.log("Puntos de matemáticas guardados!");
+                } catch (e) {
+                    console.error("Error guardando puntos: ", e);
+                }
+            }
+        };
+    </script>
     <script>
         function validate(input, correct) {
             if (parseFloat(input.value) === correct) {
@@ -249,12 +346,17 @@
         function checkAll() {
             const inputs = ['discrInput', 'rootInput', 'x1Input', 'x2Input'];
             const allCorrect = inputs.every(id => document.getElementById(id).classList.contains('correct'));
-            
+
             if (allCorrect) {
                 document.getElementById('successMsg').classList.replace('opacity-0', 'opacity-100');
                 document.getElementById('successMsg').classList.add('animate-bounce');
+                if (!window.mathGiven && window.savePointsMatematicas) {
+                    window.savePointsMatematicas(100);
+                    window.mathGiven = true;
+                }
             }
         }
     </script>
 </body>
+
 </html>

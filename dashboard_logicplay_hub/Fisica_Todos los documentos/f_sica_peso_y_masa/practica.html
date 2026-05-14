@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html class="light" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#4f46e5",
+                        "accent": "#f43f5e",
+                        "background-light": "#f8fafc",
+                        "background-dark": "#0f172a",
+                    },
+                    fontFamily: { "display": ["Lexend"] },
+                    borderRadius: { "DEFAULT": "0.375rem", "lg": "0.75rem", "xl": "1rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+    <style type="text/tailwindcss">
+        :root { --primary-color: #4f46e5; --accent-color: #f43f5e; }
+        .glass-panel { @apply bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border border-white/20 dark:border-slate-800/50 shadow-xl; }
+        .input-glow:focus-within { box-shadow: 0 0 15px rgba(79, 70, 229, 0.3); }
+        .nav-tab { @apply px-4 py-2 text-sm font-semibold transition-all duration-200 relative; }
+        .nav-tab-active { @apply text-primary border-b-2 border-primary; }
+        .nav-tab-inactive { @apply text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 border-b-2 border-transparent; }
+    </style>
+    <title>Fisica: Practica Interactiva (Peso y Masa)</title>
+
+    <link rel="manifest" href="../../manifest.json">
+    <meta name="theme-color" content="#2c0fbd">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('../../service-worker.js').then(r => console.log('SW OK')).catch(e => console.log('SW fail', e));
+            });
+        }
+    </script>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased">
+    <div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+        <header class="sticky top-0 z-50 glass-panel border-b px-4 sm:px-6 md:px-20 py-4">
+            <div class="flex items-center justify-between max-w-7xl mx-auto w-full gap-2">
+                <div class="flex items-center gap-2 sm:gap-4 text-primary min-w-0">
+                    <div class="size-10 shrink-0 flex items-center justify-center bg-primary/10 rounded-xl">
+                        <span class="material-symbols-outlined text-primary text-2xl font-bold">science</span>
+                    </div>
+                    <div class="min-w-0">
+                        <h2 class="text-slate-900 dark:text-slate-100 text-xs sm:text-sm md:text-base font-bold leading-tight truncate">Fisica Practica Interactiva</h2>
+                    </div>
+                </div>
+                <div class="flex items-center gap-2 sm:gap-4 shrink-0">
+                    <nav class="flex items-center gap-2 sm:gap-4 text-sm font-semibold text-slate-500">
+                        <a class="hover:text-primary transition-colors text-xs sm:text-sm whitespace-nowrap" href="../../index.html">Dashboard</a>
+                        <a class="hidden sm:block hover:text-primary transition-colors" href="#">Biblioteca</a>
+                    </nav>
+                    <button class="flex items-center justify-center rounded-xl h-9 w-9 sm:h-10 sm:w-10 bg-slate-100 dark:bg-slate-800 hover:bg-primary/10 transition-all group">
+                        <span class="material-symbols-outlined text-slate-600 dark:text-slate-400 group-hover:text-primary">person</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+        <main class="flex-1 max-w-7xl mx-auto w-full px-6 py-8">
+            <div class="mb-10">
+                <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6">
+                    <div>
+                        <span class="text-primary font-bold text-sm tracking-widest uppercase mb-2 block">Modulo 03: Dinamica</span>
+                        <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 dark:white tracking-tight">Peso y Masa</h1>
+                    </div>
+                    <div class="flex flex-col items-end gap-2">
+                        <span class="text-xs font-bold text-slate-500">COMPLETADO: 100%</span>
+                        <div class="w-48 h-2 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden shadow-inner">
+                            <div class="h-full bg-primary rounded-full shadow-[0_0_10px_rgba(79,70,229,0.5)]" style="width: 100%;"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex items-center gap-1 border-b border-slate-200 dark:border-slate-800">
+                    <a class="nav-tab nav-tab-inactive" href="concepto.html">1. Concepto</a>
+                    <a class="nav-tab nav-tab-inactive" href="ejemplos.html">2. Ejemplos</a>
+                    <a class="nav-tab nav-tab-active" href="#">3. Practica</a>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 gap-8">
+                <section class="glass-panel p-6 md:p-8 rounded-3xl border-l-[6px] border-l-primary relative overflow-hidden">
+                    <div class="absolute top-0 right-0 p-4 opacity-5">
+                        <span class="material-symbols-outlined text-9xl">monitor_weight</span>
+                    </div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="material-symbols-outlined text-primary fill-1">assignment</span>
+                        <h3 class="text-xl font-bold text-slate-800 dark:text-slate-200">Enunciado del Desafio</h3>
+                    </div>
+                    <div class="relative z-10">
+                        <p class="text-lg text-slate-600 dark:text-slate-400 leading-relaxed font-light">
+                            Un astronauta tiene una masa de <span class="font-bold text-slate-900 dark:text-white border-b-2 border-primary/30 px-1">80 kg</span>. En la Tierra su peso es P = 784.8 N. Si viaja a Marte donde la gravedad es <span class="font-bold text-slate-900 dark:text-white border-b-2 border-primary/30 px-1">g = 3.72 m/s²</span>, cuanto sera su peso en Marte?
+                        </p>
+                    </div>
+                </section>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <div class="lg:col-span-2 glass-panel p-6 rounded-3xl">
+                        <div class="flex items-center justify-between mb-6">
+                            <h4 class="text-xs font-black uppercase tracking-[0.2em] text-slate-400">Panel de Parametros</h4>
+                            <span class="text-[10px] px-2 py-1 bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 rounded-md font-bold">SISTEMA INTERNACIONAL (SI)</span>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                            <div class="flex flex-col gap-2 group">
+                                <label class="flex items-center gap-1.5 text-xs font-bold text-slate-500 group-hover:text-primary transition-colors">
+                                    <span class="material-symbols-outlined text-sm">fitness_center</span> Masa (m)
+                                </label>
+                                <div class="relative flex items-center input-glow transition-all rounded-xl overflow-hidden bg-slate-200/50 dark:bg-slate-800/30 border-2 border-transparent">
+                                    <input id="input_m" class="w-full bg-transparent border-none text-sm font-bold px-3 py-2.5 focus:ring-0 text-slate-500 cursor-default" readonly type="text" value="80.0" />
+                                    <span class="text-[10px] font-bold text-slate-400 pr-3">kg</span>
+                                </div>
+                            </div>
+                            <div class="flex flex-col gap-2 group">
+                                <label class="flex items-center gap-1.5 text-xs font-bold text-slate-500 group-hover:text-primary transition-colors">
+                                    <span class="material-symbols-outlined text-sm">public</span> Gravedad (g)
+                                </label>
+                                <div class="relative flex items-center input-glow transition-all rounded-xl overflow-hidden bg-slate-200/50 dark:bg-slate-800/30 border-2 border-transparent">
+                                    <input id="input_g" class="w-full bg-transparent border-none text-sm font-bold px-3 py-2.5 focus:ring-0 text-slate-500 cursor-default" readonly type="text" value="3.72" />
+                                    <span class="text-[10px] font-bold text-slate-400 pr-3">m/s²</span>
+                                </div>
+                            </div>
+                            <div class="flex flex-col gap-2 group">
+                                <label class="flex items-center gap-1.5 text-xs font-bold text-slate-500 group-hover:text-primary transition-colors">
+                                    <span class="material-symbols-outlined text-sm">south</span> Peso (P)
+                                </label>
+                                <div class="relative flex items-center input-glow transition-all rounded-xl overflow-hidden bg-white dark:bg-slate-800/80 border-2 border-primary/40 focus-within:border-primary shadow-sm">
+                                    <input id="input_p" class="w-full bg-transparent border-none text-sm font-bold px-3 py-2.5 focus:ring-0 text-primary" placeholder="Calcula P..." type="number" step="0.1" />
+                                    <span class="text-[10px] font-bold text-slate-400 pr-3">N</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="feedback_msg" class="mt-6 flex items-center gap-2 text-slate-500 bg-slate-100 dark:bg-slate-800 p-3 rounded-lg border border-slate-200 dark:border-slate-700 transition-all">
+                            <span class="material-symbols-outlined text-sm">info</span>
+                            <span class="text-xs font-bold uppercase tracking-wider">Esperando respuesta...</span>
+                        </div>
+                    </div>
+
+                    <div class="glass-panel p-6 rounded-3xl bg-primary/5 border-primary/20 flex flex-col gap-3">
+                        <div class="flex items-center gap-2 text-primary">
+                            <span class="material-symbols-outlined fill-1">lightbulb</span>
+                            <h4 class="font-bold text-sm uppercase tracking-wider">Consejo Pedagogico</h4>
+                        </div>
+                        <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed italic">
+                            "Recuerda que el peso depende de la gravedad del planeta. Usa la formula <strong>P = m × g</strong> donde m es la masa (constante) y g es la gravedad del lugar. En Marte la gravedad es menor, por lo tanto el peso sera menor que en la Tierra."
+                        </p>
+                    </div>
+                </div>
+
+                <section class="glass-panel p-6 md:p-8 rounded-3xl">
+                    <div class="flex items-center gap-3 mb-6">
+                        <span class="material-symbols-outlined text-primary">quiz</span>
+                        <h3 class="text-xl font-bold text-slate-800 dark:text-slate-200">Preguntas de Practica</h3>
+                    </div>
+                    <div class="space-y-6" id="quiz-container">
+                        <div class="p-6 bg-background-light dark:bg-background-dark rounded-xl border border-primary/10" data-question="1">
+                            <p class="text-slate-700 dark:text-slate-300 font-bold mb-3">1. Un objeto tiene una masa de 25 kg. Cual es su peso en la Tierra? (g = 9.81 m/s²)</p>
+                            <div class="grid grid-cols-2 gap-3">
+                                <button onclick="checkAnswer(1, 'A')" class="quiz-btn p-3 rounded-lg border border-primary/20 hover:bg-primary/10 transition-all text-sm font-medium text-slate-700 dark:text-slate-300" data-q="1" data-val="A">A) 245.25 N</button>
+                                <button onclick="checkAnswer(1, 'B')" class="quiz-btn p-3 rounded-lg border border-primary/20 hover:bg-primary/10 transition-all text-sm font-medium text-slate-700 dark:text-slate-300" data-q="1" data-val="B">B) 2.55 N</button>
+                                <button onclick="checkAnswer(1, 'C')" class="quiz-btn p-3 rounded-lg border border-primary/20 hover:bg-primary/10 transition-all text-sm font-medium text-slate-700 dark:text-slate-300" data-q="1" data-val="C">C) 250 N</button>
+                                <button onclick="checkAnswer(1, 'D')" class="quiz-btn p-3 rounded-lg border border-primary/20 hover:bg-primary/10 transition-all text-sm font-medium text-slate-700 dark:text-slate-300" data-q="1" data-val="D">D) 25 N</button>
+                            </div>
+                            <div id="fb-1" class="mt-3 hidden"></div>
+                        </div>
+                        <div class="p-6 bg-background-light dark:bg-background-dark rounded-xl border border-primary/10" data-question="2">
+                            <p class="text-slate-700 dark:text-slate-300 font-bold mb-3">2. Si un cuerpo pesa 490.5 N en la Tierra, su masa es:</p>
+                            <div class="grid grid-cols-2 gap-3">
+                                <button onclick="checkAnswer(2, 'A')" class="quiz-btn p-3 rounded-lg border border-primary/20 hover:bg-primary/10 transition-all text-sm font-medium text-slate-700 dark:text-slate-300" data-q="2" data-val="A">A) 50 kg</button>
+                                <button onclick="checkAnswer(2, 'B')" class="quiz-btn p-3 rounded-lg border border-primary/20 hover:bg-primary/10 transition-all text-sm font-medium text-slate-700 dark:text-slate-300" data-q="2" data-val="B">B) 490.5 kg</button>
+                                <button onclick="checkAnswer(2, 'C')" class="quiz-btn p-3 rounded-lg border border-primary/20 hover:bg-primary/10 transition-all text-sm font-medium text-slate-700 dark:text-slate-300" data-q="2" data-val="C">C) 5 kg</button>
+                                <button onclick="checkAnswer(2, 'D')" class="quiz-btn p-3 rounded-lg border border-primary/20 hover:bg-primary/10 transition-all text-sm font-medium text-slate-700 dark:text-slate-300" data-q="2" data-val="D">D) 100 kg</button>
+                            </div>
+                            <div id="fb-2" class="mt-3 hidden"></div>
+                        </div>
+                        <div class="p-6 bg-background-light dark:bg-background-dark rounded-xl border border-primary/10" data-question="3">
+                            <p class="text-slate-700 dark:text-slate-300 font-bold mb-3">3. Un astronauta de 70 kg en Jupiter (g = 24.79 m/s²) tendra un peso de:</p>
+                            <div class="grid grid-cols-2 gap-3">
+                                <button onclick="checkAnswer(3, 'A')" class="quiz-btn p-3 rounded-lg border border-primary/20 hover:bg-primary/10 transition-all text-sm font-medium text-slate-700 dark:text-slate-300" data-q="3" data-val="A">A) 70 N</button>
+                                <button onclick="checkAnswer(3, 'B')" class="quiz-btn p-3 rounded-lg border border-primary/20 hover:bg-primary/10 transition-all text-sm font-medium text-slate-700 dark:text-slate-300" data-q="3" data-val="B">B) 686.7 N</button>
+                                <button onclick="checkAnswer(3, 'C')" class="quiz-btn p-3 rounded-lg border border-primary/20 hover:bg-primary/10 transition-all text-sm font-medium text-slate-700 dark:text-slate-300" data-q="3" data-val="C">C) 1735.3 N</button>
+                                <button onclick="checkAnswer(3, 'D')" class="quiz-btn p-3 rounded-lg border border-primary/20 hover:bg-primary/10 transition-all text-sm font-medium text-slate-700 dark:text-slate-300" data-q="3" data-val="D">D) 24.79 N</button>
+                            </div>
+                            <div id="fb-3" class="mt-3 hidden"></div>
+                        </div>
+                    </div>
+                    <div class="mt-6 flex items-center gap-4">
+                        <div class="flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full">
+                            <span class="material-symbols-outlined text-primary text-sm">emoji_events</span>
+                            <span class="text-sm font-bold text-primary">Puntos: <span id="score">0</span>/300</span>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <footer class="mt-20 py-8 border-t border-slate-200 dark:border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4">
+                <div class="flex items-center gap-4 text-slate-400 text-sm">
+                    <span>&copy; 2024 Fisica Interactiva</span>
+                </div>
+                <div class="flex gap-4">
+                    <div class="flex items-center gap-2 px-3 py-1 bg-slate-100 dark:bg-slate-800 rounded-full text-[10px] font-bold text-slate-500">
+                        <span class="size-2 bg-green-500 rounded-full"></span> ENGINE V2.4 ONLINE
+                    </div>
+                </div>
+            </footer>
+        </main>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js";
+        import { getFirestore, doc, updateDoc, increment } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js";
+        const firebaseConfig = { apiKey: "AIzaSyBD3-ZnbczYZOuDm7e9OHLP6Xg68sdZ1so", authDomain: "logicplay-e775c.firebaseapp.com", projectId: "logicplay-e775c", storageBucket: "logicplay-e775c.firebasestorage.app", messagingSenderId: "11226997472", appId: "1:11226997472:web:836d7d87f4f6a01987e685" };
+        const app = initializeApp(firebaseConfig); const db = getFirestore(app);
+        window.savePointsFisica = async function(pts) { const uid = localStorage.getItem('logicplay_uid'); if(uid) { try { const userRef = doc(db, "users", uid); await updateDoc(userRef, { points: increment(pts), puntos_fisica: increment(pts), racha_fisica: increment(1), streak: increment(1) }); } catch(e) { console.error("Error:", e); } } };
+    </script>
+    <script>
+        const correctAnswers = { 1: 'A', 2: 'A', 3: 'C' };
+        const explanations = { 1: 'P = m × g = 25 × 9.81 = 245.25 N', 2: 'm = P / g = 490.5 / 9.81 = 50 kg', 3: 'P = m × g = 70 × 24.79 = 1735.3 N' };
+        let totalScore = 0;
+        let answered = {};
+
+        function checkAnswer(qNum, answer) {
+            if (answered[qNum]) return;
+            answered[qNum] = true;
+            const fb = document.getElementById(`fb-${qNum}`);
+            const btns = document.querySelectorAll(`[data-q="${qNum}"]`);
+            btns.forEach(b => { b.classList.add('pointer-events-none', 'opacity-60'); });
+            const isCorrect = answer === correctAnswers[qNum];
+            const clickedBtn = document.querySelector(`[data-q="${qNum}"][data-val="${answer}"]`);
+            if (isCorrect) {
+                clickedBtn.classList.add('bg-green-100', 'dark:bg-green-900/30', 'border-green-500', 'text-green-700', 'dark:text-green-400');
+                clickedBtn.classList.remove('opacity-60');
+                fb.innerHTML = `<div class="flex items-center gap-2 text-green-600"><span class="material-symbols-outlined text-sm">check_circle</span><span class="text-sm font-bold">¡Correcto! ${explanations[qNum]}</span></div>`;
+                totalScore += 100;
+                document.getElementById('score').textContent = totalScore;
+                if (window.savePointsFisica) window.savePointsFisica(50);
+            } else {
+                clickedBtn.classList.add('bg-red-100', 'dark:bg-red-900/30', 'border-red-500', 'text-red-700', 'dark:text-red-400');
+                clickedBtn.classList.remove('opacity-60');
+                const correctBtn = document.querySelector(`[data-q="${qNum}"][data-val="${correctAnswers[qNum]}"]`);
+                correctBtn.classList.add('bg-green-100', 'dark:bg-green-900/30', 'border-green-500', 'text-green-700', 'dark:text-green-400');
+                correctBtn.classList.remove('opacity-60');
+                fb.innerHTML = `<div class="flex items-center gap-2 text-red-600"><span class="material-symbols-outlined text-sm">cancel</span><span class="text-sm font-bold">Incorrecto. La respuesta correcta es ${correctAnswers[qNum]}. ${explanations[qNum]}</span></div>`;
+            }
+            fb.classList.remove('hidden');
+        }
+
+        const correctP = 80 * 3.72;
+        document.getElementById('input_p').addEventListener('input', function() {
+            const val = parseFloat(this.value);
+            const fbMsg = document.getElementById('feedback_msg');
+            if (isNaN(val) || val <= 0) {
+                fbMsg.className = "mt-6 flex items-center gap-2 text-red-600 bg-red-50 dark:bg-red-900/20 p-3 rounded-lg border border-red-200 dark:border-red-800 transition-all";
+                fbMsg.innerHTML = '<span class="material-symbols-outlined text-sm">error</span><span class="text-xs font-bold uppercase tracking-wider">Ingresa un valor valido.</span>';
+                return;
+            }
+            if (Math.abs(val - correctP) < 1) {
+                fbMsg.className = "mt-6 flex items-center gap-2 text-green-600 bg-green-50 dark:bg-green-900/20 p-3 rounded-lg border border-green-200 dark:border-green-800 transition-all";
+                fbMsg.innerHTML = '<span class="material-symbols-outlined text-sm">check_circle</span><span class="text-xs font-bold uppercase tracking-wider">¡Excelente! P = 297.6 N. +100 puntos.</span>';
+                if (window.savePointsFisica) window.savePointsFisica(100);
+            } else {
+                fbMsg.className = "mt-6 flex items-center gap-2 text-accent bg-accent/5 p-3 rounded-lg border border-accent/20 transition-all";
+                if (val > correctP) {
+                    fbMsg.innerHTML = '<span class="material-symbols-outlined text-sm">warning</span><span class="text-xs font-bold uppercase tracking-wider">Valor muy alto. Recuerda: P = m × g. Revisa tu calculo.</span>';
+                } else {
+                    fbMsg.innerHTML = '<span class="material-symbols-outlined text-sm">warning</span><span class="text-xs font-bold uppercase tracking-wider">Valor muy bajo. Recuerda: P = m × g. Revisa tu calculo.</span>';
+                }
+            }
+        });
+    </script>
+
+    <div id="faraday-chat-container" class="fixed bottom-6 right-6 z-50 flex flex-col items-end">
+        <div id="faraday-chat-window" class="hidden w-80 md:w-96 bg-white dark:bg-slate-900 border border-primary/20 dark:border-slate-700 rounded-2xl shadow-2xl mb-4 overflow-hidden flex-col transition-all origin-bottom-right">
+            <div class="bg-primary text-white p-4 flex items-center justify-between">
+                <div class="flex items-center gap-3"><div class="size-8 rounded-full bg-white/20 flex items-center justify-center font-bold text-lg">🔬</div><div><h3 class="font-bold text-sm">Faraday</h3><p class="text-[10px] text-primary-100 opacity-80">Asistente de Fisica</p></div></div>
+                <button id="close-faraday-btn" class="text-white hover:text-red-300 transition-colors"><span class="material-symbols-outlined">close</span></button>
+            </div>
+            <div id="faraday-messages" class="h-80 overflow-y-auto p-4 flex flex-col gap-3 bg-slate-50 dark:bg-slate-800/50">
+                <div class="flex gap-2 w-full"><div class="size-6 shrink-0 rounded-full bg-primary/20 flex items-center justify-center text-xs">🔬</div><div class="bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 p-3 rounded-2xl rounded-tl-none text-sm text-slate-700 dark:text-slate-300 shadow-sm">¡Hola! Soy Faraday. ¿En que conceptos de Peso y Masa te puedo ayudar hoy?</div></div>
+            </div>
+            <div class="p-3 bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800">
+                <form id="faraday-form" class="flex items-center gap-2"><input type="text" id="faraday-input" placeholder="Pregunta sobre fisica..." class="flex-1 bg-slate-100 dark:bg-slate-800 border-none rounded-xl px-4 py-2 text-sm focus:ring-2 focus:ring-primary/50 text-slate-800 dark:text-slate-200" autocomplete="off" required><button type="submit" class="shrink-0 size-9 rounded-xl bg-primary text-white flex items-center justify-center hover:bg-primary/90 transition-colors shadow-md disabled:opacity-50" id="faraday-submit"><span class="material-symbols-outlined text-sm">send</span></button></form>
+            </div>
+        </div>
+        <button id="open-faraday-btn" class="flex items-center gap-2 bg-primary hover:bg-primary/90 text-white px-3 sm:px-5 py-3 rounded-full shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group"><span class="material-symbols-outlined group-hover:animate-pulse">science</span><span class="font-bold text-sm hidden sm:inline">Pregunta a Faraday 🔬</span></button>
+    </div>
+
+    <script type="importmap">{"imports":{"@google/genai":"https://esm.run/@google/genai"}}</script>
+    <script type="module">
+        import { GoogleGenAI } from '@google/genai';
+        const ai = new GoogleGenAI({apiKey:'AIzaSyC2jYxn8xi9lMEoE4HbtbKwsVnebqJ4G74'});
+        const config={systemInstruction:[{text:"Eres Faraday, un asistente educativo amable, paciente y motivador especializado unicamente en Fisica para estudiantes de bachillerato. Solo respondes preguntas de Fisica como equilibrio de fuerzas, planos inclinados, peso y masa, MRU y movimiento circular. Si te preguntan algo de otra materia di amablemente que solo puedes ayudar con Fisica pero recomiendale hablar con Heisenberg para Quimica o Leonhard para Matematicas. Explica paso a paso de forma clara y sencilla usando ejemplos cotidianos."}]};
+        const model='gemini-3-flash-preview';
+        const chatWindow=document.getElementById('faraday-chat-window');const openBtn=document.getElementById('open-faraday-btn');const closeBtn=document.getElementById('close-faraday-btn');const form=document.getElementById('faraday-form');const input=document.getElementById('faraday-input');const messagesArea=document.getElementById('faraday-messages');const submitBtn=document.getElementById('faraday-submit');
+        openBtn.addEventListener('click',()=>{chatWindow.classList.toggle('hidden');chatWindow.classList.toggle('flex');if(!chatWindow.classList.contains('hidden'))input.focus();});
+        closeBtn.addEventListener('click',()=>{chatWindow.classList.add('hidden');chatWindow.classList.remove('flex');});
+        function addMessage(text,isUser=false){const msgDiv=document.createElement('div');msgDiv.className=`flex gap-2 w-full ${isUser?'justify-end':''} mb-2`;const bubbleClass=isUser?'bg-primary text-white p-3 rounded-2xl rounded-tr-none text-sm shadow-sm max-w-[85%]':'bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 p-3 rounded-2xl rounded-tl-none text-sm text-slate-700 dark:text-slate-300 shadow-sm max-w-[85%]';const formattedText=text.replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>').replace(/\n/g,'<br>');let contentHTML='';if(!isUser){contentHTML=`<div class="size-6 shrink-0 rounded-full bg-primary/20 flex items-center justify-center text-xs mt-1">🔬</div><div class="${bubbleClass}">${formattedText}</div>`;}else{contentHTML=`<div class="${bubbleClass}">${formattedText}</div>`;}msgDiv.innerHTML=contentHTML;messagesArea.appendChild(msgDiv);messagesArea.scrollTop=messagesArea.scrollHeight;return msgDiv;}
+        form.addEventListener('submit',async(e)=>{e.preventDefault();const prompt=input.value.trim();if(!prompt)return;addMessage(prompt,true);input.value='';input.disabled=true;submitBtn.disabled=true;const loadingMsg=addMessage('Pensando...',false);try{const response=await ai.models.generateContentStream({model,config,contents:[{role:'user',parts:[{text:prompt}]}]});let fullText='';let firstChunk=true;for await(const chunk of response){if(firstChunk){loadingMsg.querySelector('div.bg-white, div.bg-slate-800').innerHTML='';firstChunk=false;}fullText+=chunk.text;loadingMsg.querySelector('div.bg-white, div.bg-slate-800').innerHTML=fullText.replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>').replace(/\n/g,'<br>');messagesArea.scrollTop=messagesArea.scrollHeight;}}catch(error){console.error("Faraday Error:",error);loadingMsg.querySelector('div.bg-white, div.bg-slate-800').innerHTML='<span class="text-red-500">Hubo un error de conexion. Vuelve a intentarlo.</span>';}finally{input.disabled=false;submitBtn.disabled=false;input.focus();}});
+    </script>
+    <script>let deferredPrompt;window.addEventListener('beforeinstallprompt',(e)=>{e.preventDefault();deferredPrompt=e;const installButtons=document.querySelectorAll('#install-button, #install-button-mobile, #install-button-landing');installButtons.forEach(btn=>{btn.style.display='flex';btn.addEventListener('click',async()=>{if(deferredPrompt){deferredPrompt.prompt();const{outcome}=await deferredPrompt.userChoice;console.log(`User response: ${outcome}`);deferredPrompt=null;}});});});</script>
+</body>
+</html>

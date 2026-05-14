@@ -44,12 +44,12 @@
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('../../service-worker.js')
-                .then(registration => {
-                    console.log('ServiceWorker registration successful');
-                })
-                .catch(err => {
-                    console.log('ServiceWorker registration failed: ', err);
-                });
+                    .then(registration => {
+                        console.log('ServiceWorker registration successful');
+                    })
+                    .catch(err => {
+                        console.log('ServiceWorker registration failed: ', err);
+                    });
             });
         }
     </script>
@@ -63,11 +63,7 @@
             <div class="flex items-center gap-8">
                 <div class="flex items-center gap-3 text-primary">
                     <div class="size-8">
-                        <svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                            <path clip-rule="evenodd"
-                                d="M24 0.757355L47.2426 24L24 47.2426L0.757355 24L24 0.757355ZM21 35.7574V12.2426L9.24264 24L21 35.7574Z"
-                                fill="currentColor" fill-rule="evenodd"></path>
-                        </svg>
+                        <img src="../../../logo.svg" alt="LogicPlay Logo" style="width: 32px; height: 32px;" />
                     </div>
                     <h2 class="text-xl font-bold tracking-tight">LogicPlay</h2>
                 </div>
@@ -99,17 +95,18 @@
                         </a>
                         <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary text-white shadow-md shadow-primary/20"
                             href="#">
-                            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">atm</span>
+                            <span class="material-symbols-outlined"
+                                style="font-variation-settings: 'FILL' 1">science</span>
                             <span class="text-sm font-medium">Física</span>
                         </a>
                         <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-primary/5 hover:text-primary transition-all"
-                            href="../quimica_selecci_n_de_temas/code.html">
-                            <span class="material-symbols-outlined">science</span>
+                            href="../../Qumica_Todos los documentos/quimica_selecci_n_de_temas/code.html">
+                            <span class="material-symbols-outlined">biotech</span>
                             <span class="text-sm font-medium">Química</span>
                         </a>
                         <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-primary/5 hover:text-primary transition-all"
-                            href="#">
-                            <span class="material-symbols-outlined">calculate</span>
+                            href="../../Matemticas_Todos los documetos/matematica_selecci_n_de_temas.html">
+                            <span class="material-symbols-outlined">functions</span>
                             <span class="text-sm font-medium">Matemáticas</span>
                         </a>
                     </nav>
@@ -141,69 +138,131 @@
                         <button class="text-sm font-semibold text-primary hover:underline">Ver todo</button>
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        <div
+                        <a href="../f_sica_mru/concepto.html"
                             class="group flex flex-col bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-primary/5">
                             <div class="relative aspect-video w-full bg-primary/10 overflow-hidden">
                                 <div class="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent"></div>
                                 <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                                    data-alt="Vector diagram showing motion lines and arrows"
+                                    alt="Vector diagram showing motion lines and arrows"
                                     src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbJIFcrCwd6XSL4nf3UZnQLgyqlcV6bP2IZkjQVqqIR2lfFz7iIqGNY8HAP98r0kAm3zK8PMD0UKh67MONRrbPn_jWI7WFdGrnv-xUbYtLUuHadr2LNVjokEQohx5rsaPdyMzbEUZHG2UMxGe_o_xRYi_Bns_Nlf7Tw1EvYUQWVxDkM9uFEeQ0C1C_SHzgnofM5Vfc4rzvqO9WfMMLX-uJhuhVPuXwTvFg7BQPiBHcqfLwmLWp7QmJIIh5nZqkCQvJhKnEdflb6LM" />
                             </div>
                             <div class="p-5">
                                 <h3 class="text-lg font-bold text-slate-900 dark:text-slate-100 mb-1">Movimiento
-                                    Rectilíneo Uniforme</h3>
+                                    Rectilineo Uniforme</h3>
                                 <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">Fundamentos de
-                                    cinemática y velocidad constante.</p>
+                                    cinematica y velocidad constante.</p>
                                 <div class="mt-4 flex items-center gap-2">
                                     <span
-                                        class="text-xs font-medium px-2 py-1 rounded-full bg-primary/10 text-primary">Cinemática</span>
+                                        class="text-xs font-medium px-2 py-1 rounded-full bg-primary/10 text-primary">Cinematica</span>
                                     <span
-                                        class="text-xs font-medium px-2 py-1 rounded-full bg-emerald-100 text-emerald-700">Básico</span>
+                                        class="text-xs font-medium px-2 py-1 rounded-full bg-emerald-100 text-emerald-700">Basico</span>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                         <a href="../f_sica_ejemplos_paso_a_paso_2/code.html"
                             class="group flex flex-col bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-primary/5">
                             <div class="relative aspect-video w-full bg-primary/10 overflow-hidden">
                                 <div class="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent"></div>
                                 <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                                    data-alt="Parabolic arc trajectory of a ball throwing"
+                                    alt="Parabolic arc trajectory of a ball throwing"
                                     src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOb-OZ8H7hjSEnpCrTkFIib0X1T5ros2OU2GtOEkOUeSJ7VMOs0ouzFdDjwmFwBnN5ehgh2i-yd-DErGZWcWmoezTUJTpv1KsxXnJvqzJmMEXsfxliiRnwW5S-FlIHGFezGqO7O4IpNCueuLLNQot2jknSrG-4vUXf6K8ZBPd5pmFxUNBEelcnQbGNSzT5w-yhQCkDZOWauCLXeiCKSjpXHaB5PxbPVDH0RllXwzOFlk1IhzK0rWeZHMGKRB2Nq6atuSRRNS6p83E" />
                             </div>
                             <div class="p-5">
                                 <h3 class="text-lg font-bold text-slate-900 dark:text-slate-100 mb-1">Movimiento
-                                    Parabólico</h3>
-                                <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">Análisis de
+                                    Parabolico</h3>
+                                <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">Analisis de
                                     trayectorias curvas y tiro de proyectiles.</p>
                                 <div class="mt-4 flex items-center gap-2">
                                     <span
-                                        class="text-xs font-medium px-2 py-1 rounded-full bg-primary/10 text-primary">Cinemática</span>
+                                        class="text-xs font-medium px-2 py-1 rounded-full bg-primary/10 text-primary">Cinematica</span>
                                     <span
                                         class="text-xs font-medium px-2 py-1 rounded-full bg-amber-100 text-amber-700">Intermedio</span>
                                 </div>
                             </div>
                         </a>
-                        <div
+                        <a href="../f_sica_movimiento_circular/concepto.html"
                             class="group flex flex-col bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-primary/5">
                             <div class="relative aspect-video w-full bg-primary/10 overflow-hidden">
                                 <div class="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent"></div>
                                 <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                                    data-alt="Circular galaxy rotation or circular motion pattern"
+                                    alt="Circular galaxy rotation or circular motion pattern"
                                     src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwsRtjc9gkKjI7hBbHUxaCj6woqSvdN4No63r-3FhJv2bCQyTgwWTwuNXAWiba0xcD1O31SdhovontvukgG7-I6dj4bufBERjJYe_-5b3ZbTF_0QJ_szY14bUGieSfW14rm9P_xoI6_MPFFvJYbPOPmzr9DyfLCOvWf8OUx_u7SHTVqzJje5y4zbWlFoGP3tzpV76aMpW7RF4fV6WW_2wBkQz-CjxqJHhyBH0A4QAaRGnivFIkQ1Ufd39MjEjbTs9cE28iFuAc44Y" />
                             </div>
                             <div class="p-5">
                                 <h3 class="text-lg font-bold text-slate-900 dark:text-slate-100 mb-1">Movimiento
                                     Circular</h3>
-                                <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">Dinámica
-                                    rotacional, aceleración centrípeta y frecuencia.</p>
+                                <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">Dinamica
+                                    rotacional, aceleracion centripeta y frecuencia.</p>
                                 <div class="mt-4 flex items-center gap-2">
                                     <span
-                                        class="text-xs font-medium px-2 py-1 rounded-full bg-primary/10 text-primary">Dinámica</span>
+                                        class="text-xs font-medium px-2 py-1 rounded-full bg-primary/10 text-primary">Dinamica</span>
                                     <span
                                         class="text-xs font-medium px-2 py-1 rounded-full bg-amber-100 text-amber-700">Intermedio</span>
                                 </div>
                             </div>
-                        </div>
+                        </a>
+                        <a href="../f_sica_equilibrio_de_fuerzas/concepto.html"
+                            class="group flex flex-col bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-primary/5">
+                            <div class="relative aspect-video w-full bg-primary/10 overflow-hidden">
+                                <div class="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent"></div>
+                                <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                    alt="Balance and equilibrium of forces"
+                                    src="https://images.unsplash.com/photo-1546445385-d8aa134be16a?auto=format&fit=crop&q=80&w=800" />
+                            </div>
+                            <div class="p-5">
+                                <h3 class="text-lg font-bold text-slate-900 dark:text-slate-100 mb-1">Equilibrio de
+                                    Fuerzas</h3>
+                                <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">Condiciones de
+                                    equilibrio estatico y dinamico.</p>
+                                <div class="mt-4 flex items-center gap-2">
+                                    <span
+                                        class="text-xs font-medium px-2 py-1 rounded-full bg-primary/10 text-primary">Estatica</span>
+                                    <span
+                                        class="text-xs font-medium px-2 py-1 rounded-full bg-amber-100 text-amber-700">Intermedio</span>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="../f_sica_peso_y_masa/concepto.html"
+                            class="group flex flex-col bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-primary/5">
+                            <div class="relative aspect-video w-full bg-primary/10 overflow-hidden">
+                                <div class="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent"></div>
+                                <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                    alt="Weight and mass physics concept"
+                                    src="https://images.unsplash.com/photo-1577401239170-897942555fb3?auto=format&fit=crop&q=80&w=800" />
+                            </div>
+                            <div class="p-5">
+                                <h3 class="text-lg font-bold text-slate-900 dark:text-slate-100 mb-1">Peso y Masa</h3>
+                                <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">Diferencia entre
+                                    peso y masa, gravedad y fuerza normal.</p>
+                                <div class="mt-4 flex items-center gap-2">
+                                    <span
+                                        class="text-xs font-medium px-2 py-1 rounded-full bg-primary/10 text-primary">Dinamica</span>
+                                    <span
+                                        class="text-xs font-medium px-2 py-1 rounded-full bg-emerald-100 text-emerald-700">Basico</span>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="../f_sica_planos_inclinados/concepto.html"
+                            class="group flex flex-col bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-primary/5">
+                            <div class="relative aspect-video w-full bg-primary/10 overflow-hidden">
+                                <div class="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent"></div>
+                                <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                    alt="Inclined plane physics diagram"
+                                    src="https://images.unsplash.com/photo-1606761568499-6d2451b23c66?auto=format&fit=crop&q=80&w=800" />
+                            </div>
+                            <div class="p-5">
+                                <h3 class="text-lg font-bold text-slate-900 dark:text-slate-100 mb-1">Planos Inclinados
+                                </h3>
+                                <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">Descomposicion de
+                                    fuerzas en superficies inclinadas.</p>
+                                <div class="mt-4 flex items-center gap-2">
+                                    <span
+                                        class="text-xs font-medium px-2 py-1 rounded-full bg-primary/10 text-primary">Dinamica</span>
+                                    <span
+                                        class="text-xs font-medium px-2 py-1 rounded-full bg-rose-100 text-rose-700">Avanzado</span>
+                                </div>
+                            </div>
+                        </a>
                     </div>
                 </section>
                 <section
@@ -232,7 +291,8 @@
     <!-- Faraday Chatbot UI -->
     <div id="faraday-chat-container" class="fixed bottom-6 right-6 z-50 flex flex-col items-end">
         <!-- Chat Window -->
-        <div id="faraday-chat-window" class="hidden w-80 md:w-96 bg-white dark:bg-slate-900 border border-primary/20 dark:border-slate-700 rounded-2xl shadow-2xl mb-4 overflow-hidden flex-col transition-all origin-bottom-right">
+        <div id="faraday-chat-window"
+            class="hidden w-80 md:w-96 bg-white dark:bg-slate-900 border border-primary/20 dark:border-slate-700 rounded-2xl shadow-2xl mb-4 overflow-hidden flex-col transition-all origin-bottom-right">
             <!-- Header -->
             <div class="bg-primary text-white p-4 flex items-center justify-between">
                 <div class="flex items-center gap-3">
@@ -248,22 +308,30 @@
                     <span class="material-symbols-outlined">close</span>
                 </button>
             </div>
-            
+
             <!-- Messages Area -->
-            <div id="faraday-messages" class="h-80 overflow-y-auto p-4 flex flex-col gap-3 bg-slate-50 dark:bg-slate-800/50">
+            <div id="faraday-messages"
+                class="h-80 overflow-y-auto p-4 flex flex-col gap-3 bg-slate-50 dark:bg-slate-800/50">
                 <div class="flex gap-2 w-full">
-                    <div class="size-6 shrink-0 rounded-full bg-primary/20 flex items-center justify-center text-xs">🔬</div>
-                    <div class="bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 p-3 rounded-2xl rounded-tl-none text-sm text-slate-700 dark:text-slate-300 shadow-sm">
-                        ¡Hola! Soy Faraday. ¿En qué conceptos de Movimiento Parabólico, MRU o Movimiento Circular te puedo ayudar hoy?
+                    <div class="size-6 shrink-0 rounded-full bg-primary/20 flex items-center justify-center text-xs">🔬
+                    </div>
+                    <div
+                        class="bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 p-3 rounded-2xl rounded-tl-none text-sm text-slate-700 dark:text-slate-300 shadow-sm">
+                        ¡Hola! Soy Faraday. ¿En qué conceptos de Movimiento Parabólico, MRU o Movimiento Circular te
+                        puedo ayudar hoy?
                     </div>
                 </div>
             </div>
-            
+
             <!-- Input Area -->
             <div class="p-3 bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800">
                 <form id="faraday-form" class="flex items-center gap-2">
-                    <input type="text" id="faraday-input" placeholder="Pregunta sobre física..." class="flex-1 bg-slate-100 dark:bg-slate-800 border-none rounded-xl px-4 py-2 text-sm focus:ring-2 focus:ring-primary/50 text-slate-800 dark:text-slate-200" autocomplete="off" required>
-                    <button type="submit" class="shrink-0 size-9 rounded-xl bg-primary text-white flex items-center justify-center hover:bg-primary/90 transition-colors shadow-md disabled:opacity-50" id="faraday-submit">
+                    <input type="text" id="faraday-input" placeholder="Pregunta sobre física..."
+                        class="flex-1 bg-slate-100 dark:bg-slate-800 border-none rounded-xl px-4 py-2 text-sm focus:ring-2 focus:ring-primary/50 text-slate-800 dark:text-slate-200"
+                        autocomplete="off" required>
+                    <button type="submit"
+                        class="shrink-0 size-9 rounded-xl bg-primary text-white flex items-center justify-center hover:bg-primary/90 transition-colors shadow-md disabled:opacity-50"
+                        id="faraday-submit">
                         <span class="material-symbols-outlined text-sm">send</span>
                     </button>
                 </form>
@@ -271,7 +339,8 @@
         </div>
 
         <!-- Floating Button -->
-        <button id="open-faraday-btn" class="flex items-center gap-2 bg-primary hover:bg-primary/90 text-white px-3 sm:px-5 py-3 rounded-full shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+        <button id="open-faraday-btn"
+            class="flex items-center gap-2 bg-primary hover:bg-primary/90 text-white px-3 sm:px-5 py-3 rounded-full shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
             <span class="material-symbols-outlined group-hover:animate-pulse">science</span>
             <span class="font-bold text-sm hidden sm:inline">Pregunta a Faraday 🔬</span>
         </button>
@@ -311,7 +380,7 @@
         openBtn.addEventListener('click', () => {
             chatWindow.classList.toggle('hidden');
             chatWindow.classList.toggle('flex');
-            if(!chatWindow.classList.contains('hidden')) input.focus();
+            if (!chatWindow.classList.contains('hidden')) input.focus();
         });
 
         closeBtn.addEventListener('click', () => {
@@ -322,18 +391,18 @@
         function addMessage(text, isUser = false) {
             const msgDiv = document.createElement('div');
             msgDiv.className = `flex gap-2 w-full ${isUser ? 'justify-end' : ''} mb-2`;
-            
+
             let avatarHTML = '';
             let contentHTML = '';
 
-            const bubbleClass = isUser 
+            const bubbleClass = isUser
                 ? 'bg-primary text-white p-3 rounded-2xl rounded-tr-none text-sm shadow-sm max-w-[85%]'
                 : 'bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 p-3 rounded-2xl rounded-tl-none text-sm text-slate-700 dark:text-slate-300 shadow-sm max-w-[85%]';
-            
+
             // Allow basic markdown bold parsing for better formatting
             const formattedText = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\n/g, '<br>');
 
-            if(!isUser) {
+            if (!isUser) {
                 avatarHTML = `<div class="size-6 shrink-0 rounded-full bg-primary/20 flex items-center justify-center text-xs mt-1">🔬</div>`;
                 contentHTML = `
                     ${avatarHTML}
@@ -358,7 +427,7 @@
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
             const prompt = input.value.trim();
-            if(!prompt) return;
+            if (!prompt) return;
 
             // Add user message
             addMessage(prompt, true);
@@ -380,7 +449,7 @@
                 let firstChunk = true;
 
                 for await (const chunk of response) {
-                    if(firstChunk) {
+                    if (firstChunk) {
                         loadingMsg.querySelector('div.bg-white, div.bg-slate-800').innerHTML = ''; // Clear 'Pensando...'
                         firstChunk = false;
                     }
@@ -421,4 +490,5 @@
     </script>
 
 </body>
+
 </html>

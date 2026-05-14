@@ -5,6 +5,7 @@
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Iniciar Sesión - LogicPlay</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&display=swap"
@@ -73,11 +74,7 @@
             </a>
             <div
                 class="mx-auto size-16 bg-primary rounded-2xl flex items-center justify-center shadow-[0_10px_20px_rgba(44,15,189,0.3)] mb-6 transform -rotate-3 hover:rotate-0 transition-transform">
-                <svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" class="size-10 text-white">
-                    <path clip-rule="evenodd"
-                        d="M24 0.757355L47.2426 24L24 47.2426L0.757355 24L24 0.757355ZM21 35.7574V12.2426L9.24264 24L21 35.7574Z"
-                        fill="currentColor" fill-rule="evenodd"></path>
-                </svg>
+                <img src="../logo.svg" alt="LogicPlay Logo" style="width: 32px; height: 32px;" />
             </div>
             <h1 class="text-3xl font-extrabold tracking-tight mb-2">Bienvenido de nuevo</h1>
             <p class="text-slate-500 font-medium">Lleva tu aprendizaje al siguiente nivel.</p>
@@ -267,6 +264,12 @@
                         photoURL: user.photoURL || null,
                         points: 0,
                         streak: 0,
+                        puntos_fisica: 0,
+                        puntos_quimica: 0,
+                        puntos_matematicas: 0,
+                        racha_fisica: 0,
+                        racha_quimica: 0,
+                        racha_matematicas: 0,
                         lastActivity: null,
                         role: role,
                         createdAt: serverTimestamp(),

@@ -282,6 +282,41 @@
         </main>
     </div>
 
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js";
+        import { getFirestore, doc, updateDoc, increment } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBD3-ZnbczYZOuDm7e9OHLP6Xg68sdZ1so",
+            authDomain: "logicplay-e775c.firebaseapp.com",
+            projectId: "logicplay-e775c",
+            storageBucket: "logicplay-e775c.firebasestorage.app",
+            messagingSenderId: "11226997472",
+            appId: "1:11226997472:web:836d7d87f4f6a01987e685",
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        // Make it accessible for the old script
+        window.savePointsFisica = async function (pts) {
+            const uid = localStorage.getItem('logicplay_uid');
+            if (uid) {
+                try {
+                    const userRef = doc(db, "users", uid);
+                    await updateDoc(userRef, {
+                        points: increment(pts),
+                        puntos_fisica: increment(pts),
+                        racha_fisica: increment(1),
+                        streak: increment(1)
+                    });
+                    console.log("Puntos de física guardados!");
+                } catch (e) {
+                    console.error("Error guardando puntos: ", e);
+                }
+            }
+        };
+    </script>
     <script>
         let simulacionId = null;
         let animationFrameId = null;
@@ -527,6 +562,7 @@
             if (isSuccess) {
                 fbMsg.className = "mt-6 flex items-center gap-2 text-green-600 bg-green-50 dark:bg-green-900/20 p-3 rounded-lg border border-green-200 dark:border-green-800 transition-all";
                 fbMsg.innerHTML = '<span class="material-symbols-outlined text-sm">check_circle</span><span class="text-xs font-bold uppercase tracking-wider">¡Éxito! Velocidad perfecta. El dron entregó el pedido a tiempo. +100 puntos.</span>';
+                if (window.savePointsFisica) window.savePointsFisica(100);
             } else {
                 fbMsg.className = "mt-6 flex items-center gap-2 text-accent bg-accent/5 p-3 rounded-lg border border-accent/20 transition-all";
                 if (vInput > correctV) {

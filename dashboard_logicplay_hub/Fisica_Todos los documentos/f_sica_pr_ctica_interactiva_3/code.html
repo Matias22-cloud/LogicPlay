@@ -389,6 +389,41 @@
         </button>
     </div>
 
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js";
+        import { getFirestore, doc, updateDoc, increment } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBD3-ZnbczYZOuDm7e9OHLP6Xg68sdZ1so",
+            authDomain: "logicplay-e775c.firebaseapp.com",
+            projectId: "logicplay-e775c",
+            storageBucket: "logicplay-e775c.firebasestorage.app",
+            messagingSenderId: "11226997472",
+            appId: "1:11226997472:web:836d7d87f4f6a01987e685",
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        // Define on window to be accessible from normal scripts
+        window.savePointsFisica = async function (pts) {
+            const uid = localStorage.getItem('logicplay_uid');
+            if (uid) {
+                try {
+                    const userRef = doc(db, "users", uid);
+                    await updateDoc(userRef, {
+                        points: increment(pts),
+                        puntos_fisica: increment(pts),
+                        racha_fisica: increment(1),
+                        streak: increment(1)
+                    });
+                    console.log("Puntos de física guardados!");
+                } catch (e) {
+                    console.error("Error guardando puntos: ", e);
+                }
+            }
+        };
+    </script>
     <!-- Three.js Library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
@@ -782,6 +817,7 @@
                     resultIcon.style.color = '#fbbf24';
                     resultTitle.textContent = '¡IMPACTO PERFECTO!';
                     resultDesc.textContent = `El proyectil aterrizó a ${landingDist.toFixed(2)}m. ¡Excelente cálculo de v₀!`;
+                    if (window.savePointsFisica) window.savePointsFisica(100);
                 } else {
                     const diff = landingDist - TARGET_DISTANCE;
                     resultIcon.textContent = diff > 0 ? 'trending_up' : 'trending_down';

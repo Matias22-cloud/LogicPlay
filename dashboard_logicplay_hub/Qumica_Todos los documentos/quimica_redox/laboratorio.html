@@ -84,12 +84,12 @@
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('../../service-worker.js')
-                .then(registration => {
-                    console.log('ServiceWorker registration successful');
-                })
-                .catch(err => {
-                    console.log('ServiceWorker registration failed: ', err);
-                });
+                    .then(registration => {
+                        console.log('ServiceWorker registration successful');
+                    })
+                    .catch(err => {
+                        console.log('ServiceWorker registration failed: ', err);
+                    });
             });
         }
     </script>
@@ -110,9 +110,9 @@
                     </div>
                 </div>
                 <div class="flex items-center gap-6">
-                    <nav class="flex flex-wrap lg:flex-nowrap gap-4 md:gap-8 justify-center items-center text-sm font-semibold text-slate-500">
-                        <a class="hover:text-primary transition-colors"
-                            href="../../index.html">Dashboard</a>
+                    <nav
+                        class="flex flex-wrap lg:flex-nowrap gap-4 md:gap-8 justify-center items-center text-sm font-semibold text-slate-500">
+                        <a class="hover:text-primary transition-colors" href="../../index.html">Dashboard</a>
                         <a class="hover:text-primary transition-colors" href="#">Biblioteca</a>
                     </nav>
                     <button
@@ -579,6 +579,40 @@
         </main>
     </div>
 
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js";
+        import { getFirestore, doc, updateDoc, increment } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBD3-ZnbczYZOuDm7e9OHLP6Xg68sdZ1so",
+            authDomain: "logicplay-e775c.firebaseapp.com",
+            projectId: "logicplay-e775c",
+            storageBucket: "logicplay-e775c.firebasestorage.app",
+            messagingSenderId: "11226997472",
+            appId: "1:11226997472:web:836d7d87f4f6a01987e685",
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        window.savePointsQuimica = async function (pts) {
+            const uid = localStorage.getItem('logicplay_uid');
+            if (uid) {
+                try {
+                    const userRef = doc(db, "users", uid);
+                    await updateDoc(userRef, {
+                        points: increment(pts),
+                        puntos_quimica: increment(pts),
+                        racha_quimica: increment(1),
+                        streak: increment(1)
+                    });
+                    console.log("Puntos de química guardados (Redox)!");
+                } catch (e) {
+                    console.error("Error guardando puntos: ", e);
+                }
+            }
+        };
+    </script>
     <script>
         // Lógica de Etapa 1
         const inputsE1 = ['ox_h1', 'ox_n1', 'ox_o1', 'ox_cu2', 'ox_n2', 'ox_o2', 'ox_n3', 'ox_o3', 'ox_h2', 'ox_o4'];
@@ -760,6 +794,11 @@
             if (c1 === 3 && c2 === 8 && c3 === 3 && c4 === 2 && c5 === 4) {
                 fbMsg.className = "mt-8 flex items-center justify-center gap-2 text-emerald-600 bg-emerald-50 dark:bg-emerald-900/20 p-4 rounded-lg border border-emerald-200 dark:border-emerald-800 transition-all shadow-md";
                 fbMsg.innerHTML = '<span class="material-symbols-outlined text-xl">verified</span><span class="text-sm font-bold uppercase tracking-wider">¡ÉXITO! Ecuación balanceada correctamente.</span>';
+
+                if (!window.balanceGiven && window.savePointsQuimica) {
+                    window.savePointsQuimica(100);
+                    window.balanceGiven = true;
+                }
 
                 // Efecto confeti css o resalte
                 document.querySelectorAll('.coef-input').forEach(el => {

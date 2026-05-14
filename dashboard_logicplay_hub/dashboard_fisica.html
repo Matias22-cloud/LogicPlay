@@ -5,7 +5,6 @@
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
     <script>
         // Verificación de Autenticación para LogiPlay
         // Si no existe la bandera de login, redirigir inmeditamente al landing page
@@ -72,7 +71,7 @@
         <!-- Top Navigation Bar -->
         <header
             class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-6 py-4 sticky top-0 z-50">
-            <a href="index.html" class="flex items-center gap-4 text-primary no-underline">
+            <div class="flex items-center gap-4 text-primary">
                 <div class="size-8">
                     <img src="../logo.svg" alt="LogicPlay Logo" style="width: 32px; height: 32px;" />
                 </div>
@@ -80,18 +79,20 @@
                     class="text-slate-900 dark:text-white text-xl font-extrabold leading-tight tracking-tight hidden sm:block">
                     LogicPlay
                 </h2>
-            </a>
-            <nav class="hidden xl:flex gap-8 items-center mx-auto">
-                <a class="hover:text-primary transition-colors flex items-center gap-2 text-slate-500 dark:text-slate-400"
-                    href="Fisica_Todos los documentos/f_sica_selecci_n_de_temas/code.html">
+            </div>
+            <nav class="hidden xl:flex gap-8 items-center mx-auto"><a
+                    class="text-slate-500 dark:text-slate-400 hover:text-primary transition-colors flex items-center gap-2"
+                    href="index.html"><span class="material-symbols-outlined text-[20px]">dashboard</span> Dashboard</a>
+                <a class="text-primary font-semibold bg-primary/10 px-3 py-1.5 rounded-lg hover:text-primary transition-colors flex items-center gap-2"
+                    href="dashboard_fisica.html">
                     <span class="material-symbols-outlined text-[20px]">science</span> Física
                 </a>
                 <a class="text-slate-500 dark:text-slate-400 hover:text-primary transition-colors flex items-center gap-2"
-                    href="Qumica_Todos los documentos/quimica_selecci_n_de_temas/code.html">
+                    href="dashboard_quimica.html">
                     <span class="material-symbols-outlined text-[20px]">biotech</span> Química
                 </a>
                 <a class="text-slate-500 dark:text-slate-400 hover:text-primary transition-colors flex items-center gap-2"
-                    href="Matemticas_Todos los documetos/matematica_selecci_n_de_temas.html">
+                    href="dashboard_matematicas.html">
                     <span class="material-symbols-outlined text-[20px]">functions</span> Matemáticas
                 </a>
                 <button id="nav-temas-btn"
@@ -134,14 +135,16 @@
         <!-- Mobile Navigation Menu -->
         <div id="mobile-menu"
             class="hidden xl:hidden flex-col bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 p-4 gap-4 px-6 absolute w-full z-40 shadow-lg top-[72px]">
+            <a class="text-primary font-semibold flex items-center gap-2" href="#"><span
+                    class="material-symbols-outlined text-[20px]">dashboard</span> Dashboard</a>
             <a class="text-slate-500 dark:text-slate-400 flex items-center gap-2"
-                href="Fisica_Todos los documentos/f_sica_selecci_n_de_temas/code.html"><span
+                href="dashboard_fisica.html"><span
                     class="material-symbols-outlined text-[20px]">science</span> Física</a>
             <a class="text-slate-500 dark:text-slate-400 flex items-center gap-2"
-                href="Qumica_Todos los documentos/quimica_selecci_n_de_temas/code.html"><span
+                href="dashboard_quimica.html"><span
                     class="material-symbols-outlined text-[20px]">biotech</span> Química</a>
             <a class="text-slate-500 dark:text-slate-400 flex items-center gap-2"
-                href="Matemticas_Todos los documetos/matematica_selecci_n_de_temas.html"><span
+                href="dashboard_matematicas.html"><span
                     class="material-symbols-outlined text-[20px]">functions</span> Matemáticas</a>
             <button id="nav-temas-btn-mobile"
                 class="bg-slate-200 dark:bg-slate-800 text-slate-400 dark:text-slate-500 px-4 py-2 rounded-lg text-sm font-bold flex items-center justify-center gap-2 mt-2 cursor-not-allowed opacity-60">
@@ -196,14 +199,12 @@
                                 class="inline-flex items-center gap-2 bg-white/20 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest mb-4">
                                 <span class="material-symbols-outlined text-sm">bolt</span> Evento Especial
                             </div>
-                            <h2 class="text-4xl md:text-5xl font-black mb-4 leading-tight">Reto Semanal: Desafío de
-                                Lógica</h2>
-                            <p class="text-lg text-white/80 mb-8">Resuelve los 5 acertijos avanzados de esta semana y
-                                gana un multiplicador de puntos x2 durante el fin de semana.</p>
+                            <h2 class="text-4xl md:text-5xl font-black mb-4 leading-tight">Laboratorio de Física</h2>
+                            <p class="text-lg text-white/80 mb-8">Domina el movimiento, las fuerzas y la energía. Resuelve problemas y compite en el ranking de Física.</p>
                             <button
                                 class="bg-white text-primary font-bold px-8 py-3 rounded-lg hover:bg-slate-100 transition-colors inline-flex items-center gap-2"
-                                onclick="window.location.href='reto_semanal/teoria.html'">
-                                Participar ahora <span class="material-symbols-outlined">arrow_forward</span>
+                                onclick="window.location.href='Fisica_Todos los documentos/f_sica_selecci_n_de_temas/code.html'">
+                                Ir a Materia <span class="material-symbols-outlined">arrow_forward</span>
                             </button>
                         </div>
                         <div class="absolute right-0 bottom-0 top-0 w-1/3 hidden md:flex items-center justify-center">
@@ -254,7 +255,7 @@
                                         desafíos cada miércoles y retos semanales exclusivos.</p>
                                     <button
                                         class="w-full py-2 text-xs font-bold text-primary border border-primary/20 rounded-lg hover:bg-primary/5 transition-colors"
-                                        onclick="window.location.href='reto_semanal/teoria.html'">Ver
+                                        onclick="window.location.href='Fisica_Todos los documentos/f_sica_selecci_n_de_temas/code.html'">Ver
                                         Retos</button>
                                 </div>
                             </div>
@@ -270,7 +271,7 @@
                                 <span class="material-symbols-outlined text-yellow-500">leaderboard</span>
                                 Tabla de Clasificación
                             </h3>
-                            <span class="text-xs font-bold text-slate-400">Global</span>
+                            <span class="text-xs font-bold text-primary px-2 py-1 bg-primary/10 rounded-full">Física</span>
                         </div>
                         <div class="space-y-4" id="ranking-list">
                             <div class="flex justify-center flex-col items-center py-6">
@@ -419,8 +420,8 @@
                     const userSnap = await getDoc(doc(db, "users", uid));
                     if (userSnap.exists()) {
                         const data = userSnap.data();
-                        domStreak.textContent = `${data.streak || 0} Días`;
-                        domPoints.textContent = `${data.points || 0} XP`;
+                        domStreak.textContent = `${data.racha_fisica || 0} Días`;
+                        domPoints.textContent = `${data.puntos_fisica || 0} XP`;
                         domHeaderPts.textContent = `${data.points || 0} XP • Nivel ${Math.floor((data.points || 0) / 100) + 1}`;
 
                         if (data.photoURL) {
@@ -441,7 +442,7 @@
         let isRankingLoaded = false;
         function loadRanking() {
             const usersRef = collection(db, "users");
-            const q = query(usersRef, where("role", "==", "estudiante"), orderBy("points", "desc"), limit(10));
+            const q = query(usersRef, where("role", "==", "estudiante"), orderBy("puntos_fisica", "desc"), limit(10));
 
             // Listen real-time
             onSnapshot(q, (querySnapshot) => {
@@ -486,7 +487,7 @@
                             </div>
                             <div class="flex-1">
                                 <p class="text-sm font-bold ${isMe ? 'text-primary' : ''}">${data.name} ${isMe ? '(Tú)' : ''}</p>
-                                <p class="text-xs text-slate-500">${data.points || 0} XP</p>
+                                <p class="text-xs text-slate-500">${data.puntos_fisica || 0} XP</p>
                             </div>
                             ${medal}
                         </div>

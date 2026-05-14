@@ -44,12 +44,12 @@
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('../../service-worker.js')
-                .then(registration => {
-                    console.log('ServiceWorker registration successful');
-                })
-                .catch(err => {
-                    console.log('ServiceWorker registration failed: ', err);
-                });
+                    .then(registration => {
+                        console.log('ServiceWorker registration successful');
+                    })
+                    .catch(err => {
+                        console.log('ServiceWorker registration failed: ', err);
+                    });
             });
         }
     </script>
@@ -63,11 +63,7 @@
             <div class="flex items-center gap-8">
                 <div class="flex items-center gap-3 text-primary">
                     <div class="size-8">
-                        <svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                            <path clip-rule="evenodd"
-                                d="M24 0.757355L47.2426 24L24 47.2426L0.757355 24L24 0.757355ZM21 35.7574V12.2426L9.24264 24L21 35.7574Z"
-                                fill="currentColor" fill-rule="evenodd"></path>
-                        </svg>
+                        <img src="../../../logo.svg" alt="LogicPlay Logo" style="width: 32px; height: 32px;" />
                     </div>
                     <h2 class="text-xl font-bold tracking-tight">LogicPlay</h2>
                 </div>
@@ -98,18 +94,19 @@
                             <span class="text-sm font-medium">Dashboard</span>
                         </a>
                         <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-primary/5 hover:text-primary transition-all"
-                            href="../f_sica_selecci_n_de_temas/code.html">
-                            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">atm</span>
+                            href="../../Fisica_Todos los documentos/f_sica_selecci_n_de_temas/code.html">
+                            <span class="material-symbols-outlined">science</span>
                             <span class="text-sm font-medium">Física</span>
                         </a>
                         <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary text-white shadow-md shadow-primary/20"
                             href="#">
-                            <span class="material-symbols-outlined">science</span>
+                            <span class="material-symbols-outlined"
+                                style="font-variation-settings: 'FILL' 1">biotech</span>
                             <span class="text-sm font-medium">Química</span>
                         </a>
                         <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-primary/5 hover:text-primary transition-all"
-                            href="#">
-                            <span class="material-symbols-outlined">calculate</span>
+                            href="../../Matemticas_Todos los documetos/matematica_selecci_n_de_temas.html">
+                            <span class="material-symbols-outlined">functions</span>
                             <span class="text-sm font-medium">Matemáticas</span>
                         </a>
                     </nav>
@@ -146,56 +143,56 @@
                             <div class="relative aspect-video w-full bg-primary/10 overflow-hidden">
                                 <div class="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent"></div>
                                 <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                                    data-alt="Chemical balancing illustration"
-                                    src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&amp;fit=crop&amp;q=80&amp;w=800" />
+                                    alt="Chemical balancing illustration"
+                                    src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&q=80&w=800" />
                             </div>
                             <div class="p-5">
-                                <h3 class="text-lg font-bold text-slate-900 dark:text-slate-100 mb-1">Balanceo Método de
+                                <h3 class="text-lg font-bold text-slate-900 dark:text-slate-100 mb-1">Balanceo Metodo de
                                     Tanteo</h3>
-                                <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">Método de simple
-                                    inspección para igualar ecuaciones químicas.</p>
+                                <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">Metodo de simple
+                                    inspeccion para igualar ecuaciones quimicas.</p>
                                 <div class="mt-4 flex items-center gap-2">
                                     <span
-                                        class="text-xs font-medium px-2 py-1 rounded-full bg-primary/10 text-primary">Estequiometría</span>
+                                        class="text-xs font-medium px-2 py-1 rounded-full bg-primary/10 text-primary">Estequiometria</span>
                                     <span
-                                        class="text-xs font-medium px-2 py-1 rounded-full bg-emerald-100 text-emerald-700">Básico</span>
+                                        class="text-xs font-medium px-2 py-1 rounded-full bg-emerald-100 text-emerald-700">Basico</span>
                                 </div>
                             </div>
                         </a>
-                        <div
+                        <a href="../quimica_redox/concepto.html"
                             class="group flex flex-col bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-primary/5">
                             <div class="relative aspect-video w-full bg-primary/10 overflow-hidden">
                                 <div class="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent"></div>
                                 <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                                    data-alt="Redox reaction illustration"
-                                    src="https://images.unsplash.com/photo-1611270498711-209ff8b438db?auto=format&amp;fit=crop&amp;q=80&amp;w=800" />
+                                    alt="Redox reaction electrochemistry"
+                                    src="https://images.unsplash.com/photo-1611270498711-209ff8b438db?auto=format&fit=crop&q=80&w=800" />
                             </div>
                             <div class="p-5">
-                                <h3 class="text-lg font-bold text-slate-900 dark:text-slate-100 mb-1">Igualación por
-                                    Método Redox</h3>
+                                <h3 class="text-lg font-bold text-slate-900 dark:text-slate-100 mb-1">Igualacion por
+                                    Metodo Redox</h3>
                                 <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">Balanceo de
                                     ecuaciones mediante transferencia de electrones.</p>
                                 <div class="mt-4 flex items-center gap-2">
                                     <span
-                                        class="text-xs font-medium px-2 py-1 rounded-full bg-primary/10 text-primary">Estequiometría</span>
+                                        class="text-xs font-medium px-2 py-1 rounded-full bg-primary/10 text-primary">Estequiometria</span>
                                     <span
                                         class="text-xs font-medium px-2 py-1 rounded-full bg-amber-100 text-amber-700">Intermedio</span>
                                 </div>
                             </div>
-                        </div>
-                        <div
+                        </a>
+                        <a href="../../tipos_reacciones/concepto.html"
                             class="group flex flex-col bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-primary/5">
                             <div class="relative aspect-video w-full bg-primary/10 overflow-hidden">
                                 <div class="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent"></div>
                                 <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                                    data-alt="Chemical reactions illustration"
-                                    src="https://images.unsplash.com/photo-1574169208507-84376144848b?auto=format&amp;fit=crop&amp;q=80&amp;w=800" />
+                                    alt="Chemical reactions types"
+                                    src="https://images.unsplash.com/photo-1574169208507-84376144848b?auto=format&fit=crop&q=80&w=800" />
                             </div>
                             <div class="p-5">
                                 <h3 class="text-lg font-bold text-slate-900 dark:text-slate-100 mb-1">Tipos de
-                                    Reacciones Químicas</h3>
-                                <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">Clasificación de
-                                    las transformaciones químicas de la materia.</p>
+                                    Reacciones Quimicas</h3>
+                                <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">Clasificacion de
+                                    las transformaciones quimicas de la materia.</p>
                                 <div class="mt-4 flex items-center gap-2">
                                     <span
                                         class="text-xs font-medium px-2 py-1 rounded-full bg-primary/10 text-primary">Reacciones</span>
@@ -203,7 +200,29 @@
                                         class="text-xs font-medium px-2 py-1 rounded-full bg-amber-100 text-amber-700">Intermedio</span>
                                 </div>
                             </div>
-                        </div>
+                        </a>
+                        <a href="../quimica_xrelaciones_cuantitativas/composicion_concepto.html"
+                            class="group flex flex-col bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-primary/5">
+                            <div class="relative aspect-video w-full bg-primary/10 overflow-hidden">
+                                <div class="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent"></div>
+                                <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                    alt="Quantitative chemistry calculations"
+                                    src="https://images.unsplash.com/photo-1554475901-4538ddfbccc2?auto=format&fit=crop&q=80&w=800" />
+                            </div>
+                            <div class="p-5">
+                                <h3 class="text-lg font-bold text-slate-900 dark:text-slate-100 mb-1">Relaciones
+                                    Cuantitativas</h3>
+                                <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">Composicion
+                                    porcentual, masa atomica y conversiones.</p>
+                                <div class="mt-4 flex items-center gap-2">
+                                    <span
+                                        class="text-xs font-medium px-2 py-1 rounded-full bg-primary/10 text-primary">Calculo
+                                        Quimico</span>
+                                    <span
+                                        class="text-xs font-medium px-2 py-1 rounded-full bg-rose-100 text-rose-700">Avanzado</span>
+                                </div>
+                            </div>
+                        </a>
                     </div>
                 </section>
                 <section

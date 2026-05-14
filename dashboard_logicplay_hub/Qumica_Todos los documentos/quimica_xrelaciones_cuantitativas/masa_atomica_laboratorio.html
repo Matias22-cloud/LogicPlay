@@ -198,17 +198,23 @@
                             class="bg-slate-50 dark:bg-slate-800/50 rounded-xl p-5 border border-slate-200 dark:border-slate-700">
                             <ul class="text-sm font-mono space-y-3 text-slate-700 dark:text-slate-300">
                                 <li class="flex justify-between border-b border-slate-200 dark:border-slate-700 pb-2">
-                                    <span>H</span> <b>1 g/mol</b></li>
+                                    <span>H</span> <b>1 g/mol</b>
+                                </li>
                                 <li class="flex justify-between border-b border-slate-200 dark:border-slate-700 pb-2">
-                                    <span>C</span> <b>12 g/mol</b></li>
+                                    <span>C</span> <b>12 g/mol</b>
+                                </li>
                                 <li class="flex justify-between border-b border-slate-200 dark:border-slate-700 pb-2">
-                                    <span>N</span> <b>14 g/mol</b></li>
+                                    <span>N</span> <b>14 g/mol</b>
+                                </li>
                                 <li class="flex justify-between border-b border-slate-200 dark:border-slate-700 pb-2">
-                                    <span>O</span> <b>16 g/mol</b></li>
+                                    <span>O</span> <b>16 g/mol</b>
+                                </li>
                                 <li class="flex justify-between border-b border-slate-200 dark:border-slate-700 pb-2">
-                                    <span>Na</span> <b>23 g/mol</b></li>
+                                    <span>Na</span> <b>23 g/mol</b>
+                                </li>
                                 <li class="flex justify-between border-b border-slate-200 dark:border-slate-700 pb-2">
-                                    <span>S</span> <b>32 g/mol</b></li>
+                                    <span>S</span> <b>32 g/mol</b>
+                                </li>
                                 <li class="flex justify-between"><span>Cl</span> <b>35.5 g/mol</b></li>
                             </ul>
                         </div>
@@ -219,6 +225,40 @@
         </main>
     </div>
 
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js";
+        import { getFirestore, doc, updateDoc, increment } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBD3-ZnbczYZOuDm7e9OHLP6Xg68sdZ1so",
+            authDomain: "logicplay-e775c.firebaseapp.com",
+            projectId: "logicplay-e775c",
+            storageBucket: "logicplay-e775c.firebasestorage.app",
+            messagingSenderId: "11226997472",
+            appId: "1:11226997472:web:836d7d87f4f6a01987e685",
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const firestoreDB = getFirestore(app);
+
+        window.savePointsQuimica = async function (pts) {
+            const uid = localStorage.getItem('logicplay_uid');
+            if (uid) {
+                try {
+                    const userRef = doc(firestoreDB, "users", uid);
+                    await updateDoc(userRef, {
+                        points: increment(pts),
+                        puntos_quimica: increment(pts),
+                        racha_quimica: increment(1),
+                        streak: increment(1)
+                    });
+                    console.log("Puntos de química guardados (Masa Atómica)!");
+                } catch (e) {
+                    console.error("Error guardando puntos: ", e);
+                }
+            }
+        };
+    </script>
     <script>
         const db = {
             'agua': { symbol: 'H₂O', total: 18, elements: [{ name: 'H', q: 2, m: 1 }, { name: 'O', q: 1, m: 16 }] },
@@ -311,6 +351,10 @@
 
             if (success) {
                 feedback.innerHTML = '<span class="text-emerald-500 px-4 py-2 bg-emerald-50 dark:bg-emerald-900/20 rounded-full w-full block">¡Ecuación verificada correctamente!</span>';
+                if (!window.masaGiven && window.savePointsQuimica) {
+                    window.savePointsQuimica(100);
+                    window.masaGiven = true;
+                }
             } else {
                 feedback.innerHTML = '<span class="text-accent px-4 py-2 bg-accent/10 rounded-full w-full block">Existen errores de cálculo. Revisa el consejo pedagógico.</span>';
             }
