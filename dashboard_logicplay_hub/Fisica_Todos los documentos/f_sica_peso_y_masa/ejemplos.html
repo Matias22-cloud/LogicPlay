@@ -43,6 +43,13 @@
             });
         }
     </script>
+
+    <!-- KaTeX for Math Rendering -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" 
+        onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '\(', right: '\)', display: false}]});"></script>
+
 </head>
 
 <body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 transition-colors duration-300">
@@ -122,7 +129,7 @@
                                             <p class="font-bold text-primary mb-2">1. Identificamos Datos</p>
                                             <ul class="list-disc list-inside text-sm text-slate-600 dark:text-slate-400 mb-2 space-y-1">
                                                 <li><strong class="text-slate-800 dark:text-slate-300">m</strong> = 60 kg</li>
-                                                <li><strong class="text-slate-800 dark:text-slate-300">g</strong> = 9.81 m/s²</li>
+                                                <li><strong class="text-slate-800 dark:text-slate-300">g</strong> = 9.81 \(\text{m/s}^2\)</li>
                                                 <li><strong class="text-slate-800 dark:text-slate-300">P</strong> = ?</li>
                                             </ul>
                                         </div>
@@ -131,7 +138,7 @@
                                         <div class="p-4 bg-background-light dark:bg-background-dark rounded-lg h-full">
                                             <p class="font-bold text-primary mb-2">2. Aplicamos la formula</p>
                                             <p class="text-sm text-slate-600 dark:text-slate-400 mb-2">Sustituimos los valores en P = m · g:</p>
-                                            <code class="block font-mono bg-white dark:bg-slate-800 p-2 rounded text-center border border-primary/10 text-slate-600 dark:text-slate-400">P = (60 kg) × (9.81 m/s²)</code>
+                                            <code class="block font-mono bg-white dark:bg-slate-800 p-2 rounded text-center border border-primary/10 text-slate-600 dark:text-slate-400">P = (60 kg) × (9.81 \(\text{m/s}^2\))</code>
                                         </div>
                                     </div>
                                 </div>
@@ -155,7 +162,7 @@
                                     <span class="material-symbols-outlined text-sm">help</span> Enunciado
                                 </h3>
                                 <p class="text-slate-700 dark:text-slate-300 leading-relaxed text-lg">
-                                    Si el estudiante de 60 kg viaja a la Luna, cuanto le marcara la balanza y cuanto sera su peso lunar? (g_luna = 1.635 m/s²)
+                                    Si el estudiante de 60 kg viaja a la Luna, cuanto le marcara la balanza y cuanto sera su peso lunar? (g_luna = 1.635 \(\text{m/s}^2\))
                                 </p>
                             </div>
                             <div class="space-y-6">
@@ -168,7 +175,7 @@
                                             <p class="font-bold text-primary mb-2">1. Identificamos Datos</p>
                                             <ul class="list-disc list-inside text-sm text-slate-600 dark:text-slate-400 mb-2 space-y-1">
                                                 <li><strong class="text-slate-800 dark:text-slate-300">m</strong> = 60 kg (no cambia)</li>
-                                                <li><strong class="text-slate-800 dark:text-slate-300">g_luna</strong> = 1.635 m/s²</li>
+                                                <li><strong class="text-slate-800 dark:text-slate-300">g_luna</strong> = 1.635 \(\text{m/s}^2\)</li>
                                                 <li><strong class="text-slate-800 dark:text-slate-300">P_luna</strong> = ?</li>
                                             </ul>
                                         </div>
@@ -177,7 +184,7 @@
                                         <div class="p-4 bg-background-light dark:bg-background-dark rounded-lg h-full">
                                             <p class="font-bold text-primary mb-2">2. Calculamos el peso lunar</p>
                                             <p class="text-sm text-slate-600 dark:text-slate-400 mb-2">La balanza marcara 60 kg porque la masa es constante. El peso lunar:</p>
-                                            <code class="block font-mono bg-white dark:bg-slate-800 p-2 rounded text-center border border-primary/10 text-slate-600 dark:text-slate-400">P_luna = (60 kg) × (1.635 m/s²)</code>
+                                            <code class="block font-mono bg-white dark:bg-slate-800 p-2 rounded text-center border border-primary/10 text-slate-600 dark:text-slate-400">P_luna = (60 kg) × (1.635 \(\text{m/s}^2\))</code>
                                         </div>
                                     </div>
                                 </div>
@@ -201,7 +208,7 @@
                                     <span class="material-symbols-outlined text-sm">help</span> Enunciado
                                 </h3>
                                 <p class="text-slate-700 dark:text-slate-300 leading-relaxed text-lg">
-                                    Cual es la masa de un cuerpo si su peso es 200 N? (g = 9.81 m/s²)
+                                    Cual es la masa de un cuerpo si su peso es 200 N? (g = 9.81 \(\text{m/s}^2\))
                                 </p>
                             </div>
                             <div class="space-y-6">
@@ -214,7 +221,7 @@
                                             <p class="font-bold text-primary mb-2">1. Identificamos Datos</p>
                                             <ul class="list-disc list-inside text-sm text-slate-600 dark:text-slate-400 mb-2 space-y-1">
                                                 <li><strong class="text-slate-800 dark:text-slate-300">P</strong> = 200 N</li>
-                                                <li><strong class="text-slate-800 dark:text-slate-300">g</strong> = 9.81 m/s²</li>
+                                                <li><strong class="text-slate-800 dark:text-slate-300">g</strong> = 9.81 \(\text{m/s}^2\)</li>
                                                 <li><strong class="text-slate-800 dark:text-slate-300">m</strong> = ?</li>
                                             </ul>
                                         </div>
@@ -223,7 +230,7 @@
                                         <div class="p-4 bg-background-light dark:bg-background-dark rounded-lg h-full">
                                             <p class="font-bold text-primary mb-2">2. Despejamos de la formula</p>
                                             <p class="text-sm text-slate-600 dark:text-slate-400 mb-2">De P = m · g despejamos m = P / g:</p>
-                                            <code class="block font-mono bg-white dark:bg-slate-800 p-2 rounded text-center border border-primary/10 text-slate-600 dark:text-slate-400">m = (200 N) / (9.81 m/s²)</code>
+                                            <code class="block font-mono bg-white dark:bg-slate-800 p-2 rounded text-center border border-primary/10 text-slate-600 dark:text-slate-400">m = (200 N) / (9.81 \(\text{m/s}^2\))</code>
                                         </div>
                                     </div>
                                 </div>
@@ -283,7 +290,7 @@
         import { GoogleGenAI } from '@google/genai';
         const ai = new GoogleGenAI({apiKey:'AIzaSyC2jYxn8xi9lMEoE4HbtbKwsVnebqJ4G74'});
         const config={systemInstruction:[{text:"Eres Faraday, un asistente educativo amable, paciente y motivador especializado unicamente en Fisica para estudiantes de bachillerato. Solo respondes preguntas de Fisica como equilibrio de fuerzas, planos inclinados, peso y masa, MRU y movimiento circular. Si te preguntan algo de otra materia di amablemente que solo puedes ayudar con Fisica pero recomiendale hablar con Heisenberg para Quimica o Leonhard para Matematicas. Explica paso a paso de forma clara y sencilla usando ejemplos cotidianos."}]};
-        const model='gemini-3-flash-preview';
+        const model='gemini-1.5-flash';
         const chatWindow=document.getElementById('faraday-chat-window');const openBtn=document.getElementById('open-faraday-btn');const closeBtn=document.getElementById('close-faraday-btn');const form=document.getElementById('faraday-form');const input=document.getElementById('faraday-input');const messagesArea=document.getElementById('faraday-messages');const submitBtn=document.getElementById('faraday-submit');
         openBtn.addEventListener('click',()=>{chatWindow.classList.toggle('hidden');chatWindow.classList.toggle('flex');if(!chatWindow.classList.contains('hidden'))input.focus();});
         closeBtn.addEventListener('click',()=>{chatWindow.classList.add('hidden');chatWindow.classList.remove('flex');});
@@ -293,5 +300,59 @@
     <script>
         let deferredPrompt;window.addEventListener('beforeinstallprompt',(e)=>{e.preventDefault();deferredPrompt=e;const installButtons=document.querySelectorAll('#install-button, #install-button-mobile, #install-button-landing');installButtons.forEach(btn=>{btn.style.display='flex';btn.addEventListener('click',async()=>{if(deferredPrompt){deferredPrompt.prompt();const{outcome}=await deferredPrompt.userChoice;console.log(`User response to the install prompt: ${outcome}`);deferredPrompt=null;}});});});
     </script>
+
+    <!-- Progress Tracking Script Injected Automatically -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js";
+        import { getFirestore, doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBD3-ZnbczYZOuDm7e9OHLP6Xg68sdZ1so",
+            authDomain: "logicplay-e775c.firebaseapp.com",
+            projectId: "logicplay-e775c",
+            storageBucket: "logicplay-e775c.firebasestorage.app",
+            messagingSenderId: "11226997472",
+            appId: "1:11226997472:web:836d7d87f4f6a01987e685"
+        };
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        
+        const uid = localStorage.getItem('logicplay_uid');
+        const role = localStorage.getItem('logicplay_role');
+
+        async function updateTopicProgress() {
+            if (!uid || role === 'profesor') return;
+
+            const topicId = "f_sica_peso_y_masa";
+            const progressValue = 66;
+
+            try {
+                const userRef = doc(db, "users", uid);
+                const docSnap = await getDoc(userRef);
+                
+                if (docSnap.exists()) {
+                    let data = docSnap.data();
+                    let currentProgressMap = data.progreso_temas || {};
+                    let currentVal = currentProgressMap[topicId] || 0;
+                    
+                    if (progressValue > currentVal) {
+                        currentProgressMap[topicId] = progressValue;
+                        await setDoc(userRef, { progreso_temas: currentProgressMap }, { merge: true });
+                        console.log(`Progreso actualizado a ${progressValue}% en el tema ${topicId}`);
+                    }
+                }
+            } catch (err) {
+                console.error("Error actualizando progreso", err);
+            }
+        }
+
+        // Ejecutar si el dom ya cargo
+        if(document.readyState === "complete" || document.readyState === "interactive") {
+            setTimeout(updateTopicProgress, 1500);
+        } else {
+            document.addEventListener("DOMContentLoaded", () => setTimeout(updateTopicProgress, 1500));
+        }
+    </script>
+
 </body>
 </html>

@@ -47,6 +47,13 @@
         }
     </script>
 
+
+    <!-- KaTeX for Math Rendering -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" 
+        onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '\(', right: '\)', display: false}]});"></script>
+
 </head>
 
 <body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
@@ -113,7 +120,7 @@
                     <p>El Movimiento Parabólico o Tiro Parabólico es un movimiento bidimensional. Resulta de la
                         composición de un movimiento rectilíneo uniforme horizontal (MRU) y un movimiento rectilíneo
                         uniformemente acelerado vertical (MRUA) debido a la aceleración de la gravedad (g ≅ 9.8 o 10
-                        m/s²).</p>
+                        \(\text{m/s}^2\)).</p>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
                         <div class="bg-slate-50 dark:bg-slate-800 p-4 rounded-xl border-l-4 border-l-blue-500">
                             <strong class="block mb-2 text-slate-900 dark:text-white">Velocidad Inicial en X:</strong>

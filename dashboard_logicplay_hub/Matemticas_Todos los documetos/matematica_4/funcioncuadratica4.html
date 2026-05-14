@@ -36,6 +36,13 @@
         input:focus { outline: none; border-color: #6366f1; }
         .correct-input { border-color: #10b981 !important; color: #10b981 !important; background: rgba(16, 185, 129, 0.1) !important; }
     </style>
+
+    <!-- KaTeX for Math Rendering -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" 
+        onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '\(', right: '\)', display: false}]});"></script>
+
 </head>
 <body class="p-4 md:p-10 text-slate-800">
 
@@ -75,12 +82,12 @@
                 <!-- Ejemplo 1 -->
                 <div class="math-card p-8 rounded-[2rem] border-l-8 border-l-emerald-500">
                     <div class="flex justify-between items-start mb-4">
-                        <span class="text-2xl font-mono font-black">x² - 9 = 27</span>
+                        <span class="text-2xl font-mono font-black">\(x^2\) - 9 = 27</span>
                         <span class="bg-emerald-100 text-emerald-700 text-[10px] font-bold px-3 py-1 rounded-full uppercase">Nivel Básico</span>
                     </div>
                     <div class="space-y-3 text-slate-600 text-sm">
-                        <p><span class="step-badge">Paso 1</span> Pasamos el -9 sumando: <span class="font-bold text-slate-900">x² = 27 + 9</span></p>
-                        <p><span class="step-badge">Paso 2</span> Sumamos: <span class="font-bold text-slate-900">x² = 36</span></p>
+                        <p><span class="step-badge">Paso 1</span> Pasamos el -9 sumando: <span class="font-bold text-slate-900">\(x^2\) = 27 + 9</span></p>
+                        <p><span class="step-badge">Paso 2</span> Sumamos: <span class="font-bold text-slate-900">\(x^2\) = 36</span></p>
                         <p><span class="step-badge">Paso 3</span> Aplicamos raíz cuadrada: <span class="font-bold text-indigo-600">x = ±6</span></p>
                     </div>
                 </div>
@@ -88,11 +95,11 @@
                 <!-- Ejemplo 2 -->
                 <div class="math-card p-8 rounded-[2rem] border-l-8 border-l-emerald-500">
                     <div class="flex justify-between items-start mb-4">
-                        <span class="text-2xl font-mono font-black">2x² = 50</span>
+                        <span class="text-2xl font-mono font-black">2\(x^2\) = 50</span>
                     </div>
                     <div class="space-y-3 text-slate-600 text-sm">
-                        <p><span class="step-badge">Paso 1</span> El 2 multiplica, pasa dividiendo: <span class="font-bold text-slate-900">x² = 50 / 2</span></p>
-                        <p><span class="step-badge">Paso 2</span> Dividimos: <span class="font-bold text-slate-900">x² = 25</span></p>
+                        <p><span class="step-badge">Paso 1</span> El 2 multiplica, pasa dividiendo: <span class="font-bold text-slate-900">\(x^2\) = 50 / 2</span></p>
+                        <p><span class="step-badge">Paso 2</span> Dividimos: <span class="font-bold text-slate-900">\(x^2\) = 25</span></p>
                         <p><span class="step-badge">Paso 3</span> Raíz: <span class="font-bold text-indigo-600">x = ±5</span></p>
                     </div>
                 </div>
@@ -100,11 +107,11 @@
                 <!-- Ejemplo 3 -->
                 <div class="math-card p-8 rounded-[2rem] border-l-8 border-l-emerald-500">
                     <div class="flex justify-between items-start mb-4">
-                        <span class="text-2xl font-mono font-black">3x² - 12 = 0</span>
+                        <span class="text-2xl font-mono font-black">3\(x^2\) - 12 = 0</span>
                     </div>
                     <div class="space-y-3 text-slate-600 text-sm">
-                        <p><span class="step-badge">Paso 1</span> Despejamos el -12: <span class="font-bold text-slate-900">3x² = 12</span></p>
-                        <p><span class="step-badge">Paso 2</span> Despejamos el 3: <span class="font-bold text-slate-900">x² = 4</span></p>
+                        <p><span class="step-badge">Paso 1</span> Despejamos el -12: <span class="font-bold text-slate-900">3\(x^2\) = 12</span></p>
+                        <p><span class="step-badge">Paso 2</span> Despejamos el 3: <span class="font-bold text-slate-900">\(x^2\) = 4</span></p>
                         <p><span class="step-badge">Paso 3</span> Resultado: <span class="font-bold text-indigo-600">x = ±2</span></p>
                     </div>
                 </div>
@@ -112,10 +119,10 @@
                 <!-- Ejemplo 4 -->
                 <div class="math-card p-8 rounded-[2rem] border-l-8 border-l-emerald-500">
                     <div class="flex justify-between items-start mb-4">
-                        <span class="text-2xl font-mono font-black">x² + 5 = 30</span>
+                        <span class="text-2xl font-mono font-black">\(x^2\) + 5 = 30</span>
                     </div>
                     <div class="space-y-3 text-slate-600 text-sm">
-                        <p><span class="step-badge">Paso 1</span> Restamos 5: <span class="font-bold text-slate-900">x² = 25</span></p>
+                        <p><span class="step-badge">Paso 1</span> Restamos 5: <span class="font-bold text-slate-900">\(x^2\) = 25</span></p>
                         <p><span class="step-badge">Paso 2</span> Raíz: <span class="font-bold text-indigo-600">x = ±5</span></p>
                     </div>
                 </div>
@@ -123,10 +130,10 @@
                 <!-- Ejemplo 5 -->
                 <div class="math-card p-8 rounded-[2rem] border-l-8 border-l-emerald-500">
                     <div class="flex justify-between items-start mb-4">
-                        <span class="text-2xl font-mono font-black">5x² = 80</span>
+                        <span class="text-2xl font-mono font-black">5\(x^2\) = 80</span>
                     </div>
                     <div class="space-y-3 text-slate-600 text-sm">
-                        <p><span class="step-badge">Paso 1</span> Dividimos entre 5: <span class="font-bold text-slate-900">x² = 16</span></p>
+                        <p><span class="step-badge">Paso 1</span> Dividimos entre 5: <span class="font-bold text-slate-900">\(x^2\) = 16</span></p>
                         <p><span class="step-badge">Paso 2</span> Resultado: <span class="font-bold text-indigo-600">x = ±4</span></p>
                     </div>
                 </div>
@@ -145,10 +152,10 @@
                     <div class="border-b border-white/10 pb-8">
                         <div class="flex items-center gap-4 mb-4">
                             <span class="text-indigo-400 font-black">01.</span>
-                            <span class="text-2xl font-mono italic tracking-widest">x² - 10 = 90</span>
+                            <span class="text-2xl font-mono italic tracking-widest">\(x^2\) - 10 = 90</span>
                         </div>
                         <div class="flex flex-wrap items-center gap-3 text-slate-400 text-sm pl-10">
-                            <span>x² = 90 + 10 → x² =</span>
+                            <span>\(x^2\) = 90 + 10 → \(x^2\) =</span>
                             <input type="number" oninput="checkStep(this, 100)" class="w-16 bg-white/5 border border-white/20 rounded px-2 py-1 text-center font-bold">
                             <span>→ x = ±</span>
                             <input type="number" oninput="checkStep(this, 10)" class="w-16 bg-white/5 border border-white/20 rounded px-2 py-1 text-center font-bold">
@@ -159,10 +166,10 @@
                     <div class="border-b border-white/10 pb-8">
                         <div class="flex items-center gap-4 mb-4">
                             <span class="text-indigo-400 font-black">02.</span>
-                            <span class="text-2xl font-mono italic tracking-widest">4x² = 64</span>
+                            <span class="text-2xl font-mono italic tracking-widest">4\(x^2\) = 64</span>
                         </div>
                         <div class="flex flex-wrap items-center gap-3 text-slate-400 text-sm pl-10">
-                            <span>x² = 64 / 4 → x² =</span>
+                            <span>\(x^2\) = 64 / 4 → \(x^2\) =</span>
                             <input type="number" oninput="checkStep(this, 16)" class="w-16 bg-white/5 border border-white/20 rounded px-2 py-1 text-center font-bold">
                             <span>→ x = ±</span>
                             <input type="number" oninput="checkStep(this, 4)" class="w-16 bg-white/5 border border-white/20 rounded px-2 py-1 text-center font-bold">
@@ -173,10 +180,10 @@
                     <div class="border-b border-white/10 pb-8">
                         <div class="flex items-center gap-4 mb-4">
                             <span class="text-indigo-400 font-black">03.</span>
-                            <span class="text-2xl font-mono italic tracking-widest">x² + 7 = 56</span>
+                            <span class="text-2xl font-mono italic tracking-widest">\(x^2\) + 7 = 56</span>
                         </div>
                         <div class="flex flex-wrap items-center gap-3 text-slate-400 text-sm pl-10">
-                            <span>x² = 56 - 7 → x² =</span>
+                            <span>\(x^2\) = 56 - 7 → \(x^2\) =</span>
                             <input type="number" oninput="checkStep(this, 49)" class="w-16 bg-white/5 border border-white/20 rounded px-2 py-1 text-center font-bold">
                             <span>→ x = ±</span>
                             <input type="number" oninput="checkStep(this, 7)" class="w-16 bg-white/5 border border-white/20 rounded px-2 py-1 text-center font-bold">
@@ -187,10 +194,10 @@
                     <div class="border-b border-white/10 pb-8">
                         <div class="flex items-center gap-4 mb-4">
                             <span class="text-indigo-400 font-black">04.</span>
-                            <span class="text-2xl font-mono italic tracking-widest">2x² - 18 = 0</span>
+                            <span class="text-2xl font-mono italic tracking-widest">2\(x^2\) - 18 = 0</span>
                         </div>
                         <div class="flex flex-wrap items-center gap-3 text-slate-400 text-sm pl-10">
-                            <span>2x² = 18 → x² =</span>
+                            <span>2\(x^2\) = 18 → \(x^2\) =</span>
                             <input type="number" oninput="checkStep(this, 9)" class="w-16 bg-white/5 border border-white/20 rounded px-2 py-1 text-center font-bold">
                             <span>→ x = ±</span>
                             <input type="number" oninput="checkStep(this, 3)" class="w-16 bg-white/5 border border-white/20 rounded px-2 py-1 text-center font-bold">
@@ -201,10 +208,10 @@
                     <div class="">
                         <div class="flex items-center gap-4 mb-4">
                             <span class="text-indigo-400 font-black">05.</span>
-                            <span class="text-2xl font-mono italic tracking-widest">3x² = 75</span>
+                            <span class="text-2xl font-mono italic tracking-widest">3\(x^2\) = 75</span>
                         </div>
                         <div class="flex flex-wrap items-center gap-3 text-slate-400 text-sm pl-10">
-                            <span>x² = 75 / 3 → x² =</span>
+                            <span>\(x^2\) = 75 / 3 → \(x^2\) =</span>
                             <input type="number" oninput="checkStep(this, 25)" class="w-16 bg-white/5 border border-white/20 rounded px-2 py-1 text-center font-bold">
                             <span>→ x = ±</span>
                             <input type="number" oninput="checkStep(this, 5)" class="w-16 bg-white/5 border border-white/20 rounded px-2 py-1 text-center font-bold">
@@ -237,6 +244,60 @@
             } else {
                 el.classList.remove('correct-input');
             }
+        }
+    </script>
+
+
+    <!-- Progress Tracking Script Injected Automatically -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js";
+        import { getFirestore, doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBD3-ZnbczYZOuDm7e9OHLP6Xg68sdZ1so",
+            authDomain: "logicplay-e775c.firebaseapp.com",
+            projectId: "logicplay-e775c",
+            storageBucket: "logicplay-e775c.firebasestorage.app",
+            messagingSenderId: "11226997472",
+            appId: "1:11226997472:web:836d7d87f4f6a01987e685"
+        };
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        
+        const uid = localStorage.getItem('logicplay_uid');
+        const role = localStorage.getItem('logicplay_role');
+
+        async function updateTopicProgress() {
+            if (!uid || role === 'profesor') return;
+
+            const topicId = "matematica_4";
+            const progressValue = 100;
+
+            try {
+                const userRef = doc(db, "users", uid);
+                const docSnap = await getDoc(userRef);
+                
+                if (docSnap.exists()) {
+                    let data = docSnap.data();
+                    let currentProgressMap = data.progreso_temas || {};
+                    let currentVal = currentProgressMap[topicId] || 0;
+                    
+                    if (progressValue > currentVal) {
+                        currentProgressMap[topicId] = progressValue;
+                        await setDoc(userRef, { progreso_temas: currentProgressMap }, { merge: true });
+                        console.log(`Progreso actualizado a ${progressValue}% en el tema ${topicId}`);
+                    }
+                }
+            } catch (err) {
+                console.error("Error actualizando progreso", err);
+            }
+        }
+
+        // Ejecutar si el dom ya cargo
+        if(document.readyState === "complete" || document.readyState === "interactive") {
+            setTimeout(updateTopicProgress, 1500);
+        } else {
+            document.addEventListener("DOMContentLoaded", () => setTimeout(updateTopicProgress, 1500));
         }
     </script>
 

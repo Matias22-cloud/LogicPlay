@@ -64,6 +64,13 @@
         }
     </script>
 
+
+    <!-- KaTeX for Math Rendering -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" 
+        onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '\(', right: '\)', display: false}]});"></script>
+
 </head>
 
 <body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
@@ -137,15 +144,13 @@
             class="hidden xl:hidden flex-col bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 p-4 gap-4 px-6 absolute w-full z-40 shadow-lg top-[72px]">
             <a class="text-primary font-semibold flex items-center gap-2" href="#"><span
                     class="material-symbols-outlined text-[20px]">dashboard</span> Dashboard</a>
-            <a class="text-slate-500 dark:text-slate-400 flex items-center gap-2"
-                href="dashboard_fisica.html"><span
+            <a class="text-slate-500 dark:text-slate-400 flex items-center gap-2" href="dashboard_fisica.html"><span
                     class="material-symbols-outlined text-[20px]">science</span> Física</a>
-            <a class="text-slate-500 dark:text-slate-400 flex items-center gap-2"
-                href="dashboard_quimica.html"><span
+            <a class="text-slate-500 dark:text-slate-400 flex items-center gap-2" href="dashboard_quimica.html"><span
                     class="material-symbols-outlined text-[20px]">biotech</span> Química</a>
             <a class="text-slate-500 dark:text-slate-400 flex items-center gap-2"
-                href="dashboard_matematicas.html"><span
-                    class="material-symbols-outlined text-[20px]">functions</span> Matemáticas</a>
+                href="dashboard_matematicas.html"><span class="material-symbols-outlined text-[20px]">functions</span>
+                Matemáticas</a>
             <button id="nav-temas-btn-mobile"
                 class="bg-slate-200 dark:bg-slate-800 text-slate-400 dark:text-slate-500 px-4 py-2 rounded-lg text-sm font-bold flex items-center justify-center gap-2 mt-2 cursor-not-allowed opacity-60">
                 <span class="material-symbols-outlined text-[18px]">lock</span> Temas (Bloqueado)
@@ -200,11 +205,12 @@
                                 <span class="material-symbols-outlined text-sm">bolt</span> Evento Especial
                             </div>
                             <h2 class="text-4xl md:text-5xl font-black mb-4 leading-tight">Centro de Cálculo</h2>
-                            <p class="text-lg text-white/80 mb-8">Resuelve integrales, optimiza funciones y domina el cálculo. ¡Usa tu mente matemática y encabeza el ranking!</p>
+                            <p class="text-lg text-white/80 mb-8">Resuelve integrales, optimiza funciones y domina el
+                                cálculo. ¡Usa tu mente matemática y encabeza el ranking!</p>
                             <button
                                 class="bg-white text-primary font-bold px-8 py-3 rounded-lg hover:bg-slate-100 transition-colors inline-flex items-center gap-2"
                                 onclick="window.location.href='Matemticas_Todos los documetos/matematica_selecci_n_de_temas.html'">
-                                Ir a Materia <span class="material-symbols-outlined">arrow_forward</span>
+                                Ver temas <span class="material-symbols-outlined">arrow_forward</span>
                             </button>
                         </div>
                         <div class="absolute right-0 bottom-0 top-0 w-1/3 hidden md:flex items-center justify-center">
@@ -271,7 +277,8 @@
                                 <span class="material-symbols-outlined text-yellow-500">leaderboard</span>
                                 Tabla de Clasificación
                             </h3>
-                            <span class="text-xs font-bold text-primary px-2 py-1 bg-primary/10 rounded-full">Matemáticas</span>
+                            <span
+                                class="text-xs font-bold text-primary px-2 py-1 bg-primary/10 rounded-full">Matemáticas</span>
                         </div>
                         <div class="space-y-4" id="ranking-list">
                             <div class="flex justify-center flex-col items-center py-6">

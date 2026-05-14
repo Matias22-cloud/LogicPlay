@@ -1,42 +1,12 @@
-<!DOCTYPE html>
-<html class="light" lang="es">
+#!/usr/bin/env python3
+"""Build 3D Equilibrio de Fuerzas simulator - balance/tension forces."""
+import os
 
-<head>
-    <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
-    <script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: { extend: { colors: { "primary": "#4f46e5", "accent": "#f43f5e", "background-light": "#f8fafc", "background-dark": "#0f172a" }, fontFamily: { "display": ["Lexend"] }, borderRadius: { "DEFAULT": "0.375rem", "lg": "0.75rem", "xl": "1rem", "full": "9999px" } } }
-        }
-    </script>
-    <style type="text/tailwindcss">
-        :root { --primary-color: #4f46e5; --accent-color: #f43f5e; }
-        .glass-panel { @apply bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border border-white/20 dark:border-slate-800/50 shadow-xl; }
-        .input-glow:focus-within { box-shadow: 0 0 15px rgba(79, 70, 229, 0.3); }
-        .nav-tab { @apply px-4 py-2 text-sm font-semibold transition-all duration-200 relative; }
-        .nav-tab-active { @apply text-primary border-b-2 border-primary; }
-        .nav-tab-inactive { @apply text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 border-b-2 border-transparent; }
-    </style>
-    <title>Fisica: Practica Interactiva (Equilibrio de Fuerzas)</title>
-    <link rel="manifest" href="../../manifest.json">
-    <meta name="theme-color" content="#2c0fbd">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <script>if ('serviceWorker' in navigator) { window.addEventListener('load', () => { navigator.serviceWorker.register('../../service-worker.js').then(r => console.log('SW OK')).catch(e => console.log('SW fail', e)); }); }</script>
+FILE = os.path.join("Fisica_Todos los documentos", "f_sica_equilibrio_de_fuerzas", "practica.html")
+with open(FILE, 'r', encoding='utf-8') as f:
+    html = f.read()
 
-    <!-- KaTeX for Math Rendering -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css">
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" 
-        onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '\(', right: '\)', display: false}]});"></script>
-
-</head>
-
-<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased">
+NEW_BODY = r'''<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased">
     <div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
         <header class="sticky top-0 z-50 glass-panel border-b px-4 sm:px-6 md:px-20 py-4">
             <div class="flex items-center justify-between max-w-7xl mx-auto w-full gap-2">
@@ -339,83 +309,14 @@
 
         init3D();
     </script>
+'''
 
+head_end = html.find('</head>')
+head_section = html[:head_end + len('</head>')]
+faraday_start = html.find('<div id="faraday-chat-container"')
+tail_section = html[faraday_start:]
+new_html = head_section + '\n\n' + NEW_BODY + '\n\n    ' + tail_section
 
-    <div id="faraday-chat-container" class="fixed bottom-6 right-6 z-50 flex flex-col items-end">
-        <div id="faraday-chat-window" class="hidden w-80 md:w-96 bg-white dark:bg-slate-900 border border-primary/20 dark:border-slate-700 rounded-2xl shadow-2xl mb-4 overflow-hidden flex-col transition-all origin-bottom-right">
-            <div class="bg-primary text-white p-4 flex items-center justify-between"><div class="flex items-center gap-3"><div class="size-8 rounded-full bg-white/20 flex items-center justify-center font-bold text-lg">🔬</div><div><h3 class="font-bold text-sm">Faraday</h3><p class="text-[10px] text-primary-100 opacity-80">Asistente de Fisica</p></div></div><button id="close-faraday-btn" class="text-white hover:text-red-300 transition-colors"><span class="material-symbols-outlined">close</span></button></div>
-            <div id="faraday-messages" class="h-80 overflow-y-auto p-4 flex flex-col gap-3 bg-slate-50 dark:bg-slate-800/50"><div class="flex gap-2 w-full"><div class="size-6 shrink-0 rounded-full bg-primary/20 flex items-center justify-center text-xs">🔬</div><div class="bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 p-3 rounded-2xl rounded-tl-none text-sm text-slate-700 dark:text-slate-300 shadow-sm">¡Hola! Soy Faraday. ¿En que conceptos de Equilibrio de Fuerzas te puedo ayudar hoy?</div></div></div>
-            <div class="p-3 bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800"><form id="faraday-form" class="flex items-center gap-2"><input type="text" id="faraday-input" placeholder="Pregunta sobre fisica..." class="flex-1 bg-slate-100 dark:bg-slate-800 border-none rounded-xl px-4 py-2 text-sm focus:ring-2 focus:ring-primary/50 text-slate-800 dark:text-slate-200" autocomplete="off" required><button type="submit" class="shrink-0 size-9 rounded-xl bg-primary text-white flex items-center justify-center hover:bg-primary/90 transition-colors shadow-md disabled:opacity-50" id="faraday-submit"><span class="material-symbols-outlined text-sm">send</span></button></form></div>
-        </div>
-        <button id="open-faraday-btn" class="flex items-center gap-2 bg-primary hover:bg-primary/90 text-white px-3 sm:px-5 py-3 rounded-full shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group"><span class="material-symbols-outlined group-hover:animate-pulse">science</span><span class="font-bold text-sm hidden sm:inline">Pregunta a Faraday 🔬</span></button>
-    </div>
-
-    <script type="importmap">{"imports":{"@google/genai":"https://esm.run/@google/genai"}}</script>
-    <script type="module">
-        import { GoogleGenAI } from '@google/genai';
-        const ai = new GoogleGenAI({apiKey:'AIzaSyC2jYxn8xi9lMEoE4HbtbKwsVnebqJ4G74'});
-        const config={systemInstruction:[{text:"Eres Faraday, un asistente educativo amable, paciente y motivador especializado unicamente en Fisica para estudiantes de bachillerato. Solo respondes preguntas de Fisica como equilibrio de fuerzas, planos inclinados, peso y masa, MRU y movimiento circular. Si te preguntan algo de otra materia di amablemente que solo puedes ayudar con Fisica pero recomiendale hablar con Heisenberg para Quimica o Leonhard para Matematicas. Explica paso a paso de forma clara y sencilla usando ejemplos cotidianos."}]};
-        const model='gemini-1.5-flash';
-        const chatWindow=document.getElementById('faraday-chat-window');const openBtn=document.getElementById('open-faraday-btn');const closeBtn=document.getElementById('close-faraday-btn');const form=document.getElementById('faraday-form');const input=document.getElementById('faraday-input');const messagesArea=document.getElementById('faraday-messages');const submitBtn=document.getElementById('faraday-submit');
-        openBtn.addEventListener('click',()=>{chatWindow.classList.toggle('hidden');chatWindow.classList.toggle('flex');if(!chatWindow.classList.contains('hidden'))input.focus();});
-        closeBtn.addEventListener('click',()=>{chatWindow.classList.add('hidden');chatWindow.classList.remove('flex');});
-        function addMessage(text,isUser=false){const msgDiv=document.createElement('div');msgDiv.className=`flex gap-2 w-full ${isUser?'justify-end':''} mb-2`;const bubbleClass=isUser?'bg-primary text-white p-3 rounded-2xl rounded-tr-none text-sm shadow-sm max-w-[85%]':'bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 p-3 rounded-2xl rounded-tl-none text-sm text-slate-700 dark:text-slate-300 shadow-sm max-w-[85%]';const formattedText=text.replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>').replace(/\n/g,'<br>');let contentHTML='';if(!isUser){contentHTML=`<div class="size-6 shrink-0 rounded-full bg-primary/20 flex items-center justify-center text-xs mt-1">🔬</div><div class="${bubbleClass}">${formattedText}</div>`;}else{contentHTML=`<div class="${bubbleClass}">${formattedText}</div>`;}msgDiv.innerHTML=contentHTML;messagesArea.appendChild(msgDiv);messagesArea.scrollTop=messagesArea.scrollHeight;return msgDiv;}
-        form.addEventListener('submit',async(e)=>{e.preventDefault();const prompt=input.value.trim();if(!prompt)return;addMessage(prompt,true);input.value='';input.disabled=true;submitBtn.disabled=true;const loadingMsg=addMessage('Pensando...',false);try{const response=await ai.models.generateContentStream({model,config,contents:[{role:'user',parts:[{text:prompt}]}]});let fullText='';let firstChunk=true;for await(const chunk of response){if(firstChunk){loadingMsg.querySelector('div.bg-white, div.bg-slate-800').innerHTML='';firstChunk=false;}fullText+=chunk.text;loadingMsg.querySelector('div.bg-white, div.bg-slate-800').innerHTML=fullText.replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>').replace(/\n/g,'<br>');messagesArea.scrollTop=messagesArea.scrollHeight;}}catch(error){console.error("Faraday Error:",error);loadingMsg.querySelector('div.bg-white, div.bg-slate-800').innerHTML='<span class="text-red-500">Hubo un error de conexion. Vuelve a intentarlo.</span>';}finally{input.disabled=false;submitBtn.disabled=false;input.focus();}});
-    </script>
-    <script>let deferredPrompt;window.addEventListener('beforeinstallprompt',(e)=>{e.preventDefault();deferredPrompt=e;const installButtons=document.querySelectorAll('#install-button, #install-button-mobile, #install-button-landing');installButtons.forEach(btn=>{btn.style.display='flex';btn.addEventListener('click',async()=>{if(deferredPrompt){deferredPrompt.prompt();const{outcome}=await deferredPrompt.userChoice;console.log(`User response: ${outcome}`);deferredPrompt=null;}});});});</script>
-
-    <!-- Progress Tracking Script Injected Automatically -->
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js";
-        import { getFirestore, doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js";
-
-        const firebaseConfig = {
-            apiKey: "AIzaSyBD3-ZnbczYZOuDm7e9OHLP6Xg68sdZ1so",
-            authDomain: "logicplay-e775c.firebaseapp.com",
-            projectId: "logicplay-e775c",
-            storageBucket: "logicplay-e775c.firebasestorage.app",
-            messagingSenderId: "11226997472",
-            appId: "1:11226997472:web:836d7d87f4f6a01987e685"
-        };
-        const app = initializeApp(firebaseConfig);
-        const db = getFirestore(app);
-        
-        const uid = localStorage.getItem('logicplay_uid');
-        const role = localStorage.getItem('logicplay_role');
-
-        async function updateTopicProgress() {
-            if (!uid || role === 'profesor') return;
-
-            const topicId = "f_sica_equilibrio_de_fuerzas";
-            const progressValue = 100;
-
-            try {
-                const userRef = doc(db, "users", uid);
-                const docSnap = await getDoc(userRef);
-                
-                if (docSnap.exists()) {
-                    let data = docSnap.data();
-                    let currentProgressMap = data.progreso_temas || {};
-                    let currentVal = currentProgressMap[topicId] || 0;
-                    
-                    if (progressValue > currentVal) {
-                        currentProgressMap[topicId] = progressValue;
-                        await setDoc(userRef, { progreso_temas: currentProgressMap }, { merge: true });
-                        console.log(`Progreso actualizado a ${progressValue}% en el tema ${topicId}`);
-                    }
-                }
-            } catch (err) {
-                console.error("Error actualizando progreso", err);
-            }
-        }
-
-        // Ejecutar si el dom ya cargo
-        if(document.readyState === "complete" || document.readyState === "interactive") {
-            setTimeout(updateTopicProgress, 1500);
-        } else {
-            document.addEventListener("DOMContentLoaded", () => setTimeout(updateTopicProgress, 1500));
-        }
-    </script>
-
-</body>
-</html>
+with open(FILE, 'w', encoding='utf-8') as f:
+    f.write(new_html)
+print(f"✅ Equilibrio de Fuerzas 3D simulator built successfully in {FILE}")

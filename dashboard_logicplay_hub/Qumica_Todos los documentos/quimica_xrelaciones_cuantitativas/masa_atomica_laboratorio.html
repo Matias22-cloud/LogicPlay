@@ -54,6 +54,13 @@
         }
     </style>
     <title>Química Laboratorio - Masa Atómica</title>
+
+    <!-- KaTeX for Math Rendering -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" 
+        onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '\(', right: '\)', display: false}]});"></script>
+
 </head>
 
 <body
@@ -360,6 +367,60 @@
             }
         });
     </script>
+
+    <!-- Progress Tracking Script Injected Automatically -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js";
+        import { getFirestore, doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBD3-ZnbczYZOuDm7e9OHLP6Xg68sdZ1so",
+            authDomain: "logicplay-e775c.firebaseapp.com",
+            projectId: "logicplay-e775c",
+            storageBucket: "logicplay-e775c.firebasestorage.app",
+            messagingSenderId: "11226997472",
+            appId: "1:11226997472:web:836d7d87f4f6a01987e685"
+        };
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        
+        const uid = localStorage.getItem('logicplay_uid');
+        const role = localStorage.getItem('logicplay_role');
+
+        async function updateTopicProgress() {
+            if (!uid || role === 'profesor') return;
+
+            const topicId = "quimica_xrelaciones_cuantitativas";
+            const progressValue = 100;
+
+            try {
+                const userRef = doc(db, "users", uid);
+                const docSnap = await getDoc(userRef);
+                
+                if (docSnap.exists()) {
+                    let data = docSnap.data();
+                    let currentProgressMap = data.progreso_temas || {};
+                    let currentVal = currentProgressMap[topicId] || 0;
+                    
+                    if (progressValue > currentVal) {
+                        currentProgressMap[topicId] = progressValue;
+                        await setDoc(userRef, { progreso_temas: currentProgressMap }, { merge: true });
+                        console.log(`Progreso actualizado a ${progressValue}% en el tema ${topicId}`);
+                    }
+                }
+            } catch (err) {
+                console.error("Error actualizando progreso", err);
+            }
+        }
+
+        // Ejecutar si el dom ya cargo
+        if(document.readyState === "complete" || document.readyState === "interactive") {
+            setTimeout(updateTopicProgress, 1500);
+        } else {
+            document.addEventListener("DOMContentLoaded", () => setTimeout(updateTopicProgress, 1500));
+        }
+    </script>
+
 </body>
 
 </html>

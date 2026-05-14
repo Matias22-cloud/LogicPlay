@@ -24,6 +24,13 @@
         
         input:focus { outline: none; border-color: #f43f5e; ring: 2px ring-rose-500; }
     </style>
+
+    <!-- KaTeX for Math Rendering -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" 
+        onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '\(', right: '\)', display: false}]});"></script>
+
 </head>
 <body class="p-4 md:p-10">
 
@@ -64,22 +71,22 @@
                 <!-- Columna Completas -->
                 <div class="space-y-4">
                     <span class="tag bg-emerald-100 text-emerald-600 px-3 py-1 rounded-lg text-[10px] font-black uppercase">Completas</span>
-                    <input type="text" placeholder="Ej: 2x² + 3x - 1 = 0" class="w-full p-4 rounded-2xl border-2 border-slate-100 bg-white shadow-sm font-mono text-sm">
+                    <input type="text" placeholder="Ej: 2\(x^2\) + 3x - 1 = 0" class="w-full p-4 rounded-2xl border-2 border-slate-100 bg-white shadow-sm font-mono text-sm">
                     <input type="text" placeholder="Tu segundo ejemplo..." class="w-full p-4 rounded-2xl border-2 border-slate-100 bg-white shadow-sm font-mono text-sm">
                 </div>
 
                 <!-- Columna Incompletas -->
                 <div class="space-y-4">
                     <span class="tag bg-indigo-100 text-indigo-600 px-3 py-1 rounded-lg text-[10px] font-black uppercase">Incompletas</span>
-                    <input type="text" placeholder="Ej: x² - 25 = 0" class="w-full p-4 rounded-2xl border-2 border-slate-100 bg-white shadow-sm font-mono text-sm">
-                    <input type="text" placeholder="Ej: 5x² + 2x = 0" class="w-full p-4 rounded-2xl border-2 border-slate-100 bg-white shadow-sm font-mono text-sm">
+                    <input type="text" placeholder="Ej: \(x^2\) - 25 = 0" class="w-full p-4 rounded-2xl border-2 border-slate-100 bg-white shadow-sm font-mono text-sm">
+                    <input type="text" placeholder="Ej: 5\(x^2\) + 2x = 0" class="w-full p-4 rounded-2xl border-2 border-slate-100 bg-white shadow-sm font-mono text-sm">
                 </div>
 
                 <!-- Columna No Cuadráticas -->
                 <div class="space-y-4">
                     <span class="tag bg-slate-200 text-slate-600 px-3 py-1 rounded-lg text-[10px] font-black uppercase">No Cuadráticas</span>
                     <input type="text" placeholder="Ej: 8x + 4 = 0" class="w-full p-4 rounded-2xl border-2 border-slate-100 bg-white shadow-sm font-mono text-sm italic">
-                    <input type="text" placeholder="Ej: x³ - x = 0" class="w-full p-4 rounded-2xl border-2 border-slate-100 bg-white shadow-sm font-mono text-sm italic">
+                    <input type="text" placeholder="Ej: \(x^3\) - x = 0" class="w-full p-4 rounded-2xl border-2 border-slate-100 bg-white shadow-sm font-mono text-sm italic">
                 </div>
             </div>
         </section>
@@ -97,7 +104,7 @@
                     
                     <!-- Ejercicio 1 -->
                     <div class="grid md:grid-cols-4 items-center gap-4 bg-white/5 p-6 rounded-3xl border border-white/10">
-                        <div class="text-xl font-mono text-white font-bold">5x² - 3x + 8 = 0</div>
+                        <div class="text-xl font-mono text-white font-bold">5\(x^2\) - 3x + 8 = 0</div>
                         <div class="flex items-center gap-2">
                             <span class="highlight-a text-[10px] uppercase">a=</span>
                             <input type="number" class="w-full bg-slate-800 rounded-lg p-2 text-white text-center border border-white/10">
@@ -114,7 +121,7 @@
 
                     <!-- Ejercicio 2 -->
                     <div class="grid md:grid-cols-4 items-center gap-4 bg-white/5 p-6 rounded-3xl border border-white/10">
-                        <div class="text-xl font-mono text-white font-bold">x² + 7x = 0</div>
+                        <div class="text-xl font-mono text-white font-bold">\(x^2\) + 7x = 0</div>
                         <div class="flex items-center gap-2">
                             <span class="highlight-a text-[10px] uppercase">a=</span>
                             <input type="number" class="w-full bg-slate-800 rounded-lg p-2 text-white text-center border border-white/10">
@@ -131,7 +138,7 @@
 
                     <!-- Ejercicio 3 -->
                     <div class="grid md:grid-cols-4 items-center gap-4 bg-white/5 p-6 rounded-3xl border border-white/10">
-                        <div class="text-xl font-mono text-white font-bold">-2x² + 10 = 0</div>
+                        <div class="text-xl font-mono text-white font-bold">-2\(x^2\) + 10 = 0</div>
                         <div class="flex items-center gap-2">
                             <span class="highlight-a text-[10px] uppercase">a=</span>
                             <input type="number" class="w-full bg-slate-800 rounded-lg p-2 text-white text-center border border-white/10">
@@ -148,7 +155,7 @@
 
                     <!-- Ejercicio 4 -->
                     <div class="grid md:grid-cols-4 items-center gap-4 bg-white/5 p-6 rounded-3xl border border-white/10">
-                        <div class="text-xl font-mono text-white font-bold">3x² = 0</div>
+                        <div class="text-xl font-mono text-white font-bold">3\(x^2\) = 0</div>
                         <div class="flex items-center gap-2">
                             <span class="highlight-a text-[10px] uppercase">a=</span>
                             <input type="number" class="w-full bg-slate-800 rounded-lg p-2 text-white text-center border border-white/10">
@@ -165,7 +172,7 @@
 
                     <!-- Ejercicio 5 -->
                     <div class="grid md:grid-cols-4 items-center gap-4 bg-white/5 p-6 rounded-3xl border border-white/10">
-                        <div class="text-xl font-mono text-white font-bold">x² - x - 1 = 0</div>
+                        <div class="text-xl font-mono text-white font-bold">\(x^2\) - x - 1 = 0</div>
                         <div class="flex items-center gap-2">
                             <span class="highlight-a text-[10px] uppercase">a=</span>
                             <input type="number" class="w-full bg-slate-800 rounded-lg p-2 text-white text-center border border-white/10">
@@ -192,6 +199,60 @@
             <button onclick="window.print()" class="bg-slate-900 text-white px-6 py-2 rounded-xl text-xs font-black uppercase tracking-widest hover:bg-rose-600 transition-colors">Imprimir Guía</button>
         </footer>
     </div>
+
+
+    <!-- Progress Tracking Script Injected Automatically -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js";
+        import { getFirestore, doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBD3-ZnbczYZOuDm7e9OHLP6Xg68sdZ1so",
+            authDomain: "logicplay-e775c.firebaseapp.com",
+            projectId: "logicplay-e775c",
+            storageBucket: "logicplay-e775c.firebasestorage.app",
+            messagingSenderId: "11226997472",
+            appId: "1:11226997472:web:836d7d87f4f6a01987e685"
+        };
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        
+        const uid = localStorage.getItem('logicplay_uid');
+        const role = localStorage.getItem('logicplay_role');
+
+        async function updateTopicProgress() {
+            if (!uid || role === 'profesor') return;
+
+            const topicId = "matematica_4";
+            const progressValue = 66;
+
+            try {
+                const userRef = doc(db, "users", uid);
+                const docSnap = await getDoc(userRef);
+                
+                if (docSnap.exists()) {
+                    let data = docSnap.data();
+                    let currentProgressMap = data.progreso_temas || {};
+                    let currentVal = currentProgressMap[topicId] || 0;
+                    
+                    if (progressValue > currentVal) {
+                        currentProgressMap[topicId] = progressValue;
+                        await setDoc(userRef, { progreso_temas: currentProgressMap }, { merge: true });
+                        console.log(`Progreso actualizado a ${progressValue}% en el tema ${topicId}`);
+                    }
+                }
+            } catch (err) {
+                console.error("Error actualizando progreso", err);
+            }
+        }
+
+        // Ejecutar si el dom ya cargo
+        if(document.readyState === "complete" || document.readyState === "interactive") {
+            setTimeout(updateTopicProgress, 1500);
+        } else {
+            document.addEventListener("DOMContentLoaded", () => setTimeout(updateTopicProgress, 1500));
+        }
+    </script>
 
 </body>
 </html>

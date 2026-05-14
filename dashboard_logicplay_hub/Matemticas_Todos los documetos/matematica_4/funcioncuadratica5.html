@@ -29,6 +29,13 @@
         input:focus { outline: none; border-color: #6366f1; }
         .x-val { color: #f43f5e; font-weight: 800; }
     </style>
+
+    <!-- KaTeX for Math Rendering -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" 
+        onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '\(', right: '\)', display: false}]});"></script>
+
 </head>
 <body class="p-6 md:p-12 text-slate-800">
 
@@ -70,101 +77,101 @@
             <div class="grid md:grid-cols-2 gap-8 mb-8">
                 <div class="step-box">
                     <h4 class="font-bold text-indigo-600 mb-2 uppercase text-xs">Explicación del Ejemplo</h4>
-                    <p class="font-mono text-lg mb-2 italic">Ecuación: 6x² + 12x = 0</p>
+                    <p class="font-mono text-lg mb-2 italic">Ecuación: 6\(x^2\) + 12x = 0</p>
                     <ul class="text-sm text-slate-500 space-y-2">
                         <li><b>Paso A:</b> Buscamos el número más grande que divida a 6 y 12. Es el <b>6</b>.</li>
                         <li><b>Paso B:</b> Vemos qué letra se repite. Ambos tienen "x", elegimos la de menor exponente: <b>x</b>.</li>
                         <li><b>Paso C:</b> Dividimos cada término original entre <b>6x</b>. Nos queda: <b>6x(x + 2) = 0</b>.</li>
                         <li><b>Paso D:</b> Para que la multiplicación dé cero, o 6x es 0, o (x+2) es 0.</li>
-                        <li class="text-slate-800 font-bold italic">Raíces: x₁ = 0, x₂ = -2</li>
+                        <li class="text-slate-800 font-bold italic">Raíces: \(x_1\) = 0, \(x_2\) = -2</li>
                     </ul>
                 </div>
                 
                 <div class="space-y-4">
                     <h4 class="font-bold text-slate-400 uppercase text-xs tracking-widest">Resuelve paso a paso</h4>
                     <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200">
-                        <p class="font-mono font-bold mb-4 italic">Ejercicio: 5x² + 15x = 0</p>
+                        <p class="font-mono font-bold mb-4 italic">Ejercicio: 5\(x^2\) + 15x = 0</p>
                         <div class="space-y-3 text-sm">
                             <div>1. ¿Qué factor se repite en 5 y 15?: <input type="text" oninput="check(this, '5x')" placeholder="Número y x"></div>
                             <div>2. Si divides 15x entre ese factor queda: <input type="number" oninput="check(this, 3)" placeholder="Número"></div>
-                            <div>3. Primera solución (x₁): <input type="number" oninput="check(this, 0)" placeholder="x1"></div>
-                            <div>4. Segunda solución (x₂): <input type="number" oninput="check(this, -3)" placeholder="x2"></div>
+                            <div>3. Primera solución (\(x_1\)): <input type="number" oninput="check(this, 0)" placeholder="x1"></div>
+                            <div>4. Segunda solución (\(x_2\)): <input type="number" oninput="check(this, -3)" placeholder="x2"></div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- MÉTODO 2: TRINOMIO x² + bx + c -->
+        <!-- MÉTODO 2: TRINOMIO \(x^2\) + bx + c -->
         <div class="reveal method-card" style="animation-delay: 0.2s">
             <div class="flex items-center gap-4 mb-6">
                 <span class="bg-emerald-600 text-white p-3 rounded-2xl material-symbols-outlined">filter_2</span>
-                <h2 class="text-3xl font-black text-slate-800">2. Trinomio Simple (x² + bx + c)</h2>
+                <h2 class="text-3xl font-black text-slate-800">2. Trinomio Simple (\(x^2\) + bx + c)</h2>
             </div>
             <p class="text-slate-600 mb-6 leading-relaxed">
-                Este método se usa cuando la x² está sola (sin número al lado). La meta es encontrar dos números mágicos. Estos dos números, al sumarse, deben dar el número del medio, y al multiplicarse, deben dar el número del final.
+                Este método se usa cuando la \(x^2\) está sola (sin número al lado). La meta es encontrar dos números mágicos. Estos dos números, al sumarse, deben dar el número del medio, y al multiplicarse, deben dar el número del final.
             </p>
             
             <div class="grid md:grid-cols-2 gap-8 mb-8">
                 <div class="step-box" style="border-color: #10b981;">
                     <h4 class="font-bold text-emerald-600 mb-2 uppercase text-xs">Explicación del Ejemplo</h4>
-                    <p class="font-mono text-lg mb-2 italic">Ecuación: x² + 5x + 6 = 0</p>
+                    <p class="font-mono text-lg mb-2 italic">Ecuación: \(x^2\) + 5x + 6 = 0</p>
                     <ul class="text-sm text-slate-500 space-y-2">
                         <li><b>Paso A:</b> Buscamos números que multiplicados den 6 (pueden ser 6x1 o 3x2).</li>
                         <li><b>Paso B:</b> De esos pares, ¿cuál suma 5? El <b>3 y 2</b>.</li>
                         <li><b>Paso C:</b> Escribimos dos paréntesis: <b>(x + 3)(x + 2) = 0</b>.</li>
                         <li><b>Paso D:</b> Cambiamos el signo de los números para hallar las x.</li>
-                        <li class="text-slate-800 font-bold italic">Raíces: x₁ = -3, x₂ = -2</li>
+                        <li class="text-slate-800 font-bold italic">Raíces: \(x_1\) = -3, \(x_2\) = -2</li>
                     </ul>
                 </div>
                 
                 <div class="space-y-4">
                     <h4 class="font-bold text-slate-400 uppercase text-xs tracking-widest">Resuelve paso a paso</h4>
                     <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200">
-                        <p class="font-mono font-bold mb-4 italic">Ejercicio: x² + 7x + 10 = 0</p>
+                        <p class="font-mono font-bold mb-4 italic">Ejercicio: \(x^2\) + 7x + 10 = 0</p>
                         <div class="space-y-3 text-sm">
                             <div>1. Número que sume 7 y multiplique 10: <input type="number" oninput="check(this, 5)" placeholder="Num 1"></div>
                             <div>2. El otro número que falta es: <input type="number" oninput="check(this, 2)" placeholder="Num 2"></div>
-                            <div>3. Valor de x₁ (signo opuesto): <input type="number" oninput="check(this, -5)" placeholder="x1"></div>
-                            <div>4. Valor de x₂ (signo opuesto): <input type="number" oninput="check(this, -2)" placeholder="x2"></div>
+                            <div>3. Valor de \(x_1\) (signo opuesto): <input type="number" oninput="check(this, -5)" placeholder="x1"></div>
+                            <div>4. Valor de \(x_2\) (signo opuesto): <input type="number" oninput="check(this, -2)" placeholder="x2"></div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- MÉTODO 3: TRINOMIO COMPUESTO ax² + bx + c -->
+        <!-- MÉTODO 3: TRINOMIO COMPUESTO a\(x^2\) + bx + c -->
         <div class="reveal method-card" style="animation-delay: 0.3s">
             <div class="flex items-center gap-4 mb-6">
                 <span class="bg-rose-600 text-white p-3 rounded-2xl material-symbols-outlined">functions</span>
-                <h2 class="text-3xl font-black text-slate-800">3. Trinomio Compuesto (ax² + bx + c)</h2>
+                <h2 class="text-3xl font-black text-slate-800">3. Trinomio Compuesto (a\(x^2\) + bx + c)</h2>
             </div>
             <p class="text-slate-600 mb-6 leading-relaxed">
-                Este es para cuando la x² tiene un número acompañándola. El truco es multiplicar el primer número por el último para simplificar el problema y luego repartir el primer número entre los paréntesis.
+                Este es para cuando la \(x^2\) tiene un número acompañándola. El truco es multiplicar el primer número por el último para simplificar el problema y luego repartir el primer número entre los paréntesis.
             </p>
             
             <div class="grid md:grid-cols-2 gap-8 mb-8">
                 <div class="step-box" style="border-color: #f43f5e;">
                     <h4 class="font-bold text-rose-600 mb-2 uppercase text-xs">Explicación del Ejemplo</h4>
-                    <p class="text-xs text-slate-500 mb-2 italic">Ecuación: 2x² + 5x + 3 = 0</p>
+                    <p class="text-xs text-slate-500 mb-2 italic">Ecuación: 2\(x^2\) + 5x + 3 = 0</p>
                     <ul class="text-sm text-slate-500 space-y-2">
                         <li><b>Paso A:</b> Multiplicamos el primero (2) por el último (3). Nos da <b>6</b>.</li>
                         <li><b>Paso B:</b> Buscamos números que sumen 5 y multipliquen 6. Son <b>3 y 2</b>.</li>
                         <li><b>Paso C:</b> Montamos la estructura: (2x + 3) y (2x + 2).</li>
                         <li><b>Paso D:</b> Simplificamos el paréntesis que se pueda: (2x + 3)(x + 1).</li>
-                        <li class="text-slate-800 font-bold italic">Raíces: x₁ = -1.5, x₂ = -1</li>
+                        <li class="text-slate-800 font-bold italic">Raíces: \(x_1\) = -1.5, \(x_2\) = -1</li>
                     </ul>
                 </div>
                 
                 <div class="space-y-4">
                     <h4 class="font-bold text-slate-400 uppercase text-xs tracking-widest">Resuelve paso a paso</h4>
                     <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200">
-                        <p class="font-mono font-bold mb-4 italic">Ejercicio: 3x² + 7x + 2 = 0</p>
+                        <p class="font-mono font-bold mb-4 italic">Ejercicio: 3\(x^2\) + 7x + 2 = 0</p>
                         <div class="space-y-3 text-sm">
                             <div>1. Multiplica el primero por el último (3 x 2): <input type="number" oninput="check(this, 6)" placeholder="Resultado"></div>
                             <div>2. Dos números que sumen 7 y multipliquen 6: (6 y <input type="number" oninput="check(this, 1)" placeholder="?">)</div>
-                            <div>3. Valor de x₁ (dividir -6 entre 3): <input type="number" oninput="check(this, -2)" placeholder="x1"></div>
-                            <div>4. Valor de x₂ (dividir -1 entre 3): <input type="text" oninput="check(this, '-0.33')" placeholder="x2"></div>
+                            <div>3. Valor de \(x_1\) (dividir -6 entre 3): <input type="number" oninput="check(this, -2)" placeholder="x1"></div>
+                            <div>4. Valor de \(x_2\) (dividir -1 entre 3): <input type="text" oninput="check(this, '-0.33')" placeholder="x2"></div>
                         </div>
                     </div>
                 </div>
@@ -183,6 +190,60 @@
             } else {
                 el.classList.remove('correct-step');
             }
+        }
+    </script>
+
+
+    <!-- Progress Tracking Script Injected Automatically -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js";
+        import { getFirestore, doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBD3-ZnbczYZOuDm7e9OHLP6Xg68sdZ1so",
+            authDomain: "logicplay-e775c.firebaseapp.com",
+            projectId: "logicplay-e775c",
+            storageBucket: "logicplay-e775c.firebasestorage.app",
+            messagingSenderId: "11226997472",
+            appId: "1:11226997472:web:836d7d87f4f6a01987e685"
+        };
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        
+        const uid = localStorage.getItem('logicplay_uid');
+        const role = localStorage.getItem('logicplay_role');
+
+        async function updateTopicProgress() {
+            if (!uid || role === 'profesor') return;
+
+            const topicId = "matematica_4";
+            const progressValue = 100;
+
+            try {
+                const userRef = doc(db, "users", uid);
+                const docSnap = await getDoc(userRef);
+                
+                if (docSnap.exists()) {
+                    let data = docSnap.data();
+                    let currentProgressMap = data.progreso_temas || {};
+                    let currentVal = currentProgressMap[topicId] || 0;
+                    
+                    if (progressValue > currentVal) {
+                        currentProgressMap[topicId] = progressValue;
+                        await setDoc(userRef, { progreso_temas: currentProgressMap }, { merge: true });
+                        console.log(`Progreso actualizado a ${progressValue}% en el tema ${topicId}`);
+                    }
+                }
+            } catch (err) {
+                console.error("Error actualizando progreso", err);
+            }
+        }
+
+        // Ejecutar si el dom ya cargo
+        if(document.readyState === "complete" || document.readyState === "interactive") {
+            setTimeout(updateTopicProgress, 1500);
+        } else {
+            document.addEventListener("DOMContentLoaded", () => setTimeout(updateTopicProgress, 1500));
         }
     </script>
 

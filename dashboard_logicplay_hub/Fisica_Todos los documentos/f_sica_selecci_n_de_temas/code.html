@@ -54,6 +54,13 @@
         }
     </script>
 
+
+    <!-- KaTeX for Math Rendering -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" 
+        onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '\(', right: '\)', display: false}]});"></script>
+
 </head>
 
 <body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100">
@@ -273,10 +280,11 @@
                     </div>
                     <div class="flex-1 text-center md:text-left">
                         <h3 class="text-lg font-bold text-primary mb-1">¡Sigue avanzando en Física!</h3>
-                        <p class="text-slate-600 dark:text-slate-400 text-sm">Has completado el 45% de la unidad de
-                            Mecánica Clásica. Continúa donde lo dejaste.</p>
+                        <p id="global-progress-text" class="text-slate-600 dark:text-slate-400 text-sm">Calculando
+                            progreso...</p>
                         <div class="w-full bg-primary/10 h-2 rounded-full mt-3 overflow-hidden">
-                            <div class="bg-primary h-full w-[45%] rounded-full"></div>
+                            <div id="global-progress-bar"
+                                class="bg-primary h-full w-[0%] rounded-full transition-all duration-1000"></div>
                         </div>
                     </div>
                     <button
@@ -356,17 +364,44 @@
     </script>
     <script type="module">
         import { GoogleGenAI } from '@google/genai';
+        import { initializeApp } from 'firebase/app';
+        import { getFirestore, doc, getDoc } from 'firebase/firestore';
 
         const ai = new GoogleGenAI({
             apiKey: 'AIzaSyC2jYxn8xi9lMEoE4HbtbKwsVnebqJ4G74',
         });
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        // Fetch dynamic progress
+        setTimeout(() => {
+            const uid = localStorage.getItem('logicplay_uid');
+            const role = localStorage.getItem('logicplay_role');
+            if (uid && role !== 'profesor') {
+                getDoc(doc(db, "users", uid)).then(snap => {
+                    if (snap.exists()) {
+                        const prog = snap.data().progreso_temas || {};
+                        let totalTopics = 6;
+                        let completedSum = 0;
+                        ["f_sica_mru", "f_sica_pr_ctica_interactiva_3", "f_sica_movimiento_circular", "f_sica_equilibrio_de_fuerzas", "f_sica_peso_y_masa", "f_sica_planos_inclinados"].forEach(k => {
+                            completedSum += prog[k] || 0;
+                        });
+                        let avg = Math.round(completedSum / totalTopics);
+                        document.getElementById('global-progress-bar').style.width = avg + '%';
+                        document.getElementById('global-progress-text').textContent = `Has completado el ${avg}% de la unidad de Física. ¡Sigue así!`;
+                    }
+                });
+            } else {
+                document.getElementById('global-progress-text').textContent = `Progreso exclusivo para estudiantes.`;
+            }
+        }, 1000);
 
         const config = {
             systemInstruction: [{
                 text: "Eres Faraday, un asistente educativo amable, paciente y motivador especializado únicamente en Física para estudiantes de bachillerato. Siempre saludas con entusiasmo y animas al estudiante. Solo respondes preguntas de Física como movimiento parabólico, MRU y movimiento circular. Si te preguntan algo de otra materia di amablemente que solo puedes ayudar con Física pero recomiéndale hablar con Heisenberg para Química o Leonhard para Matemáticas. Explica paso a paso de forma clara y sencilla usando ejemplos cotidianos."
             }],
         };
-        const model = 'gemini-3-flash-preview';
+        const model = 'gemini-1.5-flash';
 
         // UI Interactions
         const chatWindow = document.getElementById('faraday-chat-window');

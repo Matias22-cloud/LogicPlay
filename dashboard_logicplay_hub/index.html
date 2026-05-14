@@ -5,12 +5,13 @@
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/x-icon" href="/logicplay.ico">
     <script>
         // Verificación de Autenticación para LogiPlay
-        // Si no existe la bandera de login, redirigir inmeditamente al landing page
         if (!localStorage.getItem('logicplay_auth')) {
             window.location.replace('landing.html');
+        } else {
+            window.location.replace('dashboard_fisica.html');
         }
     </script>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
@@ -64,6 +65,13 @@
             });
         }
     </script>
+
+
+    <!-- KaTeX for Math Rendering -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" 
+        onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '\(', right: '\)', display: false}]});"></script>
 
 </head>
 

@@ -54,6 +54,13 @@
         }
     </script>
 
+
+    <!-- KaTeX for Math Rendering -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" 
+        onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '\(', right: '\)', display: false}]});"></script>
+
 </head>
 
 <body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100">
@@ -256,10 +263,11 @@
                     </div>
                     <div class="flex-1 text-center md:text-left">
                         <h3 class="text-lg font-bold text-primary mb-1">¡Sigue avanzando en Matemáticas!</h3>
-                        <p class="text-slate-600 dark:text-slate-400 text-sm">Has completado el 25% de la unidad de
-                            Álgebra. Continúa explorando los conceptos básicos.</p>
+                        <p id="global-progress-text" class="text-slate-600 dark:text-slate-400 text-sm">Calculando
+                            progreso...</p>
                         <div class="w-full bg-primary/10 h-2 rounded-full mt-3 overflow-hidden">
-                            <div class="bg-primary h-full w-[25%] rounded-full"></div>
+                            <div id="global-progress-bar"
+                                class="bg-primary h-full w-[0%] rounded-full transition-all duration-1000"></div>
                         </div>
                     </div>
                     <button
@@ -272,6 +280,43 @@
     </div>
 
 
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+        const firebaseConfig = {
+            apiKey: "AIzaSyBD3-ZnbczYZOuDm7e9OHLP6Xg68sdZ1so",
+            authDomain: "logicplay-e775c.firebaseapp.com",
+            projectId: "logicplay-e775c",
+            storageBucket: "logicplay-e775c.firebasestorage.app",
+            messagingSenderId: "11226997472",
+            appId: "1:11226997472:web:836d7d87f4f6a01987e685"
+        };
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        // Fetch dynamic progress
+        setTimeout(() => {
+            const uid = localStorage.getItem('logicplay_uid');
+            const role = localStorage.getItem('logicplay_role');
+            if (uid && role !== 'profesor') {
+                getDoc(doc(db, "users", uid)).then(snap => {
+                    if (snap.exists()) {
+                        const prog = snap.data().progreso_temas || {};
+                        let totalTopics = 5;
+                        let completedSum = 0;
+                        ["matematica_", "matematica_1", "matematica_2", "matematica_3", "matematica_4"].forEach(k => {
+                            completedSum += prog[k] || 0;
+                        });
+                        let avg = Math.round(completedSum / totalTopics);
+                        document.getElementById('global-progress-bar').style.width = avg + '%';
+                        document.getElementById('global-progress-text').textContent = `Has completado el ${avg}% de la unidad de Álgebra. ¡Sigue así!`;
+                    }
+                });
+            } else {
+                document.getElementById('global-progress-text').textContent = `Progreso exclusivo para estudiantes.`;
+            }
+        }, 1000);
+    </script>
     <script>
         let deferredPrompt;
         window.addEventListener('beforeinstallprompt', (e) => {

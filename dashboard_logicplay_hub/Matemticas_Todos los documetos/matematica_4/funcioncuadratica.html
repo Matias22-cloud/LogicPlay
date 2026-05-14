@@ -24,6 +24,13 @@
         
         .type-card { border-left: 4px solid; }
     </style>
+
+    <!-- KaTeX for Math Rendering -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" 
+        onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '\(', right: '\)', display: false}]});"></script>
+
 </head>
 <body class="p-4 md:p-10">
 
@@ -56,7 +63,7 @@
                 </p>
                 
                 <div class="text-4xl md:text-6xl font-mono text-center mb-10 tracking-widest">
-                    <span class="highlight-a">a</span>x² + <span class="highlight-b">b</span>x + <span class="highlight-c">c</span> = 0
+                    <span class="highlight-a">a</span>\(x^2\) + <span class="highlight-b">b</span>x + <span class="highlight-c">c</span> = 0
                 </div>
 
                 <div class="grid md:grid-cols-3 gap-6 bg-white/5 p-8 rounded-3xl border border-white/10">
@@ -89,7 +96,7 @@
                     <h4 class="font-black text-emerald-600 uppercase text-xs mb-2">01. Completas</h4>
                     <p class="text-slate-500 text-sm mb-4">Tienen los tres términos (a, b y c son diferentes a cero).</p>
                     <div class="bg-slate-50 p-4 rounded-xl font-mono text-sm font-bold text-slate-700">
-                        3x² + 2x - 5 = 0
+                        3\(x^2\) + 2x - 5 = 0
                     </div>
                 </div>
 
@@ -98,8 +105,8 @@
                     <h4 class="font-black text-indigo-600 uppercase text-xs mb-2">02. Incompletas</h4>
                     <p class="text-slate-500 text-sm mb-4">Les falta el término lineal (b=0) o el independiente (c=0).</p>
                     <div class="space-y-2 font-mono text-sm font-bold text-slate-700">
-                        <div class="bg-slate-50 p-2 rounded-lg">x² - 9 = 0</div>
-                        <div class="bg-slate-50 p-2 rounded-lg">2x² + 4x = 0</div>
+                        <div class="bg-slate-50 p-2 rounded-lg">\(x^2\) - 9 = 0</div>
+                        <div class="bg-slate-50 p-2 rounded-lg">2\(x^2\) + 4x = 0</div>
                     </div>
                 </div>
 
@@ -109,7 +116,7 @@
                     <p class="text-slate-400 text-sm mb-4">Si "a" es cero o si el exponente es distinto de 2, ¡no son!</p>
                     <div class="space-y-2 font-mono text-sm font-bold text-slate-400">
                         <div class="bg-white/50 p-2 rounded-lg line-through">5x + 3 = 0</div>
-                        <div class="bg-white/50 p-2 rounded-lg line-through">x³ + 2x² = 0</div>
+                        <div class="bg-white/50 p-2 rounded-lg line-through">\(x^3\) + 2\(x^2\) = 0</div>
                     </div>
                 </div>
             </div>
@@ -133,7 +140,7 @@
                 </div>
                 <div class="bg-white/5 border border-white/20 rounded-[3rem] p-8 text-center backdrop-blur-lg">
                     <span class="material-symbols-outlined text-[80px] mb-4">warning</span>
-                    <p class="text-xl font-light italic">"Mucho cuidado: Una ecuación incompleta sigue siendo cuadrática, pero una sin x² es solo una línea."</p>
+                    <p class="text-xl font-light italic">"Mucho cuidado: Una ecuación incompleta sigue siendo cuadrática, pero una sin \(x^2\) es solo una línea."</p>
                 </div>
             </div>
         </section>
@@ -145,7 +152,7 @@
             <div class="max-w-2xl mx-auto bg-white p-10 rounded-[3rem] border border-slate-200 shadow-lg">
                 <p class="text-center text-slate-500 mb-8 font-medium italic">¿A qué categoría pertenece esta ecuación?</p>
                 <div class="text-3xl font-mono font-black text-slate-800 text-center mb-10 bg-slate-50 py-6 rounded-3xl">
-                    7x² + 14 = 0
+                    7\(x^2\) + 14 = 0
                 </div>
                 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -173,10 +180,64 @@
                 fb.innerText = "❌ No. Para ser completa necesita un término con 'x' (por ejemplo, 14x).";
                 fb.className = "mt-8 text-center font-black uppercase text-xs text-rose-500";
             } else {
-                fb.innerText = "❌ ¡Error! Tiene un x² al principio, así que sí es cuadrática.";
+                fb.innerText = "❌ ¡Error! Tiene un \(x^2\) al principio, así que sí es cuadrática.";
                 fb.className = "mt-8 text-center font-black uppercase text-xs text-rose-500";
             }
         }
     </script>
+
+    <!-- Progress Tracking Script Injected Automatically -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js";
+        import { getFirestore, doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBD3-ZnbczYZOuDm7e9OHLP6Xg68sdZ1so",
+            authDomain: "logicplay-e775c.firebaseapp.com",
+            projectId: "logicplay-e775c",
+            storageBucket: "logicplay-e775c.firebasestorage.app",
+            messagingSenderId: "11226997472",
+            appId: "1:11226997472:web:836d7d87f4f6a01987e685"
+        };
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        
+        const uid = localStorage.getItem('logicplay_uid');
+        const role = localStorage.getItem('logicplay_role');
+
+        async function updateTopicProgress() {
+            if (!uid || role === 'profesor') return;
+
+            const topicId = "matematica_4";
+            const progressValue = 100;
+
+            try {
+                const userRef = doc(db, "users", uid);
+                const docSnap = await getDoc(userRef);
+                
+                if (docSnap.exists()) {
+                    let data = docSnap.data();
+                    let currentProgressMap = data.progreso_temas || {};
+                    let currentVal = currentProgressMap[topicId] || 0;
+                    
+                    if (progressValue > currentVal) {
+                        currentProgressMap[topicId] = progressValue;
+                        await setDoc(userRef, { progreso_temas: currentProgressMap }, { merge: true });
+                        console.log(`Progreso actualizado a ${progressValue}% en el tema ${topicId}`);
+                    }
+                }
+            } catch (err) {
+                console.error("Error actualizando progreso", err);
+            }
+        }
+
+        // Ejecutar si el dom ya cargo
+        if(document.readyState === "complete" || document.readyState === "interactive") {
+            setTimeout(updateTopicProgress, 1500);
+        } else {
+            document.addEventListener("DOMContentLoaded", () => setTimeout(updateTopicProgress, 1500));
+        }
+    </script>
+
 </body>
 </html>

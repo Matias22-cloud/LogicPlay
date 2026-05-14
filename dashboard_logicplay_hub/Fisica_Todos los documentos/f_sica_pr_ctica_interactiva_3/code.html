@@ -70,6 +70,13 @@
         }
     </script>
 
+
+    <!-- KaTeX for Math Rendering -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" 
+        onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '\(', right: '\)', display: false}]});"></script>
+
 </head>
 
 <body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased">
@@ -145,7 +152,7 @@
                                 class="font-bold text-slate-900 dark:text-white border-b-2 border-primary/30 px-1">45.0°</span>.
                             Tu misión es determinar y configurar la <span
                                 class="text-primary font-bold italic">v₀</span> necesaria para un impacto exitoso
-                            considerando <span class="italic">g = 9.8 m/s²</span>.
+                            considerando <span class="italic">g = 9.8 \(\text{m/s}^2\)</span>.
                         </p>
                     </div>
                 </section>
@@ -1152,7 +1159,7 @@
                 text: "Eres Faraday, un asistente educativo amable, paciente y motivador especializado únicamente en Física para estudiantes de bachillerato. Siempre saludas con entusiasmo y animas al estudiante. Solo respondes preguntas de Física como movimiento parabólico, MRU y movimiento circular. Si te preguntan algo de otra materia di amablemente que solo puedes ayudar con Física pero recomiéndale hablar con Heisenberg para Química o Leonhard para Matemáticas. Explica paso a paso de forma clara y sencilla usando ejemplos cotidianos."
             }],
         };
-        const model = 'gemini-3-flash-preview';
+        const model = 'gemini-1.5-flash';
 
         // UI Interactions
         const chatWindow = document.getElementById('faraday-chat-window');
@@ -1273,6 +1280,60 @@
                 });
             });
         });
+    </script>
+
+
+    <!-- Progress Tracking Script Injected Automatically -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js";
+        import { getFirestore, doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBD3-ZnbczYZOuDm7e9OHLP6Xg68sdZ1so",
+            authDomain: "logicplay-e775c.firebaseapp.com",
+            projectId: "logicplay-e775c",
+            storageBucket: "logicplay-e775c.firebasestorage.app",
+            messagingSenderId: "11226997472",
+            appId: "1:11226997472:web:836d7d87f4f6a01987e685"
+        };
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        
+        const uid = localStorage.getItem('logicplay_uid');
+        const role = localStorage.getItem('logicplay_role');
+
+        async function updateTopicProgress() {
+            if (!uid || role === 'profesor') return;
+
+            const topicId = "f_sica_pr_ctica_interactiva_3";
+            const progressValue = 100;
+
+            try {
+                const userRef = doc(db, "users", uid);
+                const docSnap = await getDoc(userRef);
+                
+                if (docSnap.exists()) {
+                    let data = docSnap.data();
+                    let currentProgressMap = data.progreso_temas || {};
+                    let currentVal = currentProgressMap[topicId] || 0;
+                    
+                    if (progressValue > currentVal) {
+                        currentProgressMap[topicId] = progressValue;
+                        await setDoc(userRef, { progreso_temas: currentProgressMap }, { merge: true });
+                        console.log(`Progreso actualizado a ${progressValue}% en el tema ${topicId}`);
+                    }
+                }
+            } catch (err) {
+                console.error("Error actualizando progreso", err);
+            }
+        }
+
+        // Ejecutar si el dom ya cargo
+        if(document.readyState === "complete" || document.readyState === "interactive") {
+            setTimeout(updateTopicProgress, 1500);
+        } else {
+            document.addEventListener("DOMContentLoaded", () => setTimeout(updateTopicProgress, 1500));
+        }
     </script>
 
 </body>
