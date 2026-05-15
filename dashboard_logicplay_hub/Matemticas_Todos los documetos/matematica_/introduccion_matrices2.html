@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,9 +14,9 @@
             --slate-950: #020617;
         }
 
-        body { 
-            font-family: 'Lexend', sans-serif; 
-            background: var(--slate-950); 
+        body {
+            font-family: 'Lexend', sans-serif;
+            background: var(--slate-950);
             color: #f8fafc;
             min-height: 100vh;
             overflow-x: hidden;
@@ -24,7 +25,7 @@
         .tech-grid {
             position: fixed;
             inset: 0;
-            background-image: 
+            background-image:
                 linear-gradient(to right, rgba(99, 102, 241, 0.05) 1px, transparent 1px),
                 linear-gradient(to bottom, rgba(99, 102, 241, 0.05) 1px, transparent 1px);
             background-size: 40px 40px;
@@ -40,7 +41,8 @@
             padding: 3rem;
         }
 
-        .matrix-display::before, .matrix-display::after {
+        .matrix-display::before,
+        .matrix-display::after {
             content: '';
             position: absolute;
             top: 15px;
@@ -48,8 +50,18 @@
             width: 15px;
             border: 5px solid var(--accent);
         }
-        .matrix-display::before { left: 15px; border-right: 0; border-radius: 1.5rem 0 0 1.5rem; }
-        .matrix-display::after { right: 15px; border-left: 0; border-radius: 0 1.5rem 1.5rem 0; }
+
+        .matrix-display::before {
+            left: 15px;
+            border-right: 0;
+            border-radius: 1.5rem 0 0 1.5rem;
+        }
+
+        .matrix-display::after {
+            right: 15px;
+            border-left: 0;
+            border-radius: 0 1.5rem 1.5rem 0;
+        }
 
         .concept-card {
             background: rgba(30, 41, 59, 0.5);
@@ -68,12 +80,12 @@
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('../../service-worker.js')
-                .then(registration => {
-                    console.log('ServiceWorker registration successful');
-                })
-                .catch(err => {
-                    console.log('ServiceWorker registration failed: ', err);
-                });
+                    .then(registration => {
+                        console.log('ServiceWorker registration successful');
+                    })
+                    .catch(err => {
+                        console.log('ServiceWorker registration failed: ', err);
+                    });
             });
         }
     </script>
@@ -82,10 +94,11 @@
     <!-- KaTeX for Math Rendering -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css">
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" 
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js"
         onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '\(', right: '\)', display: false}]});"></script>
 
 </head>
+
 <body class="p-8">
     <div class="tech-grid"></div>
 
@@ -99,12 +112,15 @@
     </header>
 
     <main class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
-        
+
         <div class="space-y-8">
             <section>
                 <h2 class="text-3xl font-bold mb-4">¿Qué es una Matriz?</h2>
                 <p class="text-slate-400 leading-relaxed text-lg">
-                    Es un arreglo rectangular de números organizados en <span class="text-indigo-400 font-bold">Filas</span> y <span class="text-emerald-400 font-bold">Columnas</span>. Se utilizan para representar datos, resolver sistemas de ecuaciones y transformar gráficos en 3D.
+                    Es un arreglo rectangular de números organizados en <span
+                        class="text-indigo-400 font-bold">Filas</span> y <span
+                        class="text-emerald-400 font-bold">Columnas</span>. Se utilizan para representar datos, resolver
+                    sistemas de ecuaciones y transformar gráficos en 3D.
                 </p>
             </section>
 
@@ -114,7 +130,8 @@
                         <span class="material-symbols-outlined text-indigo-400">straighten</span>
                         <h4 class="font-black text-xs uppercase tracking-widest">Dimensión (m x n)</h4>
                     </div>
-                    <p class="text-sm text-slate-400">El tamaño se indica siempre como <strong>Filas × Columnas</strong>.</p>
+                    <p class="text-sm text-slate-400">El tamaño se indica siempre como <strong>Filas ×
+                            Columnas</strong>.</p>
                 </div>
             </div>
         </div>
@@ -131,9 +148,11 @@
                 </div>
             </div>
 
-            <a href="introduccion_matrices2.html" class="w-full max-w-sm bg-indigo-600 hover:bg-indigo-500 text-white py-6 rounded-3xl font-black text-xl tracking-widest transition-all shadow-xl shadow-indigo-500/20 flex items-center justify-center gap-4 group">
+            <a href="introduccion_matrices2.html"
+                class="w-full max-w-sm bg-indigo-600 hover:bg-indigo-500 text-white py-6 rounded-3xl font-black text-xl tracking-widest transition-all shadow-xl shadow-indigo-500/20 flex items-center justify-center gap-4 group">
                 SIGUIENTE NIVEL
-                <span class="material-symbols-outlined group-hover:translate-x-2 transition-transform">arrow_forward</span>
+                <span
+                    class="material-symbols-outlined group-hover:translate-x-2 transition-transform">arrow_forward</span>
             </a>
 
             <p class="text-[10px] font-black uppercase tracking-[0.4em] text-slate-600 mt-6 text-center">
@@ -153,7 +172,7 @@
             deferredPrompt = e;
             const installButtons = document.querySelectorAll('#install-button, #install-button-mobile, #install-button-landing');
             installButtons.forEach(btn => {
-                btn.style.display = 'flex'; 
+                btn.style.display = 'flex';
                 btn.addEventListener('click', async () => {
                     if (deferredPrompt) {
                         try {
@@ -188,7 +207,7 @@
         };
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
-        
+
         const uid = localStorage.getItem('logicplay_uid');
         const role = localStorage.getItem('logicplay_role');
 
@@ -201,12 +220,12 @@
             try {
                 const userRef = doc(db, "users", uid);
                 const docSnap = await getDoc(userRef);
-                
+
                 if (docSnap.exists()) {
                     let data = docSnap.data();
                     let currentProgressMap = data.progreso_temas || {};
                     let currentVal = currentProgressMap[topicId] || 0;
-                    
+
                     if (progressValue > currentVal) {
                         currentProgressMap[topicId] = progressValue;
                         await setDoc(userRef, { progreso_temas: currentProgressMap }, { merge: true });
@@ -219,7 +238,7 @@
         }
 
         // Ejecutar si el dom ya cargo
-        if(document.readyState === "complete" || document.readyState === "interactive") {
+        if (document.readyState === "complete" || document.readyState === "interactive") {
             setTimeout(updateTopicProgress, 1500);
         } else {
             document.addEventListener("DOMContentLoaded", () => setTimeout(updateTopicProgress, 1500));
@@ -227,94 +246,5 @@
     </script>
 
 </body>
+
 </html>
-            const f = document.getElementById('fbSum');
-            if(v1 == 1 && v2 == 3) { f.innerText = "✅ ¡Perfecto! Dominas la posición de los elementos."; f.className="mt-4 text-center text-emerald-400"; }
-            else { f.innerText = "❌ Intenta sumar (1+0) y (2+1)."; f.className="text-rose-400 mt-4 text-center"; }
-        }
-    </script>
-
-    <script>
-        let deferredPrompt;
-        window.addEventListener('beforeinstallprompt', (e) => {
-            e.preventDefault();
-            deferredPrompt = e;
-            const installButtons = document.querySelectorAll('#install-button, #install-button-mobile, #install-button-landing');
-            installButtons.forEach(btn => {
-                btn.style.display = 'flex'; 
-                btn.addEventListener('click', async () => {
-                    if (deferredPrompt) {
-                        try {
-                            deferredPrompt.prompt();
-                            const { outcome } = await deferredPrompt.userChoice;
-                            console.log(`User response to the install prompt: ${outcome}`);
-                            deferredPrompt = null;
-                        } catch (e) {
-                            console.error(e);
-                        }
-                    } else {
-                        alert('La aplicación LogicPlay ya está instalada o no se puede descargar automáticamente desde aquí. Por favor, utiliza la opción "Instalar aplicación" desde el menú de tu navegador.');
-                    }
-                });
-            });
-        });
-    </script>
-
-
-    <!-- Progress Tracking Script Injected Automatically -->
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js";
-        import { getFirestore, doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js";
-
-        const firebaseConfig = {
-            apiKey: "AIzaSyBD3-ZnbczYZOuDm7e9OHLP6Xg68sdZ1so",
-            authDomain: "logicplay-e775c.firebaseapp.com",
-            projectId: "logicplay-e775c",
-            storageBucket: "logicplay-e775c.firebasestorage.app",
-            messagingSenderId: "11226997472",
-            appId: "1:11226997472:web:836d7d87f4f6a01987e685"
-        };
-        const app = initializeApp(firebaseConfig);
-        const db = getFirestore(app);
-        
-        const uid = localStorage.getItem('logicplay_uid');
-        const role = localStorage.getItem('logicplay_role');
-
-        async function updateTopicProgress() {
-            if (!uid || role === 'profesor') return;
-
-            const topicId = "matematica_";
-            const progressValue = 33;
-
-            try {
-                const userRef = doc(db, "users", uid);
-                const docSnap = await getDoc(userRef);
-                
-                if (docSnap.exists()) {
-                    let data = docSnap.data();
-                    let currentProgressMap = data.progreso_temas || {};
-                    let currentVal = currentProgressMap[topicId] || 0;
-                    
-                    if (progressValue > currentVal) {
-                        currentProgressMap[topicId] = progressValue;
-                        await setDoc(userRef, { progreso_temas: currentProgressMap }, { merge: true });
-                        console.log(`Progreso actualizado a ${progressValue}% en el tema ${topicId}`);
-                    }
-                }
-            } catch (err) {
-                console.error("Error actualizando progreso", err);
-            }
-        }
-
-        // Ejecutar si el dom ya cargo
-        if(document.readyState === "complete" || document.readyState === "interactive") {
-            setTimeout(updateTopicProgress, 1500);
-        } else {
-            document.addEventListener("DOMContentLoaded", () => setTimeout(updateTopicProgress, 1500));
-        }
-    </script>
-
-</body>
-</html>
-
-

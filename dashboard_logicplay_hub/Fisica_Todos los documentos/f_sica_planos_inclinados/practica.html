@@ -381,16 +381,7 @@
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js";
         import { getFirestore, doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js";
 
-        const firebaseConfig = {
-            apiKey: "AIzaSyBD3-ZnbczYZOuDm7e9OHLP6Xg68sdZ1so",
-            authDomain: "logicplay-e775c.firebaseapp.com",
-            projectId: "logicplay-e775c",
-            storageBucket: "logicplay-e775c.firebasestorage.app",
-            messagingSenderId: "11226997472",
-            appId: "1:11226997472:web:836d7d87f4f6a01987e685"
-        };
-        const app = initializeApp(firebaseConfig);
-        const db = getFirestore(app);
+        const db = getFirestore();
         
         const uid = localStorage.getItem('logicplay_uid');
         const role = localStorage.getItem('logicplay_role');

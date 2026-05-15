@@ -775,7 +775,7 @@
             deferredPrompt = e;
             const installButtons = document.querySelectorAll('#install-button, #install-button-mobile, #install-button-landing');
             installButtons.forEach(btn => {
-                btn.style.display = 'flex'; 
+                btn.style.display = 'flex';
                 btn.addEventListener('click', async () => {
                     if (deferredPrompt) {
                         try {
@@ -800,16 +800,7 @@
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js";
         import { getFirestore, doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js";
 
-        const firebaseConfig = {
-            apiKey: "AIzaSyBD3-ZnbczYZOuDm7e9OHLP6Xg68sdZ1so",
-            authDomain: "logicplay-e775c.firebaseapp.com",
-            projectId: "logicplay-e775c",
-            storageBucket: "logicplay-e775c.firebasestorage.app",
-            messagingSenderId: "11226997472",
-            appId: "1:11226997472:web:836d7d87f4f6a01987e685"
-        };
-        const app = initializeApp(firebaseConfig);
-        const db = getFirestore(app);
+        const progressDb = getFirestore();
 
         const uid = localStorage.getItem('logicplay_uid');
         const role = localStorage.getItem('logicplay_role');
@@ -821,7 +812,7 @@
             const progressValue = 100;
 
             try {
-                const userRef = doc(db, "users", uid);
+                const userRef = doc(progressDb, "users", uid);
                 const docSnap = await getDoc(userRef);
 
                 if (docSnap.exists()) {
@@ -849,9 +840,7 @@
     </script>
 
 
-    </body>
+</body>
 
 
 </html>
-
-

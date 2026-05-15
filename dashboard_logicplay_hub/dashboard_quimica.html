@@ -628,18 +628,8 @@
         import { getFirestore, collection, query, where, orderBy, onSnapshot, doc, updateDoc } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js";
         import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-auth.js";
 
-        const firebaseConfig = {
-            apiKey: atob("QUl6YVN5QkQzLVpuYmN6WVpPdURtN2U5T0hMUDZYZzY4c2RaMXNv"),
-            authDomain: "logicplay-e775c.firebaseapp.com",
-            projectId: "logicplay-e775c",
-            storageBucket: "logicplay-e775c.firebasestorage.app",
-            messagingSenderId: "11226997472",
-            appId: "1:11226997472:web:836d7d87f4f6a01987e685"
-        };
-
-        const app = initializeApp(firebaseConfig, "NotifApp"); // Prevent duplicates
-        const db = getFirestore(app);
-        const auth = getAuth(app);
+        const notifDB = getFirestore();
+        const notifAuth = getAuth();
 
         const bellBtn = document.getElementById('notification-btn');
         const dropdown = document.getElementById('notification-dropdown');
@@ -681,14 +671,14 @@
             }
         });
 
-        onAuthStateChanged(auth, (user) => {
+        onAuthStateChanged(notifAuth, (user) => {
             if (!user) return;
 
             let q;
             if (currMateria === "todas") {
-                q = query(collection(db, "notificaciones"), orderBy("fecha", "desc"));
+                q = query(collection(notifDB, "notificaciones"), orderBy("fecha", "desc"));
             } else {
-                q = query(collection(db, "notificaciones"), where("materia", "==", currMateria), orderBy("fecha", "desc"));
+                q = query(collection(notifDB, "notificaciones"), where("materia", "==", currMateria), orderBy("fecha", "desc"));
             }
 
             let isInitialLoad = true;
@@ -747,7 +737,7 @@
         window.markAsRead = async (docId, isRead) => {
             if (isRead) return;
             try {
-                await updateDoc(doc(db, "notificaciones", docId), { leido: true });
+                await updateDoc(doc(notifDB, "notificaciones", docId), { leido: true });
             } catch (e) {
                 console.error("Error marcando como leido", e);
             }
@@ -756,4 +746,3 @@
 </body>
 
 </html>
-
