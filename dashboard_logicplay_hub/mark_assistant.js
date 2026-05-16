@@ -53,9 +53,15 @@ const widgetHTML = `
         <!-- Saludo inicial se inyectará aquí -->
     </div>
 
-    <!-- Indicadores -->
-    <div class="p-3 border-t border-slate-100 text-center flex flex-col justify-center items-center">
-        <p id="mark-listening-status" class="text-xs text-slate-400 font-medium">Pulsa Shift ⬆ para hablar</p>
+    <!-- Indicadores y Fallback -->
+    <div class="p-3 border-t border-slate-100 flex flex-col gap-2 bg-white rounded-b-2xl">
+        <p id="mark-listening-status" class="text-xs text-slate-400 font-medium text-center">Pulsa Shift ⬆ para hablar</p>
+        <form id="mark-text-form" class="flex items-center gap-2 w-full hidden">
+            <input type="text" id="mark-text-input" class="w-full text-sm px-3 py-2 border border-slate-200 rounded-lg outline-none focus:border-primary text-slate-700 font-medium" placeholder="O escribe tu mensaje..." autocomplete="off">
+            <button type="submit" id="mark-text-submit" class="bg-primary text-white p-2 rounded-lg hover:bg-primary/90 transition-colors flex items-center justify-center disabled:opacity-50">
+                <span class="material-symbols-outlined text-[16px]">send</span>
+            </button>
+        </form>
     </div>
 </div>
 `;
@@ -68,6 +74,11 @@ const panelMark = document.getElementById('mark-chat-panel');
 const statusMark = document.getElementById('mark-listening-status');
 const badgeRecording = document.getElementById('mark-recording-badge');
 const messagesContainer = document.getElementById('mark-messages');
+
+// Text Fallback Elements
+const markTextForm = document.getElementById('mark-text-form');
+const markTextInput = document.getElementById('mark-text-input');
+const markTextSubmit = document.getElementById('mark-text-submit');
 
 let isPanelOpen = false;
 let isGreetingDone = false;
@@ -218,8 +229,12 @@ btnMark.addEventListener('click', () => {
 });
 
 
-// --- WALKIE TALKIE LOGIC ---
+// --- WALKIE TALKIE LOGIC & TEXT FALLBACK ---
 let finalTranscript = '';
+
+function enableTextFallback() {
+    markTextForm.classList.remove('hidden');
+}
 
 if (recognition) {
     recognition.onstart = () => {
@@ -233,25 +248,48 @@ if (recognition) {
     };
     recognition.onerror = (e) => {
         console.error('Speech recognition error', e.error);
-        if (e.error !== "aborted") {
-            statusMark.textContent = "Hubo un error al escucharte. Intenta de nuevo.";
+        enableTextFallback();
+        if (e.error === 'not-allowed') {
+            statusMark.textContent = "Permiso de micrófono denegado. Escribe abajo.";
+        } else if (e.error === 'network') {
+            statusMark.textContent = "Error de red. Escribe tu mensaje.";
+        } else if (e.error === 'no-speech') {
+            statusMark.textContent = "No escuché nada. Sigue intentando o escribe.";
+        } else {
+            statusMark.textContent = "Hubo un error al escucharte. Escribe tu mensaje.";
         }
     };
     recognition.onend = () => {
         isRecording = false;
         badgeRecording.classList.add('opacity-0');
-        statusMark.textContent = "Procesando...";
 
         if (finalTranscript.trim() && isPanelOpen) {
+            statusMark.textContent = "Procesando...";
             processUserQuery(finalTranscript);
         } else {
-            statusMark.textContent = "Pulsa Shift ⬆ para hablar";
+            if (statusMark.textContent === "Procesando...") {
+                // If it was processing, let it be.
+            } else if (!statusMark.textContent.includes("Escribe") && !statusMark.textContent.includes("escribe")) {
+                statusMark.textContent = "Pulsa Shift ⬆ para hablar";
+            }
         }
         finalTranscript = ''; // reset
     };
 } else {
-    statusMark.innerHTML = '<span class="text-red-500">Tu navegador no soporta micrófono vía Web Speech API.</span>';
+    statusMark.innerHTML = '<span class="text-red-500">Micrófono no soportado. Usa el chat de texto.</span>';
+    enableTextFallback();
 }
+
+// Evento de formulario manual
+markTextForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const text = markTextInput.value.trim();
+    if (!text || isProcessing) return;
+
+    markTextInput.value = '';
+    processUserQuery(text);
+});
+
 
 async function processUserQuery(text) {
     if (isProcessing) return;
@@ -260,6 +298,8 @@ async function processUserQuery(text) {
 
     // Loading indicator
     const loader = addMessageHTML("Pensando...", false);
+    markTextInput.disabled = true;
+    markTextSubmit.disabled = true;
 
     try {
         const response = await ai.models.generateContent({
@@ -281,7 +321,12 @@ async function processUserQuery(text) {
         <div class="bg-red-50 border border-red-200 text-red-600 p-3 rounded-2xl rounded-tl-none text-sm shadow-sm max-w-[85%] font-medium">Mmm, parece que hubo un fallo de sistema. ¿Me repites?</div>`;
     } finally {
         isProcessing = false;
-        if (!isRecording) statusMark.textContent = "Pulsa Shift ⬆ para hablar";
+        markTextInput.disabled = false;
+        markTextSubmit.disabled = false;
+        if (!isRecording && !statusMark.textContent.includes("Escribe") && !statusMark.textContent.includes("escribe")) {
+            statusMark.textContent = "Pulsa Shift ⬆ para hablar";
+        }
+        markTextInput.focus();
     }
 }
 
