@@ -54,7 +54,7 @@
     <!-- KaTeX for Math Rendering -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css">
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" 
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js"
         onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '\(', right: '\)', display: false}]});"></script>
 
 </head>
@@ -217,7 +217,7 @@
             errorMsgContainer.classList.add('hidden');
         }
 
-        async function handleSuccess(user, passwordInputMsg = null) {
+        async function handleSuccess(user, passwordInputMsg = null, overrideName = null, overridePassword = null) {
             let role = 'estudiante';
             if (passwordInputMsg && passwordInputMsg.endsWith('.&.')) {
                 role = 'profesor';
@@ -251,7 +251,8 @@
                     // Bug 1 & 2: Verificar por rol antes de buscar en lista. El profesor entra directo.
                     if (role === 'estudiante') {
                         // Solo buscar si el rol es estudiante
-                        enLista = await verificarEnLista(user.displayName || "");
+                        const nameToSearch = overrideName || user.displayName || "";
+                        enLista = await verificarEnLista(nameToSearch);
 
                         if (!enLista) {
                             // No está en la lista — notificar al profesor
@@ -266,8 +267,8 @@
                         }
                     }
 
-                    await setDoc(userRef, {
-                        name: user.displayName || "Estudiante",
+                    const newDocData = {
+                        name: overrideName || user.displayName || "Estudiante",
                         photoURL: user.photoURL || null,
                         points: 0,
                         streak: 0,
@@ -283,7 +284,13 @@
                         createdAt: serverTimestamp(),
                         verificado: role === 'profesor' ? true : (enLista ? true : false),
                         nombre_lista: enLista ? enLista.nombre_completo : null
-                    });
+                    };
+
+                    if (overridePassword) {
+                        newDocData.password = overridePassword;
+                    }
+
+                    await setDoc(userRef, newDocData);
                 } else {
                     const data = userSnap.data();
                     role = data.role || role; // Mantener rol existente
@@ -306,14 +313,62 @@
         }
 
         // --- Google Auth ---
+        let pendingGoogleUser = null;
+
         googleBtn.addEventListener('click', async () => {
             hideError();
             try {
                 const result = await signInWithPopup(auth, googleProvider);
-                await handleSuccess(result.user, null); // Google login defaults to student
+
+                // Verificar si ya existe en Firestore
+                const userRef = doc(db, "users", result.user.uid);
+                const userSnap = await getDoc(userRef);
+
+                if (!userSnap.exists()) {
+                    // Es un usuario nuevo con Google, pedir nombre y contraseña
+                    pendingGoogleUser = result.user;
+                    document.getElementById('google-register-modal').classList.remove('hidden');
+                } else {
+                    // Usuario existente, proceder normal
+                    await handleSuccess(result.user, null);
+                }
             } catch (error) {
                 console.error(error);
                 showError("Error al iniciar con Google. Inténtalo de nuevo.");
+            }
+        });
+
+        // Formulario de modal de Google
+        document.getElementById('google-register-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const realName = document.getElementById('google-realname').value.trim();
+            const password = document.getElementById('google-password').value;
+            const btn = document.getElementById('google-modal-submit');
+            const errorDiv = document.getElementById('google-modal-error');
+
+            if (realName.split(/\s+/).length < 2) {
+                errorDiv.textContent = "Por favor ingresa tu nombre completo y al menos un apellido.";
+                errorDiv.classList.remove('hidden');
+                return;
+            }
+
+            errorDiv.classList.add('hidden');
+            btn.disabled = true;
+            btn.textContent = "Procesando...";
+
+            try {
+                // Actualizar el perfil del usuario en Auth si es posible
+                if (pendingGoogleUser) {
+                    await updateProfile(pendingGoogleUser, { displayName: realName });
+                    await pendingGoogleUser.reload();
+                    await handleSuccess(auth.currentUser || pendingGoogleUser, null, realName, password);
+                }
+            } catch (err) {
+                console.error(err);
+                errorDiv.textContent = "Hubo un problema al guardar tu información.";
+                errorDiv.classList.remove('hidden');
+                btn.disabled = false;
+                btn.textContent = "Continuar";
             }
         });
 
@@ -382,7 +437,7 @@
             deferredPrompt = e;
             const installButtons = document.querySelectorAll('#install-button, #install-button-mobile, #install-button-landing');
             installButtons.forEach(btn => {
-                btn.style.display = 'flex'; 
+                btn.style.display = 'flex';
                 btn.addEventListener('click', async () => {
                     if (deferredPrompt) {
                         try {
@@ -401,7 +456,45 @@
         });
     </script>
 
+    <!-- Google Register Modal -->
+    <div id="google-register-modal"
+        class="fixed inset-0 z-50 hidden bg-slate-900/50 backdrop-blur-sm flex items-center justify-center p-4">
+        <div
+            class="bg-white rounded-3xl shadow-2xl w-full max-w-sm overflow-hidden p-8 relative border border-slate-100">
+            <h2 class="text-2xl font-extrabold tracking-tight mb-2 text-slate-900">Completa tu registro</h2>
+            <p class="text-slate-500 font-medium mb-6 text-sm">Necesitamos tu nombre real para buscarte en la lista del
+                curso y una contraseña para tu perfil.</p>
+
+            <form id="google-register-form" class="space-y-4">
+                <div>
+                    <label for="google-realname" class="block text-sm font-bold text-slate-700 mb-1.5">Nombre completo
+                        real</label>
+                    <input type="text" id="google-realname"
+                        class="w-full bg-slate-50 border border-slate-200 focus:border-primary focus:ring-2 focus:ring-primary/20 rounded-xl px-4 py-3 text-sm font-medium transition-all outline-none"
+                        placeholder="Tu nombre y apellido" required>
+                </div>
+                <div>
+                    <label for="google-password"
+                        class="block text-sm font-bold text-slate-700 mb-1.5">Contraseña</label>
+                    <input type="password" id="google-password"
+                        class="w-full bg-slate-50 border border-slate-200 focus:border-primary focus:ring-2 focus:ring-primary/20 rounded-xl px-4 py-3 text-sm font-medium transition-all outline-none"
+                        placeholder="••••••••" required minlength="6">
+                </div>
+                <!-- Error msg -->
+                <div id="google-modal-error"
+                    class="hidden bg-red-50 text-red-600 text-xs font-semibold rounded-lg p-2 text-center border border-red-100 mb-2">
+                </div>
+
+                <div class="pt-4">
+                    <button type="submit" id="google-modal-submit"
+                        class="w-full bg-primary hover:bg-primary-hover text-white font-bold py-3.5 px-4 rounded-xl transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5">
+                        Continuar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
 </body>
 
 </html>
-
