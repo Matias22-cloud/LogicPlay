@@ -8,7 +8,7 @@
   "description": "La plataforma educativa interactiva para estudiantes de bachillerato.",
   "icons": [
     {
-      "src": "favicon.ico",
+      "src": "/LogicPlay.ico",
       "sizes": "192x192 512x512",
       "type": "image/x-icon"
     }

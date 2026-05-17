@@ -69,8 +69,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css">
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js"
-        onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '\(', right: '\)', display: false}]});"></script>
+        onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '(', right: ')', display: false}]});"></script>
 
+    <link rel="icon" type="image/x-icon" href="/LogicPlay.ico">
 </head>
 
 <body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
@@ -446,10 +447,11 @@
                         domPoints.textContent = `${data.puntos_matematicas || 0} XP`;
                         domHeaderPts.textContent = `${data.points || 0} XP`;
 
+                        const displayName = data.nombre || data.name || 'Estudiante';
                         if (data.photoURL) {
-                            domHeaderAvatar.innerHTML = `<img alt="${data.name}" class="w-full h-full object-cover" src="${data.photoURL}" />`;
+                            domHeaderAvatar.innerHTML = `<img alt="${displayName}" class="w-full h-full object-cover" src="${data.photoURL}" />`;
                         } else {
-                            domHeaderAvatar.innerHTML = `<div class="w-full h-full flex items-center justify-center bg-primary text-white font-bold text-lg">${data.name.charAt(0).toUpperCase()}</div>`;
+                            domHeaderAvatar.innerHTML = `<div class="w-full h-full flex items-center justify-center bg-primary text-white font-bold text-lg">${displayName.charAt(0).toUpperCase()}</div>`;
                         }
                     }
                 }
@@ -481,10 +483,11 @@
                     const isMe = doc.id === uid;
 
                     let avatarHtml = '';
+                    let displayName = data.nombre || data.name || 'Estudiante';
                     if (data.photoURL) {
-                        avatarHtml = `<img alt="${data.name}" class="w-full h-full object-cover" src="${data.photoURL}" />`;
+                        avatarHtml = `<img alt="${displayName}" class="w-full h-full object-cover" src="${data.photoURL}" />`;
                     } else {
-                        avatarHtml = `<div class="w-full h-full flex items-center justify-center bg-indigo-500 text-white font-bold text-base">${data.name.charAt(0).toUpperCase()}</div>`;
+                        avatarHtml = `<div class="w-full h-full flex items-center justify-center bg-indigo-500 text-white font-bold text-base">${displayName.charAt(0).toUpperCase()}</div>`;
                     }
 
                     let rowClass = "flex items-center gap-4 p-3 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors";
@@ -508,7 +511,7 @@
                                 ${avatarHtml}
                             </div>
                             <div class="flex-1">
-                                <p class="text-sm font-bold ${isMe ? 'text-primary' : ''}">${data.name} ${isMe ? '(Tú)' : ''}</p>
+                                <p class="text-sm font-bold ${isMe ? 'text-primary' : ''}">${displayName} ${isMe ? '(Tú)' : ''}</p>
                                 <p class="text-xs text-slate-500">${data.puntos_matematicas || 0} XP</p>
                             </div>
                             ${medal}
@@ -554,22 +557,17 @@
                     let data = userSnap.data();
                     let today = getTodayString();
 
-                    let updates = { points: (data.points || 0) + 10 }; // 10 points per generic activity
+                    let updates = {};
 
                     if (data.lastActivity !== today) {
-                        const yesterday = new Date();
-                        yesterday.setDate(yesterday.getDate() - 1);
-                        const yesterdayStr = yesterday.getFullYear() + "-" + (yesterday.getMonth() + 1) + "-" + yesterday.getDate();
-
-                        if (data.lastActivity === yesterdayStr) {
-                            updates.streak = (data.streak || 0) + 1;
-                        } else {
-                            updates.streak = 1;
-                        }
+                        updates.points = (data.points || 0) + 10;
+                        updates.streak = (data.streak || 0) + 1;
                         updates.lastActivity = today;
                     }
 
-                    await updateDoc(userRef, updates);
+                    if (Object.keys(updates).length > 0) {
+                        await updateDoc(userRef, updates);
+                    }
                 }
             } catch (err) {
                 console.error("Error updating activity:", err);
@@ -577,6 +575,8 @@
 
             window.location.href = targetHref;
         }
+
+        
 
         // Initialize UI Flow
         loadDashboard();
@@ -744,8 +744,7 @@
             }
         }
     </script>
-    <!-- Mark Assistant -->
-    <script type="module" src="mark_assistant.js"></script>
+    
 </body>
 
 </html>
