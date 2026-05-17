@@ -71,7 +71,7 @@
                     <div class="flex items-center gap-3 mb-4"><span class="material-symbols-outlined text-primary fill-1">assignment</span><h3 class="text-xl font-bold text-slate-800 dark:text-slate-200">Simulador 3D: Plano Inclinado</h3></div>
                     <div class="relative z-10">
                         <p class="text-lg text-slate-600 dark:text-slate-400 leading-relaxed font-light">
-                            Ajusta la <b>masa</b> y el <b>angulo</b> del plano inclinado. La caja se deslizara por el plano y deberas calcular la componente <b>Px</b> (paralela al plano). Ingresa el valor correcto de Px para ganar <span class="font-bold text-primary">100 puntos</span>.
+                            Ajusta la <b>masa</b> y el <b>angulo</b> del plano inclinado. La caja se deslizara por el plano y deberas calcular la componente <b>Px</b> (paralela al plano). Ingresa el valor correcto de Px para ganar <span class="font-bold text-primary">10 puntos</span>.
                         </p>
                     </div>
                 </section>
@@ -157,7 +157,7 @@
         import { getFirestore, doc, updateDoc, increment } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js";
         const firebaseConfig = { apiKey: "AIzaSyBD3-ZnbczYZOuDm7e9OHLP6Xg68sdZ1so", authDomain: "logicplay-e775c.firebaseapp.com", projectId: "logicplay-e775c", storageBucket: "logicplay-e775c.firebasestorage.app", messagingSenderId: "11226997472", appId: "1:11226997472:web:836d7d87f4f6a01987e685" };
         const app = initializeApp(firebaseConfig); const db = getFirestore(app);
-        window.savePointsFisica = async function(pts) { puntos_fisica: increment(pts) }); console.log("Puntos guardados!"); } catch(e) { console.error(e); } } };
+        window.savePointsFisica = async function(pts) { puntos_fisica: increment(pts), racha_fisica: increment(1) }); console.log("Puntos guardados!"); } catch(e) { console.error(e); } } };
     </script>
 
     <!-- Three.js 3D Plano Inclinado Simulator -->
@@ -332,9 +332,9 @@
                 return;
             }
             if (Math.abs(userVal - Px) < 2) {
-                fbText.textContent = '¡Correcto! Px = ' + Px.toFixed(1) + ' N. +100 puntos!';
+                fbText.textContent = '¡Correcto! Px = ' + Px.toFixed(1) + ' N. +1 Punto de Física!';
                 fbMsg.className = 'mt-4 flex items-center justify-center gap-2 text-green-600 bg-green-50 dark:bg-green-900/20 p-3 rounded-lg border border-green-200 dark:border-green-800 transition-all';
-                if (!missionWon) { missionWon = true; if (window.savePointsFisica) window.savePointsFisica(10); }
+                if (!missionWon) { missionWon = true; if (window.savePointsFisica) window.savePointsFisica(1); }
             } else {
                 fbText.textContent = 'Incorrecto. Recuerda: Px = m × g × sen(θ). Intenta de nuevo.';
                 fbMsg.className = 'mt-4 flex items-center justify-center gap-2 text-accent bg-accent/5 p-3 rounded-lg border border-accent/20 transition-all';

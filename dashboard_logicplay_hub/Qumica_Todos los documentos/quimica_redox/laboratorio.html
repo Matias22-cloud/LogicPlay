@@ -604,7 +604,7 @@
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
 
-        window.savePointsQuimica = async function (pts) { puntos_quimica: increment(pts) });
+        window.savePointsQuimica = async function (pts) { puntos_quimica: increment(pts), racha_quimica: increment(1) });
                     console.log("Puntos de química guardados (Redox)!");
                 } catch (e) {
                     console.error("Error guardando puntos: ", e);
@@ -795,7 +795,7 @@
                 fbMsg.innerHTML = '<span class="material-symbols-outlined text-xl">verified</span><span class="text-sm font-bold uppercase tracking-wider">¡ÉXITO! Ecuación balanceada correctamente.</span>';
 
                 if (!window.balanceGiven && window.savePointsQuimica) {
-                    window.savePointsQuimica(10);
+                    window.savePointsQuimica(1);
                     window.balanceGiven = true;
                 }
 

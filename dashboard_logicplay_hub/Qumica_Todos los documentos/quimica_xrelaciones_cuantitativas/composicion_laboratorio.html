@@ -225,7 +225,7 @@
         const app = initializeApp(firebaseConfig);
         const firestoreDB = getFirestore(app);
 
-        window.savePointsQuimica = async function (pts) { puntos_quimica: increment(pts) });
+        window.savePointsQuimica = async function (pts) { puntos_quimica: increment(pts), racha_quimica: increment(1) });
                     console.log("Puntos de química guardados (Composición)!");
                 } catch (e) {
                     console.error("Error guardando puntos: ", e);
@@ -300,7 +300,7 @@
             if (success) {
                 feedback.innerHTML = '<span class="text-emerald-500 px-4 py-2 bg-emerald-50 dark:bg-emerald-900/20 rounded-full w-full block">¡Laboratorio exitoso! Los cálculos son correctos.</span>';
                 if (!window.compGiven && window.savePointsQuimica) {
-                    window.savePointsQuimica(10);
+                    window.savePointsQuimica(1);
                     window.compGiven = true;
                 }
                 checkBtn.classList.replace('bg-primary', 'bg-emerald-500');

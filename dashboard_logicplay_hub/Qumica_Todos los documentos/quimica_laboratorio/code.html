@@ -286,7 +286,7 @@
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
 
-        window.savePointsQuimica = async function (pts) { puntos_quimica: increment(pts) });
+        window.savePointsQuimica = async function (pts) { puntos_quimica: increment(pts), racha_quimica: increment(1) });
                     console.log("Puntos de química guardados!");
                 } catch (e) {
                     console.error("Error guardando puntos: ", e);
@@ -356,10 +356,10 @@
 
             if (c_L > 0 && o_L > 0 && completelyBalanced) {
                 statusDiv.className = "mt-8 flex items-center justify-center gap-2 text-emerald-600 bg-emerald-50 p-3 rounded-lg border border-emerald-200 transition-all shadow-md";
-                statusDiv.innerHTML = '<span class="material-symbols-outlined text-xl">verified</span><span class="text-sm font-bold uppercase tracking-wider">Ecuación Perfectamente Balanceada</span>';
+                statusDiv.innerHTML = '<span class="material-symbols-outlined text-xl">verified</span><span class="text-sm font-bold uppercase tracking-wider">Ecuación Perfectamente Balanceada (+1 Punto de Química)</span>';
 
                 if (!window.balanceGiven && window.savePointsQuimica) {
-                    window.savePointsQuimica(10);
+                    window.savePointsQuimica(1);
                     window.balanceGiven = true;
                 }
 
