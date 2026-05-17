@@ -58,7 +58,7 @@
     <!-- KaTeX for Math Rendering -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css">
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" 
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js"
         onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '\(', right: '\)', display: false}]});"></script>
 
 </head>
@@ -248,10 +248,14 @@
         const app = initializeApp(firebaseConfig);
         const firestoreDB = getFirestore(app);
 
-        window.savePointsQuimica = async function (pts) { puntos_quimica: increment(pts), racha_quimica: increment(1) });
-                    console.log("Puntos de química guardados (Masa Atómica)!");
-                } catch (e) {
-                    console.error("Error guardando puntos: ", e);
+        window.savePointsQuimica = async function (pts) {
+            const uid = localStorage.getItem('logicplay_uid');
+            if (uid) {
+                try {
+                    await updateDoc(doc(firestoreDB, "users", uid), { puntos_quimica: increment(pts), racha_quimica: increment(1) });
+                    console.log("Puntos guardados limpiamente!");
+                } catch(e) {
+                    console.error("Error guardando:", e);
                 }
             }
         };
@@ -347,7 +351,7 @@
             }
 
             if (success) {
-                feedback.innerHTML = '<span class="text-emerald-500 px-4 py-2 bg-emerald-50 dark:bg-emerald-900/20 rounded-full w-full block">¡Ecuación verificada correctamente!</span>';
+                feedback.innerHTML = '<span class="text-emerald-500 px-4 py-2 bg-emerald-50 dark:bg-emerald-900/20 rounded-full w-full block">¡Ecuación verificada correctamente! (+1 Punto de Química)</span>';
                 if (!window.masaGiven && window.savePointsQuimica) {
                     window.savePointsQuimica(1);
                     window.masaGiven = true;
@@ -364,7 +368,7 @@
         import { getFirestore, doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js";
 
         const db = getFirestore();
-        
+
         const uid = localStorage.getItem('logicplay_uid');
         const role = localStorage.getItem('logicplay_role');
 
@@ -377,14 +381,14 @@
             try {
                 const userRef = doc(db, "users", uid);
                 const docSnap = await getDoc(userRef);
-                
+
                 if (docSnap.exists()) {
                     let data = docSnap.data();
                     let currentProgressMap = data.progreso_quimica || {};
                     let currentVal = currentProgressMap[topicId] || 0;
-                    
+
                     let updates = {};
-                    
+
                     if (progressValue > currentVal) {
                         currentProgressMap[topicId] = progressValue;
                         updates.progreso_quimica = currentProgressMap;
@@ -408,7 +412,7 @@
         }
 
         // Ejecutar si el dom ya cargo
-        if(document.readyState === "complete" || document.readyState === "interactive") {
+        if (document.readyState === "complete" || document.readyState === "interactive") {
             setTimeout(updateTopicProgress, 1500);
         } else {
             document.addEventListener("DOMContentLoaded", () => setTimeout(updateTopicProgress, 1500));
@@ -418,4 +422,3 @@
 </body>
 
 </html>
-

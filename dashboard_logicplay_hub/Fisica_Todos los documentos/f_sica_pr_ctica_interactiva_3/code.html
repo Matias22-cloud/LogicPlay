@@ -413,10 +413,14 @@
         const db = getFirestore(app);
 
         // Define on window to be accessible from normal scripts
-        window.savePointsFisica = async function (pts) { puntos_fisica: increment(pts), racha_fisica: increment(1) });
-                    console.log("Puntos de física guardados!");
-                } catch (e) {
-                    console.error("Error guardando puntos: ", e);
+        window.savePointsFisica = async function (pts) {
+            const uid = localStorage.getItem('logicplay_uid');
+            if (uid) {
+                try {
+                    await updateDoc(doc(db, "users", uid), { puntos_fisica: increment(pts), racha_fisica: increment(1) });
+                    console.log("Puntos guardados limpiamente!");
+                } catch(e) {
+                    console.error("Error guardando:", e);
                 }
             }
         };

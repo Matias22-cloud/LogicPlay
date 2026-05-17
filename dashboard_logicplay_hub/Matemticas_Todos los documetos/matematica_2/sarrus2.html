@@ -142,7 +142,7 @@
     <!-- KaTeX for Math Rendering -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css">
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" 
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js"
         onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '\(', right: '\)', display: false}]});"></script>
 
 </head>
@@ -337,7 +337,7 @@
             deferredPrompt = e;
             const installButtons = document.querySelectorAll('#install-button, #install-button-mobile, #install-button-landing');
             installButtons.forEach(btn => {
-                btn.style.display = 'flex'; 
+                btn.style.display = 'flex';
                 btn.addEventListener('click', async () => {
                     if (deferredPrompt) {
                         try {
@@ -372,11 +372,13 @@
         const app = initializeApp(firebaseConfig);
         const firestoreDB = getFirestore(app);
 
-        window.savePointsMatematicas = async function (pts) { puntos_matematicas: increment(pts), racha_matematicas: increment(1) });
-                    console.log("Puntos de matemáticas guardados!");
-                } catch (e) {
-                    console.error("Error guardando puntos: ", e);
-                }
+        window.savePointsMatematicas = async function (pts) {
+            const uid = localStorage.getItem('logicplay_uid');
+            if (uid) {
+                try {
+                    await updateDoc(doc(db, "users", uid), { puntos_matematicas: increment(pts), racha_matematicas: increment(1) });
+                    console.log("Puntos guardados limpiamente!");
+                } catch (e) { console.error("Error guardando:", e); }
             }
         };
     </script>
@@ -387,7 +389,7 @@
         import { getFirestore, doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js";
 
         const db = getFirestore();
-        
+
         const uid = localStorage.getItem('logicplay_uid');
         const role = localStorage.getItem('logicplay_role');
 
@@ -400,14 +402,14 @@
             try {
                 const userRef = doc(db, "users", uid);
                 const docSnap = await getDoc(userRef);
-                
+
                 if (docSnap.exists()) {
                     let data = docSnap.data();
                     let currentProgressMap = data.progreso_matematicas || {};
                     let currentVal = currentProgressMap[topicId] || 0;
-                    
+
                     let updates = {};
-                    
+
                     if (progressValue > currentVal) {
                         currentProgressMap[topicId] = progressValue;
                         updates.progreso_matematicas = currentProgressMap;
@@ -431,7 +433,7 @@
         }
 
         // Ejecutar si el dom ya cargo
-        if(document.readyState === "complete" || document.readyState === "interactive") {
+        if (document.readyState === "complete" || document.readyState === "interactive") {
             setTimeout(updateTopicProgress, 1500);
         } else {
             document.addEventListener("DOMContentLoaded", () => setTimeout(updateTopicProgress, 1500));
@@ -441,4 +443,3 @@
 </body>
 
 </html>
-

@@ -286,10 +286,14 @@
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
 
-        window.savePointsQuimica = async function (pts) { puntos_quimica: increment(pts), racha_quimica: increment(1) });
-                    console.log("Puntos de química guardados!");
-                } catch (e) {
-                    console.error("Error guardando puntos: ", e);
+        window.savePointsQuimica = async function (pts) {
+            const uid = localStorage.getItem('logicplay_uid');
+            if (uid) {
+                try {
+                    await updateDoc(doc(db, "users", uid), { puntos_quimica: increment(pts), racha_quimica: increment(1) });
+                    console.log("Puntos guardados limpiamente!");
+                } catch(e) {
+                    console.error("Error guardando:", e);
                 }
             }
         };
