@@ -323,17 +323,7 @@
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
 
-        window.savePointsMatematicas = async function (pts) {
-            const uid = localStorage.getItem('logicplay_uid');
-            if (uid) {
-                try {
-                    const userRef = doc(db, "users", uid);
-                    await updateDoc(userRef, {
-                        points: increment(pts),
-                        puntos_matematicas: increment(pts),
-                        racha_matematicas: increment(1),
-                        streak: increment(1)
-                    });
+        window.savePointsMatematicas = async function (pts) { puntos_matematicas: increment(pts) });
                     console.log("Puntos de matemáticas guardados!");
                 } catch (e) {
                     console.error("Error guardando puntos: ", e);
@@ -359,7 +349,7 @@
                 document.getElementById('successMsg').classList.replace('opacity-0', 'opacity-100');
                 document.getElementById('successMsg').classList.add('animate-bounce');
                 if (!window.mathGiven && window.savePointsMatematicas) {
-                    window.savePointsMatematicas(100);
+                    window.savePointsMatematicas(10);
                     window.mathGiven = true;
                 }
             }

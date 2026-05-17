@@ -604,17 +604,7 @@
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
 
-        window.savePointsQuimica = async function (pts) {
-            const uid = localStorage.getItem('logicplay_uid');
-            if (uid) {
-                try {
-                    const userRef = doc(db, "users", uid);
-                    await updateDoc(userRef, {
-                        points: increment(pts),
-                        puntos_quimica: increment(pts),
-                        racha_quimica: increment(1),
-                        streak: increment(1)
-                    });
+        window.savePointsQuimica = async function (pts) { puntos_quimica: increment(pts) });
                     console.log("Puntos de química guardados (Redox)!");
                 } catch (e) {
                     console.error("Error guardando puntos: ", e);
@@ -805,7 +795,7 @@
                 fbMsg.innerHTML = '<span class="material-symbols-outlined text-xl">verified</span><span class="text-sm font-bold uppercase tracking-wider">¡ÉXITO! Ecuación balanceada correctamente.</span>';
 
                 if (!window.balanceGiven && window.savePointsQuimica) {
-                    window.savePointsQuimica(100);
+                    window.savePointsQuimica(10);
                     window.balanceGiven = true;
                 }
 

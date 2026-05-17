@@ -413,17 +413,7 @@
         const db = getFirestore(app);
 
         // Define on window to be accessible from normal scripts
-        window.savePointsFisica = async function (pts) {
-            const uid = localStorage.getItem('logicplay_uid');
-            if (uid) {
-                try {
-                    const userRef = doc(db, "users", uid);
-                    await updateDoc(userRef, {
-                        points: increment(pts),
-                        puntos_fisica: increment(pts),
-                        racha_fisica: increment(1),
-                        streak: increment(1)
-                    });
+        window.savePointsFisica = async function (pts) { puntos_fisica: increment(pts) });
                     console.log("Puntos de física guardados!");
                 } catch (e) {
                     console.error("Error guardando puntos: ", e);
@@ -824,7 +814,7 @@
                     resultIcon.style.color = '#fbbf24';
                     resultTitle.textContent = '¡IMPACTO PERFECTO!';
                     resultDesc.textContent = `El proyectil aterrizó a ${landingDist.toFixed(2)}m. ¡Excelente cálculo de v₀!`;
-                    if (window.savePointsFisica) window.savePointsFisica(100);
+                    if (window.savePointsFisica) window.savePointsFisica(10);
                 } else {
                     const diff = landingDist - TARGET_DISTANCE;
                     resultIcon.textContent = diff > 0 ? 'trending_up' : 'trending_down';

@@ -306,17 +306,7 @@
         const db = getFirestore(app);
 
         // Make it accessible for the old script
-        window.savePointsFisica = async function (pts) {
-            const uid = localStorage.getItem('logicplay_uid');
-            if (uid) {
-                try {
-                    const userRef = doc(db, "users", uid);
-                    await updateDoc(userRef, {
-                        points: increment(pts),
-                        puntos_fisica: increment(pts),
-                        racha_fisica: increment(1),
-                        streak: increment(1)
-                    });
+        window.savePointsFisica = async function (pts) { puntos_fisica: increment(pts) });
                     console.log("Puntos de física guardados!");
                 } catch (e) {
                     console.error("Error guardando puntos: ", e);
@@ -551,7 +541,7 @@
             if (diff <= 0.1 && Math.abs(d - vehiclePos) <= 0.1) {
                 fbMsg.className = "mt-6 flex items-center justify-center gap-2 text-white bg-green-500 p-4 rounded-xl shadow-xl transition-all font-bold text-sm tracking-wide";
                 fbText.innerText = "¡MISIÓN PERFECTA! Tiempo exacto. +100 PUNTOS DE FÍSICA.";
-                if (window.savePointsFisica) window.savePointsFisica(100);
+                if (window.savePointsFisica) window.savePointsFisica(10);
             } else if (t > TARGET_TIME) {
                 fbMsg.className = "mt-6 flex items-center justify-center gap-2 text-accent bg-accent/10 p-4 rounded-xl border border-accent/30 transition-all font-bold text-sm text-center";
                 fbText.innerText = "¡UY! LLEGASTE TARDE. (Más de 5s). ¡Aumenta tu velocidad para recorrer la misma distancia en menos tiempo!";

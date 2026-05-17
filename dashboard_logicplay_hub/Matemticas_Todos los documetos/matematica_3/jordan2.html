@@ -92,7 +92,7 @@
             if (v == 0) {
                 f.innerText = "⭐ ¡GENIO! Has eliminado el número de arriba. ¡Matriz reducida!"; f.className = "text-emerald-600 font-bold mt-6";
                 if (!window.mathGiven && window.savePointsMatematicas) {
-                    window.savePointsMatematicas(100);
+                    window.savePointsMatematicas(10);
                     window.mathGiven = true;
                 }
             }
@@ -142,17 +142,7 @@
         const app = initializeApp(firebaseConfig);
         const firestoreDB = getFirestore(app);
 
-        window.savePointsMatematicas = async function (pts) {
-            const uid = localStorage.getItem('logicplay_uid');
-            if (uid) {
-                try {
-                    const userRef = doc(firestoreDB, "users", uid);
-                    await updateDoc(userRef, {
-                        points: increment(pts),
-                        puntos_matematicas: increment(pts),
-                        racha_matematicas: increment(1),
-                        streak: increment(1)
-                    });
+        window.savePointsMatematicas = async function (pts) { puntos_matematicas: increment(pts) });
                     console.log("Puntos de matemáticas guardados!");
                 } catch (e) {
                     console.error("Error guardando puntos: ", e);

@@ -248,17 +248,7 @@
         const app = initializeApp(firebaseConfig);
         const firestoreDB = getFirestore(app);
 
-        window.savePointsQuimica = async function (pts) {
-            const uid = localStorage.getItem('logicplay_uid');
-            if (uid) {
-                try {
-                    const userRef = doc(firestoreDB, "users", uid);
-                    await updateDoc(userRef, {
-                        points: increment(pts),
-                        puntos_quimica: increment(pts),
-                        racha_quimica: increment(1),
-                        streak: increment(1)
-                    });
+        window.savePointsQuimica = async function (pts) { puntos_quimica: increment(pts) });
                     console.log("Puntos de química guardados (Masa Atómica)!");
                 } catch (e) {
                     console.error("Error guardando puntos: ", e);
@@ -359,7 +349,7 @@
             if (success) {
                 feedback.innerHTML = '<span class="text-emerald-500 px-4 py-2 bg-emerald-50 dark:bg-emerald-900/20 rounded-full w-full block">¡Ecuación verificada correctamente!</span>';
                 if (!window.masaGiven && window.savePointsQuimica) {
-                    window.savePointsQuimica(100);
+                    window.savePointsQuimica(10);
                     window.masaGiven = true;
                 }
             } else {
