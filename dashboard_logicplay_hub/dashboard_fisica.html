@@ -531,60 +531,14 @@
         }
 
         // Streak / Activity Registration
-        function getTodayString() {
-            const d = new Date();
-            return d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate();
-        }
-
-        async function registerActivity(e) {
-            if (role === 'profesor' || !uid) return;
-
-            const target = e.currentTarget;
-            let targetHref = target.getAttribute('href');
-            if (!targetHref && target.onclick) {
-                const match = target.getAttribute('onclick').match(/window\.location\.href='([^']+)'/);
-                if (match) targetHref = match[1];
-            }
-
-            if (!targetHref || targetHref === '#') return;
-
-            e.preventDefault();
-
-            try {
-                const userRef = doc(db, "users", uid);
-                const userSnap = await getDoc(userRef);
-                if (userSnap.exists()) {
-                    let data = userSnap.data();
-                    let today = getTodayString();
-
-                    let updates = {};
-
-                    if (data.lastActivity !== today) {
-                        updates.points = (data.points || 0) + 10;
-                        updates.streak = (data.streak || 0) + 1;
-                        updates.lastActivity = today;
-                    }
-
-                    if (Object.keys(updates).length > 0) {
-                        await updateDoc(userRef, updates);
-                    }
-                }
-            } catch (err) {
-                console.error("Error updating activity:", err);
-            }
-
-            window.location.href = targetHref;
-        }
+        
 
         
 
         // Initialize UI Flow
         loadDashboard();
 
-        // Attach listeners to relevant links (Physics, Chemistry, Math, Challenges)
-        document.querySelectorAll('a[href*="f_sica"], a[href*="quimica"], a[href*="matematica"], a[href*="reto_semanal"], button[onclick*="reto_semanal"], button[onclick*="cursos"]').forEach(el => {
-            el.addEventListener('click', registerActivity);
-        });
+        
 
         // Mobile Menu Toggle
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');

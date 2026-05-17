@@ -223,13 +223,26 @@
 
                 if (docSnap.exists()) {
                     let data = docSnap.data();
-                    let currentProgressMap = data.progreso_temas || {};
+                    let currentProgressMap = data.progreso_matematicas || {};
                     let currentVal = currentProgressMap[topicId] || 0;
-
+                    
+                    let updates = {};
+                    
                     if (progressValue > currentVal) {
                         currentProgressMap[topicId] = progressValue;
-                        await setDoc(userRef, { progreso_temas: currentProgressMap }, { merge: true });
+                        updates.progreso_matematicas = currentProgressMap;
                         console.log(`Progreso actualizado a ${progressValue}% en el tema ${topicId}`);
+                    }
+
+                    let today = new Date().getFullYear() + "-" + (new Date().getMonth() + 1) + "-" + new Date().getDate();
+                    if (data.lastActivity !== today) {
+                        updates.points = (data.points || 0) + 10;
+                        updates.streak = (data.streak || 0) + 1;
+                        updates.lastActivity = today;
+                    }
+
+                    if (Object.keys(updates).length > 0) {
+                        await setDoc(userRef, updates, { merge: true });
                     }
                 }
             } catch (err) {

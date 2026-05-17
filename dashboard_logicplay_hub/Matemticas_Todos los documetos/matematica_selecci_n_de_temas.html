@@ -301,7 +301,7 @@
             if (uid && role !== 'profesor') {
                 getDoc(doc(db, "users", uid)).then(snap => {
                     if (snap.exists()) {
-                        const prog = snap.data().progreso_temas || {};
+                        const prog = snap.data().progreso_matematicas || {};
                         let totalTopics = 5;
                         let completedSum = 0;
                         ["matematica_", "matematica_1", "matematica_2", "matematica_3", "matematica_4"].forEach(k => {

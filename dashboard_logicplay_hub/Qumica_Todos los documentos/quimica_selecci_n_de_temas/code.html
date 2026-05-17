@@ -24,7 +24,7 @@
             if (uid && role !== 'profesor') {
                 getDoc(doc(db, "users", uid)).then(snap => {
                     if (snap.exists()) {
-                        const prog = snap.data().progreso_temas || {};
+                        const prog = snap.data().progreso_quimica || {};
                         let totalTopics = 4;
                         let completedSum = 0;
                         ["quimica_conceptos_claros", "quimica_redox", "tipos_reacciones", "quimica_xrelaciones_cuantitativas"].forEach(k => {

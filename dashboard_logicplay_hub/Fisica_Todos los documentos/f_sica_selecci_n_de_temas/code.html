@@ -380,7 +380,7 @@
             if (uid && role !== 'profesor') {
                 getDoc(doc(db, "users", uid)).then(snap => {
                     if (snap.exists()) {
-                        const prog = snap.data().progreso_temas || {};
+                        const prog = snap.data().progreso_fisica || {};
                         let totalTopics = 6;
                         let completedSum = 0;
                         ["f_sica_mru", "f_sica_pr_ctica_interactiva_3", "f_sica_movimiento_circular", "f_sica_equilibrio_de_fuerzas", "f_sica_peso_y_masa", "f_sica_planos_inclinados"].forEach(k => {
