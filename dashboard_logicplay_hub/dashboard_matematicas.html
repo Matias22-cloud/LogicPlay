@@ -228,11 +228,22 @@
                             <h2 class="text-4xl md:text-5xl font-black mb-4 leading-tight">Centro de Cálculo</h2>
                             <p class="text-lg text-white/80 mb-8">Resuelve integrales, optimiza funciones y domina el
                                 cálculo. ¡Usa tu mente matemática y encabeza el ranking!</p>
-                            <button
-                                class="bg-white text-primary font-bold px-8 py-3 rounded-lg hover:bg-slate-100 transition-colors inline-flex items-center gap-2"
-                                onclick="window.location.href='Matemticas_Todos los documetos/matematica_selecci_n_de_temas.html'">
-                                Ver temas <span class="material-symbols-outlined">arrow_forward</span>
-                            </button>
+                            <button id="btn-evento" class="bg-slate-300 text-slate-500 font-bold px-8 py-3 rounded-lg cursor-not-allowed inline-flex items-center gap-2">Cargando...</button>
+                            <script>
+                                document.addEventListener("DOMContentLoaded", () => {
+                                    const btn = document.getElementById("btn-evento");
+                                    const day = new Date().getDay();
+                                    if (day === 0 || day === 1 || day === 4) {
+                                        btn.onclick = () => window.location.href = 'evento_matematicas.html';
+                                        btn.innerHTML = `Ver evento <span class="material-symbols-outlined">arrow_forward</span>`;
+                                        btn.className = "bg-white text-primary font-bold px-8 py-3 rounded-lg hover:bg-slate-100 transition-colors inline-flex items-center gap-2";
+                                    } else {
+                                        btn.onclick = null;
+                                        btn.innerHTML = `Disponible dom, lun y jue <span class="material-symbols-outlined">lock</span>`;
+                                        btn.className = "bg-slate-300 text-slate-500 font-bold px-8 py-3 rounded-lg cursor-not-allowed inline-flex items-center gap-2";
+                                    }
+                                });
+                            </script>
                         </div>
                         <div class="absolute right-0 bottom-0 top-0 w-1/3 hidden md:flex items-center justify-center">
                             <span

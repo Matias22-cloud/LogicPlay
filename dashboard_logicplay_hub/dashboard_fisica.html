@@ -228,11 +228,25 @@
                             <h2 class="text-4xl md:text-5xl font-black mb-4 leading-tight">Laboratorio de Física</h2>
                             <p class="text-lg text-white/80 mb-8">Domina el movimiento, las fuerzas y la energía.
                                 Resuelve problemas y compite en el ranking de Física.</p>
-                            <button
-                                class="bg-white text-primary font-bold px-8 py-3 rounded-lg hover:bg-slate-100 transition-colors inline-flex items-center gap-2"
-                                onclick="window.location.href='Fisica_Todos los documentos/f_sica_selecci_n_de_temas/code.html'">
-                                Ver temas <span class="material-symbols-outlined">arrow_forward</span>
+                            <button id="btn-evento-fisica"
+                                class="bg-slate-300 text-slate-500 font-bold px-8 py-3 rounded-lg cursor-not-allowed inline-flex items-center gap-2">
+                                Cargando...
                             </button>
+                            <script>
+                                document.addEventListener("DOMContentLoaded", () => {
+                                    const btn = document.getElementById("btn-evento-fisica");
+                                    const day = new Date().getDay();
+                                    if (day === 1 || day === 2) {
+                                        btn.onclick = () => window.location.href = "evento_fisica.html";
+                                        btn.innerHTML = `Ver evento <span class="material-symbols-outlined">arrow_forward</span>`;
+                                        btn.className = "bg-white text-primary font-bold px-8 py-3 rounded-lg hover:bg-slate-100 transition-colors inline-flex items-center gap-2";
+                                    } else {
+                                        btn.onclick = null;
+                                        btn.innerHTML = `Disponible lun y mar <span class="material-symbols-outlined">lock</span>`;
+                                        btn.className = "bg-slate-300 text-slate-500 font-bold px-8 py-3 rounded-lg cursor-not-allowed inline-flex items-center gap-2";
+                                    }
+                                });
+                            </script>
                         </div>
                         <div class="absolute right-0 bottom-0 top-0 w-1/3 hidden md:flex items-center justify-center">
                             <span
