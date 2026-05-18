@@ -471,7 +471,7 @@
         let isRankingLoaded = false;
         function loadRanking() {
             const usersRef = collection(db, "users");
-            const q = query(usersRef, orderBy("points", "desc"), limit(10));
+            const q = query(usersRef, orderBy("points", "desc"), limit(20));
 
             // Listen real-time
             onSnapshot(q, (querySnapshot) => {
@@ -485,6 +485,8 @@
 
                 querySnapshot.forEach((doc) => {
                     const data = doc.data();
+                    if (data.role === 'profesor' || data.role === 'Profesor' || data.role === 'admin') return;
+                    if (position > 10) return;
                     const isMe = doc.id === uid;
 
                     let avatarHtml = '';
