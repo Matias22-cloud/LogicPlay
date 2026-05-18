@@ -3,9 +3,10 @@
 <html lang="es">
 
 <head>
+    <link rel="icon" href="/LogicPlay.ico" type="image/x-icon">
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <link rel="icon" href="/LogicPlay.ico">
+    
     <script>
         // Verificación de Autenticación para LogiPlay
         if (!localStorage.getItem('logicplay_auth')) {
@@ -50,7 +51,7 @@
     <!-- PWA Meta Tags & Service Worker -->
     <link rel="manifest" href="./manifest.json">
     <meta name="theme-color" content="#2c0fbd">
-    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <script>
         if ('serviceWorker' in navigator) {
@@ -407,6 +408,12 @@
                 domRoleLabel.textContent = "Licenciado";
                 domHeaderPts.innerHTML = `<span class="text-xs text-slate-500 font-medium mt-1">Exclusivo para estudiantes</span>`;
                 domHeaderAvatar.innerHTML = `<div class="w-full h-full flex items-center justify-center bg-slate-300 text-white font-bold text-lg"><span class="material-symbols-outlined text-[20px]">school</span></div>`;
+
+                if (uid) {
+                    try {
+                        await updateDoc(doc(db, "users", uid), { role: "profesor" });
+                    } catch (e) { console.error(e); }
+                }
 
                 statsContainer.innerHTML = `
                     <div class="bg-slate-100 dark:bg-slate-800/50 p-3 px-4 rounded-xl border border-slate-200 dark:border-slate-800 flex items-center gap-3 w-full">

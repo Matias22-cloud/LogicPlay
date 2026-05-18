@@ -2,6 +2,7 @@
 <html lang="es">
 
 <head>
+    <link rel="icon" href="/LogicPlay.ico" type="image/x-icon">
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
@@ -233,6 +234,7 @@
     </div>
 
     <script type="module">
+        window.__studyStartTime = Date.now();
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js";
         import { getFirestore, doc, updateDoc, increment } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js";
 
@@ -364,6 +366,7 @@
 
     <!-- Progress Tracking Script Injected Automatically -->
     <script type="module">
+        window.__studyStartTime = Date.now();
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js";
         import { getFirestore, doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js";
 

@@ -2,6 +2,7 @@
 <html class="light" lang="es">
 
 <head>
+    <link rel="icon" href="/LogicPlay.ico" type="image/x-icon">
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
@@ -24,7 +25,7 @@
     <title>Fisica: Practica Interactiva (Planos Inclinados)</title>
     <link rel="manifest" href="../../manifest.json">
     <meta name="theme-color" content="#2c0fbd">
-    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <script>if ('serviceWorker' in navigator) { window.addEventListener('load', () => { navigator.serviceWorker.register('../../service-worker.js').then(r => console.log('SW OK')).catch(e => console.log('SW fail', e)); }); }</script>
 
@@ -153,6 +154,7 @@
     </div>
 
     <script type="module">
+        window.__studyStartTime = Date.now();
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js";
         import { getFirestore, doc, updateDoc, increment } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js";
         const firebaseConfig = { apiKey: "AIzaSyBD3-ZnbczYZOuDm7e9OHLP6Xg68sdZ1so", authDomain: "logicplay-e775c.firebaseapp.com", projectId: "logicplay-e775c", storageBucket: "logicplay-e775c.firebasestorage.app", messagingSenderId: "11226997472", appId: "1:11226997472:web:836d7d87f4f6a01987e685" };
@@ -172,6 +174,7 @@
 
     <!-- Three.js 3D Plano Inclinado Simulator -->
     <script type="module">
+        window.__studyStartTime = Date.now();
         import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.150.1/build/three.module.js';
 
         let scene, camera, renderer, box, rampMesh, targetFlag;
@@ -374,6 +377,7 @@
 
     <script type="importmap">{"imports":{"@google/genai":"https://esm.run/@google/genai"}}</script>
     <script type="module">
+        window.__studyStartTime = Date.now();
         import { GoogleGenAI } from '@google/genai';
         const ai = new GoogleGenAI({apiKey: atob('QUl6YVN5RDM4S1VCbHNxV2xGejRBSXJyYU83Y0lyakFuMjBGd0pN')});
         const config={systemInstruction:[{text:"Eres Faraday, un asistente educativo amable, paciente y motivador especializado unicamente en Fisica para estudiantes de bachillerato. Solo respondes preguntas de Fisica como equilibrio de fuerzas, planos inclinados, peso y masa, MRU y movimiento circular. Si te preguntan algo de otra materia di amablemente que solo puedes ayudar con Fisica pero recomiendale hablar con Heisenberg para Quimica o Leonhard para Matematicas. Explica paso a paso de forma clara y sencilla usando ejemplos cotidianos."}]};
@@ -388,6 +392,7 @@
 
     <!-- Progress Tracking Script Injected Automatically -->
     <script type="module">
+        window.__studyStartTime = Date.now();
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js";
         import { getFirestore, doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js";
 
