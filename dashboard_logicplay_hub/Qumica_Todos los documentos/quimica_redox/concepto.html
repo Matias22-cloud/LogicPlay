@@ -77,14 +77,49 @@
                         class="px-4 py-2 text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-primary transition-colors">
                         Dashboard
                     </a>
-                    <button
-                        class="px-4 py-2 text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-primary transition-colors">
+                    <a href="../quimica_selecci_n_de_temas/code.html" class="hidden sm:block px-4 py-2 text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-primary transition-colors">
                         Biblioteca
+                    </a>
+                    <!-- Notification Bell & Panel -->
+                <div class="relative" id="notifications-container">
+                    <button id="notification-btn" aria-label="Notificaciones"
+                        class="relative p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-primary/10 hover:text-primary transition-all">
+                        <span class="material-symbols-outlined">notifications</span>
+                        <span id="notification-dot"
+                            class="absolute top-1.5 right-1.5 size-2 bg-red-500 rounded-full ring-2 ring-white dark:ring-slate-900 hidden"></span>
                     </button>
-                    <button
-                        class="flex items-center justify-center rounded-lg h-10 w-10 bg-primary/10 text-primary hover:bg-primary hover:text-white transition-all">
-                        <span class="material-symbols-outlined">person</span>
-                    </button>
+                    <!-- Dropdown -->
+                    <div id="notification-dropdown"
+                        class="absolute right-0 mt-3 w-80 max-w-[90vw] bg-white dark:bg-slate-900 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-700 hidden z-50 overflow-hidden transform opacity-0 scale-95 transition-all duration-200 origin-top-right">
+                        <div
+                            class="bg-slate-50 dark:bg-slate-800 p-4 border-b border-slate-200 dark:border-slate-700 flex justify-between items-center">
+                            <h3 class="font-bold text-slate-900 dark:text-white">Notificaciones</h3>
+                            <span id="unread-count-badge"
+                                class="bg-primary text-white text-xs font-bold px-2 py-0.5 rounded-full hidden">0</span>
+                        </div>
+                        <div id="notification-list"
+                            class="max-h-80 overflow-y-auto w-full flex flex-col scrollbar-thin">
+                            <div class="p-6 text-center text-slate-500 text-sm">
+                                <span
+                                    class="material-symbols-outlined text-4xl opacity-50 mb-2">notifications_off</span>
+                                <p>No tienes notificaciones por ahora.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="h-10 w-px bg-slate-200 dark:bg-slate-800 mx-1 hidden sm:block"></div>
+                <div class="flex items-center gap-3">
+                    <div class="text-right hidden xl:block">
+                        <p class="text-sm font-bold leading-none" id="dom-role-label">Estudiante</p>
+                        <p class="text-xs text-primary font-medium mt-1" id="dom-header-pts">0 XP</p>
+                    </div>
+                    <div class="size-8 sm:size-10 rounded-full bg-primary/20 border-2 border-primary overflow-hidden"
+                        id="dom-header-avatar">
+                        <img alt="User Avatar" class="w-full h-full object-cover"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUfb_Q9KslIBxQYDwoIq6H1qMt1q6ogec8roP9aX1nW6a9srTIUVSJzz1MPhT7F4kKLpJNknTUH0zLjtR6xg5Td0Novi-J43sx89cdAUv7s0VlZI2C_vb7KvoAZH0FnXcZBgw4JK0SFwi2bTlhFYX1LG0xBrLcttzI7VtHMx62yOhks3rsc5Ba7cr2F52tuoxkkQJ-cSLZw6axmkd3JraNCQ-hjvC9Psul0uQgLxdX9P2sYxsQVRdQquvIEiH7XreEn7mYulpymzE" />
+                    </div>
+                </div>
+                
                 </div>
             </header>
             <main class="flex flex-1 justify-center py-8">
